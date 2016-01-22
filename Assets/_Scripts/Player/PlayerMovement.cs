@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+
         if (isMoving && controller.velocity == Vector3.zero)
         {
             idleTimer += Time.deltaTime;
@@ -59,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                controller.stoppingDistance = 0;
             }
         }
         MoveToPosition();

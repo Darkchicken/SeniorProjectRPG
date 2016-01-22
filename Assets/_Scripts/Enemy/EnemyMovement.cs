@@ -16,7 +16,6 @@ public class EnemyMovement : MonoBehaviour
 
 
     private bool isChasing = false;
-    private bool isAttacking = false;
     private bool immuneToAggro = false;
     private float idleTimer = 0f;
     private bool isMoving_Animation = false;
