@@ -7,19 +7,43 @@ public class CameraFollow : MonoBehaviour
     public float smoothing = 5f;
 
     private Transform player;
-    private Vector3 offset;
+    //taken from original calculations, can be modified if necessary
+    private Vector3 offset = new Vector3(0.1f,12.3f,-31.1f);
+    private bool following = false;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        offset = transform.position - player.position;
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+           
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+            transform.position = player.position + offset;
+            following = true;
+        }
     }
 
 
     void FixedUpdate()
     {
-        Vector3 targetCamPos = player.position + offset;
-        transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+        if(GameObject.FindGameObjectWithTag("Player") != null && following == false)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+            transform.position = player.position + offset;
+            following = true;
+        }
+        if (following == true)
+        {
+            //if player disconnects
+            if (player == null)
+            {
+                following = false;
+            }
+            else
+            {
+                Vector3 targetCamPos = player.position + offset;
+                transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+            }
+        }
     }
 
 }
