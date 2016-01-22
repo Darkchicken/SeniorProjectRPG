@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 position;
     private NavMeshAgent controller;
     private Animator playerAnimation;
-    
+    private RaycastHit hit;
+
     private float idleTimer = 0f;
     private bool isMoving = false;
 
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     void locatePosition()
     {
-        RaycastHit hit;
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, 1000))
@@ -72,9 +73,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (!isMoving)
         {
-            playerAnimation.SetTrigger("RUN");
-            isMoving = true;
-            playerAnimation.SetBool("IsMoving", true);
+            if(hit.transform.tag == "Enemy" && Vector3.Distance(hit.transform.position, transform.position) <= stopDistanceForAttack)
+            {
+
+            }
+            else
+            {
+                playerAnimation.SetTrigger("RUN");
+                isMoving = true;
+                playerAnimation.SetBool("IsMoving", true);
+            }
+            
         }
     }
 }
