@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections;
 
-public class EnemyHealth : MonoBehaviour {
+public class EnemyHealth :NetworkBehaviour {
 
     public Text enemyHealthText;
     public int enemyHealth;
@@ -29,7 +30,10 @@ public class EnemyHealth : MonoBehaviour {
         if(!dead)
         {
             enemyHealthText.text = "Enemy Health: " + enemyHealth;
-            player.GetComponent<PlayerCombatManager>().targetEnemy = gameObject;
+            if (player != null)
+            {
+                player.GetComponent<PlayerCombatManager>().targetEnemy = gameObject;
+            }
         }
         
     }
@@ -37,7 +41,10 @@ public class EnemyHealth : MonoBehaviour {
     void OnMouseExit()
     {
         enemyHealthText.text = "";
-        player.GetComponent<PlayerCombatManager>().targetEnemy = null;
+        if (player != null)
+        {
+            player.GetComponent<PlayerCombatManager>().targetEnemy = null;
+        }
     }
 
     public void TakeDamage(int damage)

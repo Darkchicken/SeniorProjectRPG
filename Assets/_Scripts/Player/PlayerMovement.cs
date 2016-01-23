@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
 
     public float stopDistanceForAttack = 2f;
@@ -21,10 +22,29 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<NavMeshAgent>();
         playerAnimation = GetComponent<Animator>();
         position = transform.position;
+       
+    }
+    void Start()
+    {
+        //set proper name and tag to distinguish local player from others
+        if (isLocalPlayer)
+        {
+            gameObject.tag = "Player";
+            gameObject.name = "LOCAL player";
+        }
+        else
+        {
+            gameObject.tag = "NetworkOpponent";
+            gameObject.name = "Network Opponent";
+        }
     }
 
     void Update()
     {
+        //return if not local player
+        if(!isLocalPlayer)
+        {return;}
+
 
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && canMove)
         {

@@ -13,11 +13,21 @@ public class RaycastUI : MonoBehaviour
 	
     public void OnMouseOver()
     {
-        player.GetComponent<PlayerMovement>().canMove = false;
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (player != null)
+        {
+            player.GetComponent<PlayerMovement>().canMove = false;
+        }
     }
 
     public void OnMouseExit()
     {
-        player.GetComponent<PlayerMovement>().canMove = true;
+        if (player != null)
+        {
+            player.GetComponent<PlayerMovement>().canMove = true;
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement :NetworkBehaviour
 {
 
     public float aggroRange = 15f;
@@ -31,6 +32,12 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        //if a player was not found initially, keep looking until one is found
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
         if ((InAggroRange() || isChasing) && !immuneToAggro && !InAttackingRange())
         {
             MoveToPosition(player.transform.position);
@@ -63,6 +70,11 @@ public class EnemyMovement : MonoBehaviour
 
     bool InAggroRange() // returns true if player in distance
     {
+        //if no player is found
+        if(player == null)
+        {
+            return false;
+        }
         if (Vector3.Distance(transform.position, player.transform.position) <= aggroRange)
         {
             return true;
