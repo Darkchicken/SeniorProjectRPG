@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float stopDistanceForAttack = 2f;
+    public bool canMove = true;
 
     private Vector3 position;
     private NavMeshAgent controller;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && canMove)
         {
             locatePosition();
 

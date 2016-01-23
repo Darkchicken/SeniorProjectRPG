@@ -8,12 +8,14 @@ public class EnemyHealth : MonoBehaviour {
     public int enemyHealth;
 
     private Animator enemyAnimation;
+    private GameObject player;
 
     private bool dead = false;
 
     void Awake ()
     {
         enemyAnimation = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
 	}
 
@@ -27,6 +29,7 @@ public class EnemyHealth : MonoBehaviour {
         if(!dead)
         {
             enemyHealthText.text = "Enemy Health: " + enemyHealth;
+            player.GetComponent<PlayerCombatManager>().targetEnemy = gameObject;
         }
         
     }
@@ -34,6 +37,7 @@ public class EnemyHealth : MonoBehaviour {
     void OnMouseExit()
     {
         enemyHealthText.text = "";
+        player.GetComponent<PlayerCombatManager>().targetEnemy = null;
     }
 
     public void TakeDamage(int damage)
