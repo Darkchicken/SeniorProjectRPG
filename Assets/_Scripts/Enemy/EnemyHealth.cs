@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour {
 
     private Animator enemyAnimation;
 
-    private bool dead;
+    private bool dead = false;
 
     void Awake ()
     {
@@ -56,6 +56,7 @@ public class EnemyHealth : MonoBehaviour {
     void EnemyDead()
     {
         enemyAnimation.SetTrigger("DIE");
+        dead = true;
         GetComponent<NavMeshAgent>().speed = 0;
     }
 

@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     private Animator enemyAnimation;
     private GameObject player;
     private Vector3 initialPosition;
-    private Vector3 stopPosition;
 
 
     private bool isChasing = false;
@@ -36,7 +35,6 @@ public class EnemyMovement : MonoBehaviour
         {
             MoveToPosition(player.transform.position);
             controller.stoppingDistance = chaseStopDistance;
-            stopPosition = player.transform.position;
 
             if (!InChasingRange())
             {
@@ -53,6 +51,7 @@ public class EnemyMovement : MonoBehaviour
                 enemyAnimation.SetBool("IsMoving", false);
                 enemyAnimation.SetTrigger("IDLE");
                 idleTimer = 0f;
+                immuneToAggro = false;
             }
         }
         if (!immuneToAggro && isChasing)
@@ -81,7 +80,6 @@ public class EnemyMovement : MonoBehaviour
             immuneToAggro = true;
             isChasing = false;
             controller.stoppingDistance = 0;
-            stopPosition = initialPosition;
             return false;
         }
         else

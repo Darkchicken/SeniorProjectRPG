@@ -11,3 +11,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/TestMultiplayerLobbyScene.unity
   - enabled: 1
     path: Assets/_Scenes/TestMultiplayer.unity
+  - enabled: 1
+    path: Assets/_Scenes/TestMenu.unity
+  - enabled: 1
+    path: Assets/_Scenes/TestMovement.unity

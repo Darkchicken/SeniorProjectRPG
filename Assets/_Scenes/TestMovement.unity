@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 20
-  chasingRange: 50
+  chasingRange: 20
   chaseStopDistance: 2
 --- !u!1001 &1533497850
 Prefab:
