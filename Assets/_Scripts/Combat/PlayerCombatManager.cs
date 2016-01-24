@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerCombatManager : MonoBehaviour {
+public class PlayerCombatManager : NetworkBehaviour
+{
 
     public GameObject targetEnemy;
 
@@ -17,7 +19,11 @@ public class PlayerCombatManager : MonoBehaviour {
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
+        //return if not local player
+        if (!isLocalPlayer)
+        { return; }
+
+        if (Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
         {
             skillAttackRange = 2;
             if (InRangeForAttack())
