@@ -19,6 +19,7 @@ public class EnemyMovement :NetworkBehaviour
     private bool immuneToAggro = false;
     private float idleTimer = 0f;
     private bool isMoving_Animation = false;
+    private bool isInCombat = false;
 
 
     void Start()
@@ -55,8 +56,16 @@ public class EnemyMovement :NetworkBehaviour
             if (idleTimer >= 0.05f)
             {
                 isMoving_Animation = false;
-                enemyAnimation.SetBool("IsMoving", false);
-                enemyAnimation.SetTrigger("IDLE");
+                enemyAnimation.SetBool("IsMoving", false);           
+                if(isInCombat)
+                {
+                    enemyAnimation.SetTrigger("IDLE WEAPON");
+                }
+                else
+                {
+                    enemyAnimation.SetTrigger("IDLE");
+                }
+                
                 idleTimer = 0f;
                 immuneToAggro = false;
             }
@@ -92,6 +101,8 @@ public class EnemyMovement :NetworkBehaviour
             immuneToAggro = true;
             isChasing = false;
             controller.stoppingDistance = 0;
+            player.GetComponent<PlayerMovement>().isInCombat = false;
+            isInCombat = false;
             return false;
         }
         else
@@ -104,10 +115,12 @@ public class EnemyMovement :NetworkBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) <= chaseStopDistance)
         {
+            player.GetComponent<PlayerMovement>().isInCombat = true;
+            isInCombat = true;
             return true;
         }
         else
-        {
+        {  
             return false;
         }
     }

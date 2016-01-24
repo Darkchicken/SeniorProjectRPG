@@ -3680,7 +3680,7 @@ Animator:
   m_GameObject: {fileID: 136662}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3584a448779ea842930ef63c4575c09, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4716e06980d921046b3a394eb7e8425b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 17041cad43005b2419a2e6a794580395, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3782,8 +3782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b421cd8ac56754b8264bb2f079d932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopDistanceForAttack: 2
+  stopDistanceForAttack: 3
   canMove: 1
+  isInCombat: 0
 --- !u!137 &13705794
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -4102,7 +4103,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 136662}
   m_Enabled: 1
   m_Radius: 0.9
-  m_Speed: 8
+  m_Speed: 5
   m_Acceleration: 720
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -4196,6 +4197,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SyncSpin
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 17041cad43005b2419a2e6a794580395, type: 2}
+    - target: {fileID: 0}
+      propertyPath: stopDistanceForAttack
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

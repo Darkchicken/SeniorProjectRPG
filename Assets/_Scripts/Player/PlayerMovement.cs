@@ -7,6 +7,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public float stopDistanceForAttack = 2f;
     public bool canMove = true;
+    public bool isInCombat = false;
 
     private Vector3 position;
     private NavMeshAgent controller;
@@ -15,6 +16,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private float idleTimer = 0f;
     private bool isMoving = false;
+    private GameObject targetEnemy;
 
     void Awake()
     {
@@ -59,11 +61,29 @@ public class PlayerMovement : NetworkBehaviour
             if (idleTimer >= 0.04f)
             {
                 isMoving = false;
+                targetEnemy = null;
                 playerAnimation.SetBool("IsMoving", false);
-                playerAnimation.SetTrigger("IDLE");
+                if (isInCombat)
+                {
+                    playerAnimation.SetTrigger("IDLE WEAPON");
+                }
+                else
+                {
+                    playerAnimation.SetTrigger("IDLE");
+                }
                 idleTimer = 0f;
             }
-        }     
+        }
+
+        if (targetEnemy != null)
+        {
+            if (targetEnemy.CompareTag("Enemy"))
+            {
+                position = targetEnemy.transform.position;
+                MoveToPosition();   
+                           
+            }
+        }
     }
 
     void locatePosition()
@@ -75,12 +95,16 @@ public class PlayerMovement : NetworkBehaviour
         {
             if (hit.transform.tag == "Enemy")
             {
+                targetEnemy = hit.transform.gameObject;
                 position = hit.transform.position;
                 controller.stoppingDistance = stopDistanceForAttack;
+                isInCombat = true;
             }
             else
             {
+                targetEnemy = null;
                 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                controller.stoppingDistance = 0f;
             }
         }
         MoveToPosition();

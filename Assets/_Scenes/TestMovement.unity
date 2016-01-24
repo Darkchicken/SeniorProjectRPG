@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -777,7 +777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &519580908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,37 +1652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothing: 5
---- !u!1 &791463421 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 185404, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
-  m_PrefabInternal: {fileID: 1112375585}
---- !u!114 &791463422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 791463421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c61f24afd3873d4e858c42229f62e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aggroRange: 10
-  chasingRange: 50
-  chaseStopDistance: 2
---- !u!114 &791463423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 791463421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79328c44473533d4296c1560a032eba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealthText: {fileID: 337116366}
-  enemyHealth: 50
 --- !u!1001 &875380789
 Prefab:
   m_ObjectHideFlags: 0
@@ -1843,11 +1812,11 @@ RectTransform:
   - {fileID: 1094112629}
   m_Father: {fileID: 119779865}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -10}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 125}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &997271447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,6 +2256,14 @@ Prefab:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460064, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+      propertyPath: enemyHealthText
+      value: 
+      objectReference: {fileID: 337116366}
+    - target: {fileID: 9578976, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 17041cad43005b2419a2e6a794580395, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
   m_IsPrefabParent: 0
@@ -2365,7 +2342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11490408, guid: 6581dda23959d9046bcd33c08a5b71ce, type: 2}
         m_MethodName: OnButtonClick
         m_Mode: 5
         m_Arguments:
@@ -2643,7 +2620,7 @@ Transform:
   - {fileID: 166139849}
   - {fileID: 1871969736}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1001 &1290916782
 Prefab:
   m_ObjectHideFlags: 0
@@ -2749,37 +2726,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5885d124a64dae3439efeada71f15202, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1376885414 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 185404, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
-  m_PrefabInternal: {fileID: 1836462622}
---- !u!114 &1376885415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1376885414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79328c44473533d4296c1560a032eba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealthText: {fileID: 337116366}
-  enemyHealth: 100
---- !u!114 &1376885419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1376885414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c61f24afd3873d4e858c42229f62e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aggroRange: 20
-  chasingRange: 20
-  chaseStopDistance: 2
 --- !u!1001 &1533497850
 Prefab:
   m_ObjectHideFlags: 0
@@ -2932,8 +2878,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9117647, g: 0.90769595, b: 0.76427335, a: 1}
+  m_Intensity: 1.99
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2952,7 +2898,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0.7
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
@@ -3325,22 +3271,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 19575598, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 19575598, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
-      propertyPath: m_AngularSpeed
-      value: 720
-      objectReference: {fileID: 0}
-    - target: {fileID: 19575598, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
-      propertyPath: m_AutoRepath
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19575598, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
-      propertyPath: m_AutoTraverseOffMeshLink
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 11460064, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+      propertyPath: enemyHealthText
+      value: 
+      objectReference: {fileID: 337116366}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
   m_IsPrefabParent: 0

@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     private Animator playerAnimation;
 
-    private bool dead;
+    private bool dead = false;
 
     void Awake()
     {

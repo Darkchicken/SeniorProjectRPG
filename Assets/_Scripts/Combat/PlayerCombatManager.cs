@@ -23,7 +23,7 @@ public class PlayerCombatManager : MonoBehaviour {
             if (InRangeForAttack())
             {
                 actionBarSkillId = null;
-                playerAnimation.SetTrigger("ATTACK 2 WEAPONS A");
+                playerAnimation.SetTrigger("ATTACK 1");
             }
         }
         if(Input.GetMouseButtonDown(1) || actionBarSkillId == "RC")
@@ -33,19 +33,18 @@ public class PlayerCombatManager : MonoBehaviour {
         if (Input.GetKeyDown("1") || actionBarSkillId == "1")
         {
             actionBarSkillId = null;
-            playerAnimation.SetTrigger("ATTACK 2 WEAPONS B");
+            playerAnimation.SetTrigger("ATTACK 1");
         }
         if(Input.GetKeyDown("2") || actionBarSkillId == "2")
         {
             actionBarSkillId = null;
-            playerAnimation.SetTrigger("JUMP ATTACK");
+            playerAnimation.SetTrigger("ATTACK 2");
         }
         if(Input.GetKeyDown("3") || actionBarSkillId == "3")
         {
             actionBarSkillId = null;
-            playerAnimation.SetTrigger("ATTACK 2 WEAPONS C");
+            playerAnimation.SetTrigger("ATTACK 3");
         }
-
 
     }
 
@@ -69,6 +68,8 @@ public class PlayerCombatManager : MonoBehaviour {
 
     public void OnButtonClick(string id)
     {
+
+        
         actionBarSkillId = id;
     }
 }
