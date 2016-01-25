@@ -320,9 +320,9 @@ MonoBehaviour:
   m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 11432946, guid: 356531456591ae24b9ced9b78f96e2bb,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 193398, guid: 87acc071209e09f43a1e16716cec513b, type: 2}
+  m_GamePlayerPrefab: {fileID: 136662, guid: 6581dda23959d9046bcd33c08a5b71ce, type: 2}
   m_LobbyScene: MultiplayerLobby
-  m_PlayScene: TestMultiplayerLobbyScene
+  m_PlayScene: BattleArena
   lobbySlots: []
 --- !u!4 &1745858330
 Transform:
