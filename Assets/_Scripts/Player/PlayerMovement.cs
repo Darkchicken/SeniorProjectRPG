@@ -28,17 +28,7 @@ public class PlayerMovement : NetworkBehaviour
     }
     void Start()
     {
-        //set proper name and tag to distinguish local player from others
-        if (isLocalPlayer)
-        {
-            gameObject.tag = "Player";
-            gameObject.name = "LOCAL player";
-        }
-        else
-        {
-            gameObject.tag = "NetworkOpponent";
-            gameObject.name = "Network Opponent";
-        }
+       
     }
 
     void Update()

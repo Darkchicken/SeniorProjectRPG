@@ -23,6 +23,8 @@ public class PlayerCombatManager : NetworkBehaviour
         if (!isLocalPlayer)
         { return; }
 
+        //raycast to check collisions
+        RaycastHit hit;
         if (Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
         {
             skillAttackRange = 2;
@@ -40,6 +42,20 @@ public class PlayerCombatManager : NetworkBehaviour
         {
             actionBarSkillId = null;
             playerAnimation.SetTrigger("ATTACK 1");
+
+            /////////////code to resolve a hit on another player
+            Vector3 rayPos = transform.position;
+
+            if (Physics.Raycast(rayPos, transform.forward, out hit, 50f))
+            {
+
+                if (hit.transform.tag == "NetworkOpponent")
+                {
+                    Debug.Log("Hit");
+                    CmdHitPlayer(hit.transform.gameObject);
+                }
+            }
+            
         }
         if(Input.GetKeyDown("2") || actionBarSkillId == "2")
         {
@@ -77,5 +93,12 @@ public class PlayerCombatManager : NetworkBehaviour
 
         
         actionBarSkillId = id;
+    }
+
+    [Command]
+    void CmdHitPlayer(GameObject hit)
+    {
+
+        hit.GetComponent<NetworkPlayerScript>().RpcResolveHit();
     }
 }

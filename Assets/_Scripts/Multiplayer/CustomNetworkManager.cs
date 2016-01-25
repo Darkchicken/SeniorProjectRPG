@@ -55,4 +55,7 @@ public class CustomNetworkManager : NetworkManager
         if (UICanvas)
             UICanvas.SetActive(true);
     }
+
+
+   
 }
