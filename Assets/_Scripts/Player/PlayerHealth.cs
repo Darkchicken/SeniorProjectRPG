@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         dead = true;
         gameObject.tag = "Respawn";
         playerAnimation.SetTrigger("DIE");
-        GetComponent<NavMeshAgent>().speed = 0;
+       // GetComponent<NavMeshAgent>().speed = 0;
         GetComponent<PlayerMovement>().enabled = false;    
     }
 
