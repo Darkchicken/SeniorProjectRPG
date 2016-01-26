@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class HUD_Manager : MonoBehaviour {
 
     public Slider playerHealthSlider;
+    public Slider playerResourceSlider;
     public Text playerHealthText;
+    public Text playerResourceText;
 
     private GameObject player;
     private int playerHealth;
@@ -27,6 +29,9 @@ public class HUD_Manager : MonoBehaviour {
             {
                 playerHealthSlider.gameObject.SetActive(false);
             }
+            playerResourceSlider.value = player.GetComponent<PlayerCombatManager>().GetPlayerResource();
+            playerResourceText.text = playerResourceSlider.value + "/100";
+
 
         }
 

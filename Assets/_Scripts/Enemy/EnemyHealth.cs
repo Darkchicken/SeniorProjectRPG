@@ -76,4 +76,9 @@ public class EnemyHealth :NetworkBehaviour {
         GetComponent<EnemyCombatManager>().enabled = false;
     }
 
+    public bool isEnemyDead()
+    {
+        return dead;
+    }
+
 }

@@ -13,6 +13,8 @@ public class PlayerCombatManager : NetworkBehaviour
     private string actionBarSkillId;
 
     private float skill_1_Timer = 0f;
+    private int resource = 0;
+    private PlayerBaseSkills playerBaseSkills;
 
 
 
@@ -20,6 +22,7 @@ public class PlayerCombatManager : NetworkBehaviour
     {
         playerAnimation = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerBaseSkills = GetComponent<PlayerBaseSkills>();
     }
 
     void Update()
@@ -34,9 +37,9 @@ public class PlayerCombatManager : NetworkBehaviour
         if (Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
         {
             skillAttackRange = 2;
-            if (InRangeForAttack() && skill_1_Timer >= 0.7f)
+            if (InRangeForAttack() && skill_1_Timer >= 0.7f && !targetEnemy.GetComponent<EnemyHealth>().isEnemyDead())
             {
-                targetEnemy.GetComponent<EnemyHealth>().TakeDamage(20);
+                playerBaseSkills.PrimarySkill(targetEnemy, 0);
                 actionBarSkillId = null;
                 playerAnimation.SetTrigger("ATTACK 1");
                 skill_1_Timer = 0f;
@@ -44,7 +47,9 @@ public class PlayerCombatManager : NetworkBehaviour
         }
         if(Input.GetMouseButtonDown(1) || actionBarSkillId == "RC")
         {
+            playerBaseSkills.PrimarySkill(targetEnemy, 1);
             actionBarSkillId = null;
+            playerAnimation.SetTrigger("ATTACK 2");
         }
         if (Input.GetKeyDown("1") || actionBarSkillId == "1")
         {
@@ -96,5 +101,15 @@ public class PlayerCombatManager : NetworkBehaviour
     {
 
         hit.GetComponent<NetworkPlayerScript>().RpcResolveHit();
+    }
+
+    public int GetPlayerResource()
+    {
+        return resource;
+    }
+
+    public void SetPlayerResource(int generate)
+    {
+        resource += generate;
     }
 }

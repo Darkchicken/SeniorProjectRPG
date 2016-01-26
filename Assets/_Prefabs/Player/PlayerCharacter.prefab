@@ -678,6 +678,8 @@ GameObject:
   - 114: {fileID: 11455226}
   - 114: {fileID: 11454492}
   - 114: {fileID: 11474200}
+  - 114: {fileID: 11402376}
+  - 114: {fileID: 11479038}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -3722,6 +3724,17 @@ MonoBehaviour:
     i15: 206
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11402376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e374e08076d3b36469ada589152cc73b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11411858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3786,6 +3799,17 @@ MonoBehaviour:
   playerHealthText: {fileID: 0}
   playerHealthSlider: {fileID: 0}
   playerHealth: 100
+--- !u!114 &11479038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1996804e965b57d409cd716c26b136e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11490408
 MonoBehaviour:
   m_ObjectHideFlags: 1
