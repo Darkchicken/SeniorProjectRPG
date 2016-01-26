@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     public Text playerHealthText;
+    public Slider playerHealthSlider;
     public int playerHealth = 100;
 
     private Animator playerAnimation;
@@ -17,22 +18,19 @@ public class PlayerHealth : MonoBehaviour
         playerAnimation = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        playerHealthText.text = "Player Health: " + playerHealth;
-    }
-
     public void TakeDamage(int damage)
     {
+
         if (!dead)
         {
             if (playerHealth > damage)
             {
-                playerAnimation.SetTrigger("SOFT DAMAGE");
+                playerAnimation.SetTrigger("TAKE DAMAGE 1");
                 playerHealth -= damage;
             }
             else
             {
+                playerHealth = 0;
                 PlayerDead();
             }
         }
@@ -40,7 +38,20 @@ public class PlayerHealth : MonoBehaviour
 
     void PlayerDead()
     {
+        dead = true;
+        gameObject.tag = "Respawn";
         playerAnimation.SetTrigger("DIE");
         GetComponent<NavMeshAgent>().speed = 0;
+        GetComponent<PlayerMovement>().enabled = false;    
+    }
+
+    public bool IsPlayerDead()
+    {
+        return dead;
+    }
+
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
     }
 }

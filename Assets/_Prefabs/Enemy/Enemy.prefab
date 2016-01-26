@@ -1627,6 +1627,7 @@ GameObject:
   - 114: {fileID: 11477802}
   - 114: {fileID: 11460064}
   - 114: {fileID: 11488870}
+  - 114: {fileID: 11452956}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -3709,6 +3710,20 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &11452956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8d68ad319fe064dbe25d39641a54c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
+  attackDamage: 10
+  attackSpeed: 1.5
 --- !u!114 &11460064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3720,7 +3735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79328c44473533d4296c1560a032eba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthText: {fileID: 0}
+  enemyHealthSlider: {fileID: 0}
   enemyHealth: 100
 --- !u!114 &11477802
 MonoBehaviour:

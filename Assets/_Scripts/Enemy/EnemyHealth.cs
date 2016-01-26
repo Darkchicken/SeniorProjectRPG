@@ -5,7 +5,7 @@ using System.Collections;
 
 public class EnemyHealth :NetworkBehaviour {
 
-    public Text enemyHealthText;
+    public Slider enemyHealthSlider;
     public int enemyHealth;
 
     private Animator enemyAnimation;
@@ -29,7 +29,8 @@ public class EnemyHealth :NetworkBehaviour {
     {
         if(!dead)
         {
-            enemyHealthText.text = "Enemy Health: " + enemyHealth;
+            enemyHealthSlider.value = enemyHealth;
+            enemyHealthSlider.gameObject.SetActive(true);
             if (player != null)
             {
                 player.GetComponent<PlayerCombatManager>().targetEnemy = gameObject;
@@ -40,7 +41,7 @@ public class EnemyHealth :NetworkBehaviour {
 
     void OnMouseExit()
     {
-        enemyHealthText.text = "";
+        enemyHealthSlider.gameObject.SetActive(false);
         if (player != null)
         {
             player.GetComponent<PlayerCombatManager>().targetEnemy = null;
@@ -53,11 +54,11 @@ public class EnemyHealth :NetworkBehaviour {
         {
             if (enemyHealth > damage)
             {
-                enemyAnimation.SetTrigger("SOFT DAMAGE");
+                enemyAnimation.SetTrigger("TAKE DAMAGE 1");
                 enemyHealth -= damage;
             }
             else
-            {
+            {              
                 EnemyDead();
             }
         }
@@ -66,9 +67,13 @@ public class EnemyHealth :NetworkBehaviour {
 
     void EnemyDead()
     {
-        enemyAnimation.SetTrigger("DIE");
         dead = true;
-        GetComponent<NavMeshAgent>().speed = 0;
+        enemyAnimation.SetTrigger("DIE");
+        enemyHealthSlider.gameObject.SetActive(false);    
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<EnemyMovement>().enabled = false;
+        GetComponent<EnemyHealth>().enabled = false;
+        GetComponent<EnemyCombatManager>().enabled = false;
     }
 
 }

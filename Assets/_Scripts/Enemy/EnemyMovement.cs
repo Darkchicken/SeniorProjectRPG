@@ -20,6 +20,7 @@ public class EnemyMovement :NetworkBehaviour
     private float idleTimer = 0f;
     private bool isMoving_Animation = false;
     private bool isInCombat = false;
+    private bool isTargetDead = false;
 
 
     void Start()
@@ -39,14 +40,33 @@ public class EnemyMovement :NetworkBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if ((InAggroRange() || isChasing) && !immuneToAggro && !InAttackingRange())
+        if (player != null)
         {
-            MoveToPosition(player.transform.position);
-            controller.stoppingDistance = chaseStopDistance;
-
-            if (!InChasingRange())
+            if ((InAggroRange() || isChasing) && !immuneToAggro && !InAttackingRange() && !player.GetComponent<PlayerHealth>().IsPlayerDead())
             {
+                MoveToPosition(player.transform.position);
+                controller.stoppingDistance = chaseStopDistance;
+
+                if (!InChasingRange())
+                {
+                    MoveToPosition(initialPosition);
+                }
+            }
+
+            if (!isTargetDead && player.GetComponent<PlayerHealth>().IsPlayerDead())
+            {
+                isTargetDead = true;
+                immuneToAggro = true;
+                isInCombat = false;
+                player = null;
+                controller.stoppingDistance = 0;
                 MoveToPosition(initialPosition);
+            }
+
+            
+            if (!immuneToAggro && isChasing)
+            {
+                transform.LookAt(player.transform.position);
             }
         }
 
@@ -56,8 +76,8 @@ public class EnemyMovement :NetworkBehaviour
             if (idleTimer >= 0.05f)
             {
                 isMoving_Animation = false;
-                enemyAnimation.SetBool("IsMoving", false);           
-                if(isInCombat)
+                enemyAnimation.SetBool("IsMoving", false);
+                if (isInCombat)
                 {
                     enemyAnimation.SetTrigger("IDLE WEAPON");
                 }
@@ -65,14 +85,10 @@ public class EnemyMovement :NetworkBehaviour
                 {
                     enemyAnimation.SetTrigger("IDLE");
                 }
-                
+
                 idleTimer = 0f;
                 immuneToAggro = false;
             }
-        }
-        if (!immuneToAggro && isChasing)
-        {
-            transform.LookAt(player.transform.position);
         }
 
     }
@@ -120,13 +136,14 @@ public class EnemyMovement :NetworkBehaviour
             return true;
         }
         else
-        {  
+        {
             return false;
         }
     }
 
     void MoveToPosition(Vector3 position)
     {
+        
         transform.LookAt(position);
         controller.SetDestination(position);
 
@@ -139,6 +156,11 @@ public class EnemyMovement :NetworkBehaviour
             enemyAnimation.SetTrigger("RUN");
 
         }
+    }
+
+    public GameObject targetPlayer()
+    {
+        return player;
     }
 
 

@@ -8,13 +8,18 @@ public class PlayerCombatManager : NetworkBehaviour
     public GameObject targetEnemy;
 
     private Animator playerAnimation;
+    private PlayerMovement playerMovement;
     private int skillAttackRange;
     private string actionBarSkillId;
+
+    private float skill_1_Timer = 0f;
+
+
 
     void Start()
     {
         playerAnimation = GetComponent<Animator>();
-        //targetEnemy = gameObject;
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -23,14 +28,18 @@ public class PlayerCombatManager : NetworkBehaviour
         if (!isLocalPlayer)
         { return; }
 
+        targetEnemy = playerMovement.targetEnemy;
+        skill_1_Timer += Time.deltaTime;
        
         if (Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
         {
             skillAttackRange = 2;
-            if (InRangeForAttack())
+            if (InRangeForAttack() && skill_1_Timer >= 0.7f)
             {
+                targetEnemy.GetComponent<EnemyHealth>().TakeDamage(20);
                 actionBarSkillId = null;
                 playerAnimation.SetTrigger("ATTACK 1");
+                skill_1_Timer = 0f;
             }
         }
         if(Input.GetMouseButtonDown(1) || actionBarSkillId == "RC")

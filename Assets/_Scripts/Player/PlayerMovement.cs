@@ -8,6 +8,7 @@ public class PlayerMovement : NetworkBehaviour
     public float stopDistanceForAttack = 2f;
     public bool canMove = true;
     public bool isInCombat = false;
+    public GameObject targetEnemy;
 
     private Vector3 position;
     private NavMeshAgent controller;
@@ -16,7 +17,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private float idleTimer = 0f;
     private bool isMoving = false;
-    private GameObject targetEnemy;
+    
 
     void Awake()
     {

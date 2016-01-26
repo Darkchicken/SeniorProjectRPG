@@ -677,6 +677,7 @@ GameObject:
   - 114: {fileID: 11411858}
   - 114: {fileID: 11455226}
   - 114: {fileID: 11454492}
+  - 114: {fileID: 11474200}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -2893,7 +2894,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.8, y: 0, z: 36.2}
+  m_LocalPosition: {x: 66.01621, y: 0, z: 63.05027}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 408252}
@@ -3771,6 +3772,20 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &11474200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958addd38c8015740a7eb6a4218fe09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealthText: {fileID: 0}
+  playerHealthSlider: {fileID: 0}
+  playerHealth: 100
 --- !u!114 &11490408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3797,6 +3812,7 @@ MonoBehaviour:
   stopDistanceForAttack: 3
   canMove: 1
   isInCombat: 0
+  targetEnemy: {fileID: 0}
 --- !u!137 &13705794
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
