@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerMovement : NetworkBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     public float stopDistanceForAttack = 2f;
@@ -34,12 +33,14 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
+        /*
         //return if not local player
         if(!isLocalPlayer)
         {return;}
+        */
 
 
-        if ((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && canMove)
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && canMove)
         {
             locatePosition();
 

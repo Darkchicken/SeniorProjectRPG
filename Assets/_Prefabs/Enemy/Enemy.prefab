@@ -1622,9 +1622,6 @@ GameObject:
   - 95: {fileID: 9578976}
   - 195: {fileID: 19575598}
   - 136: {fileID: 13603960}
-  - 114: {fileID: 11486564}
-  - 114: {fileID: 11424948}
-  - 114: {fileID: 11477802}
   - 114: {fileID: 11460064}
   - 114: {fileID: 11488870}
   - 114: {fileID: 11452956}
@@ -3690,26 +3687,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11424948
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 2
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11452956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3722,8 +3699,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 2
-  attackDamage: 10
-  attackSpeed: 1.5
+  attackDamage: 12
+  attackSpeed: 2
 --- !u!114 &11460064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3737,57 +3714,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealthSlider: {fileID: 0}
   enemyHealth: 100
---- !u!114 &11477802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 9578976}
-  m_ParameterSendBits: 8388607
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
---- !u!114 &11486564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 158
-    i1: 212
-    i2: 71
-    i3: 91
-    i4: 248
-    i5: 189
-    i6: 217
-    i7: 132
-    i8: 43
-    i9: 14
-    i10: 183
-    i11: 81
-    i12: 29
-    i13: 130
-    i14: 147
-    i15: 27
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &11488870
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerCombatManager : NetworkBehaviour
+public class PlayerCombatManager : MonoBehaviour
 {
 
     public GameObject targetEnemy;
@@ -27,9 +26,11 @@ public class PlayerCombatManager : NetworkBehaviour
 
     void Update()
     {
+        /*
         //return if not local player
         if (!isLocalPlayer)
         { return; }
+        */
 
         targetEnemy = playerMovement.targetEnemy;
         skill_1_Timer += Time.deltaTime;
@@ -99,13 +100,14 @@ public class PlayerCombatManager : NetworkBehaviour
         
         actionBarSkillId = id;
     }
-
+    /*
     [Command]
     void CmdHitPlayer(GameObject hit)
     {
 
         hit.GetComponent<NetworkPlayerScript>().RpcResolveHit();
     }
+    */
 
     public int GetPlayerResource()
     {

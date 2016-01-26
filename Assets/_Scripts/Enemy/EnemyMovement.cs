@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 
-public class EnemyMovement :NetworkBehaviour
+public class EnemyMovement :MonoBehaviour
 {
 
     public float aggroRange = 15f;

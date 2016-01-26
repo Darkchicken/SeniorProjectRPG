@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections;
 
-public class EnemyHealth :NetworkBehaviour {
+public class EnemyHealth :MonoBehaviour {
 
     public Slider enemyHealthSlider;
     public int enemyHealth;
