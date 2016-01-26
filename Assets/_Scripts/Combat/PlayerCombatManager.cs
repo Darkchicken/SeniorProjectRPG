@@ -47,9 +47,13 @@ public class PlayerCombatManager : NetworkBehaviour
         }
         if(Input.GetMouseButtonDown(1) || actionBarSkillId == "RC")
         {
-            playerBaseSkills.PrimarySkill(targetEnemy, 1);
-            actionBarSkillId = null;
-            playerAnimation.SetTrigger("ATTACK 2");
+            if(resource >= 30)
+            {
+                playerBaseSkills.PrimarySkill(targetEnemy, 1);
+                actionBarSkillId = null;
+                playerAnimation.SetTrigger("ATTACK 2");
+            }
+            
         }
         if (Input.GetKeyDown("1") || actionBarSkillId == "1")
         {
