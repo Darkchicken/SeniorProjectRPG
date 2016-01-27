@@ -32,7 +32,8 @@ public class EnemyHealth :MonoBehaviour {
             enemyHealthSlider.gameObject.SetActive(true);
             if (player != null)
             {
-                player.GetComponent<PlayerCombatManager>().targetEnemy = gameObject;
+                //player.GetComponent<PlayerCombatManager>().targetEnemy = gameObject;
+                PlayerCombatManager.targetEnemy = gameObject;
             }
         }
         
@@ -43,7 +44,8 @@ public class EnemyHealth :MonoBehaviour {
         enemyHealthSlider.gameObject.SetActive(false);
         if (player != null)
         {
-            player.GetComponent<PlayerCombatManager>().targetEnemy = null;
+            //player.GetComponent<PlayerCombatManager>().targetEnemy = null;
+            PlayerCombatManager.targetEnemy = null;
         }
     }
 

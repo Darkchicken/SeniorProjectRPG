@@ -9,6 +9,7 @@ public class HUD_Manager : MonoBehaviour {
     public Slider playerResourceSlider;
     public Text playerHealthText;
     public Text playerResourceText;
+    public Canvas runePanel;
 
     private GameObject player;
     private int playerHealth;
@@ -32,11 +33,11 @@ public class HUD_Manager : MonoBehaviour {
             playerResourceSlider.value = player.GetComponent<PlayerCombatManager>().GetPlayerResource();
             playerResourceText.text = playerResourceSlider.value + "/100";
 
-
         }
+    }
 
-        
-
-
+    public void ToggleRunePanel()
+    {
+        runePanel.gameObject.SetActive(!runePanel.gameObject.activeInHierarchy);
     }
 }

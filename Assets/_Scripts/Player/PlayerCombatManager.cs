@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerCombatManager : MonoBehaviour
 {
 
-    public GameObject targetEnemy;
+    public static GameObject targetEnemy;
+    public static PlayerCombatManager playerCombatManager;
 
     private Animator playerAnimation;
     private PlayerMovement playerMovement;
@@ -13,7 +14,7 @@ public class PlayerCombatManager : MonoBehaviour
 
     private float skill_1_Timer = 0f;
     private int resource = 0;
-    private PlayerBaseSkills playerBaseSkills;
+    private PlayerAttack playerAttack;
 
 
 
@@ -21,36 +22,26 @@ public class PlayerCombatManager : MonoBehaviour
     {
         playerAnimation = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
-        playerBaseSkills = GetComponent<PlayerBaseSkills>();
+        playerAttack = GetComponent<PlayerAttack>();
+        playerCombatManager = this;
     }
 
     void Update()
     {
-        /*
-        //return if not local player
-        if (!isLocalPlayer)
-        { return; }
-        */
 
         targetEnemy = playerMovement.targetEnemy;
         skill_1_Timer += Time.deltaTime;
        
         if (Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
         {
-            skillAttackRange = 2;
-            if (InRangeForAttack() && skill_1_Timer >= 0.7f && !targetEnemy.GetComponent<EnemyHealth>().isEnemyDead())
-            {
-                playerBaseSkills.PrimarySkill(targetEnemy, 0);
-                actionBarSkillId = null;
-                playerAnimation.SetTrigger("ATTACK 1");
-                skill_1_Timer = 0f;
-            }
+            playerAttack.PrimarySkill();
+                
         }
         if(Input.GetMouseButtonDown(1) || actionBarSkillId == "RC")
         {
             if(resource >= 30)
             {
-                playerBaseSkills.PrimarySkill(targetEnemy, 1);
+                playerAttack.PrimarySkill();
                 actionBarSkillId = null;
                 playerAnimation.SetTrigger("ATTACK 2");
             }
