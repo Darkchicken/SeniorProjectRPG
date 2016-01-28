@@ -5,9 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float stopDistanceForAttack = 2f;
-    public bool canMove = true;
+    public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
-    public GameObject targetEnemy;
+    //public GameObject targetEnemy;
 
     private Vector3 position;
     private NavMeshAgent controller;
@@ -33,19 +33,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        /*
-        //return if not local player
-        if(!isLocalPlayer)
-        {return;}
-        */
-
-
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && canMove)
         {
             locatePosition();
 
         }
-
 
         if (isMoving && controller.velocity == Vector3.zero)
         {
@@ -53,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             if (idleTimer >= 0.04f)
             {
                 isMoving = false;
-                targetEnemy = null;
+                //targetEnemy = null;
                 playerAnimation.SetBool("IsMoving", false);
                 if (isInCombat)
                 {
@@ -67,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (targetEnemy != null)
+        /*if (targetEnemy != null)
         {
             if (targetEnemy.CompareTag("Enemy"))
             {
@@ -75,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
                 MoveToPosition();   
                            
             }
-        }
+        }*/
     }
 
     void locatePosition()
@@ -87,14 +79,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hit.transform.tag == "Enemy")
             {
-                targetEnemy = hit.transform.gameObject;
+                //targetEnemy = hit.transform.gameObject;
                 position = hit.transform.position;
                 controller.stoppingDistance = stopDistanceForAttack;
                 isInCombat = true;
             }
             else
             {
-                targetEnemy = null;
+                //targetEnemy = null;
                 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 controller.stoppingDistance = 0f;
             }

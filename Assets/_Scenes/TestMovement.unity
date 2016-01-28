@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealthSlider: {fileID: 1621978305}
   playerResourceSlider: {fileID: 543748186}
+  enemyHealthSlider: {fileID: 0}
   playerHealthText: {fileID: 1990913454}
   playerResourceText: {fileID: 2018822383}
   runePanel: {fileID: 997271449}
@@ -1287,7 +1288,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 497420, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 44.65
+      value: 47.31
       objectReference: {fileID: 0}
     - target: {fileID: 497420, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1318,8 +1319,7 @@ Prefab:
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 11450886, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
-    - {fileID: 11450236, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
+    - {fileID: 11428312, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &641843417
@@ -1456,6 +1456,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662969983}
+--- !u!1 &664561095 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 185404, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+  m_PrefabInternal: {fileID: 1112375585}
+--- !u!114 &664561098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664561095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7713543e0d5d6b3418998c2e0ff8a881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealthSlider: {fileID: 1616844481}
+  health: 100
 --- !u!4 &682736010 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3eb67002addcc404388a4dda891201fb, type: 2}
@@ -3108,7 +3125,7 @@ Prefab:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 11460064, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+    - target: {fileID: 0}
       propertyPath: enemyHealthText
       value: 
       objectReference: {fileID: 0}
@@ -3116,11 +3133,13 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 17041cad43005b2419a2e6a794580395, type: 2}
-    - target: {fileID: 11460064, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+    - target: {fileID: 0}
       propertyPath: enemyHealthSlider
       value: 
       objectReference: {fileID: 1616844481}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 11483010, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1122216158
@@ -5124,7 +5143,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 11460064, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
+    - target: {fileID: 11483010, guid: 9ed4475bf8bdd9842b0eb7511d82931b, type: 2}
       propertyPath: enemyHealthSlider
       value: 
       objectReference: {fileID: 1616844481}
@@ -5208,7 +5227,7 @@ CanvasRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 103620, guid: 9e015d9d8fe3e0c4d860af7eb76b7f0f, type: 2}
   m_PrefabInternal: {fileID: 616063525}
---- !u!114 &1868378860
+--- !u!114 &1868378861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -5216,20 +5235,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1868378859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d170d8b50792447ac7111470a7f136, type: 3}
+  m_Script: {fileID: 11500000, guid: 7713543e0d5d6b3418998c2e0ff8a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1868378867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1868378859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c723e8e8d3c251b4ab88dc7fc583a2f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  enemyHealthSlider: {fileID: 0}
+  health: 100
 --- !u!4 &1871969736 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 761098525c9fc5040acd599edd796ed4, type: 2}

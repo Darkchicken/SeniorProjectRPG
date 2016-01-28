@@ -41,7 +41,7 @@ public class EnemyMovement :MonoBehaviour
 
         if (player != null)
         {
-            if ((InAggroRange() || isChasing) && !immuneToAggro && !InAttackingRange() && !player.GetComponent<PlayerHealth>().IsPlayerDead())
+            if ((InAggroRange() || isChasing) && !immuneToAggro && !InAttackingRange() && !player.GetComponent<Health>().IsDead())
             {
                 MoveToPosition(player.transform.position);
                 controller.stoppingDistance = chaseStopDistance;
@@ -52,7 +52,7 @@ public class EnemyMovement :MonoBehaviour
                 }
             }
 
-            if (!isTargetDead && player.GetComponent<PlayerHealth>().IsPlayerDead())
+            if (!isTargetDead && player.GetComponent<Health>().IsDead())
             {
                 isTargetDead = true;
                 immuneToAggro = true;
@@ -116,7 +116,7 @@ public class EnemyMovement :MonoBehaviour
             immuneToAggro = true;
             isChasing = false;
             controller.stoppingDistance = 0;
-            player.GetComponent<PlayerMovement>().isInCombat = false;
+            player.GetComponent<PlayerCombatManager>().isInCombat = false;
             isInCombat = false;
             return false;
         }
@@ -130,7 +130,7 @@ public class EnemyMovement :MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) <= chaseStopDistance)
         {
-            player.GetComponent<PlayerMovement>().isInCombat = true;
+            player.GetComponent<PlayerCombatManager>().isInCombat = true;
             isInCombat = true;
             return true;
         }

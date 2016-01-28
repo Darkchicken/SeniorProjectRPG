@@ -1,49 +1,75 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerCombatManager : MonoBehaviour
 {
 
     public static GameObject targetEnemy;
     public static PlayerCombatManager playerCombatManager;
+    public bool canMove = true; // UI clicks prevent player from moving
+    public bool isInCombat = false;
+    public float stopDistanceForAttack = 2f; //sets by PlayerAttack script
 
+    private Vector3 position;
+    private NavMeshAgent controller;
     private Animator playerAnimation;
-    private PlayerMovement playerMovement;
+    private RaycastHit hit;
     private int skillAttackRange;
     private string actionBarSkillId;
 
     private float skill_1_Timer = 0f;
     private int resource = 0;
+    private float idleTimer = 0f;
+    private bool isMoving = false;
     private PlayerAttack playerAttack;
+    private int skillSlot = 0;
+    private bool autoAttack = false;
+
+    private Dictionary<int,Rune> playerActiveSkills;
+    
 
 
 
     void Start()
     {
         playerAnimation = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
+        controller = GetComponent<NavMeshAgent>();
+        position = transform.position;
         playerCombatManager = this;
+        playerActiveSkills = new Dictionary<int, Rune>();
     }
 
     void Update()
     {
-
-        targetEnemy = playerMovement.targetEnemy;
-        skill_1_Timer += Time.deltaTime;
-       
-        if (Input.GetMouseButtonDown(0) || actionBarSkillId == "LC")
+        //Primary Skill
+        if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove)
         {
+            locatePosition(); //Find the clicked position and check if enemy clicked
+            skillSlot = 5;
+            stopDistanceForAttack = playerActiveSkills[skillSlot].attackRange;
             playerAttack.PrimarySkill();
-                
+
+
+
         }
-        if(Input.GetMouseButtonDown(1) || actionBarSkillId == "RC")
+
+        //Secondary Skill
+        if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove)
         {
-            if(resource >= 30)
+            skillSlot = 6;
+            if (resource >= playerActiveSkills[skillSlot].resourceUsage)
             {
-                playerAttack.PrimarySkill();
-                actionBarSkillId = null;
-                playerAnimation.SetTrigger("ATTACK 2");
+                controller.Stop();
+                controller.ResetPath();
+                stopDistanceForAttack = 2f;
+                playerAttack.SecondarySkill();
+                actionBarSkillId = null;           
+            }
+            else
+            {
+                locatePosition();
             }
             
         }
@@ -63,6 +89,47 @@ public class PlayerCombatManager : MonoBehaviour
         {
             actionBarSkillId = null;
             playerAnimation.SetTrigger("ATTACK 3");
+        }
+        
+        if(isMoving && controller.velocity == Vector3.zero)
+        {
+            idleTimer += Time.deltaTime;
+            if (idleTimer >= 0.04f)
+            {
+                playerAnimation.SetBool("IsMoving", false);
+                isMoving = false;
+                idleTimer = 0f;
+            }
+        }
+
+        //PlayerMovement Update
+        /*if (isMoving && controller.velocity == Vector3.zero)
+        {
+            idleTimer += Time.deltaTime;
+            if (idleTimer >= 0.04f)
+            {
+                isMoving = false;
+                targetEnemy = null;
+                playerAnimation.SetBool("IsMoving", false);
+                if (isInCombat)
+                {
+                    playerAnimation.SetTrigger("IDLE WEAPON");
+                }
+                else
+                {
+                    playerAnimation.SetTrigger("IDLE");
+                }
+                idleTimer = 0f;
+            }
+        }*/
+
+        if (targetEnemy != null && isMoving)
+        {
+            if (targetEnemy.CompareTag("Enemy"))
+            {
+                position = targetEnemy.transform.position;
+                MoveToPosition();
+            }
         }
 
     }
@@ -84,21 +151,68 @@ public class PlayerCombatManager : MonoBehaviour
         return false;
         
     }
+  
+
+    void locatePosition()
+    {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                targetEnemy = hit.transform.gameObject;
+                position = hit.transform.position;
+                controller.stoppingDistance = stopDistanceForAttack;
+                isInCombat = true;
+            }
+            else
+            {
+                targetEnemy = null;
+                position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                controller.stoppingDistance = 0f;
+            }
+        }
+        MoveToPosition();
+    }
+
+
+    void MoveToPosition()
+    {
+        transform.LookAt(position);
+        controller.SetDestination(position);
+
+        if (!isMoving)
+        {
+            if (hit.transform.tag == "Enemy" && Vector3.Distance(hit.transform.position, transform.position) <= stopDistanceForAttack)
+            {
+
+            }
+            else
+            {
+                playerAnimation.SetTrigger("RUN");
+                isMoving = true;
+                playerAnimation.SetBool("IsMoving", true);
+            }
+
+        }
+    }
+
+    public void SetActiveSkill(Rune activeRune, int skillSlot)
+    {
+        playerActiveSkills.Add(skillSlot, activeRune);
+    }
+
+    public Rune GetActiveSkill(int skillSlot)
+    {
+        return playerActiveSkills[skillSlot];
+    }
 
     public void OnButtonClick(string id)
     {
-
-        
         actionBarSkillId = id;
     }
-    /*
-    [Command]
-    void CmdHitPlayer(GameObject hit)
-    {
-
-        hit.GetComponent<NetworkPlayerScript>().RpcResolveHit();
-    }
-    */
 
     public int GetPlayerResource()
     {

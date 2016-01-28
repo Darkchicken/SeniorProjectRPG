@@ -4,12 +4,12 @@ using System.Collections;
 public class SpawnPoint : MonoBehaviour {
 
     GameObject player;
-    PlayerHealth playerHealth;
+    Health playerHealth;
 	// Use this for initialization
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<Health>();
     }
 	
 	// Update is called once per frame
@@ -21,13 +21,15 @@ public class SpawnPoint : MonoBehaviour {
     public void Respawn()
     {
         //if player is dead
-        if (playerHealth.IsPlayerDead())
+        if (playerHealth.IsDead())
         {
             //set player poisition to position of the spawnpoint
             player.transform.position = transform.position;
             player.tag = "Player";
-            //player.GetComponent<NavMeshAgent>().speed = 0;
-            player.GetComponent<PlayerMovement>().enabled = true;
+            player.GetComponent<PlayerCombatManager>().enabled = true;
+            GetComponent<NavMeshAgent>().enabled = true;
+            GetComponent<Health>().enabled = true;
+            GetComponent<CapsuleCollider>().enabled = true;
         }
     }
 }

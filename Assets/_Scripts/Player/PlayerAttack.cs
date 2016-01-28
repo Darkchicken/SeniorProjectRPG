@@ -29,24 +29,26 @@ public class PlayerAttack : WarriorRunes
 
     public void PrimarySkill()
     {
-        playerRunes = classRunes["Warrior"];
+        /*playerRunes = classRunes["Warrior"];
 
         for (int i = 0; i < playerRunes.Count; i++)
         {
             if (playerRunes[i].skillSlot == 5 && playerRunes[i].type)
             {
                 Invoke(playerRunes[i].name, 0);
+                playerCombatManager.stopDistanceForAttack = playerRunes[i].attackRange;
                 break;
             }
 
-        }
+        }*/
+        Invoke(playerCombatManager.GetActiveSkill(5).name, 0);
 
 
     }
 
     public void SecondarySkill()
     {
-
+        Invoke(playerCombatManager.GetActiveSkill(6).name, 0);
     }
 
     public void BarSkill_1()

@@ -19,7 +19,7 @@ public class RaycastUI : MonoBehaviour
         }
         if (player != null)
         {
-            player.GetComponent<PlayerMovement>().canMove = false;
+            player.GetComponent<PlayerCombatManager>().canMove = false;
         }
     }
 
@@ -27,7 +27,7 @@ public class RaycastUI : MonoBehaviour
     {
         if (player != null)
         {
-            player.GetComponent<PlayerMovement>().canMove = true;
+            player.GetComponent<PlayerCombatManager>().canMove = true;
         }
     }
 }
