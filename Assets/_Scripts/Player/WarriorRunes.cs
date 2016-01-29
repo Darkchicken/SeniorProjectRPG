@@ -105,10 +105,6 @@ public class WarriorRunes : MonoBehaviour
         warriorRunes.Add(new Rune(rune8_SkillSlot, rune8_Name, rune8_ID, rune8_Info, rune8_Type, rune8_ResourceGeneration, rune8_ResourceUsage, rune8_AttackRange, rune8_AttackSpeed, rune8_Value));
         warriorRunes.Add(new Rune(rune9_SkillSlot, rune9_Name, rune9_ID, rune9_Info, rune9_Type, rune9_ResourceGeneration, rune9_ResourceUsage, rune9_AttackRange, rune9_AttackSpeed, rune9_Value));
         warriorRunes.Add(new Rune(rune10_SkillSlot, rune10_Name, rune10_ID, rune10_Info, rune10_Type, rune10_ResourceGeneration, rune10_ResourceUsage, rune10_AttackRange, rune10_AttackSpeed, rune10_Value));
-
-        PlayerCombatManager.playerCombatManager.SetActiveSkill(warriorRunes[0], 5); // test purpose
-        PlayerCombatManager.playerCombatManager.SetActiveSkill(warriorRunes[1], 6); // test purpose
-
     }
 
     void Update()
@@ -157,8 +153,7 @@ public class WarriorRunes : MonoBehaviour
 
             PlayerCombatManager.playerCombatManager.SetPlayerResource(-rune2_ResourceUsage);
         }
-
-        
+   
     }
 
     bool InAttackRange(int attackRange)
@@ -173,48 +168,6 @@ public class WarriorRunes : MonoBehaviour
             return false;
         }
     }
-
-
-
-
 }
 
-public class Rune
-{
-    public int skillSlot;
-    public string name;
-    public string id;
-    public string info;
-    public bool type; // checks if a rune is a modifier or skill changer
-    public int resourceGeneration;
-    public int resourceUsage;
-    public int attackRange;
-    public float attackSpeed;
-    public int value;
-    public bool isActive = false; // for modifiers to check if they are active
 
-    public Rune(int _skillSlot, string _name, string _id, string _info, bool _type, int _resournceGeneration, int _resourceUsage, int _attackRange, float _attackSpeed, int _value)
-    {
-        skillSlot = _skillSlot;
-        name = _name;
-        id = _id;
-        info = _info;
-        type = _type;
-        resourceGeneration = _resournceGeneration;
-        resourceUsage = _resourceUsage;
-        attackRange = _attackRange;
-        attackSpeed = _attackSpeed;
-        value = _value;
-    }
-
-    public bool GetIsActive()
-    {
-        return isActive;
-    }
-
-    public void SetIsActive(bool _isActive)
-    {
-        isActive = _isActive;
-    }
-
-}

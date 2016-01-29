@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerCombatManager : MonoBehaviour
+public class PlayerCombatManager : PlayerAttack
 {
 
     public static GameObject targetEnemy;
@@ -22,24 +22,20 @@ public class PlayerCombatManager : MonoBehaviour
     private int resource = 0;
     private float idleTimer = 0f;
     private bool isMoving = false;
-    private PlayerAttack playerAttack;
     private int skillSlot = 0;
     private bool autoAttack = false;
-
-    private Dictionary<int,Rune> playerActiveSkills;
-    
-
 
 
     void Start()
     {
         playerAnimation = GetComponent<Animator>();
-        playerAttack = GetComponent<PlayerAttack>();
         controller = GetComponent<NavMeshAgent>();
         position = transform.position;
         playerCombatManager = this;
-        playerActiveSkills = new Dictionary<int, Rune>();
+        
     }
+
+    
 
     void Update()
     {
@@ -48,10 +44,8 @@ public class PlayerCombatManager : MonoBehaviour
         {
             locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
-            stopDistanceForAttack = playerActiveSkills[skillSlot].attackRange;
-            playerAttack.PrimarySkill();
-
-
+            stopDistanceForAttack = playerActiveSkillRunes[skillSlot].attackRange;
+            PrimarySkill();
 
         }
 
@@ -59,12 +53,12 @@ public class PlayerCombatManager : MonoBehaviour
         if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove)
         {
             skillSlot = 6;
-            if (resource >= playerActiveSkills[skillSlot].resourceUsage)
+            if (resource >= playerActiveSkillRunes[skillSlot].resourceUsage)
             {
                 controller.Stop();
                 controller.ResetPath();
                 stopDistanceForAttack = 2f;
-                playerAttack.SecondarySkill();
+                SecondarySkill();
                 actionBarSkillId = null;           
             }
             else
@@ -199,14 +193,9 @@ public class PlayerCombatManager : MonoBehaviour
         }
     }
 
-    public void SetActiveSkill(Rune activeRune, int skillSlot)
+    public void SetActiveSkillRune(Rune activeRune, int skillSlot)
     {
-        playerActiveSkills.Add(skillSlot, activeRune);
-    }
-
-    public Rune GetActiveSkill(int skillSlot)
-    {
-        return playerActiveSkills[skillSlot];
+        playerActiveSkillRunes.Add(skillSlot, activeRune);
     }
 
     public void OnButtonClick(string id)

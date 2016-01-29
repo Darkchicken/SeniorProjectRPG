@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class PlayerAttack : WarriorRunes
 {
-
+    //public static PlayerAttack playerAttack;
     public static Dictionary<string, List<Rune>> classRunes;
+    public static Dictionary<int, Rune> playerActiveSkillRunes;
     public static string playerClassID = "";
 
     private PlayerCombatManager playerCombatManager;
@@ -17,7 +18,10 @@ public class PlayerAttack : WarriorRunes
     {
         playerCombatManager = GetComponent<PlayerCombatManager>();
         classRunes = new Dictionary<string, List<Rune>>();
+        playerActiveSkillRunes = new Dictionary<int, Rune>();
         classRunes.Add("Warrior", warriorRunes);
+        Invoke("SetActiveRunes", 0.1f);
+
     }
 
     void Update()
@@ -25,30 +29,22 @@ public class PlayerAttack : WarriorRunes
 
     }
 
+    void SetActiveRunes()
+    {
+        PlayerCombatManager.playerCombatManager.SetActiveSkillRune(warriorRunes[0], 5); // test purpose
+        PlayerCombatManager.playerCombatManager.SetActiveSkillRune(warriorRunes[1], 6); // test purpose
+    }
+
 
 
     public void PrimarySkill()
     {
-        /*playerRunes = classRunes["Warrior"];
-
-        for (int i = 0; i < playerRunes.Count; i++)
-        {
-            if (playerRunes[i].skillSlot == 5 && playerRunes[i].type)
-            {
-                Invoke(playerRunes[i].name, 0);
-                playerCombatManager.stopDistanceForAttack = playerRunes[i].attackRange;
-                break;
-            }
-
-        }*/
-        Invoke(playerCombatManager.GetActiveSkill(5).name, 0);
-
-
+        Invoke(playerActiveSkillRunes[5].name, 0);
     }
 
     public void SecondarySkill()
     {
-        Invoke(playerCombatManager.GetActiveSkill(6).name, 0);
+        Invoke(playerActiveSkillRunes[6].name, 0);
     }
 
     public void BarSkill_1()
