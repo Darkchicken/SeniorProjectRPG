@@ -30,7 +30,7 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     void CharacterDataResult(ListUsersCharactersResult result)
     {
-        //Debug.Log(result.Characters.Count);
+
         if(result.Characters.Count == 0)
         {
             characterInfo.text = "Player not found!";
@@ -47,6 +47,7 @@ public class PlayFabMainMenu : MonoBehaviour {
             playerButtonText.text = "Enter World";
             isCharacterExist = true;
             PlayFabDataStore.characterId = result.Characters[0].CharacterId;
+            UpdateCharacterData();
         }
 
     }
@@ -61,7 +62,12 @@ public class PlayFabMainMenu : MonoBehaviour {
     {
         if(isCharacterExist)
         {
-            SetCharacterData();
+            var request = new GetCharacterDataRequest()
+            {
+                CharacterId = PlayFabDataStore.characterId,
+            };
+
+            PlayFabClientAPI.GetCharacterData(request, GetCharacterData, Error);
         }
         else
         {
@@ -91,6 +97,7 @@ public class PlayFabMainMenu : MonoBehaviour {
             playerButtonText.text = "Enter World";
             isCharacterExist = true;
             
+            
         }
         else
         {
@@ -98,17 +105,23 @@ public class PlayFabMainMenu : MonoBehaviour {
         }
     }
 
-    void SetCharacterData()
+    void UpdateCharacterData()
     {
-        Dictionary<string, string> characterData = new Dictionary<string, string>();
-        characterData.Add("Level", "2");
         var request = new UpdateCharacterDataRequest()
-        { 
+        {
             CharacterId = PlayFabDataStore.characterId,
-            Data = characterData
+            Data = new Dictionary<string, string>()
+            {
+                {"Level", "3" }
+            }
         };
 
         PlayFabClientAPI.UpdateCharacterData(request, UpdateCharacterData, Error);
+    }
+
+    void GetCharacterData(GetCharacterDataResult result)
+    {
+        Debug.Log(result.Data["Level"].Value);
     }
 
     void UpdateCharacterData(UpdateCharacterDataResult result)
