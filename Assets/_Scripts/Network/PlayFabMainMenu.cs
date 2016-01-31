@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
 
@@ -10,6 +11,7 @@ public class PlayFabMainMenu : MonoBehaviour {
     public Text characterInfo;
     public Button playerButton;
     public Text playerButtonText;
+    public InputField characterNameText;
 
     private bool isCharacterExist;
 
@@ -19,10 +21,10 @@ public class PlayFabMainMenu : MonoBehaviour {
         
         var request = new ListUsersCharactersRequest()
         {
-            PlayFabId = PlayFabDataStore.PlayFabId
+            PlayFabId = PlayFabDataStore.playFabId
         };
 
-        PlayFabClientAPI.GetAllUsersCharacters(request, CharacterDataResult, CharacterDataError);
+        PlayFabClientAPI.GetAllUsersCharacters(request, CharacterDataResult, Error);
 
     }
 
@@ -33,29 +35,33 @@ public class PlayFabMainMenu : MonoBehaviour {
         {
             characterInfo.text = "Player not found!";
             playerButtonText.text = "Create New";
+            characterNameText.gameObject.SetActive(true);
             isCharacterExist = false;
             
         }
         else
         {
             characterInfo.text = "" + result.Characters[0].CharacterName;
-            playerButtonText.text = "Login";
+            characterInfo.gameObject.SetActive(true);
+            characterNameText.gameObject.SetActive(false);
+            playerButtonText.text = "Enter World";
             isCharacterExist = true;
-            PlayFabDataStore.characterID = result.Characters[0].CharacterId;
+            PlayFabDataStore.characterId = result.Characters[0].CharacterId;
         }
 
     }
 
-    void CharacterDataError(PlayFabError error)
+    void Error(PlayFabError error)
     {
         Debug.Log(error.ErrorMessage);
+        Debug.Log(error.ErrorDetails);
     }
 
     void LoginCreateNew()
     {
         if(isCharacterExist)
         {
-
+            SetCharacterData();
         }
         else
         {
@@ -65,8 +71,52 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     void CreateNewCharacter()
     {
+        var request = new GrantCharacterToUserRequest()
+        {
+            CatalogVersion = "Character",
+            ItemId = "rpg_character",
+            CharacterName = characterNameText.text
+        };
 
+        PlayFabClientAPI.GrantCharacterToUser(request, GrantCharacterToUser, Error);
     }
+
+    void GrantCharacterToUser(GrantCharacterToUserResult result)
+    {
+        if(result.Result)
+        {
+            characterInfo.text = characterNameText.text;
+            characterNameText.gameObject.SetActive(false);
+            characterInfo.gameObject.SetActive(true);
+            playerButtonText.text = "Enter World";
+            isCharacterExist = true;
+            
+        }
+        else
+        {
+            Debug.Log("Character not created!");
+        }
+    }
+
+    void SetCharacterData()
+    {
+        Dictionary<string, string> characterData = new Dictionary<string, string>();
+        characterData.Add("Level", "2");
+        var request = new UpdateCharacterDataRequest()
+        { 
+            CharacterId = PlayFabDataStore.characterId,
+            Data = characterData
+        };
+
+        PlayFabClientAPI.UpdateCharacterData(request, UpdateCharacterData, Error);
+    }
+
+    void UpdateCharacterData(UpdateCharacterDataResult result)
+    {
+        Debug.Log("Level Set!");
+    }
+
+    
    
     
     

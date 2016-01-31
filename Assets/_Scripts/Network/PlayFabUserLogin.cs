@@ -68,8 +68,8 @@ public class PlayFabUserLogin : MonoBehaviour {
 
     private void LoginRegisterSuccess(string PlayFabId, string SessionTicket)
     {
-        PlayFabDataStore.PlayFabId = PlayFabId;
-        PlayFabDataStore.SessionTicket = SessionTicket;
+        PlayFabDataStore.playFabId = PlayFabId;
+        PlayFabDataStore.sessionTicket = SessionTicket;
         loginErrorText.gameObject.transform.parent.gameObject.SetActive(false);
         gameMenu.gameObject.SetActive(true);
 
