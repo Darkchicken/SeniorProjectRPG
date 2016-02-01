@@ -17,6 +17,19 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     void OnEnable()
     {
+        //////access newest version of cloud script
+        GetCloudScriptUrlRequest cloudRequest = new GetCloudScriptUrlRequest()
+        {
+            Testing = false
+        };
+
+        PlayFabClientAPI.GetCloudScriptUrl(cloudRequest, (result) => {
+            Debug.Log("URL is set");
+        },
+        (error) => {
+            Debug.Log("Failed to retrieve Cloud Script URL");
+        });
+        //////////////////////////////////////////
         playerButton.onClick.AddListener(LoginCreateNew);
         
         var request = new ListUsersCharactersRequest()
@@ -25,6 +38,8 @@ public class PlayFabMainMenu : MonoBehaviour {
         };
 
         PlayFabClientAPI.GetAllUsersCharacters(request, CharacterDataResult, Error);
+
+       
 
     }
 
@@ -77,6 +92,20 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     void CreateNewCharacter()
     {
+        RunCloudScriptRequest request = new RunCloudScriptRequest()
+        {
+            ActionId = "newCharacter",
+            Params = new { characterName = characterNameText.text , characterType = "Warrior"}//set to whatever default class is
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log("Character Created!");
+            Debug.Log("Character ID: " + result.Results.ToString());
+        }, (error) => {
+            Debug.Log("Error calling newCharacter in Cloud Script:");
+            Debug.Log(error.ErrorMessage);
+        });
+        /*
         var request = new GrantCharacterToUserRequest()
         {
             CatalogVersion = "Character",
@@ -85,6 +114,7 @@ public class PlayFabMainMenu : MonoBehaviour {
         };
 
         PlayFabClientAPI.GrantCharacterToUser(request, GrantCharacterToUser, Error);
+        */
     }
 
     void GrantCharacterToUser(GrantCharacterToUserResult result)
