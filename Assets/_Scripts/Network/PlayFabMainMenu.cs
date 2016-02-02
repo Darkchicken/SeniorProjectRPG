@@ -30,7 +30,8 @@ public class PlayFabMainMenu : MonoBehaviour {
             Debug.Log("Failed to retrieve Cloud Script URL");
         });
         //////////////////////////////////////////
-        playerButton.onClick.AddListener(LoginCreateNew);
+
+        playerButton.onClick.AddListener(CreateNewEnterWorld);
         
         var request = new ListUsersCharactersRequest()
         {
@@ -38,8 +39,6 @@ public class PlayFabMainMenu : MonoBehaviour {
         };
 
         PlayFabClientAPI.GetAllUsersCharacters(request, CharacterDataResult, Error);
-
-       
 
     }
 
@@ -62,27 +61,15 @@ public class PlayFabMainMenu : MonoBehaviour {
             playerButtonText.text = "Enter World";
             isCharacterExist = true;
             PlayFabDataStore.characterId = result.Characters[0].CharacterId;
-            UpdateCharacterData();
         }
 
     }
 
-    void Error(PlayFabError error)
-    {
-        Debug.Log(error.ErrorMessage);
-        Debug.Log(error.ErrorDetails);
-    }
-
-    void LoginCreateNew()
+    void CreateNewEnterWorld()
     {
         if(isCharacterExist)
         {
-            var request = new GetCharacterDataRequest()
-            {
-                CharacterId = PlayFabDataStore.characterId,
-            };
 
-            PlayFabClientAPI.GetCharacterData(request, GetCharacterData, Error);
         }
         else
         {
@@ -95,69 +82,30 @@ public class PlayFabMainMenu : MonoBehaviour {
         RunCloudScriptRequest request = new RunCloudScriptRequest()
         {
             ActionId = "newCharacter",
-            Params = new { characterName = characterNameText.text , characterType = "Warrior"}//set to whatever default class is
+            Params = new { characterName = characterNameText.text, characterType = "Warrior" }//set to whatever default class is
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
-        {
-            Debug.Log("Character Created!");
-            Debug.Log("Character ID: " + result.Results.ToString());
-        }, (error) => {
-            Debug.Log("Error calling newCharacter in Cloud Script:");
-            Debug.Log(error.ErrorMessage);
-        });
-        /*
-        var request = new GrantCharacterToUserRequest()
-        {
-            CatalogVersion = "Character",
-            ItemId = "rpg_character",
-            CharacterName = characterNameText.text
-        };
-
-        PlayFabClientAPI.GrantCharacterToUser(request, GrantCharacterToUser, Error);
-        */
-    }
-
-    void GrantCharacterToUser(GrantCharacterToUserResult result)
-    {
-        if(result.Result)
         {
             characterInfo.text = characterNameText.text;
             characterNameText.gameObject.SetActive(false);
             characterInfo.gameObject.SetActive(true);
             playerButtonText.text = "Enter World";
             isCharacterExist = true;
-            
-            
-        }
-        else
+        }, (error) =>
         {
             Debug.Log("Character not created!");
-        }
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
     }
 
-    void UpdateCharacterData()
+    void Error(PlayFabError error)
     {
-        var request = new UpdateCharacterDataRequest()
-        {
-            CharacterId = PlayFabDataStore.characterId,
-            Data = new Dictionary<string, string>()
-            {
-                {"Level", "3" }
-            }
-        };
-
-        PlayFabClientAPI.UpdateCharacterData(request, UpdateCharacterData, Error);
+        Debug.Log(error.ErrorMessage);
+        Debug.Log(error.ErrorDetails);
     }
 
-    void GetCharacterData(GetCharacterDataResult result)
-    {
-        Debug.Log(result.Data["Level"].Value);
-    }
-
-    void UpdateCharacterData(UpdateCharacterDataResult result)
-    {
-        Debug.Log("Level Set!");
-    }
 
     
    
