@@ -7,8 +7,11 @@ public class HUD_Manager : MonoBehaviour {
 
     public Slider playerHealthSlider;
     public Slider playerResourceSlider;
+    public Slider enemyHealthSlider;
     public Text playerHealthText;
     public Text playerResourceText;
+    public Canvas runePanel;
+
 
     private GameObject player;
     private int playerHealth;
@@ -22,7 +25,7 @@ public class HUD_Manager : MonoBehaviour {
         }
         else
         {
-            playerHealth = player.GetComponent<PlayerHealth>().GetPlayerHealth();
+            playerHealth = player.GetComponent<Health>().GetHealth();
             playerHealthSlider.value = playerHealth;
             playerHealthText.text = playerHealth + "/100";
             if(playerHealth == 0)
@@ -32,11 +35,11 @@ public class HUD_Manager : MonoBehaviour {
             playerResourceSlider.value = player.GetComponent<PlayerCombatManager>().GetPlayerResource();
             playerResourceText.text = playerResourceSlider.value + "/100";
 
-
         }
+    }
 
-        
-
-
+    public void ToggleRunePanel()
+    {
+        runePanel.gameObject.SetActive(!runePanel.gameObject.activeInHierarchy);
     }
 }

@@ -22,8 +22,8 @@ public class NetworkPlayerScript : NetworkBehaviour {
             //if this is the arena
             if (SceneManager.GetActiveScene().name == "BattleArena")
             {
-                gameObject.tag = "NetworkOpponent";
-                gameObject.name = "Network Opponent";
+                gameObject.tag = "Enemy";
+                gameObject.name = "Enemy";
             }
             else
             {

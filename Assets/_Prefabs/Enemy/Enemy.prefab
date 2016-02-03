@@ -1622,9 +1622,9 @@ GameObject:
   - 95: {fileID: 9578976}
   - 195: {fileID: 19575598}
   - 136: {fileID: 13603960}
-  - 114: {fileID: 11460064}
   - 114: {fileID: 11488870}
   - 114: {fileID: 11452956}
+  - 114: {fileID: 11483010}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -3701,7 +3701,7 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 12
   attackSpeed: 2
---- !u!114 &11460064
+--- !u!114 &11483010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3709,11 +3709,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 185404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79328c44473533d4296c1560a032eba4, type: 3}
+  m_Script: {fileID: 11500000, guid: 7713543e0d5d6b3418998c2e0ff8a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthSlider: {fileID: 0}
-  enemyHealth: 100
+  health: 100
 --- !u!114 &11488870
 MonoBehaviour:
   m_ObjectHideFlags: 1

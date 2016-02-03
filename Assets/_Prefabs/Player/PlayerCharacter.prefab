@@ -40,12 +40,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 497420}
   - 95: {fileID: 9509264}
-  - 114: {fileID: 11423968}
   - 195: {fileID: 19560792}
   - 114: {fileID: 11410550}
   - 114: {fileID: 11428312}
-  - 114: {fileID: 11450236}
-  - 114: {fileID: 11450886}
+  - 114: {fileID: 11409846}
+  - 114: {fileID: 11480276}
+  - 136: {fileID: 13609122}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -3566,7 +3566,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.01621, y: 0, z: 63.05027}
+  m_LocalPosition: {x: 47.31, y: 0, z: 18.54}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 487042}
@@ -3688,6 +3688,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11409846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d170d8b50792447ac7111470a7f136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11410550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3699,22 +3710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e163e09b70f89c449278b57fd7e1a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetEnemy: {fileID: 0}
---- !u!114 &11423968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b421cd8ac56754b8264bb2f079d932, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopDistanceForAttack: 3
   canMove: 1
   isInCombat: 0
-  targetEnemy: {fileID: 0}
+  stopDistanceForAttack: 2
 --- !u!114 &11428312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3726,10 +3724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958addd38c8015740a7eb6a4218fe09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthText: {fileID: 0}
-  playerHealthSlider: {fileID: 0}
   playerHealth: 100
---- !u!114 &11450236
+--- !u!114 &11480276
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3737,20 +3733,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 103620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e374e08076d3b36469ada589152cc73b, type: 3}
+  m_Script: {fileID: 11500000, guid: c723e8e8d3c251b4ab88dc7fc583a2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11450886
-MonoBehaviour:
+--- !u!136 &13609122
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1996804e965b57d409cd716c26b136e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 1.56
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!137 &13726488
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

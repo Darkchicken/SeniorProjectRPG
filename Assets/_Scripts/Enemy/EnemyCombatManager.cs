@@ -25,11 +25,11 @@ public class EnemyCombatManager : MonoBehaviour
         }
 
         attackTimer += Time.deltaTime;
-        if (attackTimer >= attackSpeed && !player.GetComponent<PlayerHealth>().IsPlayerDead() && InAttackingRange())
+        if (attackTimer >= attackSpeed && !player.GetComponent<Health>().IsDead() && InAttackingRange())
         {
             if(player != null)
             {
-                player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+                player.GetComponent<Health>().TakeDamage(attackDamage);
                 enemyAnimation.SetTrigger("ATTACK 1");
                 attackTimer = 0f;
             }
