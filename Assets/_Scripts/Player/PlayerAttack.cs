@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerAttack : WarriorRunes
+public class PlayerAttack : Runes
 {
     //public static PlayerAttack playerAttack;
     public static Dictionary<string, List<Rune>> classRunes;

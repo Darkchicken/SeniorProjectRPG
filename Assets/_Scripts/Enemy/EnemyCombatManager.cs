@@ -1,45 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyCombatManager : MonoBehaviour
 {
     public int attackRange;
     public int attackDamage;
     public float attackSpeed;
+    public List<GameObject> playerAttackList;
 
-    private GameObject player;
+    //private GameObject player;
     private Animator enemyAnimation;
     private float attackTimer;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         enemyAnimation = GetComponent<Animator>();
+        playerAttackList = new List<GameObject>();
     }
 
     void Update()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
         attackTimer += Time.deltaTime;
-        if (attackTimer >= attackSpeed && !player.GetComponent<Health>().IsDead() && InAttackingRange())
+        if (playerAttackList.Count != 0)
         {
-            if(player != null)
+            if (attackTimer >= attackSpeed && !playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange())
             {
-                player.GetComponent<Health>().TakeDamage(attackDamage);
+                playerAttackList[0].GetComponent<Health>().TakeDamage(gameObject, attackDamage);
                 enemyAnimation.SetTrigger("ATTACK 1");
                 attackTimer = 0f;
             }
-            
         }
+        
     }
 
     bool InAttackingRange()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        if (Vector3.Distance(transform.position, playerAttackList[0].transform.position) <= attackRange)
         {
             return true;
         }

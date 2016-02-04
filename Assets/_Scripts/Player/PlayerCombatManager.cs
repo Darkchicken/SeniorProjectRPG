@@ -30,6 +30,7 @@ public class PlayerCombatManager : PlayerAttack
     {
         playerAnimation = GetComponent<Animator>();
         controller = GetComponent<NavMeshAgent>();
+        GameManager.players.Add(gameObject);
         position = transform.position;
         playerCombatManager = this;
         
