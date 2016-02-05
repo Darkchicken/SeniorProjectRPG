@@ -15,7 +15,7 @@ public class Health : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(GameObject source , int damage)
     {
         if (!dead)
         {
@@ -27,6 +27,15 @@ public class Health : MonoBehaviour {
             else
             {
                 Dead();
+                if (tag == "Player")
+                {
+                    if(source.GetComponent<EnemyCombatManager>().playerAttackList.Contains(gameObject))
+                    {
+                        Debug.Log("Contains");
+                        source.GetComponent<EnemyCombatManager>().playerAttackList.Remove(gameObject);
+                        Debug.Log(source.GetComponent<EnemyCombatManager>().playerAttackList == null);
+                    }
+                }
             }
         }
 

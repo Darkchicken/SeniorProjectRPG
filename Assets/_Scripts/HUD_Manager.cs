@@ -42,4 +42,6 @@ public class HUD_Manager : MonoBehaviour {
     {
         runePanel.gameObject.SetActive(!runePanel.gameObject.activeInHierarchy);
     }
+
+    
 }

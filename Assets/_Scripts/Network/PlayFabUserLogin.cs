@@ -73,5 +73,20 @@ public class PlayFabUserLogin : MonoBehaviour {
         loginErrorText.gameObject.transform.parent.gameObject.SetActive(false);
         gameMenu.gameObject.SetActive(true);
 
+        /* Playfab Photon Token
+        var request = new GetPhotonAuthenticationTokenRequest()
+        {
+            PhotonApplicationId = "67a8e458-b05b-463b-9abe-ce766a75b832".Trim()
+        };
+
+        PlayFabClientAPI.GetPhotonAuthenticationToken(request, (result) =>
+        {
+            Debug.Log("Photon Token Authenticated!");
+        },
+        (error) =>
+        {
+            Debug.Log("Photon Token NOT Authenticated!");
+        });
+        */
     }
 }

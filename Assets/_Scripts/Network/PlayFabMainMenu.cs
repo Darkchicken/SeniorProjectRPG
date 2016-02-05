@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,29 +11,42 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     public Text characterInfo;
     public Button playerButton;
+    public Button updateButton;
     public Text playerButtonText;
     public InputField characterNameText;
+    public Dictionary<string, string> PlayerData = new Dictionary<string, string>()
+    {
+        {"Level", "1" },
+        {"Strength", "5" },
+        {"Intellect", "5" },
+        {"Dexterity", "5" },
+        {"Vitality", "5" },
+        {"Critical Chance", "0" },
+    };
 
     private bool isCharacterExist;
 
     void OnEnable()
     {
         //////access newest version of cloud script
-        GetCloudScriptUrlRequest cloudRequest = new GetCloudScriptUrlRequest()
+        var cloudRequest = new GetCloudScriptUrlRequest()
         {
             Testing = false
         };
 
-        PlayFabClientAPI.GetCloudScriptUrl(cloudRequest, (result) => {
+        PlayFabClientAPI.GetCloudScriptUrl(cloudRequest, (result) =>
+        {
             Debug.Log("URL is set");
         },
-        (error) => {
+        (error) =>
+        {
             Debug.Log("Failed to retrieve Cloud Script URL");
         });
         //////////////////////////////////////////
 
         playerButton.onClick.AddListener(CreateNewEnterWorld);
-        
+        updateButton.onClick.AddListener(UpdateStats);
+
         var request = new ListUsersCharactersRequest()
         {
             PlayFabId = PlayFabDataStore.playFabId
@@ -69,7 +83,7 @@ public class PlayFabMainMenu : MonoBehaviour {
     {
         if(isCharacterExist)
         {
-
+            SceneManager.LoadScene("TestMovement");
         }
         else
         {
@@ -79,18 +93,21 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     void CreateNewCharacter()
     {
-        RunCloudScriptRequest request = new RunCloudScriptRequest()
+        var request = new RunCloudScriptRequest()
         {
             ActionId = "newCharacter",
-            Params = new { characterName = characterNameText.text, characterType = "Warrior" }//set to whatever default class is
+            Params = new { characterName = characterNameText.text, characterType = "Player" }//set to whatever default class is
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
             characterInfo.text = characterNameText.text;
             characterNameText.gameObject.SetActive(false);
             characterInfo.gameObject.SetActive(true);
+            PlayFabDataStore.characterId = result.Results.ToString();
+            Debug.Log("Character ID" + PlayFabDataStore.characterId);
             playerButtonText.text = "Enter World";
             isCharacterExist = true;
+            
         }, (error) =>
         {
             Debug.Log("Character not created!");
@@ -98,6 +115,42 @@ public class PlayFabMainMenu : MonoBehaviour {
             Debug.Log(error.ErrorDetails);
         });
 
+        
+
+        /*request = new RunCloudScriptRequest()
+        {
+            ActionId = "newCharacterStats",
+            Params = new { characterID = PlayFabDataStore.characterId, level = "1", strength = "5", intellect = "5", dexterity = "5", vitality = "5", crit = "0" }
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log("Stats Set");
+        }, (error) =>
+        {
+            Debug.Log("Stats Set failed");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });*/
+
+
+    }
+
+    void UpdateStats()
+    {
+        var request = new UpdateCharacterDataRequest()
+        {
+            CharacterId = PlayFabDataStore.characterId,
+            Data = PlayerData
+        };
+        PlayFabClientAPI.UpdateCharacterData(request, (result) =>
+        {
+            Debug.Log("Stats Updated!");
+        }, (error) =>
+        {
+            Debug.Log("Stats Failed!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
     }
 
     void Error(PlayFabError error)

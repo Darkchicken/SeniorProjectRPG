@@ -12,6 +12,7 @@ public class EnemyMovement :MonoBehaviour
     private Animator enemyAnimation;
     private GameObject player;
     private Vector3 initialPosition;
+    private EnemyCombatManager combatManager;
 
 
     private bool isChasing = false;
@@ -26,6 +27,7 @@ public class EnemyMovement :MonoBehaviour
     {
         controller = GetComponent<NavMeshAgent>();
         enemyAnimation = GetComponent<Animator>();
+        combatManager = GetComponent<EnemyCombatManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         initialPosition = transform.position;
         controller.stoppingDistance = chaseStopDistance;
@@ -33,39 +35,26 @@ public class EnemyMovement :MonoBehaviour
 
     void Update()
     {
-        //if a player was not found initially, keep looking until one is found
-        if(player == null)
+        if (GameManager.players != null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
+            Invoke("IsPlayersInAggroRange", 1f);
 
-        if (player != null)
-        {
-            if ((InAggroRange() || isChasing) && !immuneToAggro && !InAttackingRange() && !player.GetComponent<Health>().IsDead())
+            if (isInCombat && !immuneToAggro && InChasingRange() && !InAttackingRange())
             {
-                MoveToPosition(player.transform.position);
+                MoveToPosition(combatManager.playerAttackList[0].transform.position);
                 controller.stoppingDistance = chaseStopDistance;
-
-                if (!InChasingRange())
-                {
-                    MoveToPosition(initialPosition);
-                }
             }
 
-            if (!isTargetDead && player.GetComponent<Health>().IsDead())
+            if ((!InChasingRange() || combatManager.playerAttackList.Count == 0) && isInCombat)
             {
-                isTargetDead = true;
-                immuneToAggro = true;
-                isInCombat = false;
-                player = null;
-                controller.stoppingDistance = 0;
                 MoveToPosition(initialPosition);
+                controller.stoppingDistance = 0;
+                immuneToAggro = true;    
             }
 
-            
-            if (!immuneToAggro && isChasing)
+            if(controller.velocity == Vector3.zero && !isInCombat)
             {
-                transform.LookAt(player.transform.position);
+                immuneToAggro = false;
             }
         }
 
@@ -92,20 +81,32 @@ public class EnemyMovement :MonoBehaviour
 
     }
 
-    bool InAggroRange() // returns true if player in distance
+    void IsPlayersInAggroRange()
     {
-        //if no player is found
-        if(player == null)
+        for (int i = 0; i < GameManager.players.Count; i++)
         {
-            return false;
+            if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) <= aggroRange)
+            {
+                if(!combatManager.playerAttackList.Contains(GameManager.players[i]) && !GameManager.players[i].GetComponent<Health>().IsDead())
+                {
+                    combatManager.playerAttackList.Add(GameManager.players[i]);
+                }           
+            }
+            if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange)
+            {
+                if (combatManager.playerAttackList.Contains(GameManager.players[i]))
+                {
+                    combatManager.playerAttackList.Remove(GameManager.players[i]);
+                }              
+            }
         }
-        if (Vector3.Distance(transform.position, player.transform.position) <= aggroRange)
+        if (combatManager.playerAttackList.Count > 0)
         {
-            return true;
+            isInCombat = true;
         }
         else
         {
-            return false;
+            isInCombat = false;
         }
     }
 
@@ -113,11 +114,6 @@ public class EnemyMovement :MonoBehaviour
     {
         if (Vector3.Distance(initialPosition, transform.position) > chasingRange)
         {
-            immuneToAggro = true;
-            isChasing = false;
-            controller.stoppingDistance = 0;
-            player.GetComponent<PlayerCombatManager>().isInCombat = false;
-            isInCombat = false;
             return false;
         }
         else
@@ -128,10 +124,8 @@ public class EnemyMovement :MonoBehaviour
 
     bool InAttackingRange()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) <= chaseStopDistance)
+        if (Vector3.Distance(transform.position, combatManager.playerAttackList[0].transform.position) <= chaseStopDistance)
         {
-            player.GetComponent<PlayerCombatManager>().isInCombat = true;
-            isInCombat = true;
             return true;
         }
         else
@@ -149,7 +143,7 @@ public class EnemyMovement :MonoBehaviour
 
         if (!isMoving_Animation)
         {
-            isChasing = true;
+            //isChasing = true;
             isMoving_Animation = true;
             enemyAnimation.SetBool("IsMoving", true);
             enemyAnimation.SetTrigger("RUN");

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerAttack : WarriorRunes
+public class PlayerAttack : Runes
 {
     //public static PlayerAttack playerAttack;
     public static Dictionary<string, List<Rune>> classRunes;
@@ -19,7 +19,7 @@ public class PlayerAttack : WarriorRunes
         playerCombatManager = GetComponent<PlayerCombatManager>();
         classRunes = new Dictionary<string, List<Rune>>();
         playerActiveSkillRunes = new Dictionary<int, Rune>();
-        classRunes.Add("Warrior", warriorRunes);
+        classRunes.Add("Warrior", runes);
         Invoke("SetActiveRunes", 0.1f);
 
     }
@@ -31,8 +31,8 @@ public class PlayerAttack : WarriorRunes
 
     void SetActiveRunes()
     {
-        PlayerCombatManager.playerCombatManager.SetActiveSkillRune(warriorRunes[0], 5); // test purpose
-        PlayerCombatManager.playerCombatManager.SetActiveSkillRune(warriorRunes[1], 6); // test purpose
+        PlayerCombatManager.playerCombatManager.SetActiveSkillRune(runes[0], 5); // test purpose
+        PlayerCombatManager.playerCombatManager.SetActiveSkillRune(runes[1], 6); // test purpose
     }
 
 
