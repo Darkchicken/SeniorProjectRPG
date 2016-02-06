@@ -6,21 +6,43 @@ using PlayFab.ClientModels;
 
 public class CheatPanel : MonoBehaviour
 {
+    private string itemInstanceId;
 
     public void GrantItem(string itemID)
     {
+        string[] item = { itemID };
         var request = new RunCloudScriptRequest()
         {
-            ActionId = "grantItemToUser",
-            Params = new { playFabId = PlayFabDataStore.playFabId, itemId = itemID }
+            ActionId = "grantItemsToCharacter",
+            Params = new {catalogVersion = "Runes", playFabId = PlayFabDataStore.playFabId, characterId = PlayFabDataStore.characterId, items = item}
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
             Debug.Log(itemID + " Granted!");
+            Debug.Log(result.Results);
         },
         (error) =>
         {
             Debug.Log("Item not Granted!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    public void RevokeItem()
+    {
+        var request = new RunCloudScriptRequest()
+        {
+            ActionId = "revokeInventoryItem",
+            Params = new { playFabId = PlayFabDataStore.playFabId, characterId = PlayFabDataStore.characterId, itemId = itemInstanceId }
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log(result.Results);
+        },
+        (error) =>
+        {
+            Debug.Log("Item not Revoked!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });
@@ -53,6 +75,7 @@ public class CheatPanel : MonoBehaviour
         PlayFabClientAPI.GetCharacterInventory(request, (result) =>
         {
             Debug.Log("Inventory Count: " + result.Inventory.Count);
+            itemInstanceId = result.Inventory[0].ItemInstanceId;
             foreach (var item in result.Inventory)
             {
                 Debug.Log(item.DisplayName);

@@ -111,14 +111,11 @@ public class Runes : MonoBehaviour
         GameManager.players.Add(gameObject);
         position = transform.position;
         playerAnimation = GetComponent<Animator>();
+
         runes.Add(rune1_Name, rune1_SkillSlot);
         runes.Add(rune2_Name, rune2_SkillSlot);
         runes.Add(rune7_Name, rune7_SkillSlot);
 
-        foreach(var rune in runes)
-        {
-            Debug.Log(rune.Key);
-        }
     }
 
     void Update()

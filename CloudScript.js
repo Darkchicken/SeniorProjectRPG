@@ -15,20 +15,32 @@ handlers.newCharacter = function (args)
   return characterID;		
 }
 
-handlers.grantItemToCharacter = function (args)
+handlers.grantItemsToCharacter = function (args)
 {
   var request = server.GrantItemsToCharacter({
-    PlayFabId: args.playFabId,
+    PlayFabId: currentPlayerId,
     CharacterId: args.characterId,
-    ItemIds: [args.itemId]
+    CatalogVersion: args.catalogVersion,
+    ItemIds: ["Runes_Slam"]
   });
   return request;		
 }
 
-handlers.grantItemToUser = function (args)
+handlers.revokeInventoryItem = function (args)
+{
+  var request = server.RevokeInventoryItem({
+    PlayFabId: currentPlayerId,
+    CharacterId: args.characterId,
+    ItemInstanceId: args.itemId
+  });
+  return request;		
+}
+
+
+handlers.grantItemsToUser = function (args)
 {
   var request = server.GrantItemsToUser({
-    PlayFabId: args.playFabId,
+    PlayFabId: currentPlayerId,
     ItemIds: [args.itemId]
   });
   return request;		
@@ -37,7 +49,7 @@ handlers.grantItemToUser = function (args)
 handlers.moveItemFromUserToCharacter = function (args)
 {
   var request = server.GrantItemsToCharacter({
-    PlayFabId: args.playFabId,
+    PlayFabId: currentPlayerId,
     CharacterId: args.characterId,
     ItemInstanceId: args.itemInstanceId
   });

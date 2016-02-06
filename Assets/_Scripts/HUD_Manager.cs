@@ -13,6 +13,7 @@ public class HUD_Manager : MonoBehaviour {
     public Text playerHealthText;
     public Text playerResourceText;
     public Canvas runePanel;
+    public Canvas cheatPanel;
 
 
     private GameObject player;
@@ -21,7 +22,12 @@ public class HUD_Manager : MonoBehaviour {
 
 	void Update ()
     {
-        if(player == null)
+        if (Input.GetKeyDown("1"))
+        {
+            cheatPanel.gameObject.SetActive(!cheatPanel.gameObject.activeInHierarchy);
+        }
+
+        if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
