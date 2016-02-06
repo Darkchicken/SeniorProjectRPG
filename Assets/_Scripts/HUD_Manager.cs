@@ -43,8 +43,10 @@ public class HUD_Manager : MonoBehaviour {
     public void ToggleRunePanel()
     {
         runePanel.gameObject.SetActive(!runePanel.gameObject.activeInHierarchy);
+        Debug.Log(PlayFabDataStore.playFabId);
+        Debug.Log(PlayFabDataStore.characterId);
 
-        if(runePanel.gameObject.activeInHierarchy)
+        if (runePanel.gameObject.activeInHierarchy)
         {
             var request = new GetCharacterInventoryRequest()
             {

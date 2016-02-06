@@ -27,8 +27,6 @@ public class PlayerCombatManager : Runes
 
     }
 
-    
-
     void Update()
     {
         //Primary Skill

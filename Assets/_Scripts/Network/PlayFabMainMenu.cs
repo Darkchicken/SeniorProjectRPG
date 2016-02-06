@@ -14,10 +14,19 @@ public class PlayFabMainMenu : MonoBehaviour {
     public Button updateButton;
     public Text playerButtonText;
     public InputField characterNameText;
+    public Canvas cheatPanel;
     
 
     private bool isCharacterExist;
 
+
+    void Update()
+    {
+        if(Input.GetKeyDown("1"))
+        {
+            cheatPanel.gameObject.SetActive(!cheatPanel.gameObject.activeInHierarchy);
+        }
+    }
     void OnEnable()
     {
         //////access newest version of cloud script
@@ -109,23 +118,9 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     }
 
-    public void UpdateCharacterData()
-    {
-        var request = new UpdateCharacterDataRequest()
-        {
-            CharacterId = PlayFabDataStore.characterId,
-            Data = PlayFabDataStore.playerData
-        };
-        PlayFabClientAPI.UpdateCharacterData(request, (result) =>
-        {
-            Debug.Log("Stats Updated!");
-        }, (error) =>
-        {
-            Debug.Log("Stats Failed!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
-    }
+
+
+
 
 
     

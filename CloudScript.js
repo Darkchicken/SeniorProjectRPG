@@ -15,12 +15,32 @@ handlers.newCharacter = function (args)
   return characterID;		
 }
 
-handlers.grantItem = function (args)
+handlers.grantItemToCharacter = function (args)
 {
   var request = server.GrantItemsToCharacter({
-    PlayFabId: currentPlayerId,
+    PlayFabId: args.playFabId,
     CharacterId: args.characterId,
     ItemIds: [args.itemId]
   });
   return request;		
 }
+
+handlers.grantItemToUser = function (args)
+{
+  var request = server.GrantItemsToUser({
+    PlayFabId: args.playFabId,
+    ItemIds: [args.itemId]
+  });
+  return request;		
+}
+
+handlers.moveItemFromUserToCharacter = function (args)
+{
+  var request = server.GrantItemsToCharacter({
+    PlayFabId: args.playFabId,
+    CharacterId: args.characterId,
+    ItemInstanceId: args.itemInstanceId
+  });
+  return request;		
+}
+
