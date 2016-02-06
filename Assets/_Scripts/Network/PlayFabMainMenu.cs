@@ -14,15 +14,7 @@ public class PlayFabMainMenu : MonoBehaviour {
     public Button updateButton;
     public Text playerButtonText;
     public InputField characterNameText;
-    public Dictionary<string, string> PlayerData = new Dictionary<string, string>()
-    {
-        {"Level", "1" },
-        {"Strength", "5" },
-        {"Intellect", "5" },
-        {"Dexterity", "5" },
-        {"Vitality", "5" },
-        {"Critical Chance", "0" },
-    };
+    
 
     private bool isCharacterExist;
 
@@ -45,37 +37,37 @@ public class PlayFabMainMenu : MonoBehaviour {
         //////////////////////////////////////////
 
         playerButton.onClick.AddListener(CreateNewEnterWorld);
-        updateButton.onClick.AddListener(UpdateStats);
 
         var request = new ListUsersCharactersRequest()
         {
             PlayFabId = PlayFabDataStore.playFabId
         };
 
-        PlayFabClientAPI.GetAllUsersCharacters(request, CharacterDataResult, Error);
-
-    }
-
-    void CharacterDataResult(ListUsersCharactersResult result)
-    {
-
-        if(result.Characters.Count == 0)
+        PlayFabClientAPI.GetAllUsersCharacters(request, (result) =>
         {
-            characterInfo.text = "Player not found!";
-            playerButtonText.text = "Create New";
-            characterNameText.gameObject.SetActive(true);
-            isCharacterExist = false;
-            
-        }
-        else
+            if (result.Characters.Count == 0)
+            {
+                characterInfo.text = "Player not found!";
+                playerButtonText.text = "Create New";
+                characterNameText.gameObject.SetActive(true);
+                isCharacterExist = false;
+
+            }
+            else
+            {
+                characterInfo.text = "" + result.Characters[0].CharacterName;
+                characterInfo.gameObject.SetActive(true);
+                characterNameText.gameObject.SetActive(false);
+                playerButtonText.text = "Enter World";
+                isCharacterExist = true;
+                PlayFabDataStore.characterId = result.Characters[0].CharacterId;
+            }
+        }, (error) =>
         {
-            characterInfo.text = "" + result.Characters[0].CharacterName;
-            characterInfo.gameObject.SetActive(true);
-            characterNameText.gameObject.SetActive(false);
-            playerButtonText.text = "Enter World";
-            isCharacterExist = true;
-            PlayFabDataStore.characterId = result.Characters[0].CharacterId;
-        }
+            Debug.Log("Can't retrieve character!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
 
     }
 
@@ -115,32 +107,14 @@ public class PlayFabMainMenu : MonoBehaviour {
             Debug.Log(error.ErrorDetails);
         });
 
-        
-
-        /*request = new RunCloudScriptRequest()
-        {
-            ActionId = "newCharacterStats",
-            Params = new { characterID = PlayFabDataStore.characterId, level = "1", strength = "5", intellect = "5", dexterity = "5", vitality = "5", crit = "0" }
-        };
-        PlayFabClientAPI.RunCloudScript(request, (result) =>
-        {
-            Debug.Log("Stats Set");
-        }, (error) =>
-        {
-            Debug.Log("Stats Set failed");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });*/
-
-
     }
 
-    void UpdateStats()
+    public void UpdateCharacterData()
     {
         var request = new UpdateCharacterDataRequest()
         {
             CharacterId = PlayFabDataStore.characterId,
-            Data = PlayerData
+            Data = PlayFabDataStore.playerData
         };
         PlayFabClientAPI.UpdateCharacterData(request, (result) =>
         {
@@ -151,12 +125,6 @@ public class PlayFabMainMenu : MonoBehaviour {
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });
-    }
-
-    void Error(PlayFabError error)
-    {
-        Debug.Log(error.ErrorMessage);
-        Debug.Log(error.ErrorDetails);
     }
 
 

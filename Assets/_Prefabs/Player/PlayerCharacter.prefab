@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416142}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado inferior izquierdo00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 487042}
   - 137: {fileID: 13754072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ARMOR LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,12 +41,11 @@ GameObject:
   - 4: {fileID: 497420}
   - 95: {fileID: 9509264}
   - 195: {fileID: 19560792}
-  - 114: {fileID: 11410550}
-  - 114: {fileID: 11428312}
-  - 114: {fileID: 11409846}
-  - 114: {fileID: 11480276}
   - 136: {fileID: 13609122}
-  m_Layer: 0
+  - 114: {fileID: 11453144}
+  - 114: {fileID: 11457246}
+  - 114: {fileID: 11448676}
+  m_Layer: 2
   m_Name: PlayerCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -61,7 +60,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410070}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +76,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475166}
   - 137: {fileID: 13728888}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: body invi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +91,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437894}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +108,7 @@ GameObject:
   - 4: {fileID: 408990}
   - 33: {fileID: 3392484}
   - 23: {fileID: 2307738}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AXE (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +123,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427440}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +138,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416498}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mejillas01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +153,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417466}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +168,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 483296}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado superior izquierdo00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +183,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ceja derecha 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +198,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415364}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +213,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455878}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado inferior derecho00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +228,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 471552}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +243,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486030}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ceja izquierda 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +258,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481114}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mejillas04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +273,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431152}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +288,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409058}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002Bone001 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +303,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cabeza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +318,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459496}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +334,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 461226}
   - 137: {fileID: 13796072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HELMET LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +349,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431866}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +364,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 436980}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ceja izquierda 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +379,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431008}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +394,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468756}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +409,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459324}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +424,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420798}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +439,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400172}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ceja derecha 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +454,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474684}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mejillas02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +469,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418404}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado inferior izquierdo02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +484,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418244}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +499,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407830}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +514,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 423744}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: nariz02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +529,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464820}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado superior derecho01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +544,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 463180}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: "ce\xF1o derecha"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +559,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477532}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +574,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418568}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +589,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428202}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +604,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439590}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +619,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474422}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +634,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479244}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado superior izquierdo02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +649,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422634}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: brazo dcho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +664,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415192}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bigotes00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +679,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490984}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: clavicula dcha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +694,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489600}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +709,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484226}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +724,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454816}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +739,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493944}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado inferior izquierdo01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +754,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415594}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone044
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +769,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417434}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002Bone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +784,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412016}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: horn bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +799,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416124}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cloak bone 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +814,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464898}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigSpine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +829,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476690}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +845,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 471386}
   - 137: {fileID: 13726488}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Object001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +860,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433008}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mandibula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +875,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467442}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone001Bone001Bone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +890,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mejillas03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +905,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448280}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002Bone001Bone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +920,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444788}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +935,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411546}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +950,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 466704}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: taparrabos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -966,7 +965,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476870}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cloak bone 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,7 +981,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 434234}
   - 137: {fileID: 13790446}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +996,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409154}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: nariz00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1011,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401104}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,7 +1026,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 423458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1042,7 +1041,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404422}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone045
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1056,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459780}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mejillas05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1071,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400684}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1086,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467112}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado inferior derecho02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1101,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469560}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1118,7 @@ GameObject:
   - 4: {fileID: 431440}
   - 33: {fileID: 3388920}
   - 23: {fileID: 2393150}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AXE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1133,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 463786}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002Bone001Bone001Bone001 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1148,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495462}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1163,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443848}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,7 +1178,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479888}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1193,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone002Bone001Bone001 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1208,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467314}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: taparrabos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1224,7 +1223,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406528}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone001Bone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1238,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481830}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: nariz03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1254,7 +1253,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigAnkleBone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1269,7 +1268,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432252}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1283,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418692}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigAnkleBone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1299,7 +1298,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402030}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1314,7 +1313,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426516}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,7 +1328,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419800}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1344,7 +1343,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: clavicula izda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1359,7 +1358,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477454}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: brazo izdo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1373,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479656}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1389,7 +1388,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481212}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1403,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434042}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1418,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447830}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,7 +1433,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416318}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ceja derecha 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1448,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484726}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,7 +1463,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449372}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1479,7 +1478,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443204}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,7 +1493,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440576}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1509,7 +1508,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489904}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1524,7 +1523,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480666}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigAnkleBone001Bone001 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1539,7 +1538,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401294}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigSpine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,7 +1553,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495402}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: nariz01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,7 +1568,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mejillas00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,7 +1583,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406634}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cloak bone 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1598,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474604}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado superior izquierdo01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,7 +1613,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446454}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: labios02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1629,7 +1628,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499108}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ceja izquierda 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1643,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439426}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1659,7 +1658,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415800}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,7 +1673,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1689,7 +1688,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422098}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cadera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1704,7 +1703,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438482}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1719,7 +1718,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456456}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArmDigit52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1734,7 +1733,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 485874}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,7 +1748,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433522}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado inferior derecho01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1764,7 +1763,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434690}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bigotes01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1779,7 +1778,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419174}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: "ce\xF1o izquierda"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1794,7 +1793,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481682}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,7 +1808,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 458962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigHub003Bone001Bone001Bone001Bone001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1824,7 +1823,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416986}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado superior derecho00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,7 +1838,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigRArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1854,7 +1853,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417834}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigAnkleBone001 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1869,7 +1868,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481912}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1884,7 +1883,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLArmDigit52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1899,7 +1898,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445796}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: parpado superior derecho02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1914,7 +1913,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416214}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CATRigLLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1929,7 +1928,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498594}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cloak bone 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3688,18 +3687,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11409846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d170d8b50792447ac7111470a7f136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11410550
+--- !u!114 &11448676
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3710,10 +3698,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e163e09b70f89c449278b57fd7e1a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rune1_SkillSlot: 5
+  rune1_Name: SLAM
+  rune1_Info: 
+  rune1_Type: 1
+  rune1_ResourceGeneration: 6
+  rune1_ResourceUsage: 0
+  rune1_AttackRange: 3
+  rune1_AttackSpeed: 0.5
+  rune1_AttackRadius: 0
+  rune1_Value: 0
+  rune2_SkillSlot: 6
+  rune2_Name: CARVE
+  rune2_Info: 
+  rune2_Type: 1
+  rune2_ResourceGeneration: 0
+  rune2_ResourceUsage: 20
+  rune2_AttackRange: 0
+  rune2_AttackSpeed: 0.5
+  rune2_AttackRadius: 5
+  rune2_Value: 0
+  rune7_SkillSlot: 5
+  rune7_Name: PRIMARY_INC_DMG
+  rune7_Info: 
+  rune7_Type: 0
+  rune7_ResourceGeneration: 0
+  rune7_ResourceUsage: 0
+  rune7_AttackRange: 0
+  rune7_AttackSpeed: 0
+  rune7_AttackRadius: 0
+  rune7_Value: 5
+  rune8_SkillSlot: 5
+  rune8_Name: PRIMARY_INC_CRIT_HIT
+  rune8_Info: 
+  rune8_Type: 0
+  rune8_ResourceGeneration: 0
+  rune8_ResourceUsage: 0
+  rune8_AttackRange: 0
+  rune8_AttackSpeed: 0
+  rune8_AttackRadius: 0
+  rune8_Value: 3
+  rune9_SkillSlot: 5
+  rune9_Name: PRIMARY_INC_FURY
+  rune9_Info: 
+  rune9_Type: 0
+  rune9_ResourceGeneration: 0
+  rune9_ResourceUsage: 0
+  rune9_AttackRange: 0
+  rune9_AttackSpeed: 0
+  rune9_AttackRadius: 0
+  rune9_Value: 9
+  rune10_SkillSlot: 5
+  rune10_Name: PRIMARY_FREEZE
+  rune10_Info: 
+  rune10_Type: 0
+  rune10_ResourceGeneration: 0
+  rune10_ResourceUsage: 0
+  rune10_AttackRange: 0
+  rune10_AttackSpeed: 0
+  rune10_AttackRadius: 0
+  rune10_Value: 1
   canMove: 1
   isInCombat: 0
   stopDistanceForAttack: 2
---- !u!114 &11428312
+--- !u!114 &11453144
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3721,11 +3769,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 103620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 958addd38c8015740a7eb6a4218fe09f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7713543e0d5d6b3418998c2e0ff8a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
---- !u!114 &11480276
+  enemyHealthSlider: {fileID: 0}
+  health: 100
+--- !u!114 &11457246
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3736,6 +3785,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c723e8e8d3c251b4ab88dc7fc583a2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rune1_SkillSlot: 5
+  rune1_Name: SLAM
+  rune1_Info: 
+  rune1_Type: 1
+  rune1_ResourceGeneration: 6
+  rune1_ResourceUsage: 0
+  rune1_AttackRange: 3
+  rune1_AttackSpeed: 0.5
+  rune1_AttackRadius: 0
+  rune1_Value: 0
+  rune2_SkillSlot: 6
+  rune2_Name: CARVE
+  rune2_Info: 
+  rune2_Type: 1
+  rune2_ResourceGeneration: 0
+  rune2_ResourceUsage: 20
+  rune2_AttackRange: 0
+  rune2_AttackSpeed: 0.5
+  rune2_AttackRadius: 5
+  rune2_Value: 0
+  rune7_SkillSlot: 5
+  rune7_Name: PRIMARY_INC_DMG
+  rune7_Info: 
+  rune7_Type: 0
+  rune7_ResourceGeneration: 0
+  rune7_ResourceUsage: 0
+  rune7_AttackRange: 0
+  rune7_AttackSpeed: 0
+  rune7_AttackRadius: 0
+  rune7_Value: 5
+  rune8_SkillSlot: 5
+  rune8_Name: PRIMARY_INC_CRIT_HIT
+  rune8_Info: 
+  rune8_Type: 0
+  rune8_ResourceGeneration: 0
+  rune8_ResourceUsage: 0
+  rune8_AttackRange: 0
+  rune8_AttackSpeed: 0
+  rune8_AttackRadius: 0
+  rune8_Value: 3
+  rune9_SkillSlot: 5
+  rune9_Name: PRIMARY_INC_FURY
+  rune9_Info: 
+  rune9_Type: 0
+  rune9_ResourceGeneration: 0
+  rune9_ResourceUsage: 0
+  rune9_AttackRange: 0
+  rune9_AttackSpeed: 0
+  rune9_AttackRadius: 0
+  rune9_Value: 9
+  rune10_SkillSlot: 5
+  rune10_Name: PRIMARY_FREEZE
+  rune10_Info: 
+  rune10_Type: 0
+  rune10_ResourceGeneration: 0
+  rune10_ResourceUsage: 0
+  rune10_AttackRange: 0
+  rune10_AttackSpeed: 0
+  rune10_AttackRadius: 0
+  rune10_Value: 1
 --- !u!136 &13609122
 CapsuleCollider:
   m_ObjectHideFlags: 1

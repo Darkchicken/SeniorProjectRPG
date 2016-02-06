@@ -14,3 +14,13 @@ handlers.newCharacter = function (args)
   });
   return characterID;		
 }
+
+handlers.grantItem = function (args)
+{
+  var request = server.GrantItemsToCharacter({
+    PlayFabId: currentPlayerId,
+    CharacterId: args.characterId,
+    ItemIds: [args.itemId]
+  });
+  return request;		
+}

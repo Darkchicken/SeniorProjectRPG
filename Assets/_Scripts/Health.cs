@@ -31,9 +31,7 @@ public class Health : MonoBehaviour {
                 {
                     if(source.GetComponent<EnemyCombatManager>().playerAttackList.Contains(gameObject))
                     {
-                        Debug.Log("Contains");
                         source.GetComponent<EnemyCombatManager>().playerAttackList.Remove(gameObject);
-                        Debug.Log(source.GetComponent<EnemyCombatManager>().playerAttackList == null);
                     }
                 }
             }

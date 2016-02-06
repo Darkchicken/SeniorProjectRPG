@@ -35,27 +35,28 @@ public class EnemyMovement :MonoBehaviour
 
     void Update()
     {
-        if (GameManager.players != null)
-        {
-            Invoke("IsPlayersInAggroRange", 1f);
+        Invoke("IsPlayersInAggroRange", 1f);
 
+        if (combatManager.playerAttackList.Count != 0)
+        {
             if (isInCombat && !immuneToAggro && InChasingRange() && !InAttackingRange())
             {
                 MoveToPosition(combatManager.playerAttackList[0].transform.position);
                 controller.stoppingDistance = chaseStopDistance;
             }
 
-            if ((!InChasingRange() || combatManager.playerAttackList.Count == 0) && isInCombat)
-            {
-                MoveToPosition(initialPosition);
-                controller.stoppingDistance = 0;
-                immuneToAggro = true;    
-            }
-
             if(controller.velocity == Vector3.zero && !isInCombat)
             {
                 immuneToAggro = false;
             }
+        }
+
+        if ((!InChasingRange() || combatManager.playerAttackList.Count == 0) && isInCombat)
+        {
+            MoveToPosition(initialPosition);
+            controller.stoppingDistance = 0;
+            immuneToAggro = true;
+            isInCombat = false;
         }
 
         if (isMoving_Animation && controller.velocity == Vector3.zero)
@@ -87,26 +88,22 @@ public class EnemyMovement :MonoBehaviour
         {
             if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) <= aggroRange)
             {
-                if(!combatManager.playerAttackList.Contains(GameManager.players[i]) && !GameManager.players[i].GetComponent<Health>().IsDead())
+                if (!combatManager.playerAttackList.Contains(GameManager.players[i]) && !GameManager.players[i].GetComponent<Health>().IsDead())
                 {
                     combatManager.playerAttackList.Add(GameManager.players[i]);
-                }           
+                }
             }
             if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange)
             {
                 if (combatManager.playerAttackList.Contains(GameManager.players[i]))
                 {
                     combatManager.playerAttackList.Remove(GameManager.players[i]);
-                }              
+                }
             }
         }
         if (combatManager.playerAttackList.Count > 0)
         {
             isInCombat = true;
-        }
-        else
-        {
-            isInCombat = false;
         }
     }
 
@@ -124,14 +121,22 @@ public class EnemyMovement :MonoBehaviour
 
     bool InAttackingRange()
     {
-        if (Vector3.Distance(transform.position, combatManager.playerAttackList[0].transform.position) <= chaseStopDistance)
+        if(combatManager.playerAttackList.Count != 0)
         {
-            return true;
+            if (Vector3.Distance(transform.position, combatManager.playerAttackList[0].transform.position) <= chaseStopDistance)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
             return false;
         }
+        
     }
 
     void MoveToPosition(Vector3 position)
