@@ -20,6 +20,7 @@ public class CheatPanel : MonoBehaviour
         {
             Debug.Log(itemID + " Granted!");
             Debug.Log(result.Results);
+            
         },
         (error) =>
         {
@@ -34,7 +35,7 @@ public class CheatPanel : MonoBehaviour
         var request = new RunCloudScriptRequest()
         {
             ActionId = "revokeInventoryItem",
-            Params = new { playFabId = PlayFabDataStore.playFabId, characterId = PlayFabDataStore.characterId, itemId = itemInstanceId }
+            Params = new { characterId = PlayFabDataStore.characterId, itemId = itemInstanceId }
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
@@ -72,17 +73,39 @@ public class CheatPanel : MonoBehaviour
         {
             CharacterId = PlayFabDataStore.characterId
         };
+        
         PlayFabClientAPI.GetCharacterInventory(request, (result) =>
         {
+            itemInstanceId = result.Inventory[0].ItemInstanceId; // just to see if revoke item working
             Debug.Log("Inventory Count: " + result.Inventory.Count);
-            itemInstanceId = result.Inventory[0].ItemInstanceId;
             foreach (var item in result.Inventory)
             {
                 Debug.Log(item.DisplayName);
+                Debug.Log(item.ItemInstanceId);
+                //Debug.Log(item.CustomData["Active"]);
             }
         }, (error) =>
         {
             Debug.Log("Listing Inventory Failed!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    public void SetCustomDataOnItem()
+    {
+        var request = new RunCloudScriptRequest()
+        {
+            ActionId = "setCustomDataToGrantedItem",
+            Params = new { characterId = PlayFabDataStore.characterId }
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log("Custom Data Set!");
+        },
+        (error) =>
+        {
+            Debug.Log("Item not Revoked!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });

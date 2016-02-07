@@ -70,6 +70,7 @@ public class PlayFabMainMenu : MonoBehaviour {
                 playerButtonText.text = "Enter World";
                 isCharacterExist = true;
                 PlayFabDataStore.characterId = result.Characters[0].CharacterId;
+                Debug.Log(result.Characters[0].CharacterId);
             }
         }, (error) =>
         {
@@ -97,16 +98,18 @@ public class PlayFabMainMenu : MonoBehaviour {
         var request = new RunCloudScriptRequest()
         {
             ActionId = "newCharacter",
-            Params = new { characterName = characterNameText.text, characterType = "Player" }//set to whatever default class is
+            Params = new { characterName = characterNameText.text, characterType = "Player", playerData = PlayFabDataStore.playerData }//set to whatever default class is
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-            characterInfo.text = characterNameText.text;
-            characterNameText.gameObject.SetActive(false);
-            characterInfo.gameObject.SetActive(true);
-            PlayFabDataStore.characterId = result.Results.ToString();
-            Debug.Log("Character ID" + PlayFabDataStore.characterId);
-            playerButtonText.text = "Enter World";
+            /* characterInfo.text = characterNameText.text;
+             characterNameText.gameObject.SetActive(false);
+             characterInfo.gameObject.SetActive(true);
+             PlayFabDataStore.characterId = result.Results.;
+             Debug.Log("Character ID result" + result.ResultsEncoded);
+             Debug.Log("Character ID" + PlayFabDataStore.characterId);
+             playerButtonText.text = "Enter World";*/
+            OnEnable();
             isCharacterExist = true;
             
         }, (error) =>

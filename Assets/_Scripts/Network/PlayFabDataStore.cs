@@ -39,6 +39,8 @@ public class PlayFabDataStore : MonoBehaviour
         {"Intellect", "5" },
         {"Dexterity", "5" },
         {"Vitality", "5" },
+        {"Spirit", "5" },
+        {"Armor", "5" },
         {"Critical Chance", "0" },
         {"Weapon Damage", "0" }
     };

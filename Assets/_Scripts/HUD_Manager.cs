@@ -18,6 +18,8 @@ public class HUD_Manager : MonoBehaviour {
 
     private GameObject player;
     private int playerHealth;
+    private bool runeUpdate = false;
+    private bool runeSelect = false;
 	
 
 	void Update ()
@@ -49,11 +51,10 @@ public class HUD_Manager : MonoBehaviour {
     public void ToggleRunePanel()
     {
         runePanel.gameObject.SetActive(!runePanel.gameObject.activeInHierarchy);
-        Debug.Log(PlayFabDataStore.playFabId);
-        Debug.Log(PlayFabDataStore.characterId);
 
-        if (runePanel.gameObject.activeInHierarchy)
+        if (!runeUpdate)
         {
+            runeUpdate = true;
             var request = new GetCharacterInventoryRequest()
             {
                 CharacterId = PlayFabDataStore.characterId,
@@ -61,29 +62,23 @@ public class HUD_Manager : MonoBehaviour {
             };
             PlayFabClientAPI.GetCharacterInventory(request, (result) =>
             {
-                //Debug.Log(result.Inventory.Count);
                 foreach (var item in result.Inventory)
                 {
-                    //Debug.Log(item.DisplayName);
-                    //PlayFabDataStore.playerSkillRunes.Add(item.DisplayName, 5);
-                    //Debug.Log("Runes: " + Runes.runes[item.DisplayName]);
 
                     if (item.ItemClass == "Skill")
                     {
-                        //Debug.Log("Skill: " + item.DisplayName);
                         PlayFabDataStore.playerSkillRunes.Add(item.DisplayName, Runes.runes[item.DisplayName]);
                     }
                     if (item.ItemClass == "Modifier")
                     {
-                        //Debug.Log("Modifier: " + item.DisplayName);
                         PlayFabDataStore.playerModifierRunes.Add(item.DisplayName, Runes.runes[item.DisplayName]);
                     }
                 }
             }, (error) =>
             {
                 Debug.Log("Runes cannot retrieved!");
-                //Debug.Log(error.ErrorMessage);
-                //Debug.Log(error.ErrorDetails);
+                Debug.Log(error.ErrorMessage);
+                Debug.Log(error.ErrorDetails);
             });
         }
         
@@ -91,17 +86,20 @@ public class HUD_Manager : MonoBehaviour {
 
     public void SelectSkillRunes(string runeName)
     {
-        Debug.Log("SELECTED");
-        //Debug.Log(PlayFabDataStore.playerSkillRunes["Slam"]);
-        PlayFabDataStore.playerActiveSkillRunes.Add(PlayFabDataStore.playerSkillRunes[runeName], runeName);
-        //Debug.Log(PlayFabDataStore.playerActiveSkillRunes[0]);
-    }
-
-    public void DeselectSkillRunes(string runeName)
-    {
-        Debug.Log("DESELECTED");
-        PlayFabDataStore.playerActiveSkillRunes.Remove(PlayFabDataStore.playerSkillRunes[runeName]);
-
+        //Not working for more than 1 skill, will fix when rune UI is ready
+        runeSelect = !runeSelect;
+        Debug.Log(runeSelect);
+        if(runeSelect)
+        {
+            Debug.Log("SELECTED");
+            PlayFabDataStore.playerActiveSkillRunes.Add(PlayFabDataStore.playerSkillRunes[runeName], runeName);
+        }
+        else
+        {
+            Debug.Log("DESELECTED");
+            PlayFabDataStore.playerActiveSkillRunes.Remove(PlayFabDataStore.playerSkillRunes[runeName]);
+        }
+        
     }
 
 }

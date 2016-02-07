@@ -12,7 +12,17 @@ handlers.newCharacter = function (args)
     CharacterName: args.characterName,
     CharacterType: args.characterType
   });
-  return characterID;		
+  return characterID;
+}
+
+handlers.setCustomDataToGrantedItem = function(args)
+{
+  var request = server.UpdateUserInventoryItemCustomData({
+    PlayFabId: currentPlayerId,
+    CharacterId: args.characterId,
+    ItemInstanceId: "74D47A4D583418D7",
+    Data: ["Active","0"]
+  });
 }
 
 handlers.grantItemsToCharacter = function (args)
@@ -20,8 +30,7 @@ handlers.grantItemsToCharacter = function (args)
   var request = server.GrantItemsToCharacter({
     PlayFabId: currentPlayerId,
     CharacterId: args.characterId,
-    CatalogVersion: args.catalogVersion,
-    ItemIds: ["Runes_Slam"]
+    ItemIds: args.items
   });
   return request;		
 }
