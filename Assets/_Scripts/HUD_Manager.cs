@@ -58,7 +58,7 @@ public class HUD_Manager : MonoBehaviour {
             var request = new GetCharacterInventoryRequest()
             {
                 CharacterId = PlayFabDataStore.characterId,
-                CatalogVersion = "Runes"
+                //CatalogVersion = "Runes"
             };
             PlayFabClientAPI.GetCharacterInventory(request, (result) =>
             {
@@ -67,11 +67,11 @@ public class HUD_Manager : MonoBehaviour {
 
                     if (item.ItemClass == "Skill")
                     {
-                        PlayFabDataStore.playerSkillRunes.Add(item.DisplayName, Runes.runes[item.DisplayName]);
+                        PlayFabDataStore.playerSkillRunes.Add(item.ItemId, Runes.runes[item.ItemId]);
                     }
                     if (item.ItemClass == "Modifier")
                     {
-                        PlayFabDataStore.playerModifierRunes.Add(item.DisplayName, Runes.runes[item.DisplayName]);
+                        PlayFabDataStore.playerModifierRunes.Add(item.ItemId, Runes.runes[item.ItemId]);
                     }
                 }
             }, (error) =>

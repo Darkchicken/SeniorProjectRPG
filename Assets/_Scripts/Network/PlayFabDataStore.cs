@@ -16,7 +16,7 @@ public class PlayFabDataStore : MonoBehaviour
     public static Dictionary<string, int> playerSkillRunes = new Dictionary<string, int>();
     public static Dictionary<string, int> playerModifierRunes = new Dictionary<string, int>();
     public static Dictionary<int, string> playerActiveSkillRunes = new Dictionary<int, string>();
-    public static Dictionary<string, int> playerActiveModifierRunes = new Dictionary<string, int>();
+    public static Dictionary<string, int> playerActiveModifierRunes = new Dictionary<string, int>(); 
 
     //Player
     public static int playerLevel;
