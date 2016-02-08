@@ -85,7 +85,8 @@ public class PlayFabMainMenu : MonoBehaviour {
     {
         if(isCharacterExist)
         {
-            SceneManager.LoadScene("TestMovement");
+            //SceneManager.LoadScene("TestMovement");
+            PhotonNetwork.LoadLevel("TestMovement");
         }
         else
         {

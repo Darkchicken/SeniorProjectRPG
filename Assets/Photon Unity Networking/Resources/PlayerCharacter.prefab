@@ -3719,11 +3719,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163798}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41d170d8b50792447ac7111470a7f136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopDistanceForAttack: 2
 --- !u!114 &11484718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3735,9 +3736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e163e09b70f89c449278b57fd7e1a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopDistanceForAttack: 2
   canMove: 1
   isInCombat: 0
-  stopDistanceForAttack: 2
 --- !u!114 &11496368
 MonoBehaviour:
   m_ObjectHideFlags: 1
