@@ -2,20 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerCombatManager : PlayerAttack
+public class PlayerCombatManager : Runes
 {
 
-    public static GameObject targetEnemy;
-    public static PlayerCombatManager playerCombatManager;
+    
     public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
-    public float stopDistanceForAttack = 2f; //sets by PlayerAttack script
+     //sets by PlayerAttack script
 
-    private Vector3 position;
-    private NavMeshAgent controller;
-    private Animator playerAnimation;
     private RaycastHit hit;
-    private int skillAttackRange;
+    //private int skillAttackRange;
     private string actionBarSkillId;
 
     private float skill_1_Timer = 0f;
@@ -25,17 +21,11 @@ public class PlayerCombatManager : PlayerAttack
     private int skillSlot = 0;
     private bool autoAttack = false;
 
-
     void Start()
     {
-        playerAnimation = GetComponent<Animator>();
-        controller = GetComponent<NavMeshAgent>();
-        position = transform.position;
-        playerCombatManager = this;
         
-    }
 
-    
+    }
 
     void Update()
     {
@@ -44,8 +34,12 @@ public class PlayerCombatManager : PlayerAttack
         {
             locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
-            stopDistanceForAttack = playerActiveSkillRunes[skillSlot].attackRange;
-            PrimarySkill();
+            if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            {
+                Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
+                actionBarSkillId = null;
+            }
+            
 
         }
 
@@ -53,14 +47,11 @@ public class PlayerCombatManager : PlayerAttack
         if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove)
         {
             skillSlot = 6;
-            if (resource >= playerActiveSkillRunes[skillSlot].resourceUsage)
+            if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
-                controller.Stop();
-                controller.ResetPath();
-                stopDistanceForAttack = 2f;
-                SecondarySkill();
-                actionBarSkillId = null;           
-            }
+                Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
+                actionBarSkillId = null;
+            }          
             else
             {
                 locatePosition();
@@ -96,27 +87,6 @@ public class PlayerCombatManager : PlayerAttack
             }
         }
 
-        //PlayerMovement Update
-        /*if (isMoving && controller.velocity == Vector3.zero)
-        {
-            idleTimer += Time.deltaTime;
-            if (idleTimer >= 0.04f)
-            {
-                isMoving = false;
-                targetEnemy = null;
-                playerAnimation.SetBool("IsMoving", false);
-                if (isInCombat)
-                {
-                    playerAnimation.SetTrigger("IDLE WEAPON");
-                }
-                else
-                {
-                    playerAnimation.SetTrigger("IDLE");
-                }
-                idleTimer = 0f;
-            }
-        }*/
-
         if (targetEnemy != null && isMoving)
         {
             if (targetEnemy.CompareTag("Enemy"))
@@ -127,26 +97,7 @@ public class PlayerCombatManager : PlayerAttack
         }
 
     }
-
-    bool InRangeForAttack()
-    {
-        if(targetEnemy != null)
-        {
-            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= skillAttackRange)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        return false;
-        
-    }
   
-
     void locatePosition()
     {
 
@@ -193,23 +144,11 @@ public class PlayerCombatManager : PlayerAttack
         }
     }
 
-    public void SetActiveSkillRune(Rune activeRune, int skillSlot)
-    {
-        playerActiveSkillRunes.Add(skillSlot, activeRune);
-    }
 
     public void OnButtonClick(string id)
     {
         actionBarSkillId = id;
     }
 
-    public int GetPlayerResource()
-    {
-        return resource;
-    }
 
-    public void SetPlayerResource(int generate)
-    {
-        resource += generate;
-    }
 }

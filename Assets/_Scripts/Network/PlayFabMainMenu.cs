@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,58 +11,73 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     public Text characterInfo;
     public Button playerButton;
+    public Button updateButton;
     public Text playerButtonText;
     public InputField characterNameText;
+    public Canvas cheatPanel;
+    
 
     private bool isCharacterExist;
 
+
+    void Update()
+    {
+        if(Input.GetKeyDown("1"))
+        {
+            cheatPanel.gameObject.SetActive(!cheatPanel.gameObject.activeInHierarchy);
+        }
+    }
     void OnEnable()
     {
         //////access newest version of cloud script
-        GetCloudScriptUrlRequest cloudRequest = new GetCloudScriptUrlRequest()
+        var cloudRequest = new GetCloudScriptUrlRequest()
         {
             Testing = false
         };
 
-        PlayFabClientAPI.GetCloudScriptUrl(cloudRequest, (result) => {
+        PlayFabClientAPI.GetCloudScriptUrl(cloudRequest, (result) =>
+        {
             Debug.Log("URL is set");
         },
-        (error) => {
+        (error) =>
+        {
             Debug.Log("Failed to retrieve Cloud Script URL");
         });
         //////////////////////////////////////////
 
         playerButton.onClick.AddListener(CreateNewEnterWorld);
-        
+
         var request = new ListUsersCharactersRequest()
         {
             PlayFabId = PlayFabDataStore.playFabId
         };
 
-        PlayFabClientAPI.GetAllUsersCharacters(request, CharacterDataResult, Error);
-
-    }
-
-    void CharacterDataResult(ListUsersCharactersResult result)
-    {
-
-        if(result.Characters.Count == 0)
+        PlayFabClientAPI.GetAllUsersCharacters(request, (result) =>
         {
-            characterInfo.text = "Player not found!";
-            playerButtonText.text = "Create New";
-            characterNameText.gameObject.SetActive(true);
-            isCharacterExist = false;
-            
-        }
-        else
+            if (result.Characters.Count == 0)
+            {
+                characterInfo.text = "Player not found!";
+                playerButtonText.text = "Create New";
+                characterNameText.gameObject.SetActive(true);
+                isCharacterExist = false;
+
+            }
+            else
+            {
+                characterInfo.text = "" + result.Characters[0].CharacterName;
+                characterInfo.gameObject.SetActive(true);
+                characterNameText.gameObject.SetActive(false);
+                playerButtonText.text = "Enter World";
+                isCharacterExist = true;
+                PlayFabDataStore.characterId = result.Characters[0].CharacterId;
+                Debug.Log(result.Characters[0].CharacterId);
+            }
+        }, (error) =>
         {
-            characterInfo.text = "" + result.Characters[0].CharacterName;
-            characterInfo.gameObject.SetActive(true);
-            characterNameText.gameObject.SetActive(false);
-            playerButtonText.text = "Enter World";
-            isCharacterExist = true;
-            PlayFabDataStore.characterId = result.Characters[0].CharacterId;
-        }
+            Debug.Log("Can't retrieve character!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
 
     }
 
@@ -69,7 +85,8 @@ public class PlayFabMainMenu : MonoBehaviour {
     {
         if(isCharacterExist)
         {
-
+            //SceneManager.LoadScene("TestMovement");
+            PhotonNetwork.LoadLevel("TestMovement");
         }
         else
         {
@@ -79,18 +96,23 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     void CreateNewCharacter()
     {
-        RunCloudScriptRequest request = new RunCloudScriptRequest()
+        var request = new RunCloudScriptRequest()
         {
             ActionId = "newCharacter",
-            Params = new { characterName = characterNameText.text, characterType = "Warrior" }//set to whatever default class is
+            Params = new { characterName = characterNameText.text, characterType = "Player", playerData = PlayFabDataStore.playerData }//set to whatever default class is
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-            characterInfo.text = characterNameText.text;
-            characterNameText.gameObject.SetActive(false);
-            characterInfo.gameObject.SetActive(true);
-            playerButtonText.text = "Enter World";
+            /* characterInfo.text = characterNameText.text;
+             characterNameText.gameObject.SetActive(false);
+             characterInfo.gameObject.SetActive(true);
+             PlayFabDataStore.characterId = result.Results.;
+             Debug.Log("Character ID result" + result.ResultsEncoded);
+             Debug.Log("Character ID" + PlayFabDataStore.characterId);
+             playerButtonText.text = "Enter World";*/
+            OnEnable();
             isCharacterExist = true;
+            
         }, (error) =>
         {
             Debug.Log("Character not created!");
@@ -100,11 +122,9 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     }
 
-    void Error(PlayFabError error)
-    {
-        Debug.Log(error.ErrorMessage);
-        Debug.Log(error.ErrorDetails);
-    }
+
+
+
 
 
     

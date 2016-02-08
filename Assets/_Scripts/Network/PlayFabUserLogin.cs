@@ -17,6 +17,8 @@ public class PlayFabUserLogin : MonoBehaviour {
     public Text registerErrorText;
     public Button registerButton;
     public Canvas gameMenu;
+    private string PlayFabId;
+  
 
 
     void Start ()
@@ -58,6 +60,7 @@ public class PlayFabUserLogin : MonoBehaviour {
         PlayFabClientAPI.RegisterPlayFabUser(request, (result) =>
         {
             LoginRegisterSuccess(result.PlayFabId, result.SessionTicket);
+            
         }, (error) =>
         {
             registerErrorText.text = error.ErrorMessage;
@@ -72,6 +75,51 @@ public class PlayFabUserLogin : MonoBehaviour {
         PlayFabDataStore.sessionTicket = SessionTicket;
         loginErrorText.gameObject.transform.parent.gameObject.SetActive(false);
         gameMenu.gameObject.SetActive(true);
+        //added for photon
+        this.PlayFabId = PlayFabId;
+        GetPhotonToken();
 
+
+        /* Playfab Photon Token
+        var request = new GetPhotonAuthenticationTokenRequest()
+        {
+            PhotonApplicationId = "67a8e458-b05b-463b-9abe-ce766a75b832".Trim()
+        };
+
+        PlayFabClientAPI.GetPhotonAuthenticationToken(request, (result) =>
+        {
+            Debug.Log("Photon Token Authenticated!");
+        },
+        (error) =>
+        {
+            Debug.Log("Photon Token NOT Authenticated!");
+        });
+        */
     }
+   
+    void GetPhotonToken()
+    {
+        
+        GetPhotonAuthenticationTokenRequest request = new GetPhotonAuthenticationTokenRequest();
+        request.PhotonApplicationId = "67a8e458-b05b-463b-9abe-ce766a75b832".Trim();
+        PlayFabClientAPI.GetPhotonAuthenticationToken(request,(result) =>
+        {
+            string photonToken = result.PhotonCustomAuthenticationToken;
+            Debug.Log(string.Format("Yay, logged in in session token: {0}", photonToken));
+            PhotonNetwork.AuthValues = new AuthenticationValues();
+            PhotonNetwork.AuthValues.AuthType = CustomAuthenticationType.Custom;
+            PhotonNetwork.AuthValues.AddAuthParameter("username", this.PlayFabId);
+            PhotonNetwork.AuthValues.AddAuthParameter("Token", result.PhotonCustomAuthenticationToken);
+            PhotonNetwork.AuthValues.UserId = this.PlayFabId;
+            PhotonNetwork.ConnectUsingSettings("1.0");
+        }, (error) =>
+        {
+            registerErrorText.text = error.ErrorMessage;
+            registerErrorText.gameObject.SetActive(true);
+            PlayFabErrorHandler.HandlePlayFabError(error);
+        });
+       
+    }
+
+   
 }
