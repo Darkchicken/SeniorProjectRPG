@@ -10,6 +10,7 @@ public class PlayFabDataStore : MonoBehaviour
     public static string sessionTicket;
     public static string playFabId;
     public static string characterId;
+    public static string characterName;
     public Text[] playerStats;
     
 
