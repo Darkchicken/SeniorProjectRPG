@@ -9,14 +9,14 @@ public class PlayFabUserLogin : MonoBehaviour {
 
     public InputField loginUsernameField;
     public InputField loginPasswordField;
-    //public Text loginErrorText;
+    public Text loginErrorText;
     public Button loginButton;
-    //public InputField registerUsernameField;
-    //public InputField registerPasswordField;
-    //public InputField registerEmailField;
-    //public Text registerErrorText;
-    //public Button registerButton;
-    public Canvas characterMenu;
+    public InputField registerUsernameField;
+    public InputField registerPasswordField;
+    public InputField registerEmailField;
+    public Text registerErrorText;
+    public Button registerButton;
+    public Canvas gameMenu;
     private string PlayFabId;
   
 
@@ -24,7 +24,7 @@ public class PlayFabUserLogin : MonoBehaviour {
     void Start ()
     {
         loginButton.onClick.AddListener(Login);
-        //registerButton.onClick.AddListener(Register);
+        registerButton.onClick.AddListener(Register);
 	}
 
     public void Login()
@@ -41,14 +41,14 @@ public class PlayFabUserLogin : MonoBehaviour {
             LoginRegisterSuccess(result.PlayFabId, result.SessionTicket);
         }, (error) =>
         {
-            //loginErrorText.text = error.ErrorMessage;
-            //loginErrorText.gameObject.SetActive(true);
+            loginErrorText.text = error.ErrorMessage;
+            loginErrorText.gameObject.SetActive(true);
             PlayFabErrorHandler.HandlePlayFabError(error);
         });
     }
 
 
-   /* public void Register()
+    public void Register()
     {
         var request = new RegisterPlayFabUserRequest()
         {
@@ -67,14 +67,14 @@ public class PlayFabUserLogin : MonoBehaviour {
             registerErrorText.gameObject.SetActive(true);
             PlayFabErrorHandler.HandlePlayFabError(error);
         });
-    }*/
+    }
 
     private void LoginRegisterSuccess(string PlayFabId, string SessionTicket)
     {
         PlayFabDataStore.playFabId = PlayFabId;
         PlayFabDataStore.sessionTicket = SessionTicket;
-        //loginErrorText.gameObject.transform.parent.gameObject.SetActive(false);
-        characterMenu.gameObject.SetActive(true);
+        loginErrorText.gameObject.transform.parent.gameObject.SetActive(false);
+        gameMenu.gameObject.SetActive(true);
         //added for photon
         this.PlayFabId = PlayFabId;
         GetPhotonToken();
@@ -114,8 +114,8 @@ public class PlayFabUserLogin : MonoBehaviour {
             PhotonNetwork.ConnectUsingSettings("1.0");
         }, (error) =>
         {
-            //registerErrorText.text = error.ErrorMessage;
-            //registerErrorText.gameObject.SetActive(true);
+            registerErrorText.text = error.ErrorMessage;
+            registerErrorText.gameObject.SetActive(true);
             PlayFabErrorHandler.HandlePlayFabError(error);
         });
        

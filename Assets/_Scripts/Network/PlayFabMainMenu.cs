@@ -9,25 +9,23 @@ using PlayFab.ClientModels;
 
 public class PlayFabMainMenu : MonoBehaviour {
 
-    public UICharacterSelect_List listComponent;
-    //public Text characterInfo;
-    public Button playButton;
-    public Button createButton;
-    //public Button updateButton;
-    //public Text playerButtonText;
-    //public InputField characterNameText;
-    //public Canvas cheatPanel;
+    public Text characterInfo;
+    public Button playerButton;
+    public Button updateButton;
+    public Text playerButtonText;
+    public InputField characterNameText;
+    public Canvas cheatPanel;
     
 
-    //private bool isCharacterExist;
+    private bool isCharacterExist;
 
 
     void Update()
     {
-        /*if(Input.GetKeyDown("1"))
+        if(Input.GetKeyDown("1"))
         {
             cheatPanel.gameObject.SetActive(!cheatPanel.gameObject.activeInHierarchy);
-        }*/
+        }
     }
     void OnEnable()
     {
@@ -47,8 +45,7 @@ public class PlayFabMainMenu : MonoBehaviour {
         });
         //////////////////////////////////////////
 
-        playButton.onClick.AddListener(Play);
-        createButton.onClick.AddListener(CreateNewCharacter);
+        playerButton.onClick.AddListener(CreateNewEnterWorld);
 
         var request = new ListUsersCharactersRequest()
         {
@@ -57,28 +54,24 @@ public class PlayFabMainMenu : MonoBehaviour {
 
         PlayFabClientAPI.GetAllUsersCharacters(request, (result) =>
         {
-
-            if (this.listComponent != null)
+            if (result.Characters.Count == 0)
             {
-                // Empty out the list
-                if (true)
-                {
-                    foreach (Transform trans in listComponent.transform)
-                    {
-                        Destroy(trans.gameObject);
-                    }
-                }
-                foreach (var character in result.Characters)
-                {
-                    listComponent.AddCharacter(character.CharacterName, "", character.CharacterType, 1);
-                    PlayFabDataStore.characterId = character.CharacterId;
-                    PlayFabDataStore.characterName = character.CharacterName;
-                }
+                characterInfo.text = "Player not found!";
+                playerButtonText.text = "Create New";
+                characterNameText.gameObject.SetActive(true);
+                isCharacterExist = false;
 
             }
-
-            
-
+            else
+            {
+                characterInfo.text = "" + result.Characters[0].CharacterName;
+                characterInfo.gameObject.SetActive(true);
+                characterNameText.gameObject.SetActive(false);
+                playerButtonText.text = "Enter World";
+                isCharacterExist = true;
+                PlayFabDataStore.characterId = result.Characters[0].CharacterId;
+                Debug.Log(result.Characters[0].CharacterId);
+            }
         }, (error) =>
         {
             Debug.Log("Can't retrieve character!");
@@ -88,18 +81,20 @@ public class PlayFabMainMenu : MonoBehaviour {
 
     }
 
-    void Play()
+    void CreateNewEnterWorld()
     {
-        SceneManager.LoadScene("TestMovement");
-        //PhotonNetwork.LoadLevel("TestMovement");
+        if(isCharacterExist)
+        {
+            //SceneManager.LoadScene("TestMovement");
+            PhotonNetwork.LoadLevel("TestMovement");
+        }
+        else
+        {
+            CreateNewCharacter();
+        }
     }
 
     void CreateNewCharacter()
-    {
-
-    }
-
-   /* void CreateNewCharacter()
     {
         var request = new RunCloudScriptRequest()
         {
@@ -108,13 +103,13 @@ public class PlayFabMainMenu : MonoBehaviour {
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-             characterInfo.text = characterNameText.text;
+            /* characterInfo.text = characterNameText.text;
              characterNameText.gameObject.SetActive(false);
              characterInfo.gameObject.SetActive(true);
              PlayFabDataStore.characterId = result.Results.;
              Debug.Log("Character ID result" + result.ResultsEncoded);
              Debug.Log("Character ID" + PlayFabDataStore.characterId);
-             playerButtonText.text = "Enter World";
+             playerButtonText.text = "Enter World";*/
             OnEnable();
             isCharacterExist = true;
             
@@ -126,8 +121,30 @@ public class PlayFabMainMenu : MonoBehaviour {
         });
 
     }
-    */
-  
+
+
+
+
+
+
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     /*void OnEnable()
