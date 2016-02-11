@@ -283,26 +283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -335,26 +319,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -371,11 +339,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &18570124
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,26 +617,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -686,7 +640,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_IsClosed: 0
   m_TitleString: 556e6b6e6f776e
@@ -698,57 +653,21 @@ MonoBehaviour:
   m_ActiveSprite: {fileID: 21300000, guid: a9cc1b4d8a15c5c49a78e99866699637, type: 3}
   m_HighlighColorMultiplier: 1.45
   m_TitleText: {fileID: 497305644}
-  m_TitleNormalColor:
-    r: 0.49803922
-    g: 0.4117647
-    b: 0.3529412
-    a: 1
-  m_TitleClosedColor:
-    r: 0.3137255
-    g: 0.2627451
-    b: 0.23921569
-    a: 1
+  m_TitleNormalColor: {r: 0.49803922, g: 0.4117647, b: 0.3529412, a: 1}
+  m_TitleClosedColor: {r: 0.3137255, g: 0.2627451, b: 0.23921569, a: 1}
   m_ClosedText: {fileID: 889951531}
-  m_ClosedNormalColor:
-    r: 0.24705882
-    g: 0.19607843
-    b: 0.1764706
-    a: 1
+  m_ClosedNormalColor: {r: 0.24705882, g: 0.19607843, b: 0.1764706, a: 1}
   m_StatusText: {fileID: 262730850}
   m_StatusOnlineString: 4f6e6c696e65
-  m_StatusOnlineColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
+  m_StatusOnlineColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
   m_StatusOfflineString: 4f66666c696e65
-  m_StatusOfflineColor:
-    r: 0.4392157
-    g: 0.30980393
-    b: 0.2901961
-    a: 1
+  m_StatusOfflineColor: {r: 0.4392157, g: 0.30980393, b: 0.2901961, a: 1}
   m_PopulationText: {fileID: 319703546}
-  m_PopulationLowColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
-  m_PopulationMediumColor:
-    r: 0.8352941
-    g: 0.5568628
-    b: 0.28235295
-    a: 1
-  m_PopulationHighColor:
-    r: 0.45882353
-    g: 0.19607843
-    b: 0.1254902
-    a: 1
+  m_PopulationLowColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
+  m_PopulationMediumColor: {r: 0.8352941, g: 0.5568628, b: 0.28235295, a: 1}
+  m_PopulationHighColor: {r: 0.45882353, g: 0.19607843, b: 0.1254902, a: 1}
   m_CharactersText: {fileID: 805804582}
-  m_CharactersNormalColor:
-    r: 0.34117648
-    g: 0.30588236
-    b: 0.27058825
-    a: 1
+  m_CharactersNormalColor: {r: 0.34117648, g: 0.30588236, b: 0.27058825, a: 1}
 --- !u!1 &25809167
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +885,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Online
+  m_Text: 4f6e6c696e65
 --- !u!222 &26143204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1117,10 +1036,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 880821482}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93, y: 0}
+  m_SizeDelta: {x: 44, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &57057008
 MonoBehaviour:
@@ -1258,26 +1177,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1297,7 +1200,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_NameTextComponent: {fileID: 861230168}
   m_RaceTextComponent: {fileID: 359759992}
@@ -1305,155 +1209,43 @@ MonoBehaviour:
   m_LevelTextComponent: {fileID: 1755267674}
   m_LevelLabelTextComponent: {fileID: 206919327}
   m_NameColors:
-    m_NormalColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_HighlightedColor:
-      r: 0.64705884
-      g: 0.5254902
-      b: 0.44313726
-      a: 1
-    m_PressedColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_ActiveColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.93333334
-      g: 0.78431374
-      b: 0.6862745
-      a: 1
-    m_ActivePressedColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_HighlightedColor: {r: 0.64705884, g: 0.5254902, b: 0.44313726, a: 1}
+    m_PressedColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_ActiveColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_ActiveHighlightedColor: {r: 0.93333334, g: 0.78431374, b: 0.6862745, a: 1}
+    m_ActivePressedColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_RaceColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ClassColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_LevelColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_DeleteButton: {fileID: 1075761232}
@@ -1491,10 +1283,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 341695843}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 14, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &68614723
 MonoBehaviour:
@@ -1692,7 +1484,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Beta
+  m_Text: 42657461
 --- !u!114 &92733407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,10 +1557,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1885030452}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49, y: 0}
+  m_SizeDelta: {x: 41, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &110640547
 MonoBehaviour:
@@ -2015,10 +1807,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1910485182}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 29, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &206919327
 MonoBehaviour:
@@ -2247,7 +2039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Offline
+  m_Text: 4f66666c696e65
 --- !u!222 &262730851
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2453,26 +2245,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.3372549
-      g: 0.24705882
-      b: 0.21176471
-      a: 0.7058824
-    m_HighlightedColor:
-      r: 0.62352943
-      g: 0.49019608
-      b: 0.4117647
-      a: 0.7058824
-    m_PressedColor:
-      r: 0.22352941
-      g: 0.13333334
-      b: 0.11764706
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.3372549, g: 0.24705882, b: 0.21176471, a: 0.7058824}
+    m_HighlightedColor: {r: 0.62352943, g: 0.49019608, b: 0.4117647, a: 0.7058824}
+    m_PressedColor: {r: 0.22352941, g: 0.13333334, b: 0.11764706, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   m_SpriteState:
@@ -2489,11 +2265,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &292031651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2507,26 +2285,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.34117648
-      g: 0.24313726
-      b: 0.21176471
-      a: 1
-    m_HighlightedColor:
-      r: 0.62352943
-      g: 0.49019608
-      b: 0.4117647
-      a: 1
-    m_PressedColor:
-      r: 0.22352941
-      g: 0.13333334
-      b: 0.11764706
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.34117648, g: 0.24313726, b: 0.21176471, a: 1}
+    m_HighlightedColor: {r: 0.62352943, g: 0.49019608, b: 0.4117647, a: 1}
+    m_PressedColor: {r: 0.22352941, g: 0.13333334, b: 0.11764706, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   m_SpriteState:
@@ -2620,26 +2382,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2659,7 +2405,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_NameTextComponent: {fileID: 620108949}
   m_RaceTextComponent: {fileID: 110640548}
@@ -2667,155 +2414,43 @@ MonoBehaviour:
   m_LevelTextComponent: {fileID: 715151105}
   m_LevelLabelTextComponent: {fileID: 635791295}
   m_NameColors:
-    m_NormalColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_HighlightedColor:
-      r: 0.64705884
-      g: 0.5254902
-      b: 0.44313726
-      a: 1
-    m_PressedColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_ActiveColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.93333334
-      g: 0.78431374
-      b: 0.6862745
-      a: 1
-    m_ActivePressedColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_HighlightedColor: {r: 0.64705884, g: 0.5254902, b: 0.44313726, a: 1}
+    m_PressedColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_ActiveColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_ActiveHighlightedColor: {r: 0.93333334, g: 0.78431374, b: 0.6862745, a: 1}
+    m_ActivePressedColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_RaceColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ClassColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_LevelColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_DeleteButton: {fileID: 2096431514}
@@ -3216,10 +2851,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1910485182}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49, y: 0}
+  m_SizeDelta: {x: 41, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &359759991
 MonoBehaviour:
@@ -3830,11 +3465,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e554957696e646f772b5472616e736974696f6e426567696e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIWindow+TransitionBeginEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onTransitionComplete:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e554957696e646f772b5472616e736974696f6e436f6d706c6574654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIWindow+TransitionCompleteEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &460687592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,7 +3880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unknown
+  m_Text: 556e6b6e6f776e
 --- !u!222 &497305645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4545,10 +4182,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5622955}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93, y: 0}
+  m_SizeDelta: {x: 44, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &566390348
 MonoBehaviour:
@@ -4945,10 +4582,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1885030452}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 29, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &635791294
 MonoBehaviour:
@@ -5086,26 +4723,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5125,7 +4746,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_NameTextComponent: {fileID: 711148255}
   m_RaceTextComponent: {fileID: 1632128992}
@@ -5133,155 +4755,43 @@ MonoBehaviour:
   m_LevelTextComponent: {fileID: 68614723}
   m_LevelLabelTextComponent: {fileID: 2031514942}
   m_NameColors:
-    m_NormalColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_HighlightedColor:
-      r: 0.64705884
-      g: 0.5254902
-      b: 0.44313726
-      a: 1
-    m_PressedColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_ActiveColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.93333334
-      g: 0.78431374
-      b: 0.6862745
-      a: 1
-    m_ActivePressedColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_HighlightedColor: {r: 0.64705884, g: 0.5254902, b: 0.44313726, a: 1}
+    m_PressedColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_ActiveColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_ActiveHighlightedColor: {r: 0.93333334, g: 0.78431374, b: 0.6862745, a: 1}
+    m_ActivePressedColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_RaceColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ClassColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_LevelColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_DeleteButton: {fileID: 1487787136}
@@ -5446,26 +4956,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.5019608
-      g: 0.41568628
-      b: 0.34901962
-      a: 1
-    m_HighlightedColor:
-      r: 0.92156863
-      g: 0.7921569
-      b: 0.69411767
-      a: 1
-    m_PressedColor:
-      r: 0.5019608
-      g: 0.41568628
-      b: 0.34901962
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.5019608, g: 0.41568628, b: 0.34901962, a: 1}
+    m_HighlightedColor: {r: 0.92156863, g: 0.7921569, b: 0.69411767, a: 1}
+    m_PressedColor: {r: 0.5019608, g: 0.41568628, b: 0.34901962, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   m_SpriteState:
@@ -5499,26 +4993,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5547,11 +5025,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &653506387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5657,26 +5137,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5693,11 +5157,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &672161000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5711,26 +5177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6073,10 +5523,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1885030452}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 14, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &715151104
 MonoBehaviour:
@@ -6258,26 +5708,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6310,26 +5744,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6346,11 +5764,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &743043040
 GameObject:
   m_ObjectHideFlags: 0
@@ -6455,7 +5875,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Online
+  m_Text: 4f6e6c696e65
 --- !u!222 &743043045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6998,10 +6418,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5622955}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49, y: 0}
+  m_SizeDelta: {x: 41, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &821281142
 MonoBehaviour:
@@ -7414,10 +6834,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 880821482}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 14, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &871311102
 MonoBehaviour:
@@ -7794,26 +7214,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7833,7 +7237,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_IsClosed: 1
   m_TitleString: 42657461
@@ -7845,57 +7250,21 @@ MonoBehaviour:
   m_ActiveSprite: {fileID: 21300000, guid: a9cc1b4d8a15c5c49a78e99866699637, type: 3}
   m_HighlighColorMultiplier: 1.45
   m_TitleText: {fileID: 92733406}
-  m_TitleNormalColor:
-    r: 0.49803922
-    g: 0.4117647
-    b: 0.3529412
-    a: 1
-  m_TitleClosedColor:
-    r: 0.3137255
-    g: 0.2627451
-    b: 0.23921569
-    a: 1
+  m_TitleNormalColor: {r: 0.49803922, g: 0.4117647, b: 0.3529412, a: 1}
+  m_TitleClosedColor: {r: 0.3137255, g: 0.2627451, b: 0.23921569, a: 1}
   m_ClosedText: {fileID: 1817046497}
-  m_ClosedNormalColor:
-    r: 0.24705882
-    g: 0.19607843
-    b: 0.1764706
-    a: 1
+  m_ClosedNormalColor: {r: 0.24705882, g: 0.19607843, b: 0.1764706, a: 1}
   m_StatusText: {fileID: 26143203}
   m_StatusOnlineString: 4f6e6c696e65
-  m_StatusOnlineColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
+  m_StatusOnlineColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
   m_StatusOfflineString: 4f66666c696e65
-  m_StatusOfflineColor:
-    r: 0.4392157
-    g: 0.30980393
-    b: 0.2901961
-    a: 1
+  m_StatusOfflineColor: {r: 0.4392157, g: 0.30980393, b: 0.2901961, a: 1}
   m_PopulationText: {fileID: 1871234068}
-  m_PopulationLowColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
-  m_PopulationMediumColor:
-    r: 0.8352941
-    g: 0.5568628
-    b: 0.28235295
-    a: 1
-  m_PopulationHighColor:
-    r: 0.45882353
-    g: 0.19607843
-    b: 0.1254902
-    a: 1
+  m_PopulationLowColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
+  m_PopulationMediumColor: {r: 0.8352941, g: 0.5568628, b: 0.28235295, a: 1}
+  m_PopulationHighColor: {r: 0.45882353, g: 0.19607843, b: 0.1254902, a: 1}
   m_CharactersText: {fileID: 1716729445}
-  m_CharactersNormalColor:
-    r: 0.34117648
-    g: 0.30588236
-    b: 0.27058825
-    a: 1
+  m_CharactersNormalColor: {r: 0.34117648, g: 0.30588236, b: 0.27058825, a: 1}
 --- !u!1 &889951527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8112,7 +7481,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Online
+  m_Text: 4f6e6c696e65
 --- !u!222 &925827984
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8530,26 +7899,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8569,7 +7922,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_NameTextComponent: {fileID: 928165840}
   m_RaceTextComponent: {fileID: 821281143}
@@ -8577,155 +7931,43 @@ MonoBehaviour:
   m_LevelTextComponent: {fileID: 1024089195}
   m_LevelLabelTextComponent: {fileID: 1905754208}
   m_NameColors:
-    m_NormalColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_HighlightedColor:
-      r: 0.64705884
-      g: 0.5254902
-      b: 0.44313726
-      a: 1
-    m_PressedColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_ActiveColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.93333334
-      g: 0.78431374
-      b: 0.6862745
-      a: 1
-    m_ActivePressedColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_HighlightedColor: {r: 0.64705884, g: 0.5254902, b: 0.44313726, a: 1}
+    m_PressedColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_ActiveColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_ActiveHighlightedColor: {r: 0.93333334, g: 0.78431374, b: 0.6862745, a: 1}
+    m_ActivePressedColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_RaceColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ClassColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_LevelColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_DeleteButton: {fileID: 1296752770}
@@ -8900,10 +8142,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 880821482}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 29, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &981433662
 MonoBehaviour:
@@ -9087,26 +8329,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.42352942
-      g: 0.36078432
-      b: 0.3137255
-      a: 1
-    m_HighlightedColor:
-      r: 0.63529414
-      g: 0.5529412
-      b: 0.49019608
-      a: 1
-    m_PressedColor:
-      r: 0.49803922
-      g: 0.42352942
-      b: 0.36862746
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.42352942, g: 0.36078432, b: 0.3137255, a: 1}
+    m_HighlightedColor: {r: 0.63529414, g: 0.5529412, b: 0.49019608, a: 1}
+    m_PressedColor: {r: 0.49803922, g: 0.42352942, b: 0.36862746, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -9139,26 +8365,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -9186,11 +8396,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1006085948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9204,26 +8416,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.2627451
-      g: 0.21568628
-      b: 0.18431373
-      a: 1
-    m_HighlightedColor:
-      r: 0.40784314
-      g: 0.34509805
-      b: 0.30588236
-      a: 1
-    m_PressedColor:
-      r: 0.32156864
-      g: 0.26666668
-      b: 0.22745098
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.2627451, g: 0.21568628, b: 0.18431373, a: 1}
+    m_HighlightedColor: {r: 0.40784314, g: 0.34509805, b: 0.30588236, a: 1}
+    m_PressedColor: {r: 0.32156864, g: 0.26666668, b: 0.22745098, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -9335,10 +8531,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5622955}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 14, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1024089194
 MonoBehaviour:
@@ -9690,26 +8886,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.6392157
-      g: 0.5411765
-      b: 0.4627451
-      a: 1
-    m_HighlightedColor:
-      r: 0.92156863
-      g: 0.7921569
-      b: 0.69411767
-      a: 1
-    m_PressedColor:
-      r: 0.5019608
-      g: 0.41568628
-      b: 0.34901962
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.6392157, g: 0.5411765, b: 0.4627451, a: 1}
+    m_HighlightedColor: {r: 0.92156863, g: 0.7921569, b: 0.69411767, a: 1}
+    m_PressedColor: {r: 0.5019608, g: 0.41568628, b: 0.34901962, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   m_SpriteState:
@@ -9743,26 +8923,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -9791,11 +8955,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1061253598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10086,26 +9252,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10125,7 +9275,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_NameTextComponent: {fileID: 1988469385}
   m_RaceTextComponent: {fileID: 1959479325}
@@ -10133,155 +9284,43 @@ MonoBehaviour:
   m_LevelTextComponent: {fileID: 871311103}
   m_LevelLabelTextComponent: {fileID: 981433662}
   m_NameColors:
-    m_NormalColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_HighlightedColor:
-      r: 0.64705884
-      g: 0.5254902
-      b: 0.44313726
-      a: 1
-    m_PressedColor:
-      r: 0.48235294
-      g: 0.37254903
-      b: 0.29803923
-      a: 1
-    m_ActiveColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.93333334
-      g: 0.78431374
-      b: 0.6862745
-      a: 1
-    m_ActivePressedColor:
-      r: 0.7490196
-      g: 0.627451
-      b: 0.54509807
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_HighlightedColor: {r: 0.64705884, g: 0.5254902, b: 0.44313726, a: 1}
+    m_PressedColor: {r: 0.48235294, g: 0.37254903, b: 0.29803923, a: 1}
+    m_ActiveColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_ActiveHighlightedColor: {r: 0.93333334, g: 0.78431374, b: 0.6862745, a: 1}
+    m_ActivePressedColor: {r: 0.7490196, g: 0.627451, b: 0.54509807, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_RaceColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ClassColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_LevelColors:
-    m_NormalColor:
-      r: 0.34901962
-      g: 0.27058825
-      b: 0.21960784
-      a: 1
-    m_HighlightedColor:
-      r: 0.47843137
-      g: 0.38039216
-      b: 0.3137255
-      a: 1
-    m_PressedColor:
-      r: 0.38039216
-      g: 0.29411766
-      b: 0.23529412
-      a: 1
-    m_ActiveColor:
-      r: 0.5176471
-      g: 0.41568628
-      b: 0.34509805
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.5921569
-      g: 0.47843137
-      b: 0.39607844
-      a: 1
-    m_ActivePressedColor:
-      r: 0.5058824
-      g: 0.40392157
-      b: 0.32941177
-      a: 1
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.34901962, g: 0.27058825, b: 0.21960784, a: 1}
+    m_HighlightedColor: {r: 0.47843137, g: 0.38039216, b: 0.3137255, a: 1}
+    m_PressedColor: {r: 0.38039216, g: 0.29411766, b: 0.23529412, a: 1}
+    m_ActiveColor: {r: 0.5176471, g: 0.41568628, b: 0.34509805, a: 1}
+    m_ActiveHighlightedColor: {r: 0.5921569, g: 0.47843137, b: 0.39607844, a: 1}
+    m_ActivePressedColor: {r: 0.5058824, g: 0.40392157, b: 0.32941177, a: 1}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_DeleteButton: {fileID: 778568364}
@@ -10630,26 +9669,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10682,26 +9705,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10718,11 +9725,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1220853342
 GameObject:
   m_ObjectHideFlags: 0
@@ -12232,7 +11241,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fallen
+  m_Text: 46616c6c656e
 --- !u!222 &1595692626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12405,10 +11414,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 341695843}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49, y: 0}
+  m_SizeDelta: {x: 41, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1632128992
 MonoBehaviour:
@@ -12656,10 +11665,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 341695843}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93, y: 0}
+  m_SizeDelta: {x: 44, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1663549685
 MonoBehaviour:
@@ -13072,10 +12081,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1910485182}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 14, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1755267674
 MonoBehaviour:
@@ -13701,26 +12710,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -13740,7 +12733,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_IsClosed: 0
   m_TitleString: 41726d61676564646f6e
@@ -13752,57 +12746,21 @@ MonoBehaviour:
   m_ActiveSprite: {fileID: 21300000, guid: a9cc1b4d8a15c5c49a78e99866699637, type: 3}
   m_HighlighColorMultiplier: 1.45
   m_TitleText: {fileID: 1915246171}
-  m_TitleNormalColor:
-    r: 0.49803922
-    g: 0.4117647
-    b: 0.3529412
-    a: 1
-  m_TitleClosedColor:
-    r: 0.3137255
-    g: 0.2627451
-    b: 0.23921569
-    a: 1
+  m_TitleNormalColor: {r: 0.49803922, g: 0.4117647, b: 0.3529412, a: 1}
+  m_TitleClosedColor: {r: 0.3137255, g: 0.2627451, b: 0.23921569, a: 1}
   m_ClosedText: {fileID: 2109467997}
-  m_ClosedNormalColor:
-    r: 0.24705882
-    g: 0.19607843
-    b: 0.1764706
-    a: 1
+  m_ClosedNormalColor: {r: 0.24705882, g: 0.19607843, b: 0.1764706, a: 1}
   m_StatusText: {fileID: 743043044}
   m_StatusOnlineString: 4f6e6c696e65
-  m_StatusOnlineColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
+  m_StatusOnlineColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
   m_StatusOfflineString: 4f66666c696e65
-  m_StatusOfflineColor:
-    r: 0.4392157
-    g: 0.30980393
-    b: 0.2901961
-    a: 1
+  m_StatusOfflineColor: {r: 0.4392157, g: 0.30980393, b: 0.2901961, a: 1}
   m_PopulationText: {fileID: 2095560467}
-  m_PopulationLowColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
-  m_PopulationMediumColor:
-    r: 0.8352941
-    g: 0.5568628
-    b: 0.28235295
-    a: 1
-  m_PopulationHighColor:
-    r: 0.45882353
-    g: 0.19607843
-    b: 0.1254902
-    a: 1
+  m_PopulationLowColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
+  m_PopulationMediumColor: {r: 0.8352941, g: 0.5568628, b: 0.28235295, a: 1}
+  m_PopulationHighColor: {r: 0.45882353, g: 0.19607843, b: 0.1254902, a: 1}
   m_CharactersText: {fileID: 2121401665}
-  m_CharactersNormalColor:
-    r: 0.34117648
-    g: 0.30588236
-    b: 0.27058825
-    a: 1
+  m_CharactersNormalColor: {r: 0.34117648, g: 0.30588236, b: 0.27058825, a: 1}
 --- !u!1 &1871077510
 GameObject:
   m_ObjectHideFlags: 0
@@ -14091,10 +13049,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5622955}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 29, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1905754207
 MonoBehaviour:
@@ -14363,7 +13321,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Armageddon
+  m_Text: 41726d61676564646f6e
 --- !u!114 &1915246172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14503,10 +13461,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1910485182}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93, y: 0}
+  m_SizeDelta: {x: 44, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1948155909
 MonoBehaviour:
@@ -14595,10 +13553,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1885030452}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93, y: 0}
+  m_SizeDelta: {x: 44, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1955817477
 MonoBehaviour:
@@ -14687,10 +13645,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 880821482}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49, y: 0}
+  m_SizeDelta: {x: 41, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1959479325
 MonoBehaviour:
@@ -15263,10 +14221,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 341695843}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 29, y: 17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2031514941
 MonoBehaviour:
@@ -15440,26 +14398,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -15479,7 +14421,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
   m_IsClosed: 0
   m_TitleString: 46616c6c656e
@@ -15491,57 +14434,21 @@ MonoBehaviour:
   m_ActiveSprite: {fileID: 21300000, guid: a9cc1b4d8a15c5c49a78e99866699637, type: 3}
   m_HighlighColorMultiplier: 1.45
   m_TitleText: {fileID: 1595692625}
-  m_TitleNormalColor:
-    r: 0.49803922
-    g: 0.4117647
-    b: 0.3529412
-    a: 1
-  m_TitleClosedColor:
-    r: 0.3137255
-    g: 0.2627451
-    b: 0.23921569
-    a: 1
+  m_TitleNormalColor: {r: 0.49803922, g: 0.4117647, b: 0.3529412, a: 1}
+  m_TitleClosedColor: {r: 0.3137255, g: 0.2627451, b: 0.23921569, a: 1}
   m_ClosedText: {fileID: 40471511}
-  m_ClosedNormalColor:
-    r: 0.24705882
-    g: 0.19607843
-    b: 0.1764706
-    a: 1
+  m_ClosedNormalColor: {r: 0.24705882, g: 0.19607843, b: 0.1764706, a: 1}
   m_StatusText: {fileID: 925827983}
   m_StatusOnlineString: 4f6e6c696e65
-  m_StatusOnlineColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
+  m_StatusOnlineColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
   m_StatusOfflineString: 4f66666c696e65
-  m_StatusOfflineColor:
-    r: 0.4392157
-    g: 0.30980393
-    b: 0.2901961
-    a: 1
+  m_StatusOfflineColor: {r: 0.4392157, g: 0.30980393, b: 0.2901961, a: 1}
   m_PopulationText: {fileID: 1337071640}
-  m_PopulationLowColor:
-    r: 0.39607844
-    g: 0.54509807
-    b: 0.3529412
-    a: 1
-  m_PopulationMediumColor:
-    r: 0.8352941
-    g: 0.5568628
-    b: 0.28235295
-    a: 1
-  m_PopulationHighColor:
-    r: 0.45882353
-    g: 0.19607843
-    b: 0.1254902
-    a: 1
+  m_PopulationLowColor: {r: 0.39607844, g: 0.54509807, b: 0.3529412, a: 1}
+  m_PopulationMediumColor: {r: 0.8352941, g: 0.5568628, b: 0.28235295, a: 1}
+  m_PopulationHighColor: {r: 0.45882353, g: 0.19607843, b: 0.1254902, a: 1}
   m_CharactersText: {fileID: 801776701}
-  m_CharactersNormalColor:
-    r: 0.34117648
-    g: 0.30588236
-    b: 0.27058825
-    a: 1
+  m_CharactersNormalColor: {r: 0.34117648, g: 0.30588236, b: 0.27058825, a: 1}
 --- !u!114 &2049125354
 MonoBehaviour:
   m_ObjectHideFlags: 0

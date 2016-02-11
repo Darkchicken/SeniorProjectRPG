@@ -5767,32 +5767,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480322}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480318}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -5802,21 +5786,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 1
   m_SpecialBackground: {fileID: 22480324}
   m_PointsText: {fileID: 11480328}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6572,32 +6544,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480374}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480378}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -6607,21 +6563,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480356}
   m_PointsText: {fileID: 11480368}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6696,32 +6640,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480392}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480388}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -6731,21 +6659,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480374}
   m_PointsText: {fileID: 11480398}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7774,32 +7690,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480466}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480470}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -7809,21 +7709,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480426}
   m_PointsText: {fileID: 11480460}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7898,32 +7786,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480484}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480480}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -7933,21 +7805,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480444}
   m_PointsText: {fileID: 11480490}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9249,32 +9109,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480580}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480584}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -9284,21 +9128,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480514}
   m_PointsText: {fileID: 11480574}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9373,32 +9205,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480598}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480594}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -9408,21 +9224,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480532}
   m_PointsText: {fileID: 11480604}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10451,32 +10255,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11480672}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11480676}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -10486,21 +10274,9 @@ MonoBehaviour:
   m_IsSpecialTalentSlot: 0
   m_SpecialBackground: {fileID: 22480584}
   m_PointsText: {fileID: 11480666}
-  m_pointsMinColor:
-    r: 0.40784314
-    g: 0.3647059
-    b: 0.32941177
-    a: 1
-  m_pointsMaxColor:
-    r: 0.5764706
-    g: 0.49019608
-    b: 0.41960785
-    a: 1
-  m_pointsActiveColor:
-    r: 0.9764706
-    g: 0.79607844
-    b: 0.44705883
-    a: 1
+  m_pointsMinColor: {r: 0.40784314, g: 0.3647059, b: 0.32941177, a: 1}
+  m_pointsMaxColor: {r: 0.5764706, g: 0.49019608, b: 0.41960785, a: 1}
+  m_pointsActiveColor: {r: 0.9764706, g: 0.79607844, b: 0.44705883, a: 1}
 --- !u!114 &11480680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10592,15 +10368,18 @@ MonoBehaviour:
   onBeginDrag:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549447261674f626a6563742b426567696e447261674576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIDragObject+BeginDragEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onEndDrag:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549447261674f626a6563742b456e64447261674576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIDragObject+EndDragEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onDrag:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549447261674f626a6563742b447261674576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIDragObject+DragEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11486996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10649,11 +10428,13 @@ MonoBehaviour:
   onTransitionBegin:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e554957696e646f772b5472616e736974696f6e426567696e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIWindow+TransitionBeginEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onTransitionComplete:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e554957696e646f772b5472616e736974696f6e436f6d706c6574654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIWindow+TransitionCompleteEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11177,26 +10958,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11216,47 +10981,20 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
   m_TargetContent: {fileID: 187338}
   m_ImageTarget: {fileID: 11487048}
   m_ImageTransition: 1
   m_ImageColors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.7058824
-    m_PressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_ActiveColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActiveHighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActivePressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.29411766
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.7058824}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ActiveColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActiveHighlightedColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActivePressedColor: {r: 1, g: 1, b: 1, a: 0.29411766}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ImageSpriteState:
@@ -11277,41 +11015,13 @@ MonoBehaviour:
   m_TextTarget: {fileID: 11487044}
   m_TextTransition: 1
   m_TextColors:
-    m_NormalColor:
-      r: 0.29803923
-      g: 0.2509804
-      b: 0.21568628
-      a: 1
-    m_HighlightedColor:
-      r: 0.45490196
-      g: 0.39607844
-      b: 0.34901962
-      a: 1
-    m_PressedColor:
-      r: 0.45490196
-      g: 0.39607844
-      b: 0.34901962
-      a: 0.7058824
-    m_ActiveColor:
-      r: 0.5529412
-      g: 0.4627451
-      b: 0.39215687
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.6901961
-      g: 0.5686275
-      b: 0.4745098
-      a: 1
-    m_ActivePressedColor:
-      r: 0.6901961
-      g: 0.5686275
-      b: 0.4745098
-      a: 0.7058824
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.29803923, g: 0.2509804, b: 0.21568628, a: 1}
+    m_HighlightedColor: {r: 0.45490196, g: 0.39607844, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.45490196, g: 0.39607844, b: 0.34901962, a: 0.7058824}
+    m_ActiveColor: {r: 0.5529412, g: 0.4627451, b: 0.39215687, a: 1}
+    m_ActiveHighlightedColor: {r: 0.6901961, g: 0.5686275, b: 0.4745098, a: 1}
+    m_ActivePressedColor: {r: 0.6901961, g: 0.5686275, b: 0.4745098, a: 0.7058824}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
 --- !u!114 &11487038
@@ -11345,26 +11055,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11384,47 +11078,20 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_TargetContent: {fileID: 187652}
   m_ImageTarget: {fileID: 11487050}
   m_ImageTransition: 1
   m_ImageColors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.7058824
-    m_PressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_ActiveColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActiveHighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActivePressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.29411766
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.7058824}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ActiveColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActiveHighlightedColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActivePressedColor: {r: 1, g: 1, b: 1, a: 0.29411766}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ImageSpriteState:
@@ -11445,41 +11112,13 @@ MonoBehaviour:
   m_TextTarget: {fileID: 11487056}
   m_TextTransition: 1
   m_TextColors:
-    m_NormalColor:
-      r: 0.29803923
-      g: 0.2509804
-      b: 0.21568628
-      a: 1
-    m_HighlightedColor:
-      r: 0.45490196
-      g: 0.39607844
-      b: 0.34901962
-      a: 1
-    m_PressedColor:
-      r: 0.45490196
-      g: 0.39607844
-      b: 0.34901962
-      a: 0.7058824
-    m_ActiveColor:
-      r: 0.5529412
-      g: 0.4627451
-      b: 0.39215687
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.6901961
-      g: 0.5686275
-      b: 0.4745098
-      a: 1
-    m_ActivePressedColor:
-      r: 0.6901961
-      g: 0.5686275
-      b: 0.4745098
-      a: 0.7058824
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.29803923, g: 0.2509804, b: 0.21568628, a: 1}
+    m_HighlightedColor: {r: 0.45490196, g: 0.39607844, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.45490196, g: 0.39607844, b: 0.34901962, a: 0.7058824}
+    m_ActiveColor: {r: 0.5529412, g: 0.4627451, b: 0.39215687, a: 1}
+    m_ActiveHighlightedColor: {r: 0.6901961, g: 0.5686275, b: 0.4745098, a: 1}
+    m_ActivePressedColor: {r: 0.6901961, g: 0.5686275, b: 0.4745098, a: 0.7058824}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
 --- !u!114 &11487042
@@ -11501,26 +11140,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11540,47 +11163,20 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_TargetContent: {fileID: 187654}
   m_ImageTarget: {fileID: 11487052}
   m_ImageTransition: 1
   m_ImageColors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.7058824
-    m_PressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_ActiveColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActiveHighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActivePressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.29411766
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.7058824}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ActiveColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActiveHighlightedColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActivePressedColor: {r: 1, g: 1, b: 1, a: 0.29411766}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ImageSpriteState:
@@ -11601,41 +11197,13 @@ MonoBehaviour:
   m_TextTarget: {fileID: 11487058}
   m_TextTransition: 1
   m_TextColors:
-    m_NormalColor:
-      r: 0.29803923
-      g: 0.2509804
-      b: 0.21568628
-      a: 1
-    m_HighlightedColor:
-      r: 0.45490196
-      g: 0.39607844
-      b: 0.34901962
-      a: 1
-    m_PressedColor:
-      r: 0.45490196
-      g: 0.39607844
-      b: 0.34901962
-      a: 0.7058824
-    m_ActiveColor:
-      r: 0.5529412
-      g: 0.4627451
-      b: 0.39215687
-      a: 1
-    m_ActiveHighlightedColor:
-      r: 0.6901961
-      g: 0.5686275
-      b: 0.4745098
-      a: 1
-    m_ActivePressedColor:
-      r: 0.6901961
-      g: 0.5686275
-      b: 0.4745098
-      a: 0.7058824
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.29803923, g: 0.2509804, b: 0.21568628, a: 1}
+    m_HighlightedColor: {r: 0.45490196, g: 0.39607844, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.45490196, g: 0.39607844, b: 0.34901962, a: 0.7058824}
+    m_ActiveColor: {r: 0.5529412, g: 0.4627451, b: 0.39215687, a: 1}
+    m_ActiveHighlightedColor: {r: 0.6901961, g: 0.5686275, b: 0.4745098, a: 1}
+    m_ActivePressedColor: {r: 0.6901961, g: 0.5686275, b: 0.4745098, a: 0.7058824}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
 --- !u!114 &11487044
@@ -12410,32 +11978,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487102}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487098}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -12447,15 +11999,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12468,11 +12023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487124}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487116}
   m_DescriptionText: {fileID: 11487120}
   m_SpellSlot: {fileID: 11487106}
@@ -12968,11 +12519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487138}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487146}
   m_DescriptionText: {fileID: 11487142}
   m_SpellSlot: {fileID: 11487156}
@@ -12996,32 +12543,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487160}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487164}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -13033,15 +12564,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13554,32 +13088,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487198}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487194}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -13591,15 +13109,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13612,11 +13133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487220}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487212}
   m_DescriptionText: {fileID: 11487216}
   m_SpellSlot: {fileID: 11487202}
@@ -14112,11 +13629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487234}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487242}
   m_DescriptionText: {fileID: 11487238}
   m_SpellSlot: {fileID: 11487252}
@@ -14140,32 +13653,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487256}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487260}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -14177,15 +13674,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14698,32 +14198,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487294}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487290}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -14735,15 +14219,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14756,11 +14243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487316}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487308}
   m_DescriptionText: {fileID: 11487312}
   m_SpellSlot: {fileID: 11487298}
@@ -15256,11 +14739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487330}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487338}
   m_DescriptionText: {fileID: 11487334}
   m_SpellSlot: {fileID: 11487348}
@@ -15284,32 +14763,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487352}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487356}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -15321,15 +14784,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15645,26 +15111,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -15684,47 +15134,20 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
   m_TargetContent: {fileID: 187500}
   m_ImageTarget: {fileID: 11487386}
   m_ImageTransition: 1
   m_ImageColors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.69803923
-    m_ActiveColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActiveHighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_ActivePressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.69803923
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.69803923}
+    m_ActiveColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActiveHighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ActivePressedColor: {r: 1, g: 1, b: 1, a: 0.69803923}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ImageSpriteState:
@@ -15745,41 +15168,13 @@ MonoBehaviour:
   m_TextTarget: {fileID: 0}
   m_TextTransition: 0
   m_TextColors:
-    m_NormalColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.5019608
-    m_HighlightedColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.69803923
-    m_PressedColor:
-      r: 0.34509805
-      g: 0.34509805
-      b: 0.34509805
-      a: 0.69803923
-    m_ActiveColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.5019608
-    m_ActiveHighlightedColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.69803923
-    m_ActivePressedColor:
-      r: 0.34509805
-      g: 0.34509805
-      b: 0.34509805
-      a: 0.69803923
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
+    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
+    m_ActiveColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
+    m_ActiveHighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_ActivePressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
 --- !u!114 &11487378
@@ -16029,26 +15424,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -16068,47 +15447,20 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e546f67676c652b546f67676c654576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
   m_TargetContent: {fileID: 187520}
   m_ImageTarget: {fileID: 11487388}
   m_ImageTransition: 1
   m_ImageColors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.69803923
-    m_ActiveColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_ActiveHighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_ActivePressedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.69803923
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.69803923}
+    m_ActiveColor: {r: 1, g: 1, b: 1, a: 0}
+    m_ActiveHighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ActivePressedColor: {r: 1, g: 1, b: 1, a: 0.69803923}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_ImageSpriteState:
@@ -16129,41 +15481,13 @@ MonoBehaviour:
   m_TextTarget: {fileID: 0}
   m_TextTransition: 0
   m_TextColors:
-    m_NormalColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.5019608
-    m_HighlightedColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.69803923
-    m_PressedColor:
-      r: 0.34509805
-      g: 0.34509805
-      b: 0.34509805
-      a: 0.69803923
-    m_ActiveColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.5019608
-    m_ActiveHighlightedColor:
-      r: 0.5019608
-      g: 0.5019608
-      b: 0.5019608
-      a: 0.69803923
-    m_ActivePressedColor:
-      r: 0.34509805
-      g: 0.34509805
-      b: 0.34509805
-      a: 0.69803923
-    m_DisabledColor:
-      r: 0.2509804
-      g: 0.2509804
-      b: 0.2509804
-      a: 0.5019608
+    m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
+    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
+    m_ActiveColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
+    m_ActiveHighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_ActivePressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
+    m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
 --- !u!114 &11487398
@@ -16458,11 +15782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487408}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487416}
   m_DescriptionText: {fileID: 11487412}
   m_SpellSlot: {fileID: 11487426}
@@ -16486,32 +15806,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487430}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487434}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -16523,15 +15827,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17044,32 +16351,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487468}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487464}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -17081,15 +16372,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17102,11 +16396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487490}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487482}
   m_DescriptionText: {fileID: 11487486}
   m_SpellSlot: {fileID: 11487472}
@@ -17602,11 +16892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487504}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487512}
   m_DescriptionText: {fileID: 11487508}
   m_SpellSlot: {fileID: 11487522}
@@ -17630,32 +16916,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487526}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487530}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -17667,15 +16937,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18188,32 +17461,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487564}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487560}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -18225,15 +17482,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18246,11 +17506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487586}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487578}
   m_DescriptionText: {fileID: 11487582}
   m_SpellSlot: {fileID: 11487568}
@@ -18746,11 +18002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RankText: {fileID: 11487600}
-  m_RankMaxColor:
-    r: 0.7254902
-    g: 0.53333336
-    b: 0.20392157
-    a: 1
+  m_RankMaxColor: {r: 0.7254902, g: 0.53333336, b: 0.20392157, a: 1}
   m_NameText: {fileID: 11487608}
   m_DescriptionText: {fileID: 11487604}
   m_SpellSlot: {fileID: 11487618}
@@ -18774,32 +18026,16 @@ MonoBehaviour:
   m_TooltipDelay: 1
   hoverTransition: 1
   hoverTargetGraphic: {fileID: 11487622}
-  hoverNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
-  hoverHighlightColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  hoverNormalColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTransitionDuration: 0.15
   hoverOverrideSprite: {fileID: 0}
   hoverNormalTrigger: 4e6f726d616c
   hoverHighlightTrigger: 486967686c696768746564
   pressTransition: 1
   pressTargetGraphic: {fileID: 11487626}
-  pressNormalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  pressPressColor:
-    r: 0.6117647
-    g: 0.6117647
-    b: 0.6117647
-    a: 1
+  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressPressColor: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   pressTransitionDuration: 0.15
   pressOverrideSprite: {fileID: 0}
   pressNormalTrigger: 4e6f726d616c
@@ -18811,15 +18047,18 @@ MonoBehaviour:
   onAssign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e41737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onUnassign:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e556e61737369676e4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e55495370656c6c536c6f742b4f6e436c69636b4576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487620
 MonoBehaviour:
   m_ObjectHideFlags: 1
