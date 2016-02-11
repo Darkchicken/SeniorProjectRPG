@@ -209,26 +209,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -261,26 +245,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -297,11 +265,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &18211716
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,21 +958,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Transition: 1
-  m_NormalColor:
-    r: 0.19607843
-    g: 0.15686275
-    b: 0.13333334
-    a: 1
-  m_HighlightedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
-  m_SelectedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
+  m_NormalColor: {r: 0.19607843, g: 0.15686275, b: 0.13333334, a: 1}
+  m_HighlightedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
+  m_SelectedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
   m_Duration: 0
   m_ColorMultiplier: 1
   m_HighlightedSprite: {fileID: 0}
@@ -1025,21 +983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Transition: 1
-  m_NormalColor:
-    r: 0.19607843
-    g: 0.15686275
-    b: 0.13333334
-    a: 1
-  m_HighlightedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
-  m_SelectedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
+  m_NormalColor: {r: 0.19607843, g: 0.15686275, b: 0.13333334, a: 1}
+  m_HighlightedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
+  m_SelectedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
   m_Duration: 0
   m_ColorMultiplier: 1
   m_HighlightedSprite: {fileID: 0}
@@ -1394,21 +1340,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Transition: 1
-  m_NormalColor:
-    r: 0.34509805
-    g: 0.28627452
-    b: 0.2509804
-    a: 1
-  m_HighlightedColor:
-    r: 0.58431375
-    g: 0.42745098
-    b: 0.21176471
-    a: 1
-  m_SelectedColor:
-    r: 0.58431375
-    g: 0.42745098
-    b: 0.21176471
-    a: 1
+  m_NormalColor: {r: 0.34509805, g: 0.28627452, b: 0.2509804, a: 1}
+  m_HighlightedColor: {r: 0.58431375, g: 0.42745098, b: 0.21176471, a: 1}
+  m_SelectedColor: {r: 0.58431375, g: 0.42745098, b: 0.21176471, a: 1}
   m_Duration: 0
   m_ColorMultiplier: 1
   m_HighlightedSprite: {fileID: 0}
@@ -1900,26 +1834,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1936,11 +1854,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &672161000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,26 +1874,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2148,26 +2052,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2200,26 +2088,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2236,11 +2108,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &838536321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,21 +2655,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Transition: 1
-  m_NormalColor:
-    r: 0.19607843
-    g: 0.15686275
-    b: 0.13333334
-    a: 1
-  m_HighlightedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
-  m_SelectedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
+  m_NormalColor: {r: 0.19607843, g: 0.15686275, b: 0.13333334, a: 1}
+  m_HighlightedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
+  m_SelectedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
   m_Duration: 0
   m_ColorMultiplier: 1
   m_HighlightedSprite: {fileID: 0}
@@ -2818,21 +2680,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Transition: 1
-  m_NormalColor:
-    r: 0.19607843
-    g: 0.15686275
-    b: 0.13333334
-    a: 1
-  m_HighlightedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
-  m_SelectedColor:
-    r: 0.3882353
-    g: 0.31764707
-    b: 0.2784314
-    a: 1
+  m_NormalColor: {r: 0.19607843, g: 0.15686275, b: 0.13333334, a: 1}
+  m_HighlightedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
+  m_SelectedColor: {r: 0.3882353, g: 0.31764707, b: 0.2784314, a: 1}
   m_Duration: 0
   m_ColorMultiplier: 1
   m_HighlightedSprite: {fileID: 0}
@@ -3035,26 +2885,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3087,26 +2921,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0
-    m_HighlightedColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3123,11 +2941,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1172807293
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,26 +4332,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    m_HighlightedColor:
-      r: 0.9607843
-      g: 0.9607843
-      b: 0.9607843
-      a: 1
-    m_PressedColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4560,11 +4364,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onStateChange:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: 556e697479456e67696e652e55492e5549427574746f6e457874656e6465642b53746174654368616e67654576656e742c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+    m_TypeName: UnityEngine.UI.UIButtonExtended+StateChangeEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &2028239741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4579,26 +4385,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: 1
   m_Colors:
-    m_NormalColor:
-      r: 0.5019608
-      g: 0.41568628
-      b: 0.34901962
-      a: 1
-    m_HighlightedColor:
-      r: 0.92156863
-      g: 0.7921569
-      b: 0.69411767
-      a: 1
-    m_PressedColor:
-      r: 0.5019608
-      g: 0.41568628
-      b: 0.34901962
-      a: 1
-    m_DisabledColor:
-      r: 0.78431374
-      g: 0.78431374
-      b: 0.78431374
-      a: 0.5019608
+    m_NormalColor: {r: 0.5019608, g: 0.41568628, b: 0.34901962, a: 1}
+    m_HighlightedColor: {r: 0.92156863, g: 0.7921569, b: 0.69411767, a: 1}
+    m_PressedColor: {r: 0.5019608, g: 0.41568628, b: 0.34901962, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   m_SpriteState:
