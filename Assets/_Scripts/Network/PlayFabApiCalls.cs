@@ -247,4 +247,29 @@ public class PlayFabApiCalls : MonoBehaviour
             Debug.Log(error.ErrorDetails);
         });
     }
+
+    public static void GetAllRunes()
+    {
+        var request = new GetCatalogItemsRequest();
+        PlayFabClientAPI.GetCatalogItems(request, (result) =>
+        {
+            foreach (var item in result.Catalog)
+            {
+                if (item.ItemClass == "Skill" || item.ItemClass == "Modifier" || item.ItemClass == "Passive")
+                {
+                    PlayFabDataStore.allRunes.Add(new Rune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, item.CustomData[14].ToString()));
+                    //Debug.Log(item.CustomData[14]);    
+                }
+            }
+
+
+        },
+        (error) =>
+        {
+            Debug.Log("Catalog can't retrieved!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
 }

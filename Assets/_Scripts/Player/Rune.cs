@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class Rune
 {
-    public int skillSlot;
-    public string name;
-    public string id;
-    public string info;
-    public bool type; // checks if a rune is a modifier or skill changer
-    public int resourceGeneration;
-    public int resourceUsage;
-    public int attackRange;
-    public float attackSpeed;
-    public int value;
+    public static Rune rune;
 
-    public Rune(int _skillSlot, string _name, string _info, bool _type, int _resournceGeneration, int _resourceUsage, int _attackRange, float _attackSpeed, int _value)
+    public string itemId;
+    public string itemClass;
+    public string displayName;
+    public string description;
+    public string skillSlot;
+
+    void Awake()
     {
+        rune = this;
+    }
+
+    public Rune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot)
+    {
+        itemId = _itemId;
+        itemClass = _itemClass;
+        displayName = _displayName;
+        description = _description;
         skillSlot = _skillSlot;
-        name = _name;
-        info = _info;
-        type = _type;
-        resourceGeneration = _resournceGeneration;
-        resourceUsage = _resourceUsage;
-        attackRange = _attackRange;
-        attackSpeed = _attackSpeed;
-        value = _value;
+
     }
 }

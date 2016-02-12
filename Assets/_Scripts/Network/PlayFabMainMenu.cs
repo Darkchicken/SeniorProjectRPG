@@ -51,6 +51,20 @@ public class PlayFabMainMenu : MonoBehaviour
         PhotonNetwork.LoadLevel("TestMovement");
     }
 
+    public void GetAllRunes()
+    {
+        PlayFabApiCalls.GetAllRunes();
+    }
+
+    public void PrintAllRunes()
+    {
+        Debug.Log(PlayFabDataStore.allRunes.Count);
+        foreach (var rune in PlayFabDataStore.allRunes)
+        {
+            Debug.Log(rune.skillSlot);
+        }
+    }
+
 
 
 
