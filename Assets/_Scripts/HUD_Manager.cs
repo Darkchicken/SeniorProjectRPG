@@ -7,7 +7,7 @@ using PlayFab.ClientModels;
 
 public class HUD_Manager : MonoBehaviour {
 
-    public Slider playerHealthSlider;
+    /*public Slider playerHealthSlider;
     public Slider playerResourceSlider;
     public Slider enemyHealthSlider;
     public Text playerHealthText;
@@ -19,10 +19,63 @@ public class HUD_Manager : MonoBehaviour {
     private GameObject player;
     private int playerHealth;
     private bool runeUpdate = false;
-    private bool runeSelect = false;
+    private bool runeSelect = false;*/
+
+    public UIWindow characterWindow;
 	
 
-	void Update ()
+	public void ShowCharacterWindow()
+    {
+        characterWindow.gameObject.SetActive(!characterWindow.gameObject.activeInHierarchy);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*void Update ()
     {
         if (Input.GetKeyDown("1"))
         {
@@ -100,6 +153,6 @@ public class HUD_Manager : MonoBehaviour {
             PlayFabDataStore.playerActiveSkillRunes.Remove(PlayFabDataStore.playerSkillRunes[runeName]);
         }
         
-    }
+    }*/
 
 }
