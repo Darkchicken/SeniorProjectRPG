@@ -74,8 +74,8 @@ namespace UnityEngine.UI
 		{
 			if (!string.IsNullOrEmpty(this.LoadScene))
 			{
-				SceneManager.LoadScene(this.LoadScene);
-			}
+                PhotonNetwork.LoadLevel("TestMovement");
+            }
 			else
 			{
 				this.StartDemoTween();

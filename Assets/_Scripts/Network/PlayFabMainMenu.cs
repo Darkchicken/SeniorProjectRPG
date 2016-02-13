@@ -10,6 +10,8 @@ using PlayFab.ClientModels;
 public class PlayFabMainMenu : MonoBehaviour
 {
     public UICharacterSelect_List characterList;
+    public ToggleGroup characterListToggle;
+    public Canvas loading;
 
     public static PlayFabMainMenu playfabMainMenu;
     private bool isCharacterSelected;
@@ -44,25 +46,25 @@ public class PlayFabMainMenu : MonoBehaviour
             characterList.AddCharacter(character.Key, "", "", 1);
         }
 
+        Invoke("ToggleFirstCharacter", 0.2f);
+
+    }
+
+    void ToggleFirstCharacter()
+    {
+        characterListToggle.gameObject.GetComponentInChildren<UICharacterSelect_Unit>().isOn = true;
     }
 
     public void Play()
     {
-        PhotonNetwork.LoadLevel("TestMovement");
+        gameObject.SetActive(false);
+        loading.gameObject.SetActive(true);
+        //PhotonNetwork.LoadLevel("TestMovement");
     }
 
     public void GetAllRunes()
     {
-        PlayFabApiCalls.GetAllRunes();
-    }
-
-    public void PrintAllRunes()
-    {
-        Debug.Log(PlayFabDataStore.allRunes.Count);
-        foreach (var rune in PlayFabDataStore.allRunes)
-        {
-            Debug.Log(rune.skillSlot);
-        }
+        PlayFabApiCalls.GetAllCharacterRunes();
     }
 
 

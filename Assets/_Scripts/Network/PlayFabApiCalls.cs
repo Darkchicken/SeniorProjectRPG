@@ -86,9 +86,7 @@ public class PlayFabApiCalls : MonoBehaviour
         {
             foreach (var character in result.Characters)
             {
-                Debug.Log(character.CharacterName);
                 PlayFabDataStore.characters.Add(character.CharacterName, character.CharacterId);
-                Debug.Log(character.CharacterId);
             }
         }, (error) =>
         {
@@ -175,7 +173,8 @@ public class PlayFabApiCalls : MonoBehaviour
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-
+            string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+            SetCustomDataOnItem("Active", "0", splitResult[19]);    
         },
         (error) =>
         {
@@ -229,40 +228,21 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    public static void SetCustomDataOnItem(string itemInstanceId, Dictionary<string, string> customData)
+    public static void GetAllCharacterRunes()
     {
-        var request = new RunCloudScriptRequest()
+        var request = new GetCharacterInventoryRequest()
         {
-            ActionId = "setCustomDataToGrantedItem",
-            Params = new { characterId = PlayFabDataStore.characterId, itemInstanceId = itemInstanceId, customData = customData }
+            CharacterId = PlayFabDataStore.characterId
         };
-        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        PlayFabClientAPI.GetCharacterInventory(request, (result) =>
         {
-            Debug.Log("Custom Data Set!");
-        },
-        (error) =>
-        {
-            Debug.Log("Item not Revoked!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
-    }
-
-    public static void GetAllRunes()
-    {
-        var request = new GetCatalogItemsRequest();
-        PlayFabClientAPI.GetCatalogItems(request, (result) =>
-        {
-            foreach (var item in result.Catalog)
+            Debug.Log(result.Inventory.Count);
+            
+            foreach (var item in result.Inventory)
             {
-                if (item.ItemClass == "Skill" || item.ItemClass == "Modifier" || item.ItemClass == "Passive")
-                {
-                    PlayFabDataStore.allRunes.Add(new Rune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, item.CustomData[14].ToString()));
-                    //Debug.Log(item.CustomData[14]);    
-                }
+                PlayFabDataStore.playerAllRunes.Add(new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
             }
-
-
+            Debug.Log("Runes are retrieved");
         },
         (error) =>
         {
@@ -272,4 +252,27 @@ public class PlayFabApiCalls : MonoBehaviour
         });
 
     }
+
+    public static void SetCustomDataOnItem(string key, string value, string itemInstanceId)
+    {
+        Dictionary<string, string> customData = new Dictionary<string, string>();
+        customData.Add(key, value);
+        var request = new RunCloudScriptRequest()
+        {
+            ActionId = "setCustomDataToGrantedItem",
+            Params = new { characterId = PlayFabDataStore.characterId, itemInstanceId = itemInstanceId, data = customData }
+        };
+
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log("Custom data set!");
+        },
+        (error) =>
+        {
+            Debug.Log("Cant set custom data");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
 }

@@ -6,11 +6,12 @@ using PlayFab.ClientModels;
 
 public class CheatPanel : MonoBehaviour
 {
+    public InputField grantItemText;
     private string itemInstanceId;
 
-    public void GrantItem(string itemID)
+    public void GrantItem()
     {
-        string[] items = { itemID };
+        string[] items = { grantItemText.text };
         PlayFabApiCalls.GrantItemsToCharacter(items);
     }
 
@@ -24,8 +25,9 @@ public class CheatPanel : MonoBehaviour
         PlayFabApiCalls.UpdateCharacterData();
     }
 
-    public void ListCharacterInventory()
+    public void GetCharacterRunes()
     {
-        
+        PlayFabApiCalls.GetAllCharacterRunes();
     }
+
 }

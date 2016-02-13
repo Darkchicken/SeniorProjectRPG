@@ -8,23 +8,24 @@ public class Rune
     public static Rune rune;
 
     public string itemId;
+    public string instanceId;
     public string itemClass;
     public string displayName;
     public string description;
-    public string skillSlot;
+    public string active;
 
     void Awake()
     {
         rune = this;
     }
 
-    public Rune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot)
+    public Rune(string _itemId, string _instanceId, string _itemClass, string _displayName, string _active)
     {
         itemId = _itemId;
+        instanceId =_instanceId;
         itemClass = _itemClass;
         displayName = _displayName;
-        description = _description;
-        skillSlot = _skillSlot;
+        active = _active;
 
     }
 }

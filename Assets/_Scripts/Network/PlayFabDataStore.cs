@@ -10,11 +10,12 @@ public class PlayFabDataStore : MonoBehaviour
     public static string sessionTicket;
     public static string playFabId;
     public static string characterId;
+    public static string characterName;
 
-    public static List<Rune> allRunes = new List<Rune>();
+    public static List<Rune> playerAllRunes = new List<Rune>();
     public static Dictionary<string, string> characters = new Dictionary<string, string>();
-    public static Dictionary<string, int> playerSkillRunes = new Dictionary<string, int>();
-    public static Dictionary<string, int> playerModifierRunes = new Dictionary<string, int>();
+    //public static Dictionary<string, int> playerSkillRunes = new Dictionary<string, int>();
+    //public static Dictionary<string, int> playerModifierRunes = new Dictionary<string, int>();
     public static Dictionary<int, string> playerActiveSkillRunes = new Dictionary<int, string>();
     public static Dictionary<string, int> playerActiveModifierRunes = new Dictionary<string, int>();
 
