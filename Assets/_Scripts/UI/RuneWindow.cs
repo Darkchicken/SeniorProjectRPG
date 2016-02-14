@@ -5,80 +5,15 @@ using System.Collections.Generic;
 
 public class RuneWindow : MonoBehaviour
 {
-    public string runeId;
-    public Toggle runeToggle;
-    public Image runeDisabledImage;
 
-    
+    public static List<RuneSelect> selectedRunes = new List<RuneSelect>();
 
-
-    void Start()
+    public static void SortAllRunes()
     {
-        RuneSelect.runeToggleGroup.Add(runeId, runeToggle);
-
-        //Invoke("PlaceRunes", 1);
-    }
-
-    public void LoadRunes()
-    {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*foreach (var rune in PlayFabDataStore.playerSkillRunes)
+        foreach (var rune in selectedRunes)
         {
-            if(runeToggleGroup.ContainsKey(rune.Key))
-            {
-                Debug.Log(rune.Key);
-                runeToggleGroup[rune.Key].interactable = true;
-                runeDisabledImage.gameObject.SetActive(false);
-            }
+            rune.SortRunes();
         }
-
-        foreach (var rune in PlayFabDataStore.playerModifierRunes)
-        {
-            if (runeToggleGroup.ContainsKey(rune.Key))
-            {
-                Debug.Log(rune.Key);
-                runeToggleGroup[rune.Key].interactable = true;
-            }
-        }
-
-        foreach (var rune in PlayFabDataStore.playerActiveSkillRunes)
-        {
-            if (runeToggleGroup.ContainsKey(rune.Value))
-            {
-                runeToggleGroup[rune.Value].interactable = true;
-            }
-        }
-
-        foreach (var rune in PlayFabDataStore.playerActiveModifierRunes)
-        {
-            if (runeToggleGroup.ContainsKey(rune.Key))
-            {
-                Debug.Log(rune.Key);
-                runeToggleGroup[rune.Key].isOn = true;
-            }
-        }*/
-
-
     }
 
 

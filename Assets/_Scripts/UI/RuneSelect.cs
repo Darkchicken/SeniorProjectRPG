@@ -14,26 +14,47 @@ public class RuneSelect : MonoBehaviour
 
     public static Dictionary<string, Toggle> runeToggleGroup = new Dictionary<string, Toggle>();
 
-    void OnEnable()
+    void Awake()
     {
-        foreach(var rune in PlayFabDataStore.playerAllRunes)
+        RuneWindow.selectedRunes.Add(this);
+    }
+
+    void Start()
+    {
+    }
+
+    public void SortRunes()
+    {
+        foreach (var rune in PlayFabDataStore.playerAllRunes)
         {
-            if(runeId == rune.itemId && rune.active == "1" && rune.itemClass == runeClass)
+            if (runeId == rune.Value.itemId && rune.Value.active == "1" && rune.Value.itemClass == "Skill")
             {
-                PlayFabDataStore.playerActiveSkillRunes.Add(skillSlot, rune.itemId);
-                PlayFabDataStore.playerActiveRuneImages.Add(skillSlot, runeImage.sprite);
+                if(!PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+                {
+                    PlayFabDataStore.playerActiveSkillRunes.Add(skillSlot, rune.Value.itemId);
+                    PlayFabDataStore.playerActiveRuneImages.Add(skillSlot, runeImage.sprite);
+                }
+                else
+                {
+                    PlayFabDataStore.playerActiveSkillRunes[skillSlot] = rune.Value.itemId;
+                    PlayFabDataStore.playerActiveRuneImages[skillSlot] = runeImage.sprite;
+                }
                 runeToggle.interactable = true;
                 runeDisabledImage.enabled = false;
                 runeToggle.isOn = true;
             }
-            if(runeId == rune.itemId && rune.active == "1" && rune.itemClass == runeClass)
+            if (runeId == rune.Value.itemId && rune.Value.active == "1" && rune.Value.itemClass == "Modifier")
             {
-                PlayFabDataStore.playerActiveModifierRunes.Add(runeId, skillSlot);
-                runeToggle.interactable = true;
-                runeDisabledImage.enabled = false;
-                runeToggle.isOn = true;
+                if(!PlayFabDataStore.playerActiveModifierRunes.ContainsKey(runeId))
+                {
+                    PlayFabDataStore.playerActiveModifierRunes.Add(runeId, skillSlot);
+                    runeToggle.interactable = true;
+                    runeDisabledImage.enabled = false;
+                    //runeToggle.isOn = true;
+                }
+                
             }
-            if(runeId == rune.itemId && rune.active == "0")
+            if (runeId == rune.Value.itemId && rune.Value.active == "0")
             {
                 runeToggle.interactable = true;
                 runeDisabledImage.enabled = false;
@@ -43,8 +64,15 @@ public class RuneSelect : MonoBehaviour
 
     public void SelectRune()
     {
+        Debug.Log(gameObject + " " + runeToggle.isOn);
+        if (!runeToggle.isOn)
+        {
+            PlayFabApiCalls.SetCustomDataOnItem("Active", "0", PlayFabDataStore.playerAllRunes[runeId].instanceId);
+            runeToggle.isOn = false;
+        }
+
         //Do these for selected rune. It modifies or adds the rune to active dictionary
-        if(runeClass == "Skill" && runeToggle.isOn )
+        if (runeClass == "Skill" && runeToggle.isOn )
         {
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
@@ -55,7 +83,8 @@ public class RuneSelect : MonoBehaviour
             {
                 PlayFabDataStore.playerActiveSkillRunes.Add(skillSlot, runeId);
                 PlayFabDataStore.playerActiveRuneImages.Add(skillSlot, runeImage.sprite);
-            }  
+            }
+            PlayFabApiCalls.SetCustomDataOnItem("Active", "1", PlayFabDataStore.playerAllRunes[runeId].instanceId);
         }
         if (runeClass == "Modifier" && runeToggle.isOn)
         {
@@ -68,7 +97,6 @@ public class RuneSelect : MonoBehaviour
                 PlayFabDataStore.playerActiveModifierRunes.Add(runeId, skillSlot);
             }  
         }
-        //Do these for unselected rune. Remove it from the active dictionary for only Modifiers
         if (runeClass == "Modifier" && !runeToggle.isOn)
         {
             if (PlayFabDataStore.playerActiveModifierRunes.ContainsKey(runeId))
@@ -76,8 +104,11 @@ public class RuneSelect : MonoBehaviour
                 PlayFabDataStore.playerActiveModifierRunes.Remove(runeId);
             }
         }
-        Debug.Log("RuneSelect");
+        
+
+        //Debug.Log("RuneSelect");
         ActionBar.RefreshActionBar();
+        
 
     }
 

@@ -74,6 +74,11 @@ public class LoadingBar : MonoBehaviour
 
     protected void OnTweenFinished()
     {
+        Invoke("HideLoading", 1);
+    }
+
+    void HideLoading()
+    {
         this.transform.parent.gameObject.SetActive(false);
     }
 }

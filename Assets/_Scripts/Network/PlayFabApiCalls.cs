@@ -165,7 +165,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Grant character the items in the array
-    public static void GrantItemsToCharacter(string[] items)
+    public static void GrantRunesToCharacter(string[] items)
     {
         var request = new RunCloudScriptRequest()
         {
@@ -241,9 +241,14 @@ public class PlayFabApiCalls : MonoBehaviour
             
             foreach (var item in result.Inventory)
             {
-                PlayFabDataStore.playerAllRunes.Add(new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+                if(!PlayFabDataStore.playerAllRunes.ContainsKey(item.ItemId))
+                {
+                    PlayFabDataStore.playerAllRunes.Add(item.ItemId, new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+                }
+                
             }
             Debug.Log("Runes are retrieved");
+            RuneWindow.SortAllRunes();
         },
         (error) =>
         {
@@ -267,6 +272,7 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
             Debug.Log("Custom data set!");
+            //GetAllCharacterRunes();
         },
         (error) =>
         {
