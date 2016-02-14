@@ -21,7 +21,7 @@ public class PlayFabApiCalls : MonoBehaviour
         {
             PlayFabDataStore.playFabId = result.PlayFabId;
             PlayFabDataStore.sessionTicket = result.SessionTicket;
-            PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
+            //PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
             GetPhotonToken();
         }, (error) =>
         {
@@ -66,7 +66,8 @@ public class PlayFabApiCalls : MonoBehaviour
             PhotonNetwork.AuthValues.AddAuthParameter("Token", result.PhotonCustomAuthenticationToken);
             PhotonNetwork.AuthValues.UserId = PlayFabDataStore.playFabId;
             PhotonNetwork.ConnectUsingSettings("1.0");
-            PlayFabUserLogin.playfabUserLogin.Authentication("SUCCESS!", 2); //change the text of authentication text
+            PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
+            //PlayFabUserLogin.playfabUserLogin.Authentication("SUCCESS!", 2); //change the text of authentication text
         }, (error) =>
         {
             PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);

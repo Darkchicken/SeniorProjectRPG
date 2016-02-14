@@ -7,25 +7,21 @@ using PlayFab.ClientModels;
 
 public class HUD_Manager : MonoBehaviour {
 
-    /*public Slider playerHealthSlider;
-    public Slider playerResourceSlider;
-    public Slider enemyHealthSlider;
-    public Text playerHealthText;
-    public Text playerResourceText;
-    public Canvas runePanel;
-    public Canvas cheatPanel;
-
-
-    private GameObject player;
-    private int playerHealth;
-    private bool runeUpdate = false;
-    private bool runeSelect = false;*/
-
     public UIWindow characterWindow;
     public UIWindow runeWindow;
     public UIWindow cheatWindow;
-	
 
+    public Text playerName;
+
+    void OnEnable()
+    {
+        SetPlayerNameOnUnitFrame();
+    }
+	
+    public void SetPlayerNameOnUnitFrame()
+    {
+        playerName.text = PlayFabDataStore.characterName;
+    }
 	public void ToggleCharacterWindow()
     {
         characterWindow.gameObject.SetActive(!characterWindow.gameObject.activeInHierarchy);

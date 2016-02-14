@@ -30,4 +30,20 @@ public class CheatPanel : MonoBehaviour
         PlayFabApiCalls.GetAllCharacterRunes();
     }
 
+    public void ListRuneImages()
+    {
+        foreach(var image in PlayFabDataStore.playerActiveRuneImages)
+        {
+            Debug.Log(image);
+        }
+    }
+
+    public void ListActiveRunes()
+    {
+        foreach (var rune in PlayFabDataStore.playerActiveSkillRunes)
+        {
+            Debug.Log(rune.Key);
+        }
+    }
+
 }
