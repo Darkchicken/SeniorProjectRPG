@@ -53,13 +53,14 @@ public class PlayFabMainMenu : MonoBehaviour
     void ToggleFirstCharacter()
     {
         characterListToggle.gameObject.GetComponentInChildren<UICharacterSelect_Unit>().isOn = true;
+        PlayFabDataStore.characterName = GetComponentInChildren<CharacterSelect>().characterName.text;
+        PlayFabDataStore.characterId = PlayFabDataStore.characters[GetComponentInChildren<CharacterSelect>().characterName.text];
+        Debug.Log(PlayFabDataStore.characterId);
     }
 
     public void Play()
     {
-        gameObject.SetActive(false);
-        loading.gameObject.SetActive(true);
-        //PhotonNetwork.LoadLevel("TestMovement");
+        PhotonNetwork.LoadLevel("TestMovement");
     }
 
     public void GetAllRunes()
