@@ -241,11 +241,19 @@ public class PlayFabApiCalls : MonoBehaviour
             
             foreach (var item in result.Inventory)
             {
-                if(!PlayFabDataStore.playerAllRunes.ContainsKey(item.ItemId))
+                if (!PlayFabDataStore.playerAllRunes.ContainsKey(item.ItemId))
                 {
-                    PlayFabDataStore.playerAllRunes.Add(item.ItemId, new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+                    
+                    if(item.CustomData == null)
+                    {
+                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
+                           
+                    }
+                    else
+                    {
+                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+                    }
                 }
-                
             }
             Debug.Log("Runes are retrieved");
             RuneWindow.SortAllRunes();
@@ -272,7 +280,6 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
             Debug.Log("Custom data set!");
-            //GetAllCharacterRunes();
         },
         (error) =>
         {
