@@ -20,8 +20,8 @@ handlers.setCustomDataToGrantedItem = function(args)
   var request = server.UpdateUserInventoryItemCustomData({
     PlayFabId: currentPlayerId,
     CharacterId: args.characterId,
-    ItemInstanceId: "74D47A4D583418D7",
-    Data: ["Active","0"]
+    ItemInstanceId: args.itemInstanceId,
+    Data: args.data
   });
 }
 
@@ -63,7 +63,7 @@ handlers.moveItemFromUserToCharacter = function (args)
     ItemInstanceId: args.itemInstanceId
   });
   return request;		
-}
+}
 
 
 handlers.addFriend = function (args)
