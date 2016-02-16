@@ -65,3 +65,22 @@ handlers.moveItemFromUserToCharacter = function (args)
   return request;		
 }
 
+
+handlers.addFriend = function (args)
+{
+  var request = server.AddFriend({
+    PlayFabId: currentPlayerId,
+    FriendUsername: args.userName
+  });
+  return request;		
+}
+handlers.getFriendsList = function (args)
+{
+  var request = server.GetFriendsList({
+    PlayFabId: currentPlayerId
+    
+  });
+  return request;		
+}
+
+

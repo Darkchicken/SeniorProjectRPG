@@ -71,6 +71,9 @@ public class PlayFabMainMenu : MonoBehaviour {
                 isCharacterExist = true;
                 PlayFabDataStore.characterId = result.Characters[0].CharacterId;
                 Debug.Log(result.Characters[0].CharacterId);
+                //////////////testing
+                AddFriend();
+               
             }
         }, (error) =>
         {
@@ -121,32 +124,51 @@ public class PlayFabMainMenu : MonoBehaviour {
         });
 
     }
+    void AddFriend()
+    {
+        var request = new RunCloudScriptRequest()
+        {
+            ActionId = "addFriend",
+            Params = new { userName= "berat"}//set to whatever default class is
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log("Added friend");
+
+        }, (error) =>
+        {
+            Debug.Log("Friend Not Found");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
 
 
 
 
 
 
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*void OnEnable()
     {
         //remove any exiting items in the container
