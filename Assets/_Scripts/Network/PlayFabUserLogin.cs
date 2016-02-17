@@ -12,6 +12,7 @@ public class PlayFabUserLogin : MonoBehaviour
     public InputField loginPasswordField;
     public Text authenticationText;
     public Button authenticationButton;
+    public Texture2D cursorImage;
 
     public static PlayFabUserLogin playfabUserLogin;
     public Canvas mainMenu;
@@ -19,6 +20,7 @@ public class PlayFabUserLogin : MonoBehaviour
     void Awake()
     {
         playfabUserLogin = this;
+        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
     }
 
     public void Login()
