@@ -89,7 +89,6 @@ public class Runes : MonoBehaviour
     public static GameObject targetEnemy;
     public static Vector3 position;
     public float stopDistanceForAttack = 2f;
-    public static Dictionary<string, int> runes = new Dictionary<string, int>();
 
     private static float attackTimer = 0f;
     private PlayerCombatManager playerCombatManager;
@@ -111,10 +110,6 @@ public class Runes : MonoBehaviour
         GameManager.players.Add(gameObject);
         position = transform.position;
         playerAnimation = GetComponent<Animator>();
-
-        runes.Add(rune1_Name, rune1_SkillSlot);
-        runes.Add(rune2_Name, rune2_SkillSlot);
-        runes.Add(rune7_Name, rune7_SkillSlot);
 
     }
 

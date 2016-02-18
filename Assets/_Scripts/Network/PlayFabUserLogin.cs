@@ -5,120 +5,58 @@ using System.Collections;
 using PlayFab;
 using PlayFab.ClientModels;
 
-public class PlayFabUserLogin : MonoBehaviour {
+public class PlayFabUserLogin : MonoBehaviour
+{
 
     public InputField loginUsernameField;
     public InputField loginPasswordField;
-    public Text loginErrorText;
-    public Button loginButton;
-    public InputField registerUsernameField;
-    public InputField registerPasswordField;
-    public InputField registerEmailField;
-    public Text registerErrorText;
-    public Button registerButton;
-    public Canvas gameMenu;
-    private string PlayFabId;
-  
+    public Text authenticationText;
+    public Button authenticationButton;
+    public Texture2D cursorImage;
 
+    public static PlayFabUserLogin playfabUserLogin;
+    public Canvas mainMenu;
 
-    void Start ()
+    void Awake()
     {
-        loginButton.onClick.AddListener(Login);
-        registerButton.onClick.AddListener(Register);
-	}
+        playfabUserLogin = this;
+        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
+    }
 
     public void Login()
     {
-        var loginRequest = new LoginWithPlayFabRequest()
-        {
-            TitleId = PlayFabSettings.TitleId,
-            Username = loginUsernameField.text,
-            Password = loginPasswordField.text
-        };
-
-        PlayFabClientAPI.LoginWithPlayFab(loginRequest, (result) =>
-        {
-            LoginRegisterSuccess(result.PlayFabId, result.SessionTicket);
-        }, (error) =>
-        {
-            loginErrorText.text = error.ErrorMessage;
-            loginErrorText.gameObject.SetActive(true);
-            PlayFabErrorHandler.HandlePlayFabError(error);
-        });
+        PlayFabApiCalls.PlayFabLogin(loginUsernameField.text, loginPasswordField.text);
+        authenticationText.text = "CONNECTING...";
+        authenticationText.transform.parent.gameObject.SetActive(true);
     }
 
-
-    public void Register()
+    public void Authentication(string text, int code)
     {
-        var request = new RegisterPlayFabUserRequest()
+        authenticationText.text = text;
+        if(code == 1) // Code 1: Authenticating and enables mainmenu at the back to connect playfab
         {
-            TitleId = PlayFabSettings.TitleId,
-            Username = registerUsernameField.text,
-            Password = registerPasswordField.text,
-            Email = registerEmailField.text
-        };
-        PlayFabClientAPI.RegisterPlayFabUser(request, (result) =>
+            mainMenu.gameObject.SetActive(true);
+        }
+        if(code == 2) // Code 2: Successfully connected PhotonServer and will go to mainmenu
         {
-            LoginRegisterSuccess(result.PlayFabId, result.SessionTicket);
-            
-        }, (error) =>
+            Invoke("LoginSuccess", 1);
+        }
+        if(code == 3) // Code 3: Error. Will show the error code and stay on login.
         {
-            registerErrorText.text = error.ErrorMessage;
-            registerErrorText.gameObject.SetActive(true);
-            PlayFabErrorHandler.HandlePlayFabError(error);
-        });
+            authenticationButton.gameObject.SetActive(true);
+        }
     }
 
-    private void LoginRegisterSuccess(string PlayFabId, string SessionTicket)
+    public void AuthenticationButtonClick()
     {
-        PlayFabDataStore.playFabId = PlayFabId;
-        PlayFabDataStore.sessionTicket = SessionTicket;
-        loginErrorText.gameObject.transform.parent.gameObject.SetActive(false);
-        gameMenu.gameObject.SetActive(true);
-        //added for photon
-        this.PlayFabId = PlayFabId;
-        GetPhotonToken();
-
-
-        /* Playfab Photon Token
-        var request = new GetPhotonAuthenticationTokenRequest()
-        {
-            PhotonApplicationId = "67a8e458-b05b-463b-9abe-ce766a75b832".Trim()
-        };
-
-        PlayFabClientAPI.GetPhotonAuthenticationToken(request, (result) =>
-        {
-            Debug.Log("Photon Token Authenticated!");
-        },
-        (error) =>
-        {
-            Debug.Log("Photon Token NOT Authenticated!");
-        });
-        */
+        authenticationButton.gameObject.SetActive(false);
+        authenticationText.transform.parent.gameObject.SetActive(false);
     }
-   
-    void GetPhotonToken()
+
+    void LoginSuccess()
     {
-        
-        GetPhotonAuthenticationTokenRequest request = new GetPhotonAuthenticationTokenRequest();
-        request.PhotonApplicationId = "67a8e458-b05b-463b-9abe-ce766a75b832".Trim();
-        PlayFabClientAPI.GetPhotonAuthenticationToken(request,(result) =>
-        {
-            string photonToken = result.PhotonCustomAuthenticationToken;
-            Debug.Log(string.Format("Yay, logged in in session token: {0}", photonToken));
-            PhotonNetwork.AuthValues = new AuthenticationValues();
-            PhotonNetwork.AuthValues.AuthType = CustomAuthenticationType.Custom;
-            PhotonNetwork.AuthValues.AddAuthParameter("username", this.PlayFabId);
-            PhotonNetwork.AuthValues.AddAuthParameter("Token", result.PhotonCustomAuthenticationToken);
-            PhotonNetwork.AuthValues.UserId = this.PlayFabId;
-            PhotonNetwork.ConnectUsingSettings("1.0");
-        }, (error) =>
-        {
-            registerErrorText.text = error.ErrorMessage;
-            registerErrorText.gameObject.SetActive(true);
-            PlayFabErrorHandler.HandlePlayFabError(error);
-        });
-       
+        authenticationText.transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
    

@@ -5,10 +5,11 @@ public class CameraFollow : MonoBehaviour
 {
 
     public float smoothing = 5f;
+    public Vector3 offset = new Vector3(0.1f, 8.3f, -31.1f);
 
     private Transform player;
     //taken from original calculations, can be modified if necessary
-    private Vector3 offset = new Vector3(0.1f,12.3f,-31.1f);
+    
     private bool following = false;
 
     void Start()

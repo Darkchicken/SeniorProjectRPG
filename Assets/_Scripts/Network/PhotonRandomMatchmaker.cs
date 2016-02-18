@@ -30,7 +30,7 @@ public class PhotonRandomMatchmaker : PunBehaviour
 
     public override void OnJoinedRoom()
     {
-     
+        PlayFabUserLogin.playfabUserLogin.Authentication("SUCCESS!", 2); //change the text of authentication text
         Debug.Log("Join Room Successfully!");
         Debug.Log("Room name is: "+PhotonNetwork.room);
         //GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, Quaternion.identity, 0);

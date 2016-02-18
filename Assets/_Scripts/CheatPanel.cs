@@ -6,108 +6,44 @@ using PlayFab.ClientModels;
 
 public class CheatPanel : MonoBehaviour
 {
+    public InputField grantItemText;
     private string itemInstanceId;
 
-    public void GrantItem(string itemID)
+    public void GrantItem()
     {
-        string[] item = { itemID };
-        var request = new RunCloudScriptRequest()
-        {
-            ActionId = "grantItemsToCharacter",
-            Params = new {catalogVersion = "Runes", playFabId = PlayFabDataStore.playFabId, characterId = PlayFabDataStore.characterId, items = item}
-        };
-        PlayFabClientAPI.RunCloudScript(request, (result) =>
-        {
-            Debug.Log(itemID + " Granted!");
-            Debug.Log(result.Results);
-            
-        },
-        (error) =>
-        {
-            Debug.Log("Item not Granted!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
+        string[] items = { grantItemText.text };
+        PlayFabApiCalls.GrantRunesToCharacter(items);
     }
 
     public void RevokeItem()
     {
-        var request = new RunCloudScriptRequest()
-        {
-            ActionId = "revokeInventoryItem",
-            Params = new { characterId = PlayFabDataStore.characterId, itemId = itemInstanceId }
-        };
-        PlayFabClientAPI.RunCloudScript(request, (result) =>
-        {
-            Debug.Log(result.Results);
-        },
-        (error) =>
-        {
-            Debug.Log("Item not Revoked!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
+        PlayFabApiCalls.RevokeInventoryItem(itemInstanceId);
     }
 
     public void UpdateCharacterData()
     {
-        var request = new UpdateCharacterDataRequest()
-        {
-            CharacterId = PlayFabDataStore.characterId,
-            Data = PlayFabDataStore.playerData
-        };
-        PlayFabClientAPI.UpdateCharacterData(request, (result) =>
-        {
-            Debug.Log("Stats Updated!");
-        }, (error) =>
-        {
-            Debug.Log("Stats Failed!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
+        PlayFabApiCalls.UpdateCharacterData();
     }
 
-    public void ListCharacterInventory()
+    public void GetCharacterRunes()
     {
-        var request = new GetCharacterInventoryRequest()
-        {
-            CharacterId = PlayFabDataStore.characterId
-        };
-        
-        PlayFabClientAPI.GetCharacterInventory(request, (result) =>
-        {
-            itemInstanceId = result.Inventory[0].ItemInstanceId; // just to see if revoke item working
-            Debug.Log("Inventory Count: " + result.Inventory.Count);
-            foreach (var item in result.Inventory)
-            {
-                Debug.Log(item.DisplayName);
-                Debug.Log(item.ItemInstanceId);
-                //Debug.Log(item.CustomData["Active"]);
-            }
-        }, (error) =>
-        {
-            Debug.Log("Listing Inventory Failed!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
+        PlayFabApiCalls.GetAllCharacterRunes();
     }
 
-    public void SetCustomDataOnItem()
+    public void ListRuneImages()
     {
-        var request = new RunCloudScriptRequest()
+        foreach(var image in PlayFabDataStore.playerActiveRuneImages)
         {
-            ActionId = "setCustomDataToGrantedItem",
-            Params = new { characterId = PlayFabDataStore.characterId }
-        };
-        PlayFabClientAPI.RunCloudScript(request, (result) =>
-        {
-            Debug.Log("Custom Data Set!");
-        },
-        (error) =>
-        {
-            Debug.Log("Item not Revoked!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
+            Debug.Log(image);
+        }
     }
+
+    public void ListActiveRunes()
+    {
+        foreach (var rune in PlayFabDataStore.playerActiveSkillRunes)
+        {
+            Debug.Log(rune.Key);
+        }
+    }
+
 }
