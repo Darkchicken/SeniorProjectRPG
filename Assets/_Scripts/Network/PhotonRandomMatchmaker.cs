@@ -15,7 +15,8 @@ public class PhotonRandomMatchmaker : PunBehaviour
 
     public override void OnJoinedLobby()
     {
-        PhotonNetwork.JoinRandomRoom();
+        //PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.CreateRoom(null);
     }
 
     void OnPhotonRandomJoinFailed()
