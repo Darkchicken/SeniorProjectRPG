@@ -4518,7 +4518,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterList: {fileID: 11498400}
   characterListToggle: {fileID: 11471200}
-  loading: {fileID: 0}
 --- !u!114 &11440168
 MonoBehaviour:
   m_ObjectHideFlags: 1

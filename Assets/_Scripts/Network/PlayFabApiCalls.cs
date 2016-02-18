@@ -289,4 +289,44 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
+    public static void AddFriend(string friendId)
+    {
+        var request = new AddFriendRequest()
+        {
+            FriendPlayFabId = friendId
+        };
+        PlayFabClientAPI.AddFriend(request, (result) =>
+        {
+            Debug.Log("Friend added");
+        },
+        (error) =>
+        {
+            Debug.Log("Cant add to friends list");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
+
+    public static void GetFriendsList()
+    {
+        var request = new GetFriendsListRequest()
+        {
+        };
+        PlayFabClientAPI.GetFriendsList(request, (result) =>
+        {
+            foreach(var friend in result.Friends)
+            {
+                PlayFabDataStore.friendsList.Add(friend.Username);
+            }
+           
+        },
+        (error) =>
+        {
+            Debug.Log("Cant get friends list");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
 }
