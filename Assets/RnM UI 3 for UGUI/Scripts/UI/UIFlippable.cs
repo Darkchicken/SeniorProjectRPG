@@ -33,12 +33,12 @@ namespace UnityEngine.UI
 			set { this.m_Veritical = value; }
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected void OnValidate()
 		{
 			this.GetComponent<Graphic>().SetVerticesDirty();
 		}
-#endif
+#endif*/
 
 #if UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9
         public void ModifyMesh(VertexHelper vertexHelper)

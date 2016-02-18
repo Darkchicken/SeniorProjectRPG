@@ -21,7 +21,7 @@ namespace UnityEngine.UI
 			if (this.m_Image != null) this.m_Sprite = this.m_Image.sprite;
 		}
 	
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected void OnValidate()
 		{
 			// Check if the sprite texture is readable
@@ -38,7 +38,7 @@ namespace UnityEngine.UI
 				}
 			}
 		}
-#endif
+#endif*/
 		
 		public bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
 		{

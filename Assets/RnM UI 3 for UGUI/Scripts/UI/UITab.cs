@@ -39,7 +39,7 @@ namespace UnityEngine.UI
 			this.InternalEvaluateAndTransitionState(true);
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected override void OnValidate()
 		{
 			base.OnValidate();
@@ -53,7 +53,7 @@ namespace UnityEngine.UI
 				this.InternalEvaluateAndTransitionState(true);
 			}
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Raises the toggle state changed event.

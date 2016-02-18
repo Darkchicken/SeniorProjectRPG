@@ -7,9 +7,9 @@ using PlayFab.ClientModels;
 
 public class HUD_Manager : MonoBehaviour {
 
-    public UIWindow characterWindow;
-    public UIWindow runeWindow;
-    public UIWindow cheatWindow;
+    public Canvas characterWindow;
+    public Canvas runeWindow;
+    public Canvas cheatWindow;
 
     public Text playerName;
 

@@ -196,7 +196,7 @@ namespace UnityEngine.UI
 			this.toggleTransition = ToggleTransition.None;
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected override void OnValidate()
 		{
 			base.OnValidate();
@@ -205,7 +205,7 @@ namespace UnityEngine.UI
 			if (this.optionFont == null)
 				this.optionFont = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
 		}
-#endif
+#endif*/
 		
 		protected override void OnEnable()
 		{

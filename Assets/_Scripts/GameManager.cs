@@ -8,7 +8,7 @@ using PlayFab.ClientModels;
 public class GameManager : MonoBehaviour
 {
     public Canvas loading;
-    public UIWindow runes;
+    public Canvas runes;
     public static List<GameObject> players = new List<GameObject>();
 
     //This is where we call all our Database when loading a scene

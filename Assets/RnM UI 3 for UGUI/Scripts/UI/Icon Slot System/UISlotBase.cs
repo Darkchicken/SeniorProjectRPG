@@ -267,7 +267,7 @@ namespace UnityEngine.UI
 			this.EvaluateAndTransitionPressedState(true);
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected override void OnValidate()
 		{
 			this.hoverTransitionDuration = Mathf.Max(this.hoverTransitionDuration, 0f);
@@ -292,7 +292,7 @@ namespace UnityEngine.UI
 				}
 			}
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Raises the pointer enter event.

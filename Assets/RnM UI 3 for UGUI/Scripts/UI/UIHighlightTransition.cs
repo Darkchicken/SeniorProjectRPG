@@ -124,8 +124,7 @@ namespace UnityEngine.UI
 			this.InstantClearState();
 		}
 		
-#if UNITY_EDITOR
-		protected void OnValidate()
+/*		protected void OnValidate()
 		{
 			this.m_Duration = Mathf.Max(this.m_Duration, 0f);
 			
@@ -135,7 +134,7 @@ namespace UnityEngine.UI
 				this.InternalEvaluateAndTransitionToNormalState(true);
 			}
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Instantly clears the visual state.

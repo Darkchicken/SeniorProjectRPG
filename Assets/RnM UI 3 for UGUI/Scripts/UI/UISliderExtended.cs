@@ -133,7 +133,7 @@ namespace UnityEngine.UI
 			this.ValidateOptions();
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		/// <summary>
 		/// Raises the validate event.
 		/// </summary>
@@ -145,7 +145,7 @@ namespace UnityEngine.UI
 			if (this.m_OptionTextFont == null)
 				this.m_OptionTextFont = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Raises the rect transform dimensions change event.

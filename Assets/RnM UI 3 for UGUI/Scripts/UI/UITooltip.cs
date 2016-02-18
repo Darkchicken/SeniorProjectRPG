@@ -248,7 +248,7 @@ namespace UnityEngine.UI
 			mInstance = null;
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected virtual void OnValidate()
 		{
 			// Make sure we always have a font
@@ -261,7 +261,7 @@ namespace UnityEngine.UI
 			if (this.m_DescriptionFont == null)
 				this.m_DescriptionFont = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
 		}
-#endif
+#endif*/
 		
 		protected virtual void OnCanvasGroupChanged()
 		{

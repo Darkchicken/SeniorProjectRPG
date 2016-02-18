@@ -173,7 +173,7 @@ namespace UnityEngine.UI
 				this.EvaluateAndTransitionToVisualState(this.m_StartingState, true);		
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected virtual void OnValidate()
 		{
 			this.m_TransitionDuration = Mathf.Max(this.m_TransitionDuration, 0f);
@@ -198,7 +198,7 @@ namespace UnityEngine.UI
 				this.m_CanvasGroup.alpha = (this.m_StartingState == VisualState.Hidden) ? 0f : 1f;
 			}
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Determines whether this window is active.

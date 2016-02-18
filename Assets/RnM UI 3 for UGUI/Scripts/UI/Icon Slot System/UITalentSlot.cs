@@ -42,13 +42,13 @@ namespace UnityEngine.UI
 			this.dragAndDropEnabled = false;
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected override void OnValidate()
 		{
 			base.OnValidate();
 			this.UpdateSpecialBackground();
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Gets the spell info of the spell assigned to this slot.

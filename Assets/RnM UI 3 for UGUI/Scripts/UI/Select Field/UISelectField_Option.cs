@@ -81,7 +81,7 @@ namespace UnityEngine.UI
 			this.onValueChanged.RemoveListener(OnValueChanged);
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected override void OnValidate()
 		{
 			base.OnValidate();
@@ -89,7 +89,7 @@ namespace UnityEngine.UI
 			if (this.selectField != null)
 				this.selectField.optionBackgroundTransColors.fadeDuration = Mathf.Max(this.selectField.optionBackgroundTransColors.fadeDuration, 0f);
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Determines whether this option is pressed.

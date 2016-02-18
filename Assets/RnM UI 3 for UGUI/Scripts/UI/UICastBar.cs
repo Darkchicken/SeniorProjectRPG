@@ -112,14 +112,14 @@ namespace UnityEngine.UI
 			}
 		}
 		
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		protected void OnValidate()
 		{
 			// Apply the normal color stage
 			if (this.isActiveAndEnabled)
 				this.ApplyColorStage(this.m_NormalColors);
 		}
-#endif
+#endif*/
 		
 		/// <summary>
 		/// Applies the color stages.
