@@ -11,7 +11,6 @@ public class PlayFabMainMenu : MonoBehaviour
 {
     public UICharacterSelect_List characterList;
     public ToggleGroup characterListToggle;
-    public Canvas loading;
 
     public static PlayFabMainMenu playfabMainMenu;
     private bool isCharacterSelected;
@@ -47,7 +46,6 @@ public class PlayFabMainMenu : MonoBehaviour
         }
 
         Invoke("ToggleFirstCharacter", 0.2f);
-
     }
 
     void ToggleFirstCharacter()

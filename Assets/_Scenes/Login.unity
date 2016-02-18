@@ -7591,7 +7591,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterList: {fileID: 0}
   characterListToggle: {fileID: 0}
-  loading: {fileID: 0}
 --- !u!1 &1177737915
 GameObject:
   m_ObjectHideFlags: 0
@@ -9183,7 +9182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterList: {fileID: 472314982}
   characterListToggle: {fileID: 472314978}
-  loading: {fileID: 0}
 --- !u!95 &1472951802
 Animator:
   serializedVersion: 3

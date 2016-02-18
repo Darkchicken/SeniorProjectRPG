@@ -10,6 +10,7 @@ public class HUD_Manager : MonoBehaviour {
     public Canvas characterWindow;
     public Canvas runeWindow;
     public Canvas cheatWindow;
+    public Canvas friendsWindow;
 
     public Text playerName;
 
@@ -35,6 +36,11 @@ public class HUD_Manager : MonoBehaviour {
     public void ToggleCheatPanel()
     {
         cheatWindow.gameObject.SetActive(!cheatWindow.gameObject.activeInHierarchy);
+    }
+
+    public void ToggleFriendsList()
+    {
+        friendsWindow.gameObject.SetActive(!friendsWindow.gameObject.activeInHierarchy);
     }
 
 

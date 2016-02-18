@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         loading.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
         PlayFabApiCalls.GetCharacterData();
+        PlayFabApiCalls.GetFriendsList();
 
         Invoke("SortRunes", 1);
         Invoke("RefreshActionBar", 2);
