@@ -44,7 +44,12 @@ public class FriendsList : MonoBehaviour
 
     }
 
-
+    //joins a friend's room
+    public void JoinFriend()
+    {
+        //photonnetwork.friendsCurrentRoomName must be set first
+        PhotonCalls.JoinFriendRoom();
+    }
 
 
 

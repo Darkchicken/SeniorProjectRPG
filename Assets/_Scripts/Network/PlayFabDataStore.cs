@@ -13,6 +13,8 @@ public class PlayFabDataStore : MonoBehaviour
     public static string characterName;
     public static string friendUsername;
     public static string friendCharacterId;
+    public static string currentRoomName;
+    public static string friendsCurrentRoomName;
 
     public static Dictionary<string, string> friendsList = new Dictionary<string, string>();
     

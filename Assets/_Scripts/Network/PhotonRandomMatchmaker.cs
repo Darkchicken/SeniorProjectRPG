@@ -34,6 +34,7 @@ public class PhotonRandomMatchmaker : PunBehaviour
         PlayFabUserLogin.playfabUserLogin.Authentication("SUCCESS!", 2); //change the text of authentication text
         Debug.Log("Join Room Successfully!");
         Debug.Log("Room name is: "+PhotonNetwork.room);
+        PlayFabDataStore.currentRoomName = PhotonNetwork.room.ToString();
         //GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, Quaternion.identity, 0);
         //player.GetComponent<PlayerCombatManager>().enabled = true;
 
