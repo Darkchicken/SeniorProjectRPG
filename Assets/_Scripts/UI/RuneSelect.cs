@@ -113,8 +113,25 @@ public class RuneSelect : MonoBehaviour
 
         //Debug.Log("RuneSelect");
         ActionBar.RefreshActionBar();
-        
+    }
 
+    public void ShowTooltip()
+    {
+        Invoke("SetTooltipData", 0.25f);
+    }
+
+    public void HideTooltip()
+    {
+        CancelInvoke("SetTooltipData");
+        UITooltip.Hide();
+    }
+
+    void SetTooltipData()
+    {  
+        UITooltip.AddTitle(PlayFabDataStore.playerAllRunes[runeId].displayName);
+        UITooltip.AddDescription(PlayFabDataStore.playerAllRunes[runeId].description);
+        UITooltip.AnchorToRect(this.transform as RectTransform);
+        UITooltip.Show();
     }
 
 }
