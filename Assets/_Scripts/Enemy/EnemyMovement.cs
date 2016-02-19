@@ -86,18 +86,22 @@ public class EnemyMovement :MonoBehaviour
     {
         for (int i = 0; i < GameManager.players.Count; i++)
         {
-            if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) <= aggroRange)
+            //added this check to prevent null reference exceptions when player leaves room
+            if (GameManager.players[i] != null)
             {
-                if (!combatManager.playerAttackList.Contains(GameManager.players[i]) && !GameManager.players[i].GetComponent<Health>().IsDead())
+                if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) <= aggroRange)
                 {
-                    combatManager.playerAttackList.Add(GameManager.players[i]);
+                    if (!combatManager.playerAttackList.Contains(GameManager.players[i]) && !GameManager.players[i].GetComponent<Health>().IsDead())
+                    {
+                        combatManager.playerAttackList.Add(GameManager.players[i]);
+                    }
                 }
-            }
-            if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange)
-            {
-                if (combatManager.playerAttackList.Contains(GameManager.players[i]))
+                if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange)
                 {
-                    combatManager.playerAttackList.Remove(GameManager.players[i]);
+                    if (combatManager.playerAttackList.Contains(GameManager.players[i]))
+                    {
+                        combatManager.playerAttackList.Remove(GameManager.players[i]);
+                    }
                 }
             }
         }

@@ -14582,6 +14582,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 11488142, guid: e48a620e766ebe74ebff9c54b1a3e081,
     type: 2}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1672088000}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14683,6 +14684,16 @@ MonoBehaviour:
   m_DeleteButtonFadeDuration: 0.1
   m_Separator: {fileID: 375170973}
 --- !u!1 &1679029757
+=======
+  m_GameObject: {fileID: 1620494579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+--- !u!1 &1630772288
+>>>>>>> master
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 159652, guid: e48a620e766ebe74ebff9c54b1a3e081, type: 2}

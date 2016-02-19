@@ -46,4 +46,9 @@ public class CheatPanel : MonoBehaviour
         }
     }
 
+    public void JoinRandomRoom()
+    {
+        PhotonCalls.LeaveRoom();
+    }
+
 }
