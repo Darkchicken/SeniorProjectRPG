@@ -5,6 +5,7 @@ using Photon;
 
 public class PhotonCalls : PunBehaviour
 {
+    GameObject spawnPoint;
     // static string friendRoomName = null; // get this directly from playfabdatastore
     //exits the current room
     public static void LeaveRoom()
@@ -52,11 +53,13 @@ public class PhotonCalls : PunBehaviour
     {
         //reset to false for next check
         PlayFabDataStore.friendsCurrentRoomName = null;
+        spawnPoint = GameObject.Find("SpawnPoint");
         Debug.Log("Join Room Successfully!");
         Debug.Log("Room name is: " + PhotonNetwork.room);
 
-        //GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, Quaternion.identity, 0);
-        //player.GetComponent<PlayerCombatManager>().enabled = true;
+        GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.transform.position, Quaternion.identity, 0);
+        player.GetComponent<PlayerCombatManager>().enabled = true;
+        player.GetComponent<Runes>().enabled = true;
 
     }
 
