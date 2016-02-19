@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon;
 
 public class PhotonCalls : PunBehaviour
 {
-    static string friendRoomName = null;
+    // static string friendRoomName = null; // get this directly from playfabdatastore
     //exits the current room
     public static void LeaveRoom()
     {
@@ -14,7 +15,6 @@ public class PhotonCalls : PunBehaviour
     //exits the current room, but also preps to join a friends room
     public static void JoinFriendRoom()
     {
-        friendRoomName = PlayFabDataStore.friendsCurrentRoomName;
         PhotonNetwork.LeaveRoom();
     }
 
@@ -26,9 +26,9 @@ public class PhotonCalls : PunBehaviour
     //upon reaching the lobby, join a random room 
     public override void OnJoinedLobby()
     {
-        if (friendRoomName != null)
+        if (PlayFabDataStore.friendsCurrentRoomName != null)
         {
-            PhotonNetwork.JoinRoom(friendRoomName);
+            PhotonNetwork.JoinRoom(PlayFabDataStore.friendsCurrentRoomName);
         }
         else
         {
@@ -51,7 +51,7 @@ public class PhotonCalls : PunBehaviour
     public override void OnJoinedRoom()
     {
         //reset to false for next check
-        friendRoomName = null;
+        PlayFabDataStore.friendsCurrentRoomName = null;
         Debug.Log("Join Room Successfully!");
         Debug.Log("Room name is: " + PhotonNetwork.room);
 

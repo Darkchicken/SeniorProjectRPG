@@ -21,7 +21,6 @@ public class PlayFabApiCalls : MonoBehaviour
         {
             PlayFabDataStore.playFabId = result.PlayFabId;
             PlayFabDataStore.sessionTicket = result.SessionTicket;
-            //PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
             GetPhotonToken();
         }, (error) =>
         {
@@ -67,11 +66,10 @@ public class PlayFabApiCalls : MonoBehaviour
             PhotonNetwork.AuthValues.UserId = PlayFabDataStore.playFabId;
             PhotonNetwork.ConnectUsingSettings("1.0");
             PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
-            //PlayFabUserLogin.playfabUserLogin.Authentication("SUCCESS!", 2); //change the text of authentication text
+            GetCatalogItems();
         }, (error) =>
         {
             PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);
-            //PlayFabErrorHandler.HandlePlayFabError(error);
         });
     }
 
@@ -260,12 +258,12 @@ public class PlayFabApiCalls : MonoBehaviour
                     
                     if(item.CustomData == null)
                     {
-                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
+                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
                            
                     }
                     else
                     {
-                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new Rune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
                     }
                 }
             }
@@ -338,6 +336,73 @@ public class PlayFabApiCalls : MonoBehaviour
         (error) =>
         {
             Debug.Log("Cant get friends list");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    public static void UpdateUserData(Dictionary<string, string> data)
+    {
+        var request = new UpdateUserDataRequest()
+        {
+            Data = data,
+            Permission = UserDataPermission.Public
+        };
+        PlayFabClientAPI.UpdateUserData(request, (result) =>
+        {
+            Debug.Log("User Data Updated");
+        },
+        (error) =>
+        {
+            Debug.Log("User Data Can't Updated");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    public static void GetUserRoomName(string playFabId)
+    {
+        Debug.Log(playFabId);
+        var request = new GetUserDataRequest()
+        {
+            PlayFabId = playFabId   
+        };
+        PlayFabClientAPI.GetUserData(request, (result) =>
+        {
+            PlayFabDataStore.friendsCurrentRoomName = result.Data["RoomName"].Value;
+            Debug.Log(result.Data["RoomName"].Value);
+        },
+        (error) =>
+        {
+            Debug.Log("Can't get Room Name");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    public static void GetCatalogItems()
+    {
+        var request = new GetCatalogItemsRequest()
+        {
+        };
+        PlayFabClientAPI.GetCatalogItems(request, (result) =>
+        {
+            foreach (var item in result.Catalog)
+            {
+                if (item.ItemClass == "Skill" || item.ItemClass == "Modifier")
+                {
+                    string[] customData = item.CustomData.Split('"');
+                    //Debug.Log(item.ItemId);
+                    //Debug.Log(item.CustomData);
+
+                    PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], customData[7], customData[11], customData[15], customData[19], customData[23]));
+                }
+            }
+            Debug.Log("Catalog Retrieved");
+        },
+        (error) =>
+        {
+            Debug.Log("Can't get Catalog Runes");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });

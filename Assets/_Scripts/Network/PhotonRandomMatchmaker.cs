@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon;
 
 public class PhotonRandomMatchmaker : PunBehaviour
@@ -22,6 +23,7 @@ public class PhotonRandomMatchmaker : PunBehaviour
     void OnPhotonRandomJoinFailed()
     {
         Debug.Log("Can't join random room!");
+        
         ///argument is room name (null to assign a random name)
         PhotonNetwork.CreateRoom(null);
         
@@ -34,7 +36,16 @@ public class PhotonRandomMatchmaker : PunBehaviour
         PlayFabUserLogin.playfabUserLogin.Authentication("SUCCESS!", 2); //change the text of authentication text
         Debug.Log("Join Room Successfully!");
         Debug.Log("Room name is: "+PhotonNetwork.room);
-        PlayFabDataStore.currentRoomName = PhotonNetwork.room.ToString();
+
+
+        //Everytime a room created by a user, this part of the code has to be called to store the room name on playfab
+        string[] roomName = PhotonNetwork.room.ToString().Split('\'');
+        PlayFabDataStore.currentRoomName = roomName[1]; //gets the actual room value
+        Dictionary<string, string> customData = new Dictionary<string, string>();
+        customData.Add("RoomName", PlayFabDataStore.currentRoomName);
+        PlayFabApiCalls.UpdateUserData(customData);
+
+
         //GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, Quaternion.identity, 0);
         //player.GetComponent<PlayerCombatManager>().enabled = true;
 

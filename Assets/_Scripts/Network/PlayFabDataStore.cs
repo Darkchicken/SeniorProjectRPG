@@ -16,10 +16,11 @@ public class PlayFabDataStore : MonoBehaviour
     public static string currentRoomName;
     public static string friendsCurrentRoomName;
 
-    public static Dictionary<string, string> friendsList = new Dictionary<string, string>();
-    
+    //Dictionaries
 
-    public static Dictionary<string, Rune> playerAllRunes = new Dictionary<string, Rune>();
+    public static Dictionary<string, string> friendsList = new Dictionary<string, string>();
+    public static Dictionary<string, CatalogRune> catalogRunes = new Dictionary<string, CatalogRune>();
+    public static Dictionary<string, PlayerRune> playerAllRunes = new Dictionary<string, PlayerRune>();
     public static Dictionary<int, Sprite> playerActiveRuneImages = new Dictionary<int, Sprite>();
     public static Dictionary<string, string> characters = new Dictionary<string, string>();
     public static Dictionary<int, string> playerActiveSkillRunes = new Dictionary<int, string>();

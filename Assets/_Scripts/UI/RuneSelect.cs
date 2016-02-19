@@ -129,7 +129,6 @@ public class RuneSelect : MonoBehaviour
     void SetTooltipData()
     {  
         UITooltip.AddTitle(PlayFabDataStore.playerAllRunes[runeId].displayName);
-        UITooltip.AddDescription(PlayFabDataStore.playerAllRunes[runeId].description);
         UITooltip.AnchorToRect(this.transform as RectTransform);
         UITooltip.Show();
     }

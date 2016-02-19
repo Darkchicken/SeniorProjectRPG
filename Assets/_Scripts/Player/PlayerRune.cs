@@ -3,15 +3,14 @@ using System.Collections;
 using PlayFab;
 using PlayFab.ClientModels;
 
-public class Rune
+public class PlayerRune
 {
-    public static Rune rune;
+    public static PlayerRune rune;
 
     public string itemId;
     public string instanceId;
     public string itemClass;
     public string displayName;
-    public string description;
     public string active;
 
     void Awake()
@@ -19,7 +18,7 @@ public class Rune
         rune = this;
     }
 
-    public Rune(string _itemId, string _instanceId, string _itemClass, string _displayName, string _active)
+    public PlayerRune(string _itemId, string _instanceId, string _itemClass, string _displayName, string _active)
     {
         itemId = _itemId;
         instanceId =_instanceId;
