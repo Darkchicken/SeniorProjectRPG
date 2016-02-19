@@ -19,7 +19,7 @@ public class FriendsList : MonoBehaviour
         {
             GameObject obj = Instantiate(friendPrefab);
             obj.transform.SetParent(this.transform, false);
-            obj.GetComponentInChildren<Text>().text = friend.ToString();
+            obj.GetComponentInChildren<Text>().text = friend.Key.ToString();
             obj.GetComponent<Toggle>().group = GetComponent<ToggleGroup>();
         }
     }
@@ -43,6 +43,8 @@ public class FriendsList : MonoBehaviour
     {
 
     }
+
+
 
 
 

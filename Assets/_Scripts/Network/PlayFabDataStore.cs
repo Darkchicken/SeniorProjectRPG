@@ -11,8 +11,11 @@ public class PlayFabDataStore : MonoBehaviour
     public static string playFabId;
     public static string characterId;
     public static string characterName;
+    public static string friendUsername;
+    public static string friendCharacterId;
 
-    public static List<string> friendsList = new List<string>();
+    public static Dictionary<string, string> friendsList = new Dictionary<string, string>();
+    
 
     public static Dictionary<string, Rune> playerAllRunes = new Dictionary<string, Rune>();
     public static Dictionary<int, Sprite> playerActiveRuneImages = new Dictionary<int, Sprite>();

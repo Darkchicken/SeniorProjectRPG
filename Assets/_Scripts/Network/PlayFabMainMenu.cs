@@ -26,7 +26,7 @@ public class PlayFabMainMenu : MonoBehaviour
         PlayFabApiCalls.PlayFabInitialize();
 
         //Receives all characters belong to the user
-        PlayFabApiCalls.GetAllUsersCharacters();
+        PlayFabApiCalls.GetAllUsersCharacters(PlayFabDataStore.playFabId, "Player");
 
         Invoke("ListCharacters", 1);
     }

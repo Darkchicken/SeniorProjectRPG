@@ -76,19 +76,33 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Receives all characters belong to the user
-    public static void GetAllUsersCharacters()
+    public static void GetAllUsersCharacters(string playfabId, string target)
     {
         var request = new ListUsersCharactersRequest()
         {
-            PlayFabId = PlayFabDataStore.playFabId
+            PlayFabId = playfabId
         };
 
         PlayFabClientAPI.GetAllUsersCharacters(request, (result) =>
         {
-            foreach (var character in result.Characters)
+            if(target == "Player")
             {
-                PlayFabDataStore.characters.Add(character.CharacterName, character.CharacterId);
+                foreach(var character in result.Characters)
+                {
+                    PlayFabDataStore.characters.Add(character.CharacterName, character.CharacterId);
+                }
             }
+            else
+            {
+                foreach (var character in result.Characters)
+                {
+                    if(character.CharacterName == PlayFabDataStore.friendUsername)
+                    {
+                        PlayFabDataStore.friendCharacterId = character.CharacterId;
+                    }
+                }
+            }
+            
         }, (error) =>
         {
             Debug.Log("Can't retrieve character!");
@@ -317,7 +331,7 @@ public class PlayFabApiCalls : MonoBehaviour
         {
             foreach(var friend in result.Friends)
             {
-                PlayFabDataStore.friendsList.Add(friend.Username);
+                PlayFabDataStore.friendsList.Add(friend.Username, friend.FriendPlayFabId);
             }
            
         },
