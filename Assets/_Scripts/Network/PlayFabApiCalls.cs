@@ -289,11 +289,11 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    public static void AddFriend(string friendId)
+    public static void AddFriend(string email)
     {
         var request = new AddFriendRequest()
         {
-            FriendPlayFabId = friendId
+            FriendEmail = email
         };
         PlayFabClientAPI.AddFriend(request, (result) =>
         {
