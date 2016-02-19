@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         //DontDestroyOnLoad(gameObject);
         loading.gameObject.SetActive(true);
+        runes.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
         PlayFabApiCalls.GetCharacterData();
         PlayFabApiCalls.GetFriendsList();

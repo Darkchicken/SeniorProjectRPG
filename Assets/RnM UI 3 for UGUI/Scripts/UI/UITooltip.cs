@@ -354,16 +354,16 @@ namespace UnityEngine.UI
 			switch (point)
 			{
 				case Corner.BottomLeft:
-					this.m_Rect.pivot = new Vector2(0f, 0f);
+					this.m_Rect.pivot = new Vector2(0f, 1f);
 						break;
 				case Corner.BottomRight:
-					this.m_Rect.pivot = new Vector2(1f, 0f);
+					this.m_Rect.pivot = new Vector2(0f, 1f);
 						break;
 				case Corner.TopLeft:
 					this.m_Rect.pivot = new Vector2(0f, 1f);
 						break;
 				case Corner.TopRight:
-					this.m_Rect.pivot = new Vector2(1f, 1f);
+					this.m_Rect.pivot = new Vector2(0f, 1f);
 						break;
 			}	
 
@@ -392,7 +392,7 @@ namespace UnityEngine.UI
 			                               rt.localPosition.z);
 			
 			// Flip the anchor graphic based on the pivot
-			rt.localScale = new Vector3(((this.m_Rect.pivot.x == 0f) ? 1f : -1f), ((this.m_Rect.pivot.y == 0f) ? 1f : -1f), rt.localScale.z);
+			rt.localScale = new Vector3(((this.m_Rect.pivot.x == 0f) ? -1f : -1f), ((this.m_Rect.pivot.y == 0f) ? 1f : -1f), rt.localScale.z);
 		}
 		
 		/// <summary>
@@ -400,6 +400,7 @@ namespace UnityEngine.UI
 		/// </summary>
 		protected virtual void Internal_Show()
 		{
+
 			// Create the attribute rows
 			this.EvaluateAndCreateTooltipLines();
 			
@@ -933,7 +934,8 @@ namespace UnityEngine.UI
 		/// </summary>
 		public static void Show()
 		{
-			if (mInstance != null && mInstance.IsActive())
+            
+            if (mInstance != null && mInstance.IsActive())
 				mInstance.Internal_Show();
 		}
 		
@@ -942,7 +944,8 @@ namespace UnityEngine.UI
 		/// </summary>
 		public static void Hide()
 		{
-			if (mInstance != null)
+
+            if (mInstance != null)
 				mInstance.Internal_Hide();
 		}
 		
