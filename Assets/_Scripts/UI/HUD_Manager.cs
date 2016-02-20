@@ -12,7 +12,16 @@ public class HUD_Manager : MonoBehaviour {
     public Canvas cheatWindow;
     public Canvas friendsWindow;
 
+    public Image healthGlobe;
+    public Image resourceGlobe;
+
     public Text playerName;
+
+    void Update()
+    {
+        healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
+        resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
+    }
 
     void OnEnable()
     {

@@ -4,8 +4,10 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
-    public Slider enemyHealthSlider;
+    public Image enemyHealthFillImage;
+
     public int health;
+    public int maxHealth;
 
     private Animator anim;
     private bool dead = false;
@@ -13,26 +15,42 @@ public class Health : MonoBehaviour {
     void Awake()
     {
         anim = GetComponent<Animator>();
+        maxHealth = health;
     }
 
     public void TakeDamage(GameObject source , int damage)
     {
         if (!dead)
         {
-            if (health > damage)
+            if(tag == "Player")
             {
-                anim.SetTrigger("TAKE DAMAGE 1");
-                health -= damage;
-            }
-            else
-            {
-                Dead();
-                if (tag == "Player")
+                if (PlayFabDataStore.playerCurrentHealth > damage)
                 {
-                    if(source.GetComponent<EnemyCombatManager>().playerAttackList.Contains(gameObject))
+                    anim.SetTrigger("TAKE DAMAGE 1");
+                    PlayFabDataStore.playerCurrentHealth -= damage;
+                }
+                else
+                {
+                    Dead();
+                    if (source.GetComponent<EnemyCombatManager>() != null)
                     {
-                        source.GetComponent<EnemyCombatManager>().playerAttackList.Remove(gameObject);
+                        if (source.GetComponent<EnemyCombatManager>().playerAttackList.Contains(gameObject))
+                        {
+                            source.GetComponent<EnemyCombatManager>().playerAttackList.Remove(gameObject);
+                        }
                     }
+                }
+            }
+            if (tag == "Enemy")
+            {
+                if (health > damage)
+                {
+                    anim.SetTrigger("TAKE DAMAGE 1");
+                    health -= damage;
+                }
+                else
+                {
+                    Dead();
                 }
             }
         }
@@ -49,7 +67,7 @@ public class Health : MonoBehaviour {
         }
         if(tag == "Enemy")
         {
-            enemyHealthSlider.gameObject.SetActive(false);
+            enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
             GetComponent<EnemyMovement>().enabled = false;
             GetComponent<EnemyCombatManager>().enabled = false;
         }
@@ -65,8 +83,8 @@ public class Health : MonoBehaviour {
         {
             if (!dead)
             {
-                enemyHealthSlider.value = health;
-                enemyHealthSlider.gameObject.SetActive(true);
+                enemyHealthFillImage.fillAmount= (float)health / (float)maxHealth;
+                enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
             }
         }
 
@@ -76,7 +94,7 @@ public class Health : MonoBehaviour {
     {
         if (tag == "Enemy")
         {
-            enemyHealthSlider.gameObject.SetActive(false);
+            enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
         }
     }
 

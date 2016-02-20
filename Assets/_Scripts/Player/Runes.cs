@@ -120,29 +120,31 @@ public class Runes : MonoBehaviour
 
     int GetPlayerResource()
     {
-        return PlayFabDataStore.playerResource;
+        Debug.Log(PlayFabDataStore.playerCurrentResource);
+        return PlayFabDataStore.playerCurrentResource;
     }
 
     void SetPlayerResource(int generate)
     {
-        PlayFabDataStore.playerResource += generate;
+        PlayFabDataStore.playerCurrentResource += generate;
     }
 
     public void Rune_Slam()
     {
+        string runeId = "Rune_Slam";
         if (targetEnemy != null)
         {
-            stopDistanceForAttack = rune1_AttackRange;
-            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= rune1_AttackRange)
+            stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
+            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
             {
-                if (attackTimer >= rune1_AttackSpeed)
+                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {     
                     targetEnemy.GetComponent<Health>().TakeDamage(gameObject, 15);
                     attackTimer = 0f;
                     playerAnimation.SetTrigger("ATTACK 1");
-                    if (GetPlayerResource() + rune1_ResourceGeneration <= 100)
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
-                        SetPlayerResource(rune1_ResourceGeneration);
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
                     }
                     else
                     {
@@ -156,7 +158,47 @@ public class Runes : MonoBehaviour
 
     public void Rune_Carve()
     {
-        if (GetPlayerResource() >= rune2_ResourceUsage)
+        string runeId = "Rune_Carve";
+        if (targetEnemy != null)
+        {
+            stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
+            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
+            {
+                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                {
+                    Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+                    for (int i = 0; i < hitEnemies.Length; i++)
+                    {
+                        if (hitEnemies[i].CompareTag("Enemy"))
+                        {
+                            hitEnemies[i].GetComponent<Health>().TakeDamage(gameObject, 100);
+                        }
+                    }
+                    attackTimer = 0f;
+                    playerAnimation.SetTrigger("ATTACK 3");
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                    {
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                    }
+                    else
+                    {
+                        SetPlayerResource(100);
+                    }
+
+                }
+            }
+        }
+    }
+
+
+
+
+
+    /* for Secodary abilities
+    public void Rune_Carve()
+    {
+        string runeId = "Rune_Carve";
+        if (GetPlayerResource() >= int.Parse(PlayFabDataStore.catalogRunes[runeId].resourceUsage))
         {
             controller.Stop();
             controller.ResetPath();
@@ -175,7 +217,7 @@ public class Runes : MonoBehaviour
         }
 
     }
-
+    */
     public void Rune_BloodyTouch()
     {
 

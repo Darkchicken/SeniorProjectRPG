@@ -12,18 +12,18 @@ public class CatalogRune
     public string displayName;
     public string description;
     public string skillSlot;
-    public string resourceGeneration;
-    public string resourceUsage;
-    public string attackRange;
-    public string attackRadius;
-    public string cooldown;
+    public int resourceGeneration;
+    public int resourceUsage;
+    public int attackRange;
+    public int attackRadius;
+    public float cooldown;
 
     void Awake()
     {
         rune = this;
     }
 
-    public CatalogRune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot, string _resourceGeneration, string _resourceUsage, string _attackRange, string _attackRadius, string _cooldown)
+    public CatalogRune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot, int _resourceGeneration, int _resourceUsage, int _attackRange, int _attackRadius, float _cooldown)
     {
         itemId = _itemId;
         itemClass = _itemClass;

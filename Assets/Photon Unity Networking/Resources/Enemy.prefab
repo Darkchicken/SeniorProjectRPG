@@ -2691,7 +2691,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137966}
   m_LocalRotation: {x: 0, y: 0.99720633, z: 0, w: 0.07469655}
-  m_LocalPosition: {x: 57.97277, y: 0, z: 42.962967}
+  m_LocalPosition: {x: 54.7, y: 0, z: 64.4}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 441506}
@@ -3699,8 +3699,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7713543e0d5d6b3418998c2e0ff8a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthSlider: {fileID: 0}
+  enemyHealthFillImage: {fileID: 0}
   health: 100
+  maxHealth: 0
 --- !u!114 &11427274
 MonoBehaviour:
   m_ObjectHideFlags: 1

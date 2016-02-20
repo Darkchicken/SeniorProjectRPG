@@ -6,7 +6,7 @@ public class RaycastUI : MonoBehaviour
 
     private GameObject player;
 
-	void Awake ()
+	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 	}
