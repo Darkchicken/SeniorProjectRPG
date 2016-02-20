@@ -136,18 +136,19 @@ public class PlayFabApiCalls : MonoBehaviour
             CharacterId = PlayFabDataStore.characterId
         };
         PlayFabClientAPI.GetCharacterData(request, (result) =>
-        {
-            Debug.Log("Data successfully retrieved!");
+        {    
             PlayFabDataStore.playerLevel = int.Parse(result.Data["Level"].Value);
             PlayFabDataStore.playerExperience = int.Parse(result.Data["Experience"].Value);
-            PlayFabDataStore.playerHealth = int.Parse(result.Data["Health"].Value);
-            PlayFabDataStore.playerResource = int.Parse(result.Data["Resource"].Value);
+            PlayFabDataStore.playerMaxHealth = int.Parse(result.Data["Health"].Value);
+            PlayFabDataStore.playerMaxResource = int.Parse(result.Data["Resource"].Value);
             PlayFabDataStore.playerStrength = int.Parse(result.Data["Strength"].Value);
             PlayFabDataStore.playerIntellect = int.Parse(result.Data["Intellect"].Value);
             PlayFabDataStore.playerDexterity = int.Parse(result.Data["Dexterity"].Value);
             PlayFabDataStore.playerVitality = int.Parse(result.Data["Vitality"].Value);
             PlayFabDataStore.playerCriticalChance = int.Parse(result.Data["Critical Chance"].Value);
             PlayFabDataStore.playerWeaponDamage = int.Parse(result.Data["Weapon Damage"].Value);
+            Debug.Log(PlayFabDataStore.playerMaxHealth);
+            Debug.Log("Data successfully retrieved!");
 
         }, (error) =>
         {
@@ -393,9 +394,8 @@ public class PlayFabApiCalls : MonoBehaviour
                 {
                     string[] customData = item.CustomData.Split('"');
                     //Debug.Log(item.ItemId);
-                    //Debug.Log(item.CustomData);
 
-                    PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], customData[7], customData[11], customData[15], customData[19], customData[23]));
+                    PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], int.Parse(customData[7]), int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), float.Parse(customData[23])));
                 }
             }
             Debug.Log("Catalog Retrieved");

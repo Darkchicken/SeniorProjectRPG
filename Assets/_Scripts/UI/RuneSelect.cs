@@ -128,7 +128,22 @@ public class RuneSelect : MonoBehaviour
 
     void SetTooltipData()
     {  
-        UITooltip.AddTitle(PlayFabDataStore.playerAllRunes[runeId].displayName);
+        UITooltip.AddTitle(PlayFabDataStore.catalogRunes[runeId].displayName);
+        if(PlayFabDataStore.catalogRunes[runeId].itemClass == "Skill")
+        {
+            if (PlayFabDataStore.catalogRunes[runeId].resourceGeneration == 0)
+            {
+                UITooltip.AddLineColumn("Cost: " + PlayFabDataStore.catalogRunes[runeId].resourceUsage + " Resource");
+            }
+            else
+            {
+                UITooltip.AddLineColumn("Generate: " + PlayFabDataStore.catalogRunes[runeId].resourceGeneration + " Resource");
+            }
+        }
+        
+        
+        UITooltip.AddDescription(PlayFabDataStore.catalogRunes[runeId].description);
+        
         UITooltip.AnchorToRect(this.transform as RectTransform);
         UITooltip.Show();
     }

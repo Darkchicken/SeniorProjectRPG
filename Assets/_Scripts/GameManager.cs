@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         PlayFabApiCalls.GetFriendsList();
 
         Invoke("SortRunes", 1);
+        Invoke("SetPlayerData", 1);
         Invoke("RefreshActionBar", 2);
         
     }
@@ -36,5 +37,10 @@ public class GameManager : MonoBehaviour
         ActionBar.RefreshActionBar();
         Debug.Log("RefreshedActionBar");
         runes.gameObject.SetActive(false);
+    }
+
+    void SetPlayerData()
+    {
+        PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
 }

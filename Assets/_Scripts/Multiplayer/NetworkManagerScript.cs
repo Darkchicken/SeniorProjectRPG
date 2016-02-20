@@ -8,7 +8,7 @@ public class NetworkManagerScript : MonoBehaviour {
     CameraFollow cameraFollow;
     public Transform spawnPoint;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
      
         GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, spawnPoint.rotation, 0);

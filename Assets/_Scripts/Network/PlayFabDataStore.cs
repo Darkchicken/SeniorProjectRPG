@@ -30,8 +30,10 @@ public class PlayFabDataStore : MonoBehaviour
 
     public static int playerLevel;
     public static int playerExperience;
-    public static int playerHealth;
-    public static int playerResource;
+    public static int playerCurrentHealth;
+    public static int playerMaxHealth = 1;
+    public static int playerCurrentResource;
+    public static int playerMaxResource = 1;
     public static int playerStrength;
     public static int playerIntellect;
     public static int playerDexterity;
@@ -42,15 +44,15 @@ public class PlayFabDataStore : MonoBehaviour
     {
         {"Level", "1" },
         {"Experience", "1" },
-        {"Health", "0" },
-        {"Resource", "0" },
+        {"Health", "100" },
+        {"Resource", "100" },
         {"Strength", "5" },
         {"Intellect", "5" },
         {"Dexterity", "5" },
         {"Vitality", "5" },
         {"Spirit", "5" },
         {"Armor", "5" },
-        {"Critical Chance", "0" },
-        {"Weapon Damage", "0" }
+        {"Critical Chance", "5" },
+        {"Weapon Damage", "10" }
     };
 }

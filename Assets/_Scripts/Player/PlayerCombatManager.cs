@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerCombatManager : Runes
 {
 
-    
     public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
      //sets by PlayerAttack script
@@ -21,11 +21,6 @@ public class PlayerCombatManager : Runes
     private int skillSlot = 0;
     private bool autoAttack = false;
 
-    void Start()
-    {
-        
-
-    }
 
     void Update()
     {
@@ -34,8 +29,10 @@ public class PlayerCombatManager : Runes
         {
             locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
+            Debug.Log("Clicked");
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
+                Debug.Log("Use Skill");
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }
