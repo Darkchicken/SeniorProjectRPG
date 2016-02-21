@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     //This is where we call all our Database when loading a scene
 	void Awake()
     {
-        //DontDestroyOnLoad(gameObject);
         loading.gameObject.SetActive(true);
         runes.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviour
         PlayFabApiCalls.GetFriendsList();
 
         Invoke("SortRunes", 1);
-        Invoke("SetPlayerData", 1);
+        Invoke("SetPlayerData", 1.5f);
         Invoke("RefreshActionBar", 2);
         
     }
@@ -31,16 +30,18 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("RunesSorted");
         RuneWindow.SortAllRunes();
+
     }
     void RefreshActionBar()
     {
         ActionBar.RefreshActionBar();
         Debug.Log("RefreshedActionBar");
-        runes.gameObject.SetActive(false);
+        RuneWindow.ToggleWindows();
     }
 
     void SetPlayerData()
     {
+        runes.gameObject.SetActive(false);
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
 }

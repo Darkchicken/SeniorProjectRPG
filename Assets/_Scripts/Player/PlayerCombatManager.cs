@@ -29,10 +29,10 @@ public class PlayerCombatManager : Runes
         {
             locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
-            Debug.Log("Clicked");
+            //isFreezing = false;
+            //isStunning = false;
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
-                Debug.Log("Use Skill");
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }

@@ -17,7 +17,7 @@ public class RuneWindow : MonoBehaviour
     {
         runeWindows.Add(0, skillWindows);
         runeWindows.Add(1, modifierWindows);
-        ToggleWindows();
+        //ToggleWindows();
     }
 
     public static void SortAllRunes()

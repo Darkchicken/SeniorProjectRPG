@@ -25,7 +25,7 @@ public class EnemyCombatManager : MonoBehaviour
         {
             if (attackTimer >= attackSpeed && !playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange())
             {
-                playerAttackList[0].GetComponent<Health>().TakeDamage(gameObject, attackDamage);
+                playerAttackList[0].GetComponent<Health>().TakeDamage(gameObject, 0/*attackDamage*/, 5);
                 enemyAnimation.SetTrigger("ATTACK 1");
                 attackTimer = 0f;
             }

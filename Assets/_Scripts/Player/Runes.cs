@@ -12,7 +12,7 @@ public class Runes : MonoBehaviour
 
     //Runes 1-6 reserved for base skills
     //Rune #1
-
+    /*
     private int rune1_SkillSlot = 5; //Slot number of the skill
     private string rune1_Name = "Rune_Slam"; //Skill name and is also the name of the method
     private string rune1_Info = ""; //Skill information that will be shown when skill mouse over a skill
@@ -83,34 +83,34 @@ public class Runes : MonoBehaviour
     private float rune10_AttackSpeed = 0f;
     private float rune10_AttackRadius = 0f;
     private int rune10_Value = 1;
-
+    */
     public static NavMeshAgent controller;
     public static Animator playerAnimation;
     public static GameObject targetEnemy;
+    public static GameObject mainEnemy;
     public static Vector3 position;
     public float stopDistanceForAttack = 2f;
 
-    private static float attackTimer = 0f;
+    public static bool isFreezing = false;
+    public static bool isStunning = false;
+
     private PlayerCombatManager playerCombatManager;
+    private static float attackTimer = 0f;
+    private static int tempWeaponDamage;
+    private static int tempCriticalChance;
+    private static int tempResourceGeneration;
+    private static int tempResourceUsage;
+    private static string runeId;
+
 
 
     void Start()
     {
-        //playerAnimation = GetComponent<Animator>();
-        /*
-        runes = new List<Rune>();
-        runes.Add(new Rune(rune1_SkillSlot, rune1_Name, rune1_Info, rune1_Type, rune1_ResourceGeneration, rune1_ResourceUsage, rune1_AttackRange, rune1_AttackSpeed, rune1_Value));
-        runes.Add(new Rune(rune2_SkillSlot, rune2_Name, rune2_Info, rune2_Type, rune2_ResourceGeneration, rune2_ResourceUsage, rune2_AttackRange, rune2_AttackSpeed, rune2_Value));
-        runes.Add(new Rune(rune7_SkillSlot, rune7_Name, rune7_Info, rune7_Type, rune7_ResourceGeneration, rune7_ResourceUsage, rune7_AttackRange, rune7_AttackSpeed, rune7_Value));
-        runes.Add(new Rune(rune8_SkillSlot, rune8_Name, rune8_Info, rune8_Type, rune8_ResourceGeneration, rune8_ResourceUsage, rune8_AttackRange, rune8_AttackSpeed, rune8_Value));
-        runes.Add(new Rune(rune9_SkillSlot, rune9_Name, rune9_Info, rune9_Type, rune9_ResourceGeneration, rune9_ResourceUsage, rune9_AttackRange, rune9_AttackSpeed, rune9_Value));
-        runes.Add(new Rune(rune10_SkillSlot, rune10_Name, rune10_Info, rune10_Type, rune10_ResourceGeneration, rune10_ResourceUsage, rune10_AttackRange, rune10_AttackSpeed, rune10_Value));
-        */
         controller = GetComponent<NavMeshAgent>();
         GameManager.players.Add(gameObject);
         position = transform.position;
         playerAnimation = GetComponent<Animator>();
-
+        
     }
 
     void Update()
@@ -120,7 +120,6 @@ public class Runes : MonoBehaviour
 
     int GetPlayerResource()
     {
-        Debug.Log(PlayFabDataStore.playerCurrentResource);
         return PlayFabDataStore.playerCurrentResource;
     }
 
@@ -129,17 +128,43 @@ public class Runes : MonoBehaviour
         PlayFabDataStore.playerCurrentResource += generate;
     }
 
+    void ApplyDamage(GameObject enemy)
+    {
+        enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
+    }
+
+    /// <summary>
+    /// Hit an enemy for 320% weapon damage.
+    /// </summary>
     public void Rune_Slam()
     {
-        string runeId = "Rune_Slam";
+        runeId = "Rune_Slam";
+        mainEnemy = targetEnemy;
+          
         if (targetEnemy != null)
         {
             stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
             if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
             {
                 if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
-                {     
-                    targetEnemy.GetComponent<Health>().TakeDamage(gameObject, 15);
+                {
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if(modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                            //Invoke(modifier.Key, 0);
+                        }
+                    }
+                    ApplyDamage(targetEnemy);
+                    //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
+                    mainEnemy = null;
                     attackTimer = 0f;
                     playerAnimation.SetTrigger("ATTACK 1");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
@@ -155,10 +180,14 @@ public class Runes : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Swing your weapon and deal 200% weapon damage to all enemies in front of you who caught in the swing.
+    /// </summary>
     public void Rune_Carve()
     {
-        string runeId = "Rune_Carve";
+        runeId = "Rune_Carve";
+        mainEnemy = targetEnemy;
+
         if (targetEnemy != null)
         {
             stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
@@ -171,9 +200,28 @@ public class Runes : MonoBehaviour
                     {
                         if (hitEnemies[i].CompareTag("Enemy"))
                         {
-                            hitEnemies[i].GetComponent<Health>().TakeDamage(gameObject, 100);
+                            tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                            tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                            tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+
+                            targetEnemy = hitEnemies[i].gameObject;
+                            foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                            {
+                                if (modifier.Value == 5)
+                                {
+                                    var loadingMethod = GetType().GetMethod(modifier.Key);
+                                    var arguments = new object[] { targetEnemy };
+                                    loadingMethod.Invoke(this, arguments);
+                                    //Invoke(modifier.Key, 0);
+                                }
+                            }
+                            //Debug.Log(targetEnemy);
+                            ApplyDamage(targetEnemy);
+                            //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Carve"].attackPercentage / 100, tempCriticalChance);
                         }
+
                     }
+                    mainEnemy = null;
                     attackTimer = 0f;
                     playerAnimation.SetTrigger("ATTACK 3");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
@@ -189,6 +237,122 @@ public class Runes : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Each hit Freezes the enemy for 1.5 seconds.
+    /// </summary>
+    public void Rune_IcyWound(GameObject enemy)
+    {
+        enemy.GetComponent<Health>().maxFreezeTime = PlayFabDataStore.catalogRunes["Rune_IcyWound"].effectTime;
+        enemy.GetComponent<Health>().isFrozen = true;
+        //targetEnemy.GetComponent<Health>().maxFreezeTime = PlayFabDataStore.catalogRunes["Rune_IcyWound"].effectTime;
+        //targetEnemy.GetComponent<Health>().isFrozen = true;
+        Debug.Log(enemy + "ICYWOUND");
+    }
+    /// <summary>
+    /// The enemies hit have a 10% increased chance to be Critically hit for 3 seconds.
+    /// </summary>
+    public void Rune_Scourge(GameObject enemy)
+    {
+        enemy.GetComponent<Health>().criticalHitValue = PlayFabDataStore.catalogRunes["Rune_Scourge"].increasedCrit;
+        enemy.GetComponent<Health>().maxCriticalHitTime = PlayFabDataStore.catalogRunes["Rune_Scourge"].effectTime;
+        enemy.GetComponent<Health>().isCriticalHit = true;
+        //targetEnemy.GetComponent<Health>().criticalHitValue = PlayFabDataStore.catalogRunes["Rune_Scourge"].increasedCrit;
+        //targetEnemy.GetComponent<Health>().maxCriticalHitTime = PlayFabDataStore.catalogRunes["Rune_Scourge"].effectTime;
+        //targetEnemy.GetComponent<Health>().isCriticalHit = true;
+    }
+    /// <summary>
+    /// Increases Resource generation by 3.
+    /// </summary>
+    public void Rune_Incitement(GameObject enemy)
+    {
+        if (PlayFabDataStore.playerCurrentResource + PlayFabDataStore.catalogRunes["Rune_Incitement"].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+        {
+            PlayFabDataStore.playerCurrentResource += PlayFabDataStore.catalogRunes["Rune_Incitement"].resourceGeneration;
+            Debug.Log(PlayFabDataStore.catalogRunes["Rune_Incitement"].resourceGeneration + "resource added");
+        }
+    }
+    /// <summary>
+    /// Enemies hit explode, causing 160% weapon damage as Fire to all other enemies within 8 yards.
+    /// </summary>
+    public void Rune_Breach(GameObject enemy)
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(mainEnemy.transform.position, PlayFabDataStore.catalogRunes["Rune_Breach"].attackRadius);
+        if(enemy == mainEnemy)
+        {
+            Debug.Log("This Should be only once");
+            for (int i = 0; i < hitEnemies.Length; i++)
+            {
+                if (hitEnemies[i].CompareTag("Enemy") && hitEnemies[i].gameObject != mainEnemy)
+                {
+                    Debug.Log("Breach: " + hitEnemies[i].gameObject);
+                    hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
+                }
+            }
+        }
+        
+    }
+    /// <summary>
+    /// Generate 1 additional Resource per enemy hit.
+    /// </summary>
+    public void Rune_WarCry(GameObject enemy)
+    {
+        if(PlayFabDataStore.playerCurrentResource + PlayFabDataStore.catalogRunes["Rune_WarCry"].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+        {
+            PlayFabDataStore.playerCurrentResource += PlayFabDataStore.catalogRunes["Rune_WarCry"].resourceGeneration;
+            Debug.Log(PlayFabDataStore.catalogRunes["Rune_WarCry"].resourceGeneration + "resource added");
+        }   
+    }
+    /// <summary>
+    /// Increases your damage by 25% but also increases your chance to be critically hit by 15%.
+    /// </summary>
+    public void Rune_Bloodbath(GameObject enemy)
+    {
+        //enemy.GetComponent<Health>().attackersDamage += enemy.GetComponent<Health>().attackersDamage * PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedDamage / 100;
+        //targetEnemy.GetComponent<Health>().attackersDamage += targetEnemy.GetComponent<Health>().attackersDamage * PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedDamage / 100;
+        tempWeaponDamage += tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedDamage / 100;
+        gameObject.GetComponent<Health>().isCriticalHit = true;
+        gameObject.GetComponent<Health>().criticalHitValue = PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedCrit;
+    }
+    /// <summary>
+    /// Enemies hit are Chilled and take 10% increased damage from all sources for 3 seconds.
+    /// </summary>
+    public void Rune_MassBlast(GameObject enemy)
+    {
+        enemy.GetComponent<Health>().isChilled = true;
+        enemy.GetComponent<Health>().maxChillTime = PlayFabDataStore.catalogRunes["Rune_MassBlast"].effectTime;
+        enemy.GetComponent<Health>().increasedDamagePercentage = PlayFabDataStore.catalogRunes["Rune_MassBlast"].increasedDamage;
+        //targetEnemy.GetComponent<Health>().isChilled = true;
+        //targetEnemy.GetComponent<Health>().maxChillTime = PlayFabDataStore.catalogRunes["Rune_MassBlast"].effectTime;
+        //targetEnemy.GetComponent<Health>().increasedDamagePercentage = PlayFabDataStore.catalogRunes["Rune_MassBlast"].increasedDamage;
+    }
+    /// <summary>
+    /// Each hit has a 30% chance to stun enemy for 1.5 seconds.
+    /// </summary>
+    public void Rune_Knock(GameObject enemy)
+    {
+        if(Random.Range(0, 100) <= PlayFabDataStore.catalogRunes["Rune_Knock"].increasedCrit)
+        {
+            enemy.GetComponent<Health>().isStunned = true;
+            enemy.GetComponent<Health>().maxStunTime = PlayFabDataStore.catalogRunes["Rune_Knock"].effectTime;
+            //targetEnemy.GetComponent<Health>().isStunned = true;
+            //targetEnemy.GetComponent<Health>().maxStunTime = PlayFabDataStore.catalogRunes["Rune_Knock"].effectTime;
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -218,10 +382,7 @@ public class Runes : MonoBehaviour
 
     }
     */
-    public void Rune_BloodyTouch()
-    {
 
-    }
 
 }
 

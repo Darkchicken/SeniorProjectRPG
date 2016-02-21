@@ -147,7 +147,6 @@ public class PlayFabApiCalls : MonoBehaviour
             PlayFabDataStore.playerVitality = int.Parse(result.Data["Vitality"].Value);
             PlayFabDataStore.playerCriticalChance = int.Parse(result.Data["Critical Chance"].Value);
             PlayFabDataStore.playerWeaponDamage = int.Parse(result.Data["Weapon Damage"].Value);
-            Debug.Log(PlayFabDataStore.playerMaxHealth);
             Debug.Log("Data successfully retrieved!");
 
         }, (error) =>
@@ -395,7 +394,9 @@ public class PlayFabApiCalls : MonoBehaviour
                     string[] customData = item.CustomData.Split('"');
                     //Debug.Log(item.ItemId);
 
-                    PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], int.Parse(customData[7]), int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), float.Parse(customData[23])));
+                    PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], int.Parse(customData[7]), 
+                        int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]), 
+                        int.Parse(customData[35]), float.Parse(customData[39]), float.Parse(customData[43])));
                 }
             }
             Debug.Log("Catalog Retrieved");

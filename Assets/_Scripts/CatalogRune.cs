@@ -16,6 +16,11 @@ public class CatalogRune
     public int resourceUsage;
     public int attackRange;
     public int attackRadius;
+    public int attackPercentage;
+    public int increasedDamage;
+    public int increasedCrit;
+    public int increasedSpeed;
+    public float effectTime;
     public float cooldown;
 
     void Awake()
@@ -23,7 +28,8 @@ public class CatalogRune
         rune = this;
     }
 
-    public CatalogRune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot, int _resourceGeneration, int _resourceUsage, int _attackRange, int _attackRadius, float _cooldown)
+    public CatalogRune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot, int _resourceGeneration, int _resourceUsage, int _attackRange,
+        int _attackRadius, int _attackPercentage, int _increasedDamage, int _increasedCrit, int _increasedSpeed, float _effecTime, float _cooldown)
     {
         itemId = _itemId;
         itemClass = _itemClass;
@@ -34,6 +40,11 @@ public class CatalogRune
         resourceUsage = _resourceUsage;
         attackRange = _attackRange;
         attackRadius = _attackRadius;
+        attackPercentage = _attackPercentage;
+        increasedDamage = _increasedDamage;
+        increasedCrit = _increasedCrit;
+        increasedSpeed = _increasedSpeed;
+        effectTime = _effecTime;
         cooldown = _cooldown;
     }
 }

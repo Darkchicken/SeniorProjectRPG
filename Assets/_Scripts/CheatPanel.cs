@@ -40,9 +40,9 @@ public class CheatPanel : MonoBehaviour
 
     public void ListActiveRunes()
     {
-        foreach (var rune in PlayFabDataStore.playerActiveSkillRunes)
+        foreach (var rune in PlayFabDataStore.playerAllRunes)
         {
-            Debug.Log(rune.Key);
+            Debug.Log(rune.Key + " - " + rune.Value.itemClass + " - " + rune.Value.active);
         }
     }
 

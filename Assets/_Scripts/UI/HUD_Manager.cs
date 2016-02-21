@@ -21,6 +21,7 @@ public class HUD_Manager : MonoBehaviour {
     {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
         resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
+        
     }
 
     void OnEnable()
