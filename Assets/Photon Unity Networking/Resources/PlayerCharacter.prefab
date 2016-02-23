@@ -1296,6 +1296,7 @@ GameObject:
   - 114: {fileID: 11439026}
   - 114: {fileID: 11484718}
   - 114: {fileID: 11496368}
+  - 114: {fileID: 11463148}
   m_Layer: 2
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -3711,8 +3712,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7713543e0d5d6b3418998c2e0ff8a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthSlider: {fileID: 0}
+  enemyHealthFillImage: {fileID: 0}
   health: 100
+  maxHealth: 0
+  isCriticalHit: 0
+  criticalHitValue: 0
+  maxCriticalHitTime: 0
+  isChilled: 0
+  maxChillTime: 0
+  isFrozen: 0
+  maxFreezeTime: 0
+  isStunned: 0
+  stunChance: 0
+  maxStunTime: 0
+  increasedDamagePercentage: 0
+--- !u!114 &11463148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434dc0a715e8b164690efbe75a8751b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11478916
 MonoBehaviour:
   m_ObjectHideFlags: 1
