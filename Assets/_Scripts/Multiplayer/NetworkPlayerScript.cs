@@ -23,6 +23,8 @@ public class NetworkPlayerScript : MonoBehaviour {
             if (battleArena)//SceneManager.GetActiveScene().name == "BattleArena")
             {
                 gameObject.tag = "Enemy";
+                //set player's layer to default so you can click on them
+                gameObject.layer = LayerMask.NameToLayer("Default");
                 gameObject.name = "Network Enemy";
             }
             else
