@@ -1,35 +1,38 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
 using System.Collections;
 
-public class NetworkPlayerScript : NetworkBehaviour {
+public class NetworkPlayerScript : MonoBehaviour {
 
-
-    Renderer[] renderers;
+    bool battleArena = true;
+    PhotonView photonView;
     // Use this for initialization
     void Start ()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        //get the photon view of this character
+        photonView = gameObject.GetComponent<PhotonView>();
         //set proper name and tag to distinguish local player from others
-        if (isLocalPlayer)
+        if (photonView.isMine)//isLocalPlayer)
         {
             gameObject.tag = "Player";
             gameObject.name = "LOCAL player";
         }
         else
         {
-            //if this is the arena
-            if (SceneManager.GetActiveScene().name == "BattleArena")
+          
+            if (battleArena)//SceneManager.GetActiveScene().name == "BattleArena")
             {
                 gameObject.tag = "Enemy";
-                gameObject.name = "Enemy";
+                //set player's layer to default so you can click on them
+                gameObject.layer = LayerMask.NameToLayer("Default");
+                gameObject.name = "Network Enemy";
             }
             else
             {
-                gameObject.tag = "NetworkAlly";
-                gameObject.name = "Network Ally";
+                gameObject.tag = "Player";
+                gameObject.name = "Network player";
             }
+           
         }
     }
 	
@@ -38,31 +41,5 @@ public class NetworkPlayerScript : NetworkBehaviour {
 	
 	}
 
-    void ToggleRenderer(bool isAlive)
-    {
-        for (int i = 0; i < renderers.Length; i++)
-            renderers[i].enabled = isAlive;
-    }
 
-    [ClientRpc]
-    public void RpcResolveHit()
-    {
-        //currently destroys player, will change to take damage later
-        ToggleRenderer(false);
-
-        if (isLocalPlayer)
-        {
-            Transform spawn = NetworkManager.singleton.GetStartPosition();
-            transform.position = spawn.position;
-            transform.rotation = spawn.rotation;
-
-        }
-
-        Invoke("Respawn", 2f);
-    }
-
-    void Respawn()
-    {
-        ToggleRenderer(true);
-    }
 }
