@@ -88,13 +88,21 @@ public class Health : MonoBehaviour {
                 anim.SetBool("IsMoving", false);
                 if (tag == "Enemy")
                 {
-                    GetComponent<EnemyCombatManager>().enabled = false;
-                    GetComponent<EnemyMovement>().enabled = false;
+                    if(!dead)
+                    {
+                        GetComponent<EnemyCombatManager>().enabled = false;
+                        GetComponent<EnemyMovement>().enabled = false;
+                    }
+                    
 
                 }
                 if (tag == "Player")
                 {
-                    GetComponent<PlayerCombatManager>().enabled = false;
+                    if(!dead)
+                    {
+                        GetComponent<PlayerCombatManager>().enabled = false;
+                    }
+                    
                 }
             }
 
@@ -102,12 +110,19 @@ public class Health : MonoBehaviour {
             {
                 if (tag == "Enemy")
                 {
-                    GetComponent<EnemyCombatManager>().enabled = true;
-                    GetComponent<EnemyMovement>().enabled = true;
+                    if(!dead)
+                    {
+                        GetComponent<EnemyCombatManager>().enabled = true;
+                        GetComponent<EnemyMovement>().enabled = true;
+                    }
                 }
                 if (tag == "Player")
                 {
-                    GetComponent<PlayerCombatManager>().enabled = true;
+                    if(!dead)
+                    {
+                        GetComponent<PlayerCombatManager>().enabled = true;
+                    }
+                    
                 }
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
                 anim.SetBool("IsMoving", true);
