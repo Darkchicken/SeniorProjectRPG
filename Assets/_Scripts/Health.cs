@@ -174,9 +174,11 @@ public class Health : MonoBehaviour {
         Invoke("TakeDamage", 0);
     }*/
 
-
-    public void TakeDamage(GameObject source, int damageTaken, int criticalChance)
+    [PunRPC]
+    //originally took a gameobject as source, changed to photonview.id to allow for RPC calls
+    public void TakeDamage(int sourceId, int damageTaken, int criticalChance)
     {
+        GameObject source = PhotonView.Find(sourceId).gameObject;
         if (!dead)
         {
             //Player Health Take Damage
