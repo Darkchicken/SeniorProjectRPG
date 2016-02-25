@@ -75,14 +75,42 @@ public class Health : MonoBehaviour {
                 freezeActivate = false;
                 freezeTimer = 0f;
                 GetComponent<NavMeshAgent>().speed = 0;
-                GetComponent<EnemyMovement>().enabled = false;
+                if(tag == "Player")
+                {
+                    GetComponent<PlayerCombatManager>().enabled = false;
+                }
+                if(tag == "Enemy")
+                {
+                    if (GetComponent<PlayerCombatManager>() != null)
+                    {
+                        GetComponent<PlayerCombatManager>().enabled = false;
+                    }
+                    else
+                    {
+                        GetComponent<EnemyMovement>().enabled = false;
+                    }       
+                }       
                 anim.SetTrigger("IDLE WEAPON");
 
             }
             if (freezeTimer >= maxFreezeTime)
             {
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
-                GetComponent<EnemyMovement>().enabled = true;
+                if (tag == "Player")
+                {
+                    GetComponent<PlayerCombatManager>().enabled = true;
+                }
+                if (tag == "Enemy")
+                {
+                    if (GetComponent<PlayerCombatManager>() != null)
+                    {
+                        GetComponent<PlayerCombatManager>().enabled = true;
+                    }
+                    else
+                    {
+                        GetComponent<EnemyMovement>().enabled = true;
+                    }
+                }
                 isFrozen = false;
                 freezeActivate = true;
                 freezeTimer = 0f;
@@ -99,49 +127,61 @@ public class Health : MonoBehaviour {
                 GetComponent<NavMeshAgent>().speed = 0;
                 anim.SetTrigger("STUN");
                 anim.SetBool("IsMoving", false);
+
+                if (tag == "Player")
+                {
+                    if (!dead)
+                    {
+                        GetComponent<PlayerCombatManager>().enabled = false;
+                    }
+                }
                 if (tag == "Enemy")
                 {
                     if(!dead)
                     {
-                        GetComponent<EnemyCombatManager>().enabled = false;
-                        GetComponent<EnemyMovement>().enabled = false;
+                        if (GetComponent<PlayerCombatManager>() != null)
+                        {
+                            GetComponent<PlayerCombatManager>().enabled = false;
+                        }
+                        else
+                        {
+                            GetComponent<EnemyCombatManager>().enabled = false;
+                            GetComponent<EnemyMovement>().enabled = false;
+                        }               
                     }
-                    
-
-                }
-                if (tag == "Player")
-                {
-                    if(!dead)
-                    {
-                        GetComponent<PlayerCombatManager>().enabled = false;
-                    }
-                    
-                }
+                } 
             }
 
             if (stunTimer >= maxStunTime)
             {
+                if (tag == "Player")
+                {
+                    if (!dead)
+                    {
+                        GetComponent<PlayerCombatManager>().enabled = true;
+                    }
+
+                }
                 if (tag == "Enemy")
                 {
                     if(!dead)
                     {
-                        GetComponent<EnemyCombatManager>().enabled = true;
-                        GetComponent<EnemyMovement>().enabled = true;
+                        if(GetComponent<PlayerCombatManager>() != null)
+                        {
+                            GetComponent<PlayerCombatManager>().enabled = true;
+                        }
+                        else
+                        {
+                            GetComponent<EnemyCombatManager>().enabled = true;
+                            GetComponent<EnemyMovement>().enabled = true;
+                        }
+                        
                     }
-                }
-                if (tag == "Player")
-                {
-                    if(!dead)
-                    {
-                        GetComponent<PlayerCombatManager>().enabled = true;
-                    }
-                    
-                }
+                } 
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
                 anim.SetBool("IsMoving", true);
                 isStunned = false;
-                stunActivate = true;
-                
+                stunActivate = true;   
             }
         }
 
@@ -166,26 +206,14 @@ public class Health : MonoBehaviour {
                 critActivate = false;
                 criticalHitTimer = 0f;
             }
-            if(tag == "Enemy")
+            if (criticalHitTimer >= maxCriticalHitTime)
             {
-                if (criticalHitTimer >= maxCriticalHitTime)
-                {
-                    isCriticalHit = false;
-                    critActivate = true;
-                    criticalHitValue = 0;             
-                }
+                isCriticalHit = false;
+                critActivate = true;
+                criticalHitValue = 0;             
             }
         }
     }
-
-    /*public void ApplyDamage(GameObject source, int damageTaken, int criticalChance)
-    {
-        attacker = source;
-        attackersDamage = damageTaken;
-        attackersCriticalChance = criticalChance;
-
-        Invoke("TakeDamage", 0);
-    }*/
 
     [PunRPC]
     //originally took a gameobject as source, changed to photonview.id to allow for RPC calls
@@ -256,9 +284,6 @@ public class Health : MonoBehaviour {
                 }
             }
         }
-        //attackersDamage = 0;
-        //attackersCriticalChance = 0;
-
 }
 
     void Dead()
@@ -291,7 +316,6 @@ public class Health : MonoBehaviour {
                 enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
             }
         }
-
     }
 
     void OnMouseExit()
