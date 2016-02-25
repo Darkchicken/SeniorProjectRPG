@@ -74,43 +74,13 @@ public class Health : MonoBehaviour {
             {
                 freezeActivate = false;
                 freezeTimer = 0f;
-                GetComponent<NavMeshAgent>().speed = 0;
-                if(tag == "Player")
-                {
-                    GetComponent<PlayerCombatManager>().enabled = false;
-                }
-                if(tag == "Enemy")
-                {
-                    if (GetComponent<PlayerCombatManager>() != null)
-                    {
-                        GetComponent<PlayerCombatManager>().enabled = false;
-                    }
-                    else
-                    {
-                        GetComponent<EnemyMovement>().enabled = false;
-                    }       
-                }       
+                GetComponent<NavMeshAgent>().speed = 0;     
                 anim.SetTrigger("IDLE WEAPON");
 
             }
             if (freezeTimer >= maxFreezeTime)
             {
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
-                if (tag == "Player")
-                {
-                    GetComponent<PlayerCombatManager>().enabled = true;
-                }
-                if (tag == "Enemy")
-                {
-                    if (GetComponent<PlayerCombatManager>() != null)
-                    {
-                        GetComponent<PlayerCombatManager>().enabled = true;
-                    }
-                    else
-                    {
-                        GetComponent<EnemyMovement>().enabled = true;
-                    }
-                }
                 isFrozen = false;
                 freezeActivate = true;
                 freezeTimer = 0f;
@@ -168,7 +138,7 @@ public class Health : MonoBehaviour {
                     {
                         if(GetComponent<PlayerCombatManager>() != null)
                         {
-                            GetComponent<PlayerCombatManager>().enabled = true;
+                            //GetComponent<PlayerCombatManager>().enabled = true;
                         }
                         else
                         {
