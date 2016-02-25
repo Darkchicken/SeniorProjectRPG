@@ -133,7 +133,7 @@ public class Runes : MonoBehaviour
     void ApplyDamage(GameObject enemy)
     {
         
-        enemy.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, photonView.viewID , tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
+        enemy.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID , tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
         //enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
     }
 
@@ -289,7 +289,7 @@ public class Runes : MonoBehaviour
                 if (hitEnemies[i].CompareTag("Enemy") && hitEnemies[i].gameObject != mainEnemy)
                 {
                     Debug.Log("Breach: " + hitEnemies[i].gameObject);
-                    hitEnemies[i].gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, photonView.viewID, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
+                    hitEnemies[i].gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
                     // hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(photonView.viewID, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
                 }
             }
