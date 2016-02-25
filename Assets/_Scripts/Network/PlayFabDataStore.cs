@@ -31,7 +31,7 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerLevel;
     public static int playerExperience;
     public static int playerCurrentHealth;
-    public static int playerMaxHealth = 100;
+    public static int playerMaxHealth = 1;
     public static int playerCurrentResource;
     public static int playerMaxResource = 1;
     public static int playerStrength;
