@@ -44,8 +44,24 @@ public class Health : MonoBehaviour {
     void Awake()
     {
         anim = GetComponent<Animator>();
-        maxHealth = health;
         navMeshSpeed = GetComponent<NavMeshAgent>().speed;
+        if(tag == "Player")
+        {
+            maxHealth = PlayFabDataStore.playerMaxHealth;
+        }
+        if(tag == "Enemy")
+        {
+            maxHealth = health;
+        }
+
+        
+        
+        
+    }
+
+    void Start()
+    {
+        enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
     }
 
     void Update()
@@ -165,15 +181,6 @@ public class Health : MonoBehaviour {
         }
     }
 
-    /*public void ApplyDamage(GameObject source, int damageTaken, int criticalChance)
-    {
-        attacker = source;
-        attackersDamage = damageTaken;
-        attackersCriticalChance = criticalChance;
-
-        Invoke("TakeDamage", 0);
-    }*/
-
 
     public void TakeDamage(GameObject source, int damageTaken, int criticalChance)
     {
@@ -248,6 +255,8 @@ public class Health : MonoBehaviour {
 
     void Dead()
     {
+        /*PhotonView pv = GetComponent<PhotonView>();
+        if(pv.isOwnerActive)*/
         dead = true;
         anim.SetTrigger("DIE");
         if(tag == "Player")

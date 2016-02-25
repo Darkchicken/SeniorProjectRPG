@@ -7,6 +7,8 @@ using PlayFab.ClientModels;
 
 public class HUD_Manager : MonoBehaviour {
 
+    public static HUD_Manager hudManager;
+
     public Canvas characterWindow;
     public Canvas runeWindow;
     public Canvas cheatWindow;
@@ -14,6 +16,7 @@ public class HUD_Manager : MonoBehaviour {
 
     public Image healthGlobe;
     public Image resourceGlobe;
+    public Image enemyHealth;
 
     public Text playerName;
 
@@ -27,6 +30,8 @@ public class HUD_Manager : MonoBehaviour {
     void OnEnable()
     {
         SetPlayerNameOnUnitFrame();
+        hudManager = this;
+
     }
 	
     public void SetPlayerNameOnUnitFrame()
