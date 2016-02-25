@@ -133,7 +133,7 @@ public class Runes : MonoBehaviour
     void ApplyDamage(GameObject enemy)
     {
         
-        enemy.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All,photonView.viewID , tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
+        enemy.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, photonView.viewID , tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
         //enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
     }
 
