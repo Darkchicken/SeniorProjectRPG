@@ -44,9 +44,22 @@ public class Health : MonoBehaviour {
     void Awake()
     {
         anim = GetComponent<Animator>();
-        maxHealth = health;
         navMeshSpeed = GetComponent<NavMeshAgent>().speed;
+        if (tag == "Player")
+        {
+            maxHealth = PlayFabDataStore.playerMaxHealth;
+        }
+        if (tag == "Enemy")
+        {
+            maxHealth = health;
+        }
     }
+
+    void Start()
+    {
+        enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
+    }
+
 
     void Update()
     {
