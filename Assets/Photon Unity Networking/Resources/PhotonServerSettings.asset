@@ -37,4 +37,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - TakeDamage
+  - AddPlayer
   DisableAutoOpenWizard: 1

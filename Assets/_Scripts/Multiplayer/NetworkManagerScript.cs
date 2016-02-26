@@ -7,10 +7,14 @@ public class NetworkManagerScript : MonoBehaviour {
     Runes playerRunes;
     CameraFollow cameraFollow;
     public Transform spawnPoint;
-	// Use this for initialization
-	void Awake ()
+    public Transform enemySpawnPoint;
+    // Use this for initialization
+    void Awake ()
     {
-     
+        if (PhotonNetwork.isMasterClient)
+        {
+            PhotonNetwork.Instantiate("Enemy", enemySpawnPoint.position, enemySpawnPoint.rotation, 0);
+        }
         GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, spawnPoint.rotation, 0);
         combatManager = player.GetComponent<PlayerCombatManager>();
         combatManager.enabled = true;
@@ -19,6 +23,8 @@ public class NetworkManagerScript : MonoBehaviour {
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
         cameraFollow.enabled = true;
         player.GetComponent<Health>().enabled = true;
+
+        
     }
 	
 	// Update is called once per frame

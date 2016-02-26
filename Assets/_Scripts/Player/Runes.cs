@@ -113,11 +113,20 @@ public class Runes : MonoBehaviour
         position = transform.position;
         playerAnimation = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
+        photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
     }
 
     void Update()
     {
         attackTimer += Time.deltaTime;
+    }
+
+    [PunRPC]
+    void AddPlayer(int viewID)
+    {
+        GameObject player = PhotonView.Find(viewID).gameObject;
+        GameManager.players.Add(player);
+        Debug.Log("PlayerAdded for GameManager");
     }
 
     int GetPlayerResource()

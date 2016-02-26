@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+
     void SortRunes()
     {
         Debug.Log("RunesSorted");
