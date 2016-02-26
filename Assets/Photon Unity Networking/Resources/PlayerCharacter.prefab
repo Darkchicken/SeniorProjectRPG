@@ -3713,6 +3713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthFillImage: {fileID: 0}
+  enemyHealthText: {fileID: 0}
   health: 100
   maxHealth: 0
   isCriticalHit: 0

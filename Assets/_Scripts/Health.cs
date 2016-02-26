@@ -5,6 +5,7 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
     public Image enemyHealthFillImage;
+    public Text enemyHealthText;
 
     public int health;
     public int maxHealth;
@@ -58,6 +59,7 @@ public class Health : MonoBehaviour {
     void Start()
     {
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
+        enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
         
     }
 
@@ -215,6 +217,7 @@ public class Health : MonoBehaviour {
                 if (PlayFabDataStore.playerCurrentHealth > damageTaken)
                 {
                     anim.SetTrigger("TAKE DAMAGE 1");
+                    ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     PlayFabDataStore.playerCurrentHealth -= damageTaken;
                 }
                 else
@@ -250,6 +253,7 @@ public class Health : MonoBehaviour {
                 {
                     Debug.Log(gameObject + " takes " + damageTaken + " damage");
                     anim.SetTrigger("TAKE DAMAGE 1");
+                    ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                 }
                 else
@@ -288,6 +292,7 @@ public class Health : MonoBehaviour {
             {
                 enemyHealthFillImage.fillAmount= (float)health / (float)maxHealth;
                 enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
+                enemyHealthText.text = health + "/" + maxHealth;
             }
         }
     }

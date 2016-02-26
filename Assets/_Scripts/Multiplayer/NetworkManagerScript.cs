@@ -18,6 +18,7 @@ public class NetworkManagerScript : MonoBehaviour {
         playerRunes.enabled = true;
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
         cameraFollow.enabled = true;
+        player.GetComponent<Health>().enabled = true;
     }
 	
 	// Update is called once per frame

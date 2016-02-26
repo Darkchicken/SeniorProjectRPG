@@ -8,7 +8,7 @@ using ExitGames.Client.Photon;
 
 public class ChatManager : MonoBehaviour, IChatClientListener
 {
-    ChatClient chatClient;
+    public static ChatClient chatClient;
 
     public string photonChatId = "9943f53d-cf40-48fd-b273-797bc306e684";
     public string photonAppVersion = "1.0";
