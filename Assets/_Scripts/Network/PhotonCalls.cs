@@ -60,6 +60,9 @@ public class PhotonCalls : PunBehaviour
         GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.transform.position, Quaternion.identity, 0);
         player.GetComponent<PlayerCombatManager>().enabled = true;
         player.GetComponent<Runes>().enabled = true;
+        //set entering player to full health
+        player.GetComponent<Health>().health = player.GetComponent<Health>().maxHealth;
+
 
     }
 
