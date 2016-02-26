@@ -259,23 +259,7 @@ public class Health : MonoBehaviour {
             }
         }
 }
-    //this syncs the health of the character it is attached to across the network
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            //We own this player: send the others our data
-           
-            stream.SendNext(health);
-        }
-        else
-        {
-            //Network player, receive data
-           
-           health = (int)stream.ReceiveNext();
-
-        }
-    }
+  
     void Dead()
     {
         dead = true;
