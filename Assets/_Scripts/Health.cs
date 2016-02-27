@@ -5,10 +5,12 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
     public Image enemyHealthFillImage;
+    public Text enemyHealthText;
 
     public int health;
     public int maxHealth;
 
+    private PhotonView photonView;
     private Animator anim;
     private bool dead = false;
     private float navMeshSpeed;
@@ -25,10 +27,6 @@ public class Health : MonoBehaviour {
     public float maxStunTime = 0f;
     public int increasedDamagePercentage = 0;
 
-    //public GameObject attacker;
-    //public int attackersDamage;
-    //public int attackersCriticalChance;
-
     private float criticalHitTimer = 0f;
     private float chillTimer = 0f;
     private float freezeTimer = 0f;
@@ -43,23 +41,88 @@ public class Health : MonoBehaviour {
 
     void Awake()
     {
+        
         anim = GetComponent<Animator>();
+        photonView = GetComponent<PhotonView>();
         navMeshSpeed = GetComponent<NavMeshAgent>().speed;
-        if (tag == "Player")
-        {
-            maxHealth = PlayFabDataStore.playerMaxHealth;
-        }
-        if (tag == "Enemy")
-        {
-            maxHealth = health;
-        }
     }
 
     void Start()
     {
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
+        enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
+        
+        Invoke("InitializeHealth", 1);
     }
 
+    void InitializeHealth()
+    {
+        if(PhotonNetwork.player.isLocal)
+        {
+            if (tag == "Player")
+            {
+                maxHealth = PlayFabDataStore.playerMaxHealth;
+                health = maxHealth;
+                GetComponent<PlayerCombatManager>().canAttack = true;
+            }
+            if (tag == "Enemy")
+            {
+                if (GetComponent<PlayerCombatManager>() != null)
+                {
+                    maxHealth = PlayFabDataStore.playerMaxHealth;
+                    health = maxHealth;
+                }
+                else
+                {
+                    maxHealth = health;
+                }
+            }
+        }
+    }
+
+    void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+    {
+        Invoke("UpdateHealth", 1);
+    }
+
+    public void UpdateHealth()
+    {
+        photonView.RPC("SetHealth", PhotonTargets.AllViaServer, health, maxHealth);
+    }
+
+    [PunRPC]
+    public void SetHealth(int _health, int _maxHealth)
+    {
+        health = _health;
+        maxHealth = _maxHealth;
+        if(health <= 0)
+        {
+            Dead();
+        }
+    }
+
+    [PunRPC]
+    public void SetFreeze(int viewId, bool _isFrozen, float _maxFreezeTime)
+    {
+        isFrozen = _isFrozen;
+        maxFreezeTime = _maxFreezeTime;
+    }
+
+    [PunRPC]
+    public void SetStun(int viewId, bool _isStunned, float _maxStunTime)
+    {
+        isStunned = _isStunned;
+        maxStunTime = _maxStunTime;
+
+    }
+
+    [PunRPC]
+    public void SetChill(int viewId, bool _isChilled, float _maxChillTime, int _increasedDamagePercentage)
+    {
+        isChilled = _isChilled;
+        maxChillTime = _maxChillTime;
+        increasedDamagePercentage = _increasedDamagePercentage;
+    }
 
     void Update()
     {
@@ -78,6 +141,7 @@ public class Health : MonoBehaviour {
                 anim.SetTrigger("IDLE WEAPON");
 
             }
+            GetComponent<NavMeshAgent>().ResetPath();
             if (freezeTimer >= maxFreezeTime)
             {
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
@@ -102,7 +166,7 @@ public class Health : MonoBehaviour {
                 {
                     if (!dead)
                     {
-                        GetComponent<PlayerCombatManager>().enabled = false;
+                        GetComponent<PlayerCombatManager>().canAttack = false;
                     }
                 }
                 if (tag == "Enemy")
@@ -111,7 +175,7 @@ public class Health : MonoBehaviour {
                     {
                         if (GetComponent<PlayerCombatManager>() != null)
                         {
-                            GetComponent<PlayerCombatManager>().enabled = false;
+                            GetComponent<PlayerCombatManager>().canAttack = false;
                         }
                         else
                         {
@@ -121,14 +185,14 @@ public class Health : MonoBehaviour {
                     }
                 } 
             }
-
+            GetComponent<NavMeshAgent>().ResetPath();
             if (stunTimer >= maxStunTime)
             {
                 if (tag == "Player")
                 {
                     if (!dead)
                     {
-                        GetComponent<PlayerCombatManager>().enabled = true;
+                        GetComponent<PlayerCombatManager>().canAttack = true;
                     }
 
                 }
@@ -138,7 +202,7 @@ public class Health : MonoBehaviour {
                     {
                         if(GetComponent<PlayerCombatManager>() != null)
                         {
-                            //GetComponent<PlayerCombatManager>().enabled = true;
+                            GetComponent<PlayerCombatManager>().canAttack = true;
                         }
                         else
                         {
@@ -149,7 +213,7 @@ public class Health : MonoBehaviour {
                     }
                 } 
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
-                anim.SetBool("IsMoving", true);
+                anim.SetTrigger("IDLE WEAPON");
                 isStunned = false;
                 stunActivate = true;   
             }
@@ -183,38 +247,65 @@ public class Health : MonoBehaviour {
                 criticalHitValue = 0;             
             }
         }
+
+    }
+
+    public void TakeDamage(GameObject source, int damageTaken, int criticalChance)
+    {
+        if (!dead)
+        {
+            if (isCriticalHit)
+            {
+                criticalChance += criticalHitValue;
+            }
+            if (isChilled)
+            {
+                damageTaken += increasedDamagePercentage;
+            }
+            if (Random.Range(0, 100) <= criticalChance + criticalHitValue)
+            {
+                damageTaken *= 2; //if it's a critical, double the damage
+            }
+        }
+        photonView.RPC("ApplyDamageTaken", PhotonTargets.AllViaServer, photonView.viewID, damageTaken);
     }
 
     [PunRPC]
-    //originally took a gameobject as source, changed to photonview.id to allow for RPC calls
-    public void TakeDamage(int sourceId, int damageTaken, int criticalChance)
+    void ApplyDamageTaken(int sourceId, int damageTaken)
     {
+        
         GameObject source = PhotonView.Find(sourceId).gameObject;
-        if (!dead)
+        if(photonView.viewID == sourceId)
         {
-            //Player Health Take Damage
-            if(tag == "Player")
+            ChatManager.chatClient.PublishMessage("GeneralChat", tag);
+            if (tag == "Enemy")
             {
-                if (isCriticalHit)
+                if (health > damageTaken)
                 {
-                    criticalChance += criticalHitValue;
+                    Debug.Log(gameObject + " takes " + damageTaken + " damage");
+                    anim.SetTrigger("TAKE DAMAGE");
+                    ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
+                    health -= damageTaken;
                 }
-                if (isChilled)
+                else
                 {
-                    damageTaken += increasedDamagePercentage;
+                    health = 0;
+                    Dead();
                 }
-                if (Random.Range(0, 100) <= criticalChance + criticalHitValue)
-                {
-                    damageTaken *= 2; //if it's a critical, double the damage
-                }
-
+            }
+            if (tag == "Player")
+            {
                 if (PlayFabDataStore.playerCurrentHealth > damageTaken)
                 {
-                    anim.SetTrigger("TAKE DAMAGE 1");
+                    anim.SetTrigger("TAKE DAMAGE");
+                    ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
+                    health -= damageTaken;
                     PlayFabDataStore.playerCurrentHealth -= damageTaken;
                 }
                 else
                 {
+                    health = 0;
+                    PlayFabDataStore.playerCurrentHealth = 0;
                     Dead();
                     if (source.GetComponent<EnemyCombatManager>() != null)
                     {
@@ -225,37 +316,10 @@ public class Health : MonoBehaviour {
                     }
                 }
             }
-
-            //Enemy Health Take Damage
-            if (tag == "Enemy")
-            {
-                if(isCriticalHit)
-                {
-                    criticalChance += criticalHitValue;
-                }
-                if(isChilled)
-                {
-                    damageTaken += damageTaken * increasedDamagePercentage / 100;
-                }
-                if(Random.Range(0, 100) <= criticalChance)
-                {
-                    damageTaken *= 2; //if it's a critical, double the damage
-                }
-
-                if (health > damageTaken)
-                {
-                    Debug.Log(gameObject + " takes " + damageTaken + " damage");
-                    anim.SetTrigger("TAKE DAMAGE 1");
-                    health -= damageTaken;
-                }
-                else
-                {
-                    Dead();
-                }
-            }
         }
-}
-
+        
+    }
+  
     void Dead()
     {
         dead = true;
@@ -266,25 +330,33 @@ public class Health : MonoBehaviour {
         }
         if(tag == "Enemy")
         {
-            enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
-            GetComponent<EnemyMovement>().enabled = false;
-            GetComponent<EnemyCombatManager>().enabled = false;
+            if(GetComponent<PlayerCombatManager>() != null)
+            {
+                GetComponent<PlayerCombatManager>().enabled = false;
+            }
+            else
+            {
+                GetComponent<EnemyMovement>().enabled = false;
+                GetComponent<EnemyCombatManager>().enabled = false;
+            } 
         }
         
         GetComponent<NavMeshAgent>().enabled = false; 
         GetComponent<Health>().enabled = false;       
         GetComponent<CapsuleCollider>().enabled = false;
     }
-
     void OnMouseOver()
     {
         if (tag == "Enemy")
         {
             if (!dead)
             {
-                enemyHealthFillImage.fillAmount= (float)health / (float)maxHealth;
+                enemyHealthFillImage.fillAmount = (float)health / (float)maxHealth;
                 enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
+                enemyHealthText.text = health + "/" + maxHealth;
+
             }
+
         }
     }
 

@@ -17,14 +17,15 @@ public class HUD_Manager : MonoBehaviour {
     public Image healthGlobe;
     public Image resourceGlobe;
     public Image enemyHealth;
+    public Text enemyHealthText;
+    public Text playerHealthText;
 
     public Text playerName;
-
     void Update()
     {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
         resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
-        
+        playerHealthText.text = PlayFabDataStore.playerCurrentHealth + "/" + PlayFabDataStore.playerMaxHealth;
     }
 
     void OnEnable()
@@ -56,6 +57,7 @@ public class HUD_Manager : MonoBehaviour {
     {
         friendsWindow.gameObject.SetActive(!friendsWindow.gameObject.activeInHierarchy);
     }
+
 
 
 

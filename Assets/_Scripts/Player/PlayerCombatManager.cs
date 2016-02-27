@@ -8,6 +8,7 @@ public class PlayerCombatManager : Runes
 
     public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
+    public bool canAttack = true;
      //sets by PlayerAttack script
 
     private RaycastHit hit;
@@ -25,7 +26,7 @@ public class PlayerCombatManager : Runes
     void Update()
     {
         //Primary Skill
-        if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove)
+        if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove && canAttack)
         {
             locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
@@ -41,11 +42,12 @@ public class PlayerCombatManager : Runes
         }
 
         //Secondary Skill
-        if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove)
+        if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove && canAttack)
         {
             skillSlot = 6;
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
+                Debug.Log("ATTAK");
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }          
@@ -72,7 +74,7 @@ public class PlayerCombatManager : Runes
             actionBarSkillId = null;
             playerAnimation.SetTrigger("ATTACK 3");
         }
-        
+        /*
         if(isMoving && controller.velocity == Vector3.zero)
         {
             idleTimer += Time.deltaTime;
@@ -82,7 +84,9 @@ public class PlayerCombatManager : Runes
                 isMoving = false;
                 idleTimer = 0f;
             }
-        }
+        }*/
+
+        playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
         if (targetEnemy != null && isMoving)
         {
@@ -133,9 +137,9 @@ public class PlayerCombatManager : Runes
             }
             else
             {
-                playerAnimation.SetTrigger("RUN");
+                //playerAnimation.SetTrigger("RUN");
                 isMoving = true;
-                playerAnimation.SetBool("IsMoving", true);
+                //playerAnimation.SetBool("IsMoving", true);
             }
 
         }

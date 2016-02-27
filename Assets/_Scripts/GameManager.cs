@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class GameManager : MonoBehaviour
         
     }
 
+   
+
+    
+
     void SortRunes()
     {
         Debug.Log("RunesSorted");
@@ -44,4 +49,6 @@ public class GameManager : MonoBehaviour
         runes.gameObject.SetActive(false);
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
+
+    
 }

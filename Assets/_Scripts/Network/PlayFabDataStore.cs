@@ -45,6 +45,7 @@ public class PlayFabDataStore : MonoBehaviour
         {"Level", "1" },
         {"Experience", "1" },
         {"Health", "100" },
+        {"MaxHealth", "100" },
         {"Resource", "100" },
         {"Strength", "5" },
         {"Intellect", "5" },

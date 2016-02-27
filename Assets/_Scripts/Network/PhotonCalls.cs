@@ -57,9 +57,12 @@ public class PhotonCalls : PunBehaviour
         Debug.Log("Join Room Successfully!");
         Debug.Log("Room name is: " + PhotonNetwork.room);
 
-        GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.transform.position, Quaternion.identity, 0);
+        GameObject player = PhotonNetwork.Instantiate("Elf", spawnPoint.transform.position, Quaternion.identity, 0);
         player.GetComponent<PlayerCombatManager>().enabled = true;
         player.GetComponent<Runes>().enabled = true;
+        //set entering player to full health
+        player.GetComponent<Health>().health = player.GetComponent<Health>().maxHealth;
+
 
     }
 

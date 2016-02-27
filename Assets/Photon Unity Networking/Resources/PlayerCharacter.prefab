@@ -3682,7 +3682,7 @@ Animator:
   m_GameObject: {fileID: 163798}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3584a448779ea842930ef63c4575c09, type: 3}
-  m_Controller: {fileID: 9100000, guid: 17041cad43005b2419a2e6a794580395, type: 2}
+  m_Controller: {fileID: 22100000, guid: 1127cc77b0336a44d9ca8e6500c59cef, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3713,6 +3713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthFillImage: {fileID: 0}
+  enemyHealthText: {fileID: 0}
   health: 100
   maxHealth: 0
   isCriticalHit: 0
@@ -3763,6 +3764,7 @@ MonoBehaviour:
   stopDistanceForAttack: 2
   canMove: 1
   isInCombat: 0
+  canAttack: 1
 --- !u!114 &11496368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3783,7 +3785,7 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 447076}
+  - {fileID: 11463148}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
