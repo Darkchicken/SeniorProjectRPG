@@ -21,7 +21,6 @@ public class HUD_Manager : MonoBehaviour {
     public Text playerHealthText;
 
     public Text playerName;
-
     void Update()
     {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;

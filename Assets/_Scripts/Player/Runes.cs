@@ -89,6 +89,7 @@ public class Runes : MonoBehaviour
     public static GameObject targetEnemy;
     public static GameObject mainEnemy;
     public static Vector3 position;
+    public static PhotonView photonView;
     public float stopDistanceForAttack = 2f;
 
     public static bool isFreezing = false;
@@ -103,7 +104,7 @@ public class Runes : MonoBehaviour
     private static string runeId;
 
 
-    PhotonView photonView;
+    
 
 
     void Start()
@@ -141,9 +142,8 @@ public class Runes : MonoBehaviour
 
     void ApplyDamage(GameObject enemy)
     {
-        
-        enemy.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID , tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
-        //enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
+        //enemy.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID , tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
+        enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
     }
 
     /// <summary>
@@ -255,8 +255,9 @@ public class Runes : MonoBehaviour
     /// </summary>
     public void Rune_IcyWound(GameObject enemy)
     {
-        enemy.GetComponent<Health>().maxFreezeTime = PlayFabDataStore.catalogRunes["Rune_IcyWound"].effectTime;
-        enemy.GetComponent<Health>().isFrozen = true;
+        enemy.gameObject.GetComponent<PhotonView>().RPC("SetFreeze", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_IcyWound"].effectTime);
+        //enemy.GetComponent<Health>().maxFreezeTime = PlayFabDataStore.catalogRunes["Rune_IcyWound"].effectTime;
+        //enemy.GetComponent<Health>().isFrozen = true;
         //targetEnemy.GetComponent<Health>().maxFreezeTime = PlayFabDataStore.catalogRunes["Rune_IcyWound"].effectTime;
         //targetEnemy.GetComponent<Health>().isFrozen = true;
         Debug.Log(enemy + "ICYWOUND");
@@ -298,8 +299,8 @@ public class Runes : MonoBehaviour
                 if (hitEnemies[i].CompareTag("Enemy") && hitEnemies[i].gameObject != mainEnemy)
                 {
                     Debug.Log("Breach: " + hitEnemies[i].gameObject);
-                    hitEnemies[i].gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
-                    // hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(photonView.viewID, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
+                    //hitEnemies[i].gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
+                    hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(hitEnemies[i].gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
                 }
             }
         }
@@ -332,9 +333,10 @@ public class Runes : MonoBehaviour
     /// </summary>
     public void Rune_MassBlast(GameObject enemy)
     {
-        enemy.GetComponent<Health>().isChilled = true;
-        enemy.GetComponent<Health>().maxChillTime = PlayFabDataStore.catalogRunes["Rune_MassBlast"].effectTime;
-        enemy.GetComponent<Health>().increasedDamagePercentage = PlayFabDataStore.catalogRunes["Rune_MassBlast"].increasedDamage;
+        enemy.gameObject.GetComponent<PhotonView>().RPC("SetChill", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_MassBlast"].effectTime, PlayFabDataStore.catalogRunes["Rune_MassBlast"].increasedDamage);
+        //enemy.GetComponent<Health>().isChilled = true;
+        //enemy.GetComponent<Health>().maxChillTime = PlayFabDataStore.catalogRunes["Rune_MassBlast"].effectTime;
+        //enemy.GetComponent<Health>().increasedDamagePercentage = PlayFabDataStore.catalogRunes["Rune_MassBlast"].increasedDamage;
         //targetEnemy.GetComponent<Health>().isChilled = true;
         //targetEnemy.GetComponent<Health>().maxChillTime = PlayFabDataStore.catalogRunes["Rune_MassBlast"].effectTime;
         //targetEnemy.GetComponent<Health>().increasedDamagePercentage = PlayFabDataStore.catalogRunes["Rune_MassBlast"].increasedDamage;
@@ -346,8 +348,9 @@ public class Runes : MonoBehaviour
     {
         if(Random.Range(0, 100) <= PlayFabDataStore.catalogRunes["Rune_Knock"].increasedCrit)
         {
-            enemy.GetComponent<Health>().isStunned = true;
-            enemy.GetComponent<Health>().maxStunTime = PlayFabDataStore.catalogRunes["Rune_Knock"].effectTime;
+            enemy.gameObject.GetComponent<PhotonView>().RPC("SetStun", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_Knock"].effectTime);
+            //enemy.GetComponent<Health>().isStunned = true;
+            //enemy.GetComponent<Health>().maxStunTime = PlayFabDataStore.catalogRunes["Rune_Knock"].effectTime;
             //targetEnemy.GetComponent<Health>().isStunned = true;
             //targetEnemy.GetComponent<Health>().maxStunTime = PlayFabDataStore.catalogRunes["Rune_Knock"].effectTime;
         }

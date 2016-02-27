@@ -3764,6 +3764,7 @@ MonoBehaviour:
   stopDistanceForAttack: 2
   canMove: 1
   isInCombat: 0
+  canAttack: 1
 --- !u!114 &11496368
 MonoBehaviour:
   m_ObjectHideFlags: 1

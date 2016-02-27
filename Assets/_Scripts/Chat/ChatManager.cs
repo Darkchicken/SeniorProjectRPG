@@ -73,7 +73,8 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     public void OnDisconnected()
     {
-        throw new NotImplementedException();
+        Debug.Log("Disconnected from the Chat!");
+        //throw new NotImplementedException();
     }
 
     public void OnGetMessages(string channelName, string[] senders, object[] messages)
@@ -115,5 +116,10 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     {
         Debug.Log(level);
         Debug.Log(message);
+    }
+
+    void OnApplicationQuit()
+    {
+        chatClient.Disconnect();
     }
 }

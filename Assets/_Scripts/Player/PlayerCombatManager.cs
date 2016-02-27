@@ -8,6 +8,7 @@ public class PlayerCombatManager : Runes
 
     public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
+    public bool canAttack = true;
      //sets by PlayerAttack script
 
     private RaycastHit hit;
@@ -25,7 +26,7 @@ public class PlayerCombatManager : Runes
     void Update()
     {
         //Primary Skill
-        if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove)
+        if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove && canAttack)
         {
             locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
@@ -41,7 +42,7 @@ public class PlayerCombatManager : Runes
         }
 
         //Secondary Skill
-        if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove)
+        if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove && canAttack)
         {
             skillSlot = 6;
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))

@@ -3700,8 +3700,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthFillImage: {fileID: 0}
+  enemyHealthText: {fileID: 0}
   health: 100
   maxHealth: 0
+  isCriticalHit: 0
+  criticalHitValue: 0
+  maxCriticalHitTime: 0
+  isChilled: 0
+  maxChillTime: 0
+  isFrozen: 0
+  maxFreezeTime: 0
+  isStunned: 0
+  stunChance: 0
+  maxStunTime: 0
+  increasedDamagePercentage: 0
 --- !u!114 &11427274
 MonoBehaviour:
   m_ObjectHideFlags: 1

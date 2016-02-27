@@ -3,9 +3,11 @@ using System.Collections;
 
 public class NetworkManagerScript : MonoBehaviour {
 
+    GameObject player;
     PlayerCombatManager combatManager;
     Runes playerRunes;
     CameraFollow cameraFollow;
+    Health playerHealth;
     public Transform spawnPoint;
     public Transform enemySpawnPoint;
     // Use this for initialization
@@ -15,14 +17,16 @@ public class NetworkManagerScript : MonoBehaviour {
         {
             PhotonNetwork.Instantiate("Enemy", enemySpawnPoint.position, enemySpawnPoint.rotation, 0);
         }
-        GameObject player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, spawnPoint.rotation, 0);
+        player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, spawnPoint.rotation, 0);
         combatManager = player.GetComponent<PlayerCombatManager>();
         combatManager.enabled = true;
         playerRunes = player.GetComponent<Runes>();
         playerRunes.enabled = true;
+        //player.GetComponent<Health>().enabled = true;
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
         cameraFollow.enabled = true;
-        player.GetComponent<Health>().enabled = true;
+        playerHealth = player.GetComponent<Health>();
+        //playerHealth.enabled = true;
 
         
     }
@@ -33,7 +37,8 @@ public class NetworkManagerScript : MonoBehaviour {
 	}
     void OnJoinedRoom()
     {
-        
+        PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+        PlayFabDataStore.playerCurrentResource = 0;
     }
     void OnPhotonPlayerConnected(PhotonPlayer connected)
     {

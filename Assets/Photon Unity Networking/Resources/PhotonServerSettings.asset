@@ -38,4 +38,9 @@ MonoBehaviour:
   - TaggedPlayer
   - TakeDamage
   - AddPlayer
+  - ApplyDamageTaken
+  - SetChill
+  - SetFreeze
+  - SetStun
+  - SetHealth
   DisableAutoOpenWizard: 1
