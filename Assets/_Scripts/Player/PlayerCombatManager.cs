@@ -47,6 +47,7 @@ public class PlayerCombatManager : Runes
             skillSlot = 6;
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
+                Debug.Log("ATTAK");
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }          
@@ -73,7 +74,7 @@ public class PlayerCombatManager : Runes
             actionBarSkillId = null;
             playerAnimation.SetTrigger("ATTACK 3");
         }
-        
+        /*
         if(isMoving && controller.velocity == Vector3.zero)
         {
             idleTimer += Time.deltaTime;
@@ -83,7 +84,9 @@ public class PlayerCombatManager : Runes
                 isMoving = false;
                 idleTimer = 0f;
             }
-        }
+        }*/
+
+        playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
         if (targetEnemy != null && isMoving)
         {
@@ -134,9 +137,9 @@ public class PlayerCombatManager : Runes
             }
             else
             {
-                playerAnimation.SetTrigger("RUN");
+                //playerAnimation.SetTrigger("RUN");
                 isMoving = true;
-                playerAnimation.SetBool("IsMoving", true);
+                //playerAnimation.SetBool("IsMoving", true);
             }
 
         }

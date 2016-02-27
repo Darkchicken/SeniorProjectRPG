@@ -236,7 +236,7 @@ public class Runes : MonoBehaviour
                     }
                     mainEnemy = null;
                     attackTimer = 0f;
-                    playerAnimation.SetTrigger("ATTACK 3");
+                    playerAnimation.SetTrigger("ATTACK 2");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);

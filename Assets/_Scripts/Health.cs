@@ -283,7 +283,7 @@ public class Health : MonoBehaviour {
                 if (health > damageTaken)
                 {
                     Debug.Log(gameObject + " takes " + damageTaken + " damage");
-                    anim.SetTrigger("TAKE DAMAGE 1");
+                    anim.SetTrigger("TAKE DAMAGE");
                     ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                 }
@@ -297,7 +297,7 @@ public class Health : MonoBehaviour {
             {
                 if (PlayFabDataStore.playerCurrentHealth > damageTaken)
                 {
-                    anim.SetTrigger("TAKE DAMAGE 1");
+                    anim.SetTrigger("TAKE DAMAGE");
                     ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                     PlayFabDataStore.playerCurrentHealth -= damageTaken;

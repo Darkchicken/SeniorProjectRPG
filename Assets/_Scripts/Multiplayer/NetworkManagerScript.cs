@@ -17,7 +17,7 @@ public class NetworkManagerScript : MonoBehaviour {
         {
             PhotonNetwork.Instantiate("Enemy", enemySpawnPoint.position, enemySpawnPoint.rotation, 0);
         }
-        player = PhotonNetwork.Instantiate("PlayerCharacter", spawnPoint.position, spawnPoint.rotation, 0);
+        player = PhotonNetwork.Instantiate("Elf", spawnPoint.position, spawnPoint.rotation, 0);
         combatManager = player.GetComponent<PlayerCombatManager>();
         combatManager.enabled = true;
         playerRunes = player.GetComponent<Runes>();
