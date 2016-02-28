@@ -280,6 +280,8 @@ public class Runes : MonoBehaviour
                             //Invoke(modifier.Key, 0);
                         }
                     }
+                    GameObject bolt = (GameObject)Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity);
+                    bolt.GetComponent<HomingShots>().target = targetEnemy;
                     ApplyDamage(targetEnemy);
                     //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
                     mainEnemy = null;
