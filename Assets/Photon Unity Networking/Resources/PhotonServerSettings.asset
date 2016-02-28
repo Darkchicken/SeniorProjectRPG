@@ -43,4 +43,6 @@ MonoBehaviour:
   - SetFreeze
   - SetStun
   - SetHealth
+  - AttackAnimation
+  - SyncAttackAnimation
   DisableAutoOpenWizard: 1

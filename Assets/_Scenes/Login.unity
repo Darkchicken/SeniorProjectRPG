@@ -4009,7 +4009,6 @@ GameObject:
   - 114: {fileID: 550850899}
   - 114: {fileID: 550850898}
   - 222: {fileID: 550850897}
-  - 114: {fileID: 550850896}
   m_Layer: 0
   m_Name: Play Button
   m_TagString: Untagged
@@ -4036,19 +4035,6 @@ RectTransform:
   m_AnchoredPosition: {x: 41, y: 192}
   m_SizeDelta: {x: 218, y: 61}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &550850896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11439582, guid: e48a620e766ebe74ebff9c54b1a3e081,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 550850894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4505316ba47d6bf4e95b2a8de851862f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: 44656d6f204c6f6164696e67205363656e65
 --- !u!222 &550850897
 CanvasRenderer:
   m_ObjectHideFlags: 0

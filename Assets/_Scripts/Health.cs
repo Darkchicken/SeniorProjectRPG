@@ -160,7 +160,6 @@ public class Health : MonoBehaviour {
                 stunTimer = 0f;
                 GetComponent<NavMeshAgent>().speed = 0;
                 anim.SetTrigger("STUN");
-                anim.SetBool("IsMoving", false);
 
                 if (tag == "Player")
                 {
@@ -213,7 +212,7 @@ public class Health : MonoBehaviour {
                     }
                 } 
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
-                anim.SetTrigger("IDLE WEAPON");
+                anim.SetTrigger("FIGHT IDLE");
                 isStunned = false;
                 stunActivate = true;   
             }
@@ -283,9 +282,9 @@ public class Health : MonoBehaviour {
                 if (health > damageTaken)
                 {
                     Debug.Log(gameObject + " takes " + damageTaken + " damage");
-                    anim.SetTrigger("TAKE DAMAGE");
+                    //anim.SetTrigger("TAKE DAMAGE");
                     ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
-                    health -= damageTaken;
+                    health -= damageTaken-25;
                 }
                 else
                 {
@@ -297,10 +296,10 @@ public class Health : MonoBehaviour {
             {
                 if (PlayFabDataStore.playerCurrentHealth > damageTaken)
                 {
-                    anim.SetTrigger("TAKE DAMAGE");
+                    //anim.SetTrigger("TAKE DAMAGE");
                     ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
-                    health -= damageTaken;
-                    PlayFabDataStore.playerCurrentHealth -= damageTaken;
+                    health -= damageTaken - 25;
+                    PlayFabDataStore.playerCurrentHealth -= damageTaken - 25;
                 }
                 else
                 {

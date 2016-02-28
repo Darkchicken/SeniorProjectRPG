@@ -74,17 +74,12 @@ public class PlayerCombatManager : Runes
             actionBarSkillId = null;
             playerAnimation.SetTrigger("ATTACK 3");
         }
-        /*
+
+
         if(isMoving && controller.velocity == Vector3.zero)
         {
-            idleTimer += Time.deltaTime;
-            if (idleTimer >= 0.04f)
-            {
-                playerAnimation.SetBool("IsMoving", false);
-                isMoving = false;
-                idleTimer = 0f;
-            }
-        }*/
+            isMoving = false;
+        }
 
         playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
