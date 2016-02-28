@@ -250,6 +250,54 @@ public class Runes : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Hit an enemy for 250% weapon damage.
+    /// </summary>
+    public void Rune_MagicBolt()
+    {
+        runeId = "Rune_MagicBolt";
+        mainEnemy = targetEnemy;
+
+        if (targetEnemy != null)
+        {
+            stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
+            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
+            {
+                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                {
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                            //Invoke(modifier.Key, 0);
+                        }
+                    }
+                    ApplyDamage(targetEnemy);
+                    //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
+                    mainEnemy = null;
+                    attackTimer = 0f;
+                    playerAnimation.SetTrigger("ATTACK SPELL");
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                    {
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                    }
+                    else
+                    {
+                        SetPlayerResource(100);
+                    }
+
+                }
+            }
+        }
+    }
     /// <summary>
     /// Each hit Freezes the enemy for 1.5 seconds.
     /// </summary>

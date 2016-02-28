@@ -138,7 +138,7 @@ public class Health : MonoBehaviour {
                 freezeActivate = false;
                 freezeTimer = 0f;
                 GetComponent<NavMeshAgent>().speed = 0;     
-                anim.SetTrigger("IDLE WEAPON");
+                anim.SetTrigger("FIGHT IDLE");
 
             }
             GetComponent<NavMeshAgent>().ResetPath();
@@ -284,7 +284,7 @@ public class Health : MonoBehaviour {
                     Debug.Log(gameObject + " takes " + damageTaken + " damage");
                     //anim.SetTrigger("TAKE DAMAGE");
                     ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
-                    health -= damageTaken-25;
+                    health -= damageTaken;
                 }
                 else
                 {
@@ -298,8 +298,8 @@ public class Health : MonoBehaviour {
                 {
                     //anim.SetTrigger("TAKE DAMAGE");
                     ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
-                    health -= damageTaken - 25;
-                    PlayFabDataStore.playerCurrentHealth -= damageTaken - 25;
+                    health -= damageTaken;
+                    PlayFabDataStore.playerCurrentHealth -= damageTaken;
                 }
                 else
                 {

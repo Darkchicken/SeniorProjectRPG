@@ -28,8 +28,10 @@ public class PlayerCombatManager : Runes
         //Primary Skill
         if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove && canAttack)
         {
-            locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
+            //stopDistanceForAttack = PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[5]].attackRadius;
+            locatePosition(); //Find the clicked position and check if enemy clicked
+            
             //isFreezing = false;
             //isStunning = false;
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
@@ -83,7 +85,7 @@ public class PlayerCombatManager : Runes
 
         playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
-        if (targetEnemy != null && isMoving)
+        if (targetEnemy != null && isMoving && Vector3.Distance(position, transform.position) >= PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[skillSlot]].attackRadius)
         {
             if (targetEnemy.CompareTag("Enemy"))
             {
@@ -115,7 +117,11 @@ public class PlayerCombatManager : Runes
                 controller.stoppingDistance = 0f;
             }
         }
-        MoveToPosition();
+        if(targetEnemy == null || Vector3.Distance(position, transform.position) >= PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[skillSlot]].attackRadius)
+        {
+            MoveToPosition();
+        }
+        
     }
 
 
