@@ -9,6 +9,7 @@ public class Health : MonoBehaviour {
     public Renderer rend;
 
 
+
     public Image enemyHealthFillImage;
     public Text enemyHealthText;
 
@@ -55,9 +56,9 @@ public class Health : MonoBehaviour {
     void Start()
     {
 
-        rend = GetComponent<Renderer>();                          //instantiates renderer
-        shaderNormal = Shader.Find("Fresnel");                    //sets shader as Fresnel for the normal state of enemies
-        shaderHighlight = Shader.Find("Fresnel Object Light Up"); //sets shader as Fresnel that highlights enemies
+        rend = GetComponent<MeshRenderer>();                          //instantiates renderer
+        shaderNormal = Shader.Find(".ShaderTalk/Fresnel");                    //sets shader as Fresnel for the normal state of enemies
+        shaderHighlight = Shader.Find(".ShaderTalk/Fresnel Object Light Up"); //sets shader as Fresnel that highlights enemies
 
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
         enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
