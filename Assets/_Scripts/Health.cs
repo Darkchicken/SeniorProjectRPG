@@ -4,6 +4,11 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
+    public Shader shaderNormal;         //declaring shaders and renderer
+    public Shader shaderHighlight;
+    public Renderer rend;
+
+
     public Image enemyHealthFillImage;
     public Text enemyHealthText;
 
@@ -49,6 +54,11 @@ public class Health : MonoBehaviour {
 
     void Start()
     {
+
+        rend = GetComponent<Renderer>();                          //instantiates renderer
+        shaderNormal = Shader.Find("Fresnel");                    //sets shader as Fresnel for the normal state of enemies
+        shaderHighlight = Shader.Find("Fresnel Object Light Up"); //sets shader as Fresnel that highlights enemies
+
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
         enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
         
@@ -344,7 +354,7 @@ public class Health : MonoBehaviour {
         GetComponent<Health>().enabled = false;       
         GetComponent<CapsuleCollider>().enabled = false;
     }
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         if (tag == "Enemy")
         {
@@ -353,7 +363,8 @@ public class Health : MonoBehaviour {
                 enemyHealthFillImage.fillAmount = (float)health / (float)maxHealth;
                 enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
                 enemyHealthText.text = health + "/" + maxHealth;
-
+                rend.material.shader = shaderHighlight; // highlights target
+                
             }
 
         }
@@ -364,6 +375,7 @@ public class Health : MonoBehaviour {
         if (tag == "Enemy")
         {
             enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
+            rend.material.shader = shaderNormal;    //changes back to normal shading
         }
     }
 

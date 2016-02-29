@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: body
-  m_Shader: {fileID: 4800000, guid: 6a8e1a61c5b830c47b2c719c9ba98287, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9a0cbbe2312df5942adf06a3f5cebd47, type: 3}
   m_ShaderKeywords: _EMISSION _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: 2000
@@ -100,6 +100,18 @@ Material:
         second: 0.5
       data:
         first:
+          name: _SpecShininess
+        second: 1
+      data:
+        first:
+          name: _FresnelPower
+        second: 1.4
+      data:
+        first:
+          name: _FresnelScale
+        second: 0.367
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -138,18 +150,6 @@ Material:
         first:
           name: _EmissionScaleUI
         second: 0.39
-      data:
-        first:
-          name: _SpecShininess
-        second: 1
-      data:
-        first:
-          name: _FresnelPower
-        second: 1.4
-      data:
-        first:
-          name: _FresnelScale
-        second: 0
     m_Colors:
       data:
         first:
@@ -165,9 +165,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _EmissionColorUI
+          name: _FresnelColor
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _FresnelColor
+          name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}

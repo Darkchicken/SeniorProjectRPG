@@ -1,4 +1,4 @@
-﻿Shader ".ShaderTalk/Fresnel"
+﻿Shader ".ShaderTalk/Fresnel Object Light Up"
 {
 	Properties
 	{
@@ -7,7 +7,7 @@
 		_SpecColor ("Specular Color", Color) = (1, 1, 1, 1)
 		_SpecShininess ("Specular Shininess", Range(1.0, 100.0)) = 2.0
 		_FresnelPower ("Fresnel Power", Range(0.0, 3.0)) = 1.4
-		_FresnelScale ("Fresnel Scale", Range (0.0, 1.0)) = 0.0
+		_FresnelScale ("Fresnel Scale", Range (0.0, 1.0)) = .35
 		_FresnelColor ("Fresnel Color", Color) = (1, 1, 1, 1)
 	}
 	Subshader 
