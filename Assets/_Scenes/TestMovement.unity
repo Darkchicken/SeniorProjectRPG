@@ -3389,7 +3389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443006, guid: 39d628e5411d44e4ea9970fa7c403e11, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11442316, guid: 39d628e5411d44e4ea9970fa7c403e11, type: 2}
       propertyPath: viewIdField
@@ -31471,7 +31471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &630464760
 GameObject:
   m_ObjectHideFlags: 0
@@ -36516,7 +36516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443006, guid: 39d628e5411d44e4ea9970fa7c403e11, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11442316, guid: 39d628e5411d44e4ea9970fa7c403e11, type: 2}
       propertyPath: viewIdField
