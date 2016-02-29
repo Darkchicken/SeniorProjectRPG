@@ -29,15 +29,15 @@ public class PlayerCombatManager : Runes
         if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove && canAttack)
         {
             skillSlot = 5;
-            stopDistanceForAttack = PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[5]].attackRange;
+            
             locatePosition(); //Find the clicked position and check if enemy clicked
 
-            if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
+                stopDistanceForAttack = PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[5]].attackRange;
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }
-            
 
         }
 
@@ -45,6 +45,7 @@ public class PlayerCombatManager : Runes
         if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove && canAttack)
         {
             skillSlot = 6;
+
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);

@@ -90,7 +90,7 @@ public class Runes : MonoBehaviour
     public static GameObject mainEnemy;
     public static Vector3 position;
     public static PhotonView photonView;
-    public float stopDistanceForAttack = 2f;
+    public float stopDistanceForAttack = 3f;
 
     public static bool isFreezing = false;
     public static bool isStunning = false;
