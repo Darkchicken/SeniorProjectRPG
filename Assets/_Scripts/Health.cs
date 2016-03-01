@@ -306,13 +306,15 @@ public class Health : MonoBehaviour {
                     health = 0;
                     PlayFabDataStore.playerCurrentHealth = 0;
                     Dead();
-                    if (source.GetComponent<EnemyCombatManager>() != null)
+                    /*if (source.GetComponent<EnemyCombatManager>() != null)
                     {
                         if (source.GetComponent<EnemyCombatManager>().playerAttackList.Contains(gameObject))
                         {
+                            Debug.Log("Removed from enemy list");
                             source.GetComponent<EnemyCombatManager>().playerAttackList.Remove(gameObject);
+                            Debug.Log(source.GetComponent<EnemyCombatManager>().playerAttackList.Count);
                         }
-                    }
+                    }*/
                 }
             }
         }
