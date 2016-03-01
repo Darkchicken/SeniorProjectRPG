@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: b373d1e477bcb7e449e6c29c6251ce95
+timeCreated: 1456808940
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -741,10 +743,16 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleRotations: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nInbetween bone default rotation found in this file
+      is different from the one found in the source avatar:\n\t'ElfSpine3' : rotation
+      error = 4.367168 deg\n\t'ElfRibcage' : rotation error = 1.594740 deg\n\nClip
+      'Take 001' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'ElfSpine3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ElfRibcage'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
@@ -752,7 +760,8 @@ ModelImporter:
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - ElfPelvis/ElfSpine1/ElfSpine2/ElfSpine3/ElfRibcage/ElfRCollarbone/ElfRUpperarm/ElfRForearm/ElfRPalm
     clipAnimations:
     - serializedVersion: 16
       name: idle
@@ -765,7 +774,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 1
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -907,8 +916,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -935,8 +944,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -989,7 +998,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 1
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1925,435 +1934,550 @@ ModelImporter:
         length: 0.019195147
         modified: 1
     skeleton:
-    - name: FH_elves_mecanim
+    - name: FH_elves_mecanim(Clone)
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_arch_01
+      position: {x: -1.9055176, y: 0.42394394, z: -0.0027595568}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_arch_02
+      position: {x: -1.9055176, y: 0.42394394, z: -0.0027595568}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_arch_03
+      position: {x: -1.9055176, y: 0.42394394, z: -0.0027595568}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_arm_fur
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_armplate
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_body
+      position: {x: 0, y: 0, z: 0.0000000661634}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_boot
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_cloth_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_female_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_female_02
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_female_03
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_hair_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_hair_02
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_hair_03
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_hood
+      position: {x: 0, y: 0, z: 0.000000009499519}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_male_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_male_02
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_male_03
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_ponnytail_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.8807081, y: 0.8807081, z: 0.8807081}
+      transformModified: 1
+    - name: elf_ponnytail_02
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_shoulderpad_01
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_shoulderpad_02
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: elf_shoulderpad_03
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: ElfPelvis
-      position: {x: 0.00000007248645, y: 0.9748854, z: -0.112939954}
-      rotation: {x: 0.499127, y: -0.50087154, z: -0.49912688, w: 0.5008714}
+      position: {x: 0, y: 0.9706691, z: -0.13908648}
+      rotation: {x: 0.49912703, y: -0.5008716, z: -0.4991269, w: 0.5008715}
       scale: {x: 1.0000017, y: 0.9999989, z: 1.0000007}
       transformModified: 1
-    - name: Elfcloth_back
-      position: {x: -0.0000843811, y: -0.024130048, z: -0.002490995}
-      rotation: {x: 0.00035021824, y: -0.1026817, z: 0.9946576, w: 0.010608539}
-      scale: {x: 0.9999999, y: 0.9999998, z: 0.9999999}
-      transformModified: 1
-    - name: Elfcloth_front
-      position: {x: 0.00075874326, y: 0.21745732, z: 0.020061119}
-      rotation: {x: 0.014027993, y: 0.10790438, z: 0.9922238, w: -0.06042897}
-      scale: {x: 0.9999998, y: 0.9999999, z: 1}
-      transformModified: 1
-    - name: ElfLThigh
-      position: {x: -0.026285186, y: 0.0716705, z: 0.0944658}
-      rotation: {x: 0.017487574, y: 0.99896544, z: 0.0041097463, w: 0.041776307}
-      scale: {x: 0.99999875, y: 1.0000011, z: 0.9999988}
-      transformModified: 1
-    - name: ElfLCalf
-      position: {x: -0.46747404, y: -0.000000055121603, z: -0.00000014292335}
-      rotation: {x: 0.0006987253, y: -0.0008827449, z: 0.054172833, w: 0.9985309}
-      scale: {x: 1.0000004, y: 0.99999934, z: 1.0000013}
-      transformModified: 1
-    - name: ElfLFoot
-      position: {x: -0.5001764, y: 0.00000031886984, z: 0.00000050128455}
-      rotation: {x: -0.07594439, y: -0.005151675, z: -0.71399987, w: 0.6959957}
-      scale: {x: 0.9999994, y: 0.9999996, z: 0.9999988}
-      transformModified: 1
-    - name: ElfLDigit11
-      position: {x: -0.22753792, y: 0.015741356, z: 0.0000021371407}
-      rotation: {x: 0.000000008332613, y: 0.00000012611255, z: -0.054379143, w: 0.9985203}
-      scale: {x: 1.0000019, y: 1, z: 1.0000012}
-      transformModified: 1
-    - name: ElfRThigh
-      position: {x: -0.02628412, y: 0.071670525, z: -0.094465755}
-      rotation: {x: 0.017486881, y: 0.99896544, z: -0.0041097607, w: -0.04177625}
-      scale: {x: 1.000001, y: 1.0000023, z: 0.9999982}
-      transformModified: 1
-    - name: ElfRCalf
-      position: {x: -0.46747452, y: 0.00000012889448, z: -0.000000045244587}
-      rotation: {x: -0.00070479535, y: 0.0008230853, z: 0.054132007, w: 0.9985331}
-      scale: {x: 0.9999984, y: 0.9999988, z: 0.9999997}
-      transformModified: 1
-    - name: ElfRFoot
-      position: {x: -0.5001756, y: 0.00000018442002, z: -0.00000021904602}
-      rotation: {x: 0.07601912, y: 0.005316636, z: -0.714016, w: 0.69596976}
-      scale: {x: 1.0000001, y: 0.9999994, z: 1.0000005}
-      transformModified: 1
-    - name: ElfRDigit11
-      position: {x: -0.22753772, y: 0.015741037, z: -0.0000022119455}
-      rotation: {x: 0.000008492682, y: -0.00015580388, z: -0.05430497, w: 0.99852437}
-      scale: {x: 0.99999994, y: 0.99999976, z: 0.9999999}
-      transformModified: 1
     - name: ElfSpine1
-      position: {x: -0.0697767, y: -0.005338678, z: -0.000000010327531}
-      rotation: {x: 0.00000040105647, y: 0.00000003196704, z: 0.14902787, w: -0.98883295}
-      scale: {x: 0.999999, y: 1.0000008, z: 0.99999976}
+      position: {x: -0.069777146, y: -0.005338688, z: -0.000000013709068}
+      rotation: {x: 0.000000461936, y: 0.00000008940697, z: 0.14902796, w: -0.98883307}
+      scale: {x: 0.99999976, y: 1.000001, z: 1.0000007}
       transformModified: 1
     - name: ElfSpine2
-      position: {x: -0.21464223, y: 0.0000002533586, z: -0.000000010381078}
-      rotation: {x: -0.00000037617977, y: 0.0000000069113875, z: -0.16649745, w: -0.98604184}
-      scale: {x: 0.99999833, y: 1.0000025, z: 0.9999995}
+      position: {x: -0.2146427, y: 0, z: 0}
+      rotation: {x: -0.0000004768371, y: -0.00000008940696, z: -0.16649754, w: -0.9860419}
+      scale: {x: 0.9999981, y: 1.000002, z: 0.9999975}
       transformModified: 1
     - name: ElfSpine3
-      position: {x: -0.18284604, y: 0.000000014511385, z: 0.000000003814518}
-      rotation: {x: 0.000000017819659, y: 0.000000021218048, z: 0.07543159, w: 0.99715096}
-      scale: {x: 0.9999984, y: 1.0000013, z: 0.9999991}
+      position: {x: -0.18284705, y: 0, z: 0.0000000023841857}
+      rotation: {x: -0.000000029802315, y: -0.000000014901158, z: 0.075431645, w: 0.99715096}
+      scale: {x: 0.9999995, y: 1.0000007, z: 1.0000006}
       transformModified: 1
     - name: ElfRibcage
-      position: {x: -0.19649217, y: -0.000000057033258, z: 0.000000006972869}
-      rotation: {x: 0.000000044971895, y: -0.000000009250843, z: 0.094796635, w: -0.99549663}
-      scale: {x: 0.99999964, y: 0.9999993, z: 1}
+      position: {x: -0.19649185, y: 0.000000009536743, z: -0.0000000023841857}
+      rotation: {x: 0.000000044703487, y: -0.000000014901163, z: 0.09479668, w: -0.9954967}
+      scale: {x: 0.9999995, y: 0.99999857, z: 0.9999995}
       transformModified: 1
     - name: elf_quiver
       position: {x: 1.62564, y: 0.10016811, z: 0.00000014305114}
-      rotation: {x: 0.70710677, y: -0.00000012644055, z: -0.70710677, w: -0.00000012644055}
+      rotation: {x: 0.7071068, y: -0.00000012644057, z: -0.7071068, w: -0.00000012644057}
       scale: {x: 0.99999994, y: 0.99999964, z: 0.9999999}
       transformModified: 1
     - name: ElfLCollarbone
-      position: {x: 0.021012554, y: 0.12286743, z: 0.056143805}
-      rotation: {x: -0.034448493, y: -0.7081768, z: -0.1882933, w: -0.6795914}
-      scale: {x: 1.0000001, y: 0.99999934, z: 1.0000018}
+      position: {x: 0.02101181, y: 0.12286755, z: 0.056143902}
+      rotation: {x: -0.034453753, y: -0.7081838, z: -0.18829405, w: -0.6795836}
+      scale: {x: 1.0000005, y: 0.9999987, z: 1.0000006}
       transformModified: 1
     - name: ElfLUpperarm
-      position: {x: -0.15569812, y: -0.0000014086007, z: 0.0000065624013}
-      rotation: {x: 0.1490685, y: 0.00020650297, z: -0.16028821, w: 0.975749}
-      scale: {x: 0.99999523, y: 1.0000095, z: 0.9999948}
+      position: {x: -0.15569837, y: 0, z: 0.00000015258789}
+      rotation: {x: 0.14906476, y: 0.00019028681, z: -0.1602921, w: 0.9757491}
+      scale: {x: 0.99999785, y: 1.0000063, z: 0.999997}
       transformModified: 1
     - name: elf_shoulderpad_04_L
       position: {x: -0.90469784, y: 0.061555002, z: 1.3129874}
-      rotation: {x: 0.93419015, y: -0.04835604, z: 0.35325876, w: -0.012601986}
+      rotation: {x: 0.93419015, y: -0.04835604, z: 0.3532588, w: -0.012601986}
       scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
       transformModified: 1
     - name: ElfLForearm
-      position: {x: -0.30170283, y: -0.00000020560228, z: -0.0000030974988}
-      rotation: {x: 0.08311504, y: -0.0050612665, z: -0.019676274, w: 0.99633276}
-      scale: {x: 1.0000037, y: 0.99999243, z: 1.0000026}
+      position: {x: -0.30170578, y: -0.000000009536743, z: 0}
+      rotation: {x: 0.08311695, y: -0.005065396, z: -0.019677851, w: 0.99633265}
+      scale: {x: 1.0000032, y: 0.99999577, z: 1.0000037}
       transformModified: 1
     - name: ElfLPalm
-      position: {x: -0.23328763, y: -0.0000003942713, z: -0.0000050487033}
-      rotation: {x: -0.76061875, y: 0.049303494, z: 0.036455236, w: 0.6462966}
-      scale: {x: 1.000001, y: 1.0000043, z: 0.999997}
+      position: {x: -0.23329048, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.7606188, y: 0.04930355, z: 0.036455393, w: 0.64629656}
+      scale: {x: 0.9999995, y: 1.000001, z: 0.999998}
       transformModified: 1
     - name: Elf_weaponL
-      position: {x: -0.12093674, y: -0.040181417, z: 0.00018426504}
-      rotation: {x: 0.0039816014, y: 0.9999918, z: -0.0007030926, w: -0.00009836444}
-      scale: {x: 1.0000006, y: 0.99999946, z: 1}
+      position: {x: -0.120936275, y: -0.040181044, z: 0.00018440247}
+      rotation: {x: 0.0039816503, y: 0.99999183, z: -0.0007031188, w: -0.00009840355}
+      scale: {x: 1.0000011, y: 0.9999993, z: 1.0000004}
       transformModified: 1
     - name: ctrl_goblin arch_main
       position: {x: -0, y: -0.0000002670288, z: 0}
-      rotation: {x: -0.90676296, y: -0.021302067, z: -0.0016437809, w: -0.421099}
+      rotation: {x: 0.00000028247095, y: -0.70710665, z: 0.70710695, w: 0.00000028247084}
       scale: {x: 0.99999934, y: 1.0000017, z: 1.0000005}
-      transformModified: 1
-    - name: bone_elf arch_main
-      position: {x: 0.008792992, y: -0.044656448, z: 0.000000038146972}
-      rotation: {x: 0.000000010825001, y: -0.00000001024031, z: -0.68721557, w: 0.72645354}
-      scale: {x: 1.0000001, y: 1, z: 1.0000001}
       transformModified: 1
     - name: ctrl_goblin arch_arrow
       position: {x: 0.3094012, y: -0.011464996, z: 0.009540023}
-      rotation: {x: -0.15539801, y: -0.90754074, z: -0.37929234, w: 0.091424726}
+      rotation: {x: -0.7071068, y: -1.4030481e-15, z: 0.000000021073424, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: bone_elf arch_botton00
       position: {x: -0.000000076293944, y: -0.000000038146972, z: 0}
-      rotation: {x: 0.5171306, y: -0.4852178, z: 0.46695408, w: 0.52829295}
-      scale: {x: 1.0000014, y: 1.0000001, z: 0.99999803}
+      rotation: {x: 0.29664153, y: -0.9508967, z: 0.013732526, w: -0.087239414}
+      scale: {x: 1.000007, y: 0.99999976, z: 0.999992}
       transformModified: 1
     - name: bone_elf arch_botton01
       position: {x: -0.56072885, y: 0.0000020599364, z: -0.000000038146972}
-      rotation: {x: -0.00000027982355, y: -0.0000015879123, z: 0.9597513, w: -0.2808511}
-      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+      rotation: {x: -0.000008289029, y: -0.000036345034, z: -0.97209275, w: 0.23459709}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000004}
       transformModified: 1
     - name: bone_elf arch_top00
-      position: {x: -1.4258983, y: 0.52992874, z: -0.1466507}
-      rotation: {x: 0.98617285, y: -0.15571499, z: 0.053952616, w: -0.017464198}
-      scale: {x: 1.0000118, y: 0.99999875, z: 0.9999909}
+      position: {x: -0.000000076293944, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.9534665, y: 0.2883155, z: 0.087265745, w: 0.0126687}
+      scale: {x: 1.0000077, y: 0.9999988, z: 0.99999326}
       transformModified: 1
     - name: bone_elf arch_top01
       position: {x: -0.59430486, y: -0.00000061035155, z: 0.000000038146972}
-      rotation: {x: 0.0000051357406, y: -0.000020298856, z: 0.9616655, w: 0.2742251}
-      scale: {x: 0.9999998, y: 1, z: 1}
+      rotation: {x: -0.00006807816, y: 0.000286654, z: 0.9728633, w: 0.23138049}
+      scale: {x: 0.99999917, y: 1.0000007, z: 1.0000006}
+      transformModified: 1
+    - name: bone_elf arch_main
+      position: {x: 0.00879303, y: -0.0446565, z: 0}
+      rotation: {x: 0.6719815, y: 0.2475788, z: -0.123607025, w: 0.68692565}
+      scale: {x: 1.0000063, y: 0.99999994, z: 0.9999936}
       transformModified: 1
     - name: elf_shield
-      position: {x: 0.057914276, y: 0.0794059, z: 0.0050486373}
-      rotation: {x: 0.27619272, y: 0.7228271, z: 0.60538363, w: 0.186411}
+      position: {x: 0.05791424, y: 0.079405814, z: 0.0050486494}
+      rotation: {x: 0.2761926, y: 0.7228273, z: 0.60538346, w: 0.18641138}
       scale: {x: 0.9999998, y: 0.9999999, z: 1.0000006}
       transformModified: 1
     - name: ElfLDigit11 1
-      position: {x: -0.03718921, y: 0.0006506095, z: 0.009685851}
-      rotation: {x: 0.41392094, y: 0.36221868, z: -0.25622892, w: 0.7948671}
-      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+      position: {x: -0.038524244, y: 0.00095825194, z: 0.009483795}
+      rotation: {x: 0.44803175, y: 0.3648085, z: -0.17709868, w: 0.79675496}
+      scale: {x: 0.99999845, y: 1.0000012, z: 1.0000002}
       transformModified: 1
     - name: ElfLDigit12
-      position: {x: -0.06487994, y: 0.000027956854, z: 0.00008096051}
-      rotation: {x: -0.014526423, y: 0.014685593, z: 0.007094931, w: 0.99976146}
-      scale: {x: 0.99999994, y: 1, z: 1}
+      position: {x: -0.06494526, y: 0.000000076293944, z: 0.000000038146972}
+      rotation: {x: -0.013455763, y: 0.007650004, z: 0.038811963, w: 0.9991267}
+      scale: {x: 0.99999917, y: 1, z: 0.99999946}
       transformModified: 1
     - name: ElfLDigit13
       position: {x: -0.042855527, y: 0, z: 0.000000019073486}
-      rotation: {x: -0.0000000015274084, y: -0.000000042119158, z: 0.6810165, w: 0.732268}
-      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
-      transformModified: 1
-    - name: ElfLDigit21
-      position: {x: -0.15162931, y: 0.00013548302, z: 0.044834904}
-      rotation: {x: 0.0005863092, y: 0.037379656, z: 0.015670376, w: 0.99917805}
-      scale: {x: 0.99999833, y: 0.9999996, z: 1.000001}
-      transformModified: 1
-    - name: ElfLDigit22
-      position: {x: -0.0546672, y: 0.0000003886003, z: -0.000000008137476}
-      rotation: {x: 0.00000087548176, y: 0.000000113037544, z: 0.03266709, w: 0.99946624}
-      scale: {x: 1.0000023, y: 0.999999, z: 1.0000005}
-      transformModified: 1
-    - name: ElfLDigit23
-      position: {x: -0.04285598, y: -0.00000012021879, z: -0.000000023505967}
-      rotation: {x: 0.00000052933297, y: 0.00000005522681, z: 0.02867452, w: 0.9995887}
-      scale: {x: 1.0000005, y: 0.999999, z: 1.0000001}
+      rotation: {x: 0.0000012218952, y: 0.00000043213367, z: 0.1970772, w: 0.98038805}
+      scale: {x: 1.0000001, y: 1.000001, z: 1.0000014}
       transformModified: 1
     - name: ElfLDigit31
-      position: {x: -0.15069252, y: 0.006369537, z: 0.0070062876}
-      rotation: {x: 0.0028797465, y: -0.021186596, z: 0.038561422, w: 0.99902743}
-      scale: {x: 1.0000049, y: 0.99999803, z: 0.99999535}
+      position: {x: -0.15165085, y: 0.0099826045, z: 0.01302803}
+      rotation: {x: -0.008435264, y: 0.0052430136, z: 0.032942973, w: 0.99940795}
+      scale: {x: 1.0000027, y: 1.0000004, z: 0.9999978}
       transformModified: 1
     - name: ElfLDigit32
-      position: {x: -0.05277634, y: -0.00000012550841, z: 0.0000000019719781}
-      rotation: {x: -0.0022002056, y: -0.00023864352, z: 0.0346271, w: 0.9993978}
-      scale: {x: 1.0000007, y: 1.000001, z: 0.9999999}
+      position: {x: -0.04985363, y: 0.000000076293944, z: 0}
+      rotation: {x: -0.0018488173, y: -0.0016736538, z: -0.04179219, w: 0.9991232}
+      scale: {x: 0.9999999, y: 0.9999994, z: 1.0000001}
       transformModified: 1
     - name: ElfLDigit33
-      position: {x: -0.03494458, y: 0.00000036949348, z: -0.000000089040455}
-      rotation: {x: -0.0013609121, y: -0.0065510166, z: 0.23870999, w: 0.9710678}
-      scale: {x: 0.99999917, y: 1.0000018, z: 1.0000005}
-      transformModified: 1
-    - name: ElfLDigit41
-      position: {x: -0.14958172, y: 0.0021941375, z: -0.012934417}
-      rotation: {x: 0, y: 0, z: 0.6534798, w: 0.756944}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1}
-      transformModified: 1
-    - name: ElfLDigit42
-      position: {x: -0.046347655, y: 0, z: 0}
-      rotation: {x: 0.0000000069502213, y: 0.000000008751829, z: 0.7831005, w: 0.62189525}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
-      transformModified: 1
-    - name: ElfLDigit43
-      position: {x: -0.029369887, y: -0.000000038146972, z: 0}
-      rotation: {x: 0.000000002721039, y: 0.000000020897014, z: 0.6098845, w: 0.79249036}
-      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+      position: {x: -0.033010025, y: 0, z: -0.000000038146972}
+      rotation: {x: -0.0013560532, y: -0.006551062, z: 0.23871028, w: 0.97106785}
+      scale: {x: 0.99999887, y: 1.0000005, z: 1.0000004}
       transformModified: 1
     - name: ElfLDigit51
       position: {x: -0.14474747, y: 0.00631958, z: -0.035788536}
-      rotation: {x: 0.000000016039666, y: 0.000000004503872, z: 0.67236125, w: 0.7402231}
-      scale: {x: 1, y: 0.99999994, z: 1}
+      rotation: {x: -0.010080922, y: 0.0075262142, z: 0.03360361, w: 0.9993561}
+      scale: {x: 1.0000021, y: 1.0000002, z: 0.9999974}
       transformModified: 1
     - name: ElfLDigit52
       position: {x: -0.0386528, y: 0.000000076293944, z: -0.000000038146972}
-      rotation: {x: 0.000000004755697, y: -0.000000015966814, z: 0.68392533, w: 0.7295519}
-      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+      rotation: {x: -0.0019665307, y: -0.001535165, z: 0.030920101, w: 0.99951875}
+      scale: {x: 0.99999946, y: 0.9999991, z: 0.99999994}
       transformModified: 1
     - name: ElfLDigit53
       position: {x: -0.025593605, y: -0.000000076293944, z: 0.000000038146972}
-      rotation: {x: 0.000000020828594, y: -0.0000000032029515, z: 0.5914184, w: 0.8063649}
-      scale: {x: 1, y: 0.99999994, z: 1}
+      rotation: {x: -0.00056928274, y: -0.0066659884, z: 0.12230958, w: 0.99246943}
+      scale: {x: 1.0000006, y: 1.0000008, z: 0.9999999}
+      transformModified: 1
+    - name: ElfLDigit41
+      position: {x: -0.14958172, y: 0.0021941375, z: -0.012934417}
+      rotation: {x: -0.010522183, y: 0.0026146555, z: 0.03262675, w: 0.99940884}
+      scale: {x: 1.0000018, y: 1.0000002, z: 0.99999887}
+      transformModified: 1
+    - name: ElfLDigit42
+      position: {x: -0.046347655, y: 0, z: 0}
+      rotation: {x: 0.005636969, y: -0.008005218, z: 0.03662866, w: 0.999281}
+      scale: {x: 0.9999992, y: 0.9999988, z: 0.99999917}
+      transformModified: 1
+    - name: ElfLDigit43
+      position: {x: -0.029369887, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.0034234729, y: 0.037210062, z: 0.08490777, w: 0.99568796}
+      scale: {x: 1.0000002, y: 1, z: 1.0000011}
+      transformModified: 1
+    - name: ElfLDigit21
+      position: {x: -0.1508693, y: 0.00030754087, z: 0.041329917}
+      rotation: {x: 0.0005864314, y: 0.037379745, z: 0.015670184, w: 0.9991782}
+      scale: {x: 1.0000007, y: 1, z: 1.0000007}
+      transformModified: 1
+    - name: ElfLDigit22
+      position: {x: -0.054667585, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.0000012740484, y: -0.0000001741572, z: 0.03267506, w: 0.999466}
+      scale: {x: 0.9999995, y: 0.9999988, z: 0.99999994}
+      transformModified: 1
+    - name: ElfLDigit23
+      position: {x: -0.042855527, y: 0.000000038146972, z: 0}
+      rotation: {x: 0.0000005289912, y: -0.0000000055879354, z: 0.02867455, w: 0.99958885}
+      scale: {x: 1.0000001, y: 0.9999995, z: 0.99999946}
       transformModified: 1
     - name: ElfNeck
-      position: {x: -0.021020044, y: 0.05155104, z: -0.000000009107921}
-      rotation: {x: -0.000000029806053, y: 0.000000029135862, z: -0.011181323, w: -0.9999374}
-      scale: {x: 1.0000025, y: 0.99999887, z: 1}
+      position: {x: -0.021020202, y: 0.051551018, z: -0.000000019073486}
+      rotation: {x: -0.000000029802319, y: -0.000000014901159, z: -0.011181324, w: -0.9999375}
+      scale: {x: 1.0000023, y: 0.9999977, z: 0.99999964}
       transformModified: 1
     - name: ElfHead
-      position: {x: -0.114151776, y: -0.000000031128693, z: -0.000000005452047}
-      rotation: {x: 0.00000002980604, y: -0.000000029135862, z: 0.011181323, w: -0.9999374}
-      scale: {x: 1.0000002, y: 0.99999917, z: 1.0000005}
+      position: {x: -0.114151, y: 0, z: 0}
+      rotation: {x: 0.000000044703484, y: -0.000000014901161, z: 0.01118134, w: -0.9999375}
+      scale: {x: 1.0000008, y: 1.000002, z: 1.0000021}
       transformModified: 1
     - name: elf_helmet_01
       position: {x: 1.7607827, y: 0.05116964, z: 0.00000007636845}
-      rotation: {x: 0.70710677, y: 0.00000010437931, z: -0.70710677, w: 0.00000010437931}
+      rotation: {x: 0.7071068, y: 0.00000010437932, z: -0.7071068, w: 0.00000010437932}
       scale: {x: 0.9999999, y: 0.99999976, z: 0.99999994}
       transformModified: 1
     - name: elf_helmet_02
       position: {x: 1.7607827, y: 0.05116964, z: 0.00000007636845}
-      rotation: {x: 0.70710677, y: 0.00000010437931, z: -0.70710677, w: 0.00000010437931}
+      rotation: {x: 0.7071068, y: 0.00000010437932, z: -0.7071068, w: 0.00000010437932}
       scale: {x: 0.9999999, y: 0.99999976, z: 0.99999994}
       transformModified: 1
     - name: elf_helmet_03
       position: {x: 1.7607827, y: 0.05116964, z: 0.00000007636845}
-      rotation: {x: 0.70710677, y: 0.00000010437931, z: -0.70710677, w: 0.00000010437931}
+      rotation: {x: 0.7071068, y: 0.00000010437932, z: -0.7071068, w: 0.00000010437932}
       scale: {x: 0.9999999, y: 0.99999976, z: 0.99999994}
       transformModified: 1
     - name: elf_helmet_04
       position: {x: 1.7607827, y: 0.05116964, z: 0.00000007636845}
-      rotation: {x: 0.70710677, y: 0.00000010437931, z: -0.70710677, w: 0.00000010437931}
+      rotation: {x: 0.7071068, y: 0.00000010437932, z: -0.7071068, w: 0.00000010437932}
       scale: {x: 0.9999999, y: 0.99999976, z: 0.99999994}
       transformModified: 1
     - name: Elfhair1
-      position: {x: -0.12470845, y: -0.023240987, z: 0.000000022347166}
-      rotation: {x: 0.000000014465091, y: -0.00000012637425, z: -0.8702082, w: -0.49268407}
-      scale: {x: 0.9999986, y: 1.0000012, z: 1}
+      position: {x: -0.124708556, y: -0.02324095, z: 0.0000000035762786}
+      rotation: {x: -0.000000029802319, y: -0.00000017136334, z: -0.87020826, w: -0.49268413}
+      scale: {x: 0.9999993, y: 1, z: 0.99999964}
       transformModified: 1
     - name: Elfhair2
       position: {x: -0.11628662, y: 0, z: -0.000000019073486}
-      rotation: {x: 0.0100404015, y: -0.04555028, z: 0.33882466, w: 0.93969256}
-      scale: {x: 1.0000001, y: 1.0000001, z: 0.9999999}
+      rotation: {x: -0.000000059604623, y: 0.00000011920925, z: 0.36366695, w: 0.93152905}
+      scale: {x: 1.0000001, y: 1.0000008, z: 0.99999976}
       transformModified: 1
     - name: Elfhair3
       position: {x: -0.12951247, y: 0, z: -0.0000000047683715}
-      rotation: {x: 0.0050976383, y: -0.023126485, z: 0.17202568, w: 0.9848077}
-      scale: {x: 0.9999998, y: 0.9999999, z: 0.9999999}
+      rotation: {x: -0.00000010430811, y: 0.000000044703473, z: -0.016335618, w: 0.99986655}
+      scale: {x: 0.99999905, y: 0.9999999, z: 1.0000001}
       transformModified: 1
     - name: Elfmouth
-      position: {x: 0.012176356, y: 0.048839133, z: -0.000000004982255}
-      rotation: {x: -0.000000011836077, y: -0.00000013078163, z: -0.81915206, w: 0.57357645}
-      scale: {x: 0.99999976, y: 0.9999989, z: 0.9999998}
+      position: {x: 0.020512389, y: 0.047309663, z: 0.00043219147}
+      rotation: {x: 0.000000059604645, y: -0.00000008940697, z: -0.81915206, w: 0.57357657}
+      scale: {x: 0.99999976, y: 0.99999976, z: 1.0000002}
       transformModified: 1
     - name: ElfRCollarbone
-      position: {x: 0.021011371, y: 0.12286752, z: -0.056143865}
-      rotation: {x: -0.034455292, y: -0.70818657, z: 0.18829393, w: 0.6795807}
-      scale: {x: 0.99999857, y: 0.9999988, z: 1.0000029}
+      position: {x: 0.021012114, y: 0.122867584, z: -0.056143902}
+      rotation: {x: -0.034453824, y: -0.7081839, z: 0.18829402, w: 0.67958355}
+      scale: {x: 1.0000002, y: 0.9999995, z: 1.0000021}
       transformModified: 1
     - name: ElfRUpperarm
-      position: {x: -0.15569821, y: 0.00000040561372, z: 0.000002297341}
-      rotation: {x: -0.14906354, y: -0.00018707254, z: -0.16029195, w: 0.97574914}
-      scale: {x: 1.0000023, y: 0.99999917, z: 1.000002}
+      position: {x: -0.15569839, y: 0, z: 0}
+      rotation: {x: -0.14906457, y: -0.00018941604, z: -0.16029195, w: 0.975749}
+      scale: {x: 1.0000002, y: 1.0000002, z: 0.99999976}
       transformModified: 1
     - name: elf_shoulderpad_04_R
       position: {x: -0.904698, y: 0.06155495, z: -1.3129873}
-      rotation: {x: 0.35325864, y: 0.012602128, z: 0.9341901, w: 0.048356008}
+      rotation: {x: 0.35325867, y: 0.012602129, z: 0.93419015, w: 0.04835601}
       scale: {x: 0.9999999, y: 1.0000001, z: 1.0000002}
       transformModified: 1
     - name: ElfRForearm
-      position: {x: -0.30170545, y: 0.000000043835247, z: 0.0000011564948}
-      rotation: {x: -0.08311802, y: 0.005075967, z: -0.019677334, w: 0.99633247}
-      scale: {x: 0.9999997, y: 0.99999905, z: 1.0000015}
+      position: {x: -0.3017057, y: -0.0000000023841857, z: 0}
+      rotation: {x: -0.083117, y: 0.005064898, z: -0.019678805, w: 0.99633265}
+      scale: {x: 0.9999996, y: 0.99999857, z: 1.0000011}
       transformModified: 1
     - name: ElfRPalm
-      position: {x: -0.23329332, y: 0.00000043165255, z: -0.0000049239693}
-      rotation: {x: 0.7606187, y: -0.049303446, z: 0.03645535, w: 0.64629656}
-      scale: {x: 0.9999983, y: 1, z: 0.9999969}
+      position: {x: -0.23329048, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.7606187, y: -0.049303398, z: 0.03645521, w: 0.64629674}
+      scale: {x: 0.99999887, y: 1.000001, z: 0.9999984}
       transformModified: 1
     - name: Elf_weaponR
       position: {x: -0.13939926, y: -0.035400543, z: 0.0037890624}
-      rotation: {x: 0.0000002011657, y: -0.00000005960459, z: 0.00000007450576, w: 0.99999994}
-      scale: {x: 1.0000006, y: 0.9999998, z: 1.0000005}
+      rotation: {x: -0.035206933, y: 0.1326208, z: 0.008917183, w: 0.9905012}
+      scale: {x: 1.0000008, y: 0.9999997, z: 1.0000007}
       transformModified: 1
-    - name: Elf_javelin
-      position: {x: -0.026530914, y: -0.015989838, z: 0.3738018}
-      rotation: {x: -0.30946642, y: -0.6390407, z: -0.37044367, w: 0.5988563}
-      scale: {x: 0.99999976, y: 0.99999976, z: 0.9999997}
+    - name: elf_sword_01
+      position: {x: 0.016769944, y: 0.0053350064, z: 0.02867279}
+      rotation: {x: -0.000000035374796, y: 0.054582413, z: -0.0000000353748, w: 0.9985093}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
       transformModified: 1
-    - name: elf_spear
-      position: {x: 0.017858429, y: -0.092735134, z: 0.3588809}
-      rotation: {x: -0.26657292, y: -0.5688401, z: -0.40241987, w: 0.6658965}
-      scale: {x: 0.83113426, y: 0.83113426, z: 0.83113414}
-      transformModified: 1
-    - name: elf_staff skull
-      position: {x: 0.0056065368, y: -0.0016681671, z: -0.0037413787}
-      rotation: {x: 0.34024665, y: 0.9397525, z: 0.017927408, w: -0.027856542}
-      scale: {x: 1.0000001, y: 1.0000002, z: 0.99999964}
-      transformModified: 1
-    - name: elf_staff_01
-      position: {x: 0.012351455, y: 0.012224274, z: 0.008792191}
-      rotation: {x: 0.6250286, y: 0.78007245, z: 0.019181881, w: -0.021409225}
-      scale: {x: 0.99999964, y: 0.9999991, z: 0.9999998}
+    - name: elf_sword_03
+      position: {x: 0.025587615, y: 0.0045028687, z: 0.07251736}
+      rotation: {x: -0.000000031534952, y: 0.053510286, z: 0.000000031534952, w: 0.99856734}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
       transformModified: 1
     - name: elf_staff_02
       position: {x: 0.025235366, y: 0.021955566, z: -0.00055843353}
-      rotation: {x: 0.62507683, y: 0.7800256, z: 0.021001205, w: -0.019951468}
+      rotation: {x: 0.62507683, y: 0.78002554, z: 0.021001205, w: -0.019951468}
       scale: {x: 0.99999964, y: 0.99999934, z: 0.9999998}
       transformModified: 1
     - name: elf_staff_03
       position: {x: -0.0039902115, y: 0.009541702, z: -0.0060663987}
-      rotation: {x: 0.625021, y: 0.7800791, z: 0.018906886, w: -0.021629602}
+      rotation: {x: 0.62502104, y: 0.7800792, z: 0.018906888, w: -0.021629604}
       scale: {x: 0.9999997, y: 0.9999992, z: 0.99999976}
       transformModified: 1
-    - name: elf_sword_01
-      position: {x: 0.016769944, y: 0.0053350064, z: 0.02867279}
-      rotation: {x: -0.000000035374793, y: 0.05458241, z: -0.000000035374796, w: 0.9985092}
-      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: elf_staff_01
+      position: {x: 0.012351455, y: 0.012224274, z: 0.008792191}
+      rotation: {x: 0.6250286, y: 0.7800724, z: 0.019181881, w: -0.021409225}
+      scale: {x: 0.99999964, y: 0.9999991, z: 0.9999998}
+      transformModified: 1
+    - name: Elf_javelin
+      position: {x: -0.026530914, y: -0.015989838, z: 0.3738018}
+      rotation: {x: -0.30946645, y: -0.63904077, z: -0.3704437, w: 0.59885633}
+      scale: {x: 0.99999976, y: 0.99999976, z: 0.9999997}
+      transformModified: 1
+    - name: elf_spear
+      position: {x: 0.017858429, y: -0.092735134, z: 0.3588809}
+      rotation: {x: -0.26657292, y: -0.5688401, z: -0.40241984, w: 0.6658965}
+      scale: {x: 0.83113426, y: 0.83113426, z: 0.83113414}
       transformModified: 1
     - name: elf_sword_02
-      position: {x: 0.00260849, y: -0.0006685638, z: -0.025413856}
-      rotation: {x: -0.0000002585371, y: 0.09011761, z: -0.000000036454235, w: 0.9959311}
+      position: {x: 0.0026084827, y: -0.00066853047, z: -0.025413861}
+      rotation: {x: -0.0000002652325, y: 0.09011759, z: 0.000000023999766, w: 0.99593115}
       scale: {x: 0.99999976, y: 0.9999999, z: 0.99999994}
       transformModified: 1
-    - name: elf_sword_03
-      position: {x: 0.025587615, y: 0.0045028687, z: 0.07251736}
-      rotation: {x: -0.00000003153495, y: 0.053510282, z: 0.00000003153495, w: 0.9985673}
-      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: elf_staff skull
+      position: {x: 0.0056065368, y: -0.0016681671, z: -0.0037413787}
+      rotation: {x: 0.34024668, y: 0.9397526, z: 0.01792741, w: -0.027856544}
+      scale: {x: 1.0000001, y: 1.0000002, z: 0.99999964}
       transformModified: 1
     - name: ElfRDigit11 1
-      position: {x: -0.03846904, y: 0.00091950817, z: -0.009498105}
-      rotation: {x: -0.48424107, y: -0.38861042, z: -0.27428758, w: 0.7343424}
-      scale: {x: 0.9999983, y: 0.9999999, z: 1.0000015}
+      position: {x: -0.03852417, y: 0.00095825194, z: -0.009483871}
+      rotation: {x: -0.44803074, y: -0.3648076, z: -0.17709967, w: 0.7967557}
+      scale: {x: 0.99999857, y: 1, z: 1.000001}
       transformModified: 1
     - name: ElfRDigit12
-      position: {x: -0.064943254, y: 0.0000020272662, z: 0.0000010455424}
-      rotation: {x: 0.013455636, y: -0.0076470682, z: 0.038802337, w: 0.999127}
-      scale: {x: 0.9999972, y: 1.0000021, z: 1.000003}
+      position: {x: -0.06494526, y: 0, z: 0}
+      rotation: {x: 0.013455714, y: -0.0076517323, z: 0.038812563, w: 0.9991267}
+      scale: {x: 0.9999981, y: 1.0000012, z: 1.000002}
       transformModified: 1
     - name: ElfRDigit13
-      position: {x: -0.042855103, y: 0.0000005385431, z: 0.00000025114375}
-      rotation: {x: -0.0000014497776, y: -0.0000005269646, z: 0.19707713, w: 0.9803879}
-      scale: {x: 1.0000027, y: 0.99999577, z: 1.0000002}
-      transformModified: 1
-    - name: ElfRDigit21
-      position: {x: -0.15162879, y: 0.00013501206, z: -0.044834573}
-      rotation: {x: -0.00045445183, y: -0.042064033, z: 0.014114297, w: 0.9990151}
-      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000006}
-      transformModified: 1
-    - name: ElfRDigit22
-      position: {x: -0.05466781, y: -0.0000004356843, z: 0.000000029708213}
-      rotation: {x: -0.00000052532204, y: 0.0000017519077, z: 0.032684408, w: 0.9994657}
-      scale: {x: 0.99999815, y: 1.0000019, z: 0.99999934}
-      transformModified: 1
-    - name: ElfRDigit23
-      position: {x: -0.042854294, y: 0.00000073907074, z: -0.00000018309262}
-      rotation: {x: -0.0000005648356, y: -0.00000005105586, z: 0.028674657, w: 0.9995887}
-      scale: {x: 1.0000001, y: 0.99999964, z: 1.000001}
+      position: {x: -0.042855605, y: 0.000000076293944, z: 0.000000038146972}
+      rotation: {x: -0.0000014305115, y: -0.00000055134296, z: 0.19707718, w: 0.98038805}
+      scale: {x: 1.000001, y: 0.999998, z: 1.0000011}
       transformModified: 1
     - name: ElfRDigit31
-      position: {x: -0.15069067, y: 0.0063728075, z: -0.0070065185}
-      rotation: {x: 0.012356814, y: -0.064888775, z: 0.033449855, w: 0.99725515}
-      scale: {x: 0.999999, y: 1.0000029, z: 1.0000001}
+      position: {x: -0.15165097, y: 0.009982528, z: -0.013028107}
+      rotation: {x: 0.008435702, y: -0.0052425633, z: 0.032942794, w: 0.99940795}
+      scale: {x: 0.99999857, y: 1.0000024, z: 0.99999905}
       transformModified: 1
     - name: ElfRDigit32
-      position: {x: -0.052776225, y: -0.00000025671002, z: 0.000000005818581}
-      rotation: {x: 0.0022000654, y: 0.00023833489, z: 0.034628283, w: 0.99939775}
-      scale: {x: 0.9999968, y: 1.0000031, z: 0.9999996}
+      position: {x: -0.04985359, y: 0.000000038146972, z: -0.000000038146972}
+      rotation: {x: 0.0018489528, y: 0.0016737367, z: -0.041792173, w: 0.9991233}
+      scale: {x: 1.0000007, y: 0.99999917, z: 1.0000005}
       transformModified: 1
     - name: ElfRDigit33
-      position: {x: -0.034943588, y: 0.0000005287569, z: 0.00000013548636}
-      rotation: {x: 0.0013609754, y: 0.0065509793, z: 0.23871017, w: 0.9710678}
-      scale: {x: 1.0000014, y: 0.9999987, z: 1.0000017}
+      position: {x: -0.0330101, y: 0, z: 0}
+      rotation: {x: 0.0013560182, y: 0.0065510883, z: 0.23871005, w: 0.97106785}
+      scale: {x: 0.999998, y: 1.0000017, z: 0.99999994}
       transformModified: 1
     - name: ElfRDigit41
       position: {x: -0.14958179, y: 0.0021940612, z: 0.012934417}
-      rotation: {x: -0.000000017924949, y: -0.00000007231743, z: 0.6321517, w: 0.7748445}
-      scale: {x: 1, y: 0.99999994, z: 0.9999997}
+      rotation: {x: 0.010522421, y: -0.0026143962, z: 0.032626677, w: 0.9994088}
+      scale: {x: 0.9999978, y: 1.0000019, z: 0.9999997}
       transformModified: 1
     - name: ElfRDigit42
       position: {x: -0.04634773, y: 0.000000076293944, z: 0}
-      rotation: {x: -0.00000004541348, y: -0.000000012572265, z: 0.5578779, w: 0.8299231}
-      scale: {x: 1, y: 1.0000001, z: 0.9999997}
+      rotation: {x: -0.0056369402, y: 0.008005462, z: 0.036630988, w: 0.9992809}
+      scale: {x: 0.9999982, y: 1.0000017, z: 0.9999981}
       transformModified: 1
     - name: ElfRDigit43
       position: {x: -0.029369926, y: 0, z: 0}
-      rotation: {x: -0.00000004337408, y: 0.000000043513744, z: 0.5131167, w: 0.8583188}
-      scale: {x: 1.0000002, y: 1, z: 0.9999997}
+      rotation: {x: -0.0034236012, y: -0.037209973, z: 0.08490786, w: 0.9956879}
+      scale: {x: 0.99999803, y: 1.0000015, z: 1.0000012}
       transformModified: 1
     - name: ElfRDigit51
       position: {x: -0.14474754, y: 0.00631958, z: 0.035788458}
-      rotation: {x: -0.0000000093681365, y: -0.00000007864476, z: 0.6694033, w: 0.7428992}
-      scale: {x: 1, y: 1, z: 0.9999997}
+      rotation: {x: 0.010081646, y: -0.0075255665, z: 0.03360338, w: 0.9993561}
+      scale: {x: 0.9999988, y: 1.0000019, z: 0.9999997}
       transformModified: 1
     - name: ElfRDigit52
       position: {x: -0.038652726, y: 0, z: 0}
-      rotation: {x: -0.00000007328038, y: -0.000000020078398, z: 0.44826764, w: 0.8938993}
-      scale: {x: 0.99999994, y: 1.0000002, z: 0.9999997}
+      rotation: {x: 0.0019668366, y: 0.0015352413, z: 0.030920085, w: 0.9995188}
+      scale: {x: 0.99999875, y: 1.0000001, z: 0.9999994}
       transformModified: 1
     - name: ElfRDigit53
       position: {x: -0.025593605, y: 0.000000076293944, z: 0}
-      rotation: {x: -0.00000006129883, y: 0.000000054015448, z: 0.41288698, w: 0.91078234}
-      scale: {x: 1.0000001, y: 1, z: 0.9999997}
+      rotation: {x: 0.00056905654, y: 0.006665855, z: 0.12230952, w: 0.99246955}
+      scale: {x: 0.99999857, y: 1.0000018, z: 0.9999978}
+      transformModified: 1
+    - name: ElfRDigit21
+      position: {x: -0.15086937, y: 0.0003074646, z: -0.04132988}
+      rotation: {x: -0.0005862748, y: -0.03737958, z: 0.015670294, w: 0.9991782}
+      scale: {x: 1.0000004, y: 0.9999999, z: 1.0000008}
+      transformModified: 1
+    - name: ElfRDigit22
+      position: {x: -0.05466751, y: 0, z: 0}
+      rotation: {x: -0.000000942498, y: 0.00000012107188, z: 0.032670766, w: 0.99946624}
+      scale: {x: 0.9999981, y: 1.0000024, z: 1.0000001}
+      transformModified: 1
+    - name: ElfRDigit23
+      position: {x: -0.042855605, y: -0.000000076293944, z: 0}
+      rotation: {x: -0.0000004954636, y: -0.000000018626451, z: 0.028674603, w: 0.99958885}
+      scale: {x: 0.99999887, y: 0.99999875, z: 0.99999833}
+      transformModified: 1
+    - name: Elfcloth_front
+      position: {x: 0.00075874326, y: 0.21745732, z: 0.020061119}
+      rotation: {x: -0.000000014901161, y: 0.00000020861626, z: 1, w: -0.00000008940697}
+      scale: {x: 0.99999917, y: 0.9999993, z: 1}
+      transformModified: 1
+    - name: ElfRThigh
+      position: {x: -0.026286239, y: 0.071670376, z: -0.09446583}
+      rotation: {x: 0.01748684, y: 0.99896556, z: -0.0041098, w: -0.04177627}
+      scale: {x: 0.9999992, y: 1.0000014, z: 0.99999774}
+      transformModified: 1
+    - name: ElfRCalf
+      position: {x: -0.46747485, y: 0.000000076293944, z: -0.000000019073486}
+      rotation: {x: -0.00070482487, y: 0.0008231102, z: 0.054131977, w: 0.9985332}
+      scale: {x: 0.99999917, y: 1.0000007, z: 1.0000017}
+      transformModified: 1
+    - name: ElfRFoot
+      position: {x: -0.5001759, y: 0.000000019073486, z: 0}
+      rotation: {x: 0.07601928, y: 0.005316715, z: -0.714016, w: 0.6959698}
+      scale: {x: 0.99999857, y: 0.9999995, z: 0.9999997}
+      transformModified: 1
+    - name: ElfRDigit11
+      position: {x: -0.2275378, y: 0.015741229, z: -0.0000025367735}
+      rotation: {x: 0.000008488073, y: -0.00015589864, z: -0.05430498, w: 0.9985244}
+      scale: {x: 0.99999946, y: 0.99999994, z: 0.9999992}
+      transformModified: 1
+    - name: ElfLThigh
+      position: {x: -0.026286086, y: 0.07167038, z: 0.0944658}
+      rotation: {x: 0.017487556, y: 0.99896556, z: 0.0041097403, w: 0.041776374}
+      scale: {x: 0.9999993, y: 1.0000019, z: 0.99999934}
+      transformModified: 1
+    - name: ElfLCalf
+      position: {x: -0.4674747, y: 0.000000076293944, z: 0.000000019073486}
+      rotation: {x: 0.00069876015, y: -0.0008827746, z: 0.054172784, w: 0.998531}
+      scale: {x: 0.9999988, y: 0.9999983, z: 1.0000002}
+      transformModified: 1
+    - name: ElfLFoot
+      position: {x: -0.50017595, y: 0, z: -0.000000009536743}
+      rotation: {x: -0.07594436, y: -0.005151618, z: -0.714, w: 0.6959957}
+      scale: {x: 1.0000011, y: 1.0000002, z: 1.0000002}
+      transformModified: 1
+    - name: ElfLDigit11
+      position: {x: -0.22753781, y: 0.015741229, z: 0.0000025463103}
+      rotation: {x: 0.000000024214387, y: -0.0000000019505875, z: -0.054379065, w: 0.99852043}
+      scale: {x: 0.9999994, y: 1, z: 0.999999}
+      transformModified: 1
+    - name: Elfcloth_back
+      position: {x: -0.0000843811, y: -0.024130048, z: -0.002490995}
+      rotation: {x: -0.000000029802322, y: 0.0000001937151, z: 1, w: -0.000000014901161}
+      scale: {x: 1.0000004, y: 0.99999994, z: 1.0000004}
       transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5

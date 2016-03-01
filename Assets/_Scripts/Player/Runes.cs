@@ -161,6 +161,7 @@ public class Runes : MonoBehaviour
             {
                 if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
+                    transform.LookAt(targetEnemy.transform.position);
                     tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
@@ -266,6 +267,7 @@ public class Runes : MonoBehaviour
             {
                 if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
+                    transform.LookAt(targetEnemy.transform.position);
                     tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
