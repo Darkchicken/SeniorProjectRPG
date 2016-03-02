@@ -86,15 +86,7 @@ public class PlayerCombatManager : Runes
             }
         }
     }
-    [PunRPC]
-    void SendTrigger(int sentId, string triggerName)
-    {
-        //Debug.Log("I received an animation trigger for " + sentId + " and my id is " + photonView.viewID);
-        if (photonView.viewID == sentId)
-        {
-            playerAnimation.SetTrigger(triggerName);
-        }
-    }
+    
     void locatePosition()
     {
 
