@@ -26,11 +26,14 @@ public class NetworkPlayerScript : MonoBehaviour {
         {
             Debug.LogError("This has no animator attached to sync");
         }
+       
         //set proper name and tag to distinguish local player from others
         if (photonView.isMine)//isLocalPlayer)
         {
             gameObject.tag = "Player";
-            gameObject.name = "LOCAL player";
+            //gameObject.name = "LOCAL player";
+            //new name change
+            gameObject.name = photonView.viewID.ToString();
         }
         else
         {
@@ -40,12 +43,14 @@ public class NetworkPlayerScript : MonoBehaviour {
                 gameObject.tag = "Enemy";
                 //set player's layer to default so you can click on them
                 gameObject.layer = LayerMask.NameToLayer("Default");
-                gameObject.name = "Network Enemy";
+                //gameObject.name = "Network Enemy";
+                gameObject.name = photonView.viewID.ToString();
             }
             else
             {
                 gameObject.tag = "Player";
-                gameObject.name = "Network player";
+                //gameObject.name = "Network player";
+                gameObject.name = photonView.viewID.ToString();
             }
            
         }

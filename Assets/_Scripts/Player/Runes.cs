@@ -146,6 +146,12 @@ public class Runes : MonoBehaviour
         enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
     }
 
+
+    [PunRPC]
+    void SendTrigger(string triggerName)
+    {
+       playerAnimation.SetTrigger(triggerName);
+    }
     /// <summary>
     /// Hit an enemy for 320% weapon damage.
     /// </summary>
@@ -194,6 +200,7 @@ public class Runes : MonoBehaviour
             }
         }
     }
+
     /// <summary>
     /// Swing your weapon and deal 200% weapon damage to all enemies in front of you who caught in the swing.
     /// </summary>
@@ -288,7 +295,8 @@ public class Runes : MonoBehaviour
                     //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
                     mainEnemy = null;
                     attackTimer = 0f;
-                    playerAnimation.SetTrigger("ATTACK SPELL");
+                    photonView.RPC("SendTrigger", PhotonTargets.All, "ATTACK SPELL");
+                    //playerAnimation.SetTrigger("ATTACK SPELL");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);

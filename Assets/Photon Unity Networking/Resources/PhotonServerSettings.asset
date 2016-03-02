@@ -45,4 +45,5 @@ MonoBehaviour:
   - SetHealth
   - AttackAnimation
   - SyncAttackAnimation
+  - SendTrigger
   DisableAutoOpenWizard: 1
