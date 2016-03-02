@@ -182,7 +182,8 @@ public class Runes : MonoBehaviour
                     //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
                     mainEnemy = null;
                     attackTimer = 0f;
-                    playerAnimation.SetTrigger("ATTACK 1");
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 1");
+                    //playerAnimation.SetTrigger("ATTACK 1");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
@@ -240,7 +241,8 @@ public class Runes : MonoBehaviour
                     }
                     mainEnemy = null;
                     attackTimer = 0f;
-                    playerAnimation.SetTrigger("ATTACK 2");
+                    //playerAnimation.SetTrigger("ATTACK 2");
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
