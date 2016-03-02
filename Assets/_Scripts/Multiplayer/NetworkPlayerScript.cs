@@ -33,7 +33,7 @@ public class NetworkPlayerScript : MonoBehaviour {
             gameObject.tag = "Player";
             //gameObject.name = "LOCAL player";
             //new name change
-            gameObject.name = photonView.viewID.ToString();
+            gameObject.name = photonView.ownerId.ToString();
         }
         else
         {
@@ -44,13 +44,13 @@ public class NetworkPlayerScript : MonoBehaviour {
                 //set player's layer to default so you can click on them
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 //gameObject.name = "Network Enemy";
-                gameObject.name = photonView.viewID.ToString();
+                gameObject.name = photonView.ownerId.ToString();
             }
             else
             {
                 gameObject.tag = "Player";
                 //gameObject.name = "Network player";
-                gameObject.name = photonView.viewID.ToString();
+                gameObject.name = photonView.ownerId.ToString();
             }
            
         }
