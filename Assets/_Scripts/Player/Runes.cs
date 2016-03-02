@@ -147,15 +147,7 @@ public class Runes : MonoBehaviour
     }
 
 
-    [PunRPC]
-    void SendTrigger(int sentId, string triggerName)
-    {
-        Debug.Log("I received an animation trigger for " + sentId + " and my id is " + photonView.viewID);
-        if (photonView.viewID == sentId)
-        {
-            playerAnimation.SetTrigger(triggerName);
-        }
-    }
+    
     /// <summary>
     /// Hit an enemy for 320% weapon damage.
     /// </summary>
@@ -299,7 +291,7 @@ public class Runes : MonoBehaviour
                     //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
                     mainEnemy = null;
                     attackTimer = 0f;
-                    photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK SPELL");
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
                     //playerAnimation.SetTrigger("ATTACK SPELL");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
