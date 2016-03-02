@@ -74,9 +74,12 @@ public class NetworkPlayerScript : MonoBehaviour {
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             //send all animator variables
-            stream.SendNext(anim.GetFloat("MOVE"));
-            stream.SendNext(anim.GetBool("INCOMBAT"));
-            stream.SendNext(anim.GetBool("Attack"));
+            if (anim != null)
+            {
+                stream.SendNext(anim.GetFloat("MOVE"));
+                stream.SendNext(anim.GetBool("INCOMBAT"));
+                stream.SendNext(anim.GetBool("Attack"));
+            }
         }
         else
         {
@@ -84,9 +87,12 @@ public class NetworkPlayerScript : MonoBehaviour {
             playerPos = (Vector3)stream.ReceiveNext();
             playerRot = (Quaternion)stream.ReceiveNext();
             //receive animator variables from other player
-            anim.SetFloat("MOVE", (float)stream.ReceiveNext());
-            anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
-            anim.SetBool("Attack", (bool)stream.ReceiveNext());
+            if (anim != null)
+            {
+                anim.SetFloat("MOVE", (float)stream.ReceiveNext());
+                anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
+                anim.SetBool("Attack", (bool)stream.ReceiveNext());
+            }
 
         }
     }
