@@ -32,7 +32,7 @@ public class CheatPanel : MonoBehaviour
 
     public void ListRuneImages()
     {
-        foreach(var image in PlayFabDataStore.playerActiveRuneImages)
+        foreach(var image in PlayFabDataStore.catalogRuneImages)
         {
             Debug.Log(image);
         }

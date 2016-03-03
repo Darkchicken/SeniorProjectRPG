@@ -13,6 +13,7 @@ public class HUD_Manager : MonoBehaviour {
     public Canvas runeWindow;
     public Canvas cheatWindow;
     public Canvas friendsWindow;
+    public Canvas questWindow;
 
     public Image healthGlobe;
     public Image resourceGlobe;
@@ -57,6 +58,12 @@ public class HUD_Manager : MonoBehaviour {
     {
         friendsWindow.gameObject.SetActive(!friendsWindow.gameObject.activeInHierarchy);
     }
+
+    public void ToggleQuestWindow()
+    {
+        questWindow.gameObject.SetActive(!questWindow.gameObject.activeInHierarchy);
+    }
+
 
 
 
