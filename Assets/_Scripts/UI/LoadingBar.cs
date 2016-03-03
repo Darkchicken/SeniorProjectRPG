@@ -79,6 +79,8 @@ public class LoadingBar : MonoBehaviour
 
     void HideLoading()
     {
+        this.transform.parent.GetComponent<RaycastUI>().OnMouseExit();
         this.transform.parent.gameObject.SetActive(false);
+        
     }
 }
