@@ -3379,7 +3379,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113482}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b58030e2727e89f4b960751dfb4b4426, type: 3}
+  m_Avatar: {fileID: 9000000, guid: b373d1e477bcb7e449e6c29c6251ce95, type: 3}
   m_Controller: {fileID: 9100000, guid: 238ee72afefdedd4080b5c8a11af0247, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -3497,7 +3497,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.25
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -4724,7 +4724,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 113482}
   m_Enabled: 1
   m_Radius: 0.25
-  m_Speed: 7
+  m_Speed: 8
   m_Acceleration: 720
   avoidancePriority: 50
   m_AngularSpeed: 720

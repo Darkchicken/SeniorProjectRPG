@@ -10,6 +10,7 @@ public class LoadingBar : MonoBehaviour
 
     public class OnChangeEvent : UnityEvent<float> { }
 
+    public Canvas hudManager;
     public Image imageComponent;
     public Text textComponent;
     public float Duration = 5f;
@@ -75,10 +76,18 @@ public class LoadingBar : MonoBehaviour
     protected void OnTweenFinished()
     {
         Invoke("HideLoading", 1);
+        //this.transform.parent.GetComponent<RaycastUI>().OnMouseExit();
     }
 
     void HideLoading()
     {
+        
         this.transform.parent.gameObject.SetActive(false);
+        
+    }
+
+    void OnDisable()
+    {
+        hudManager.GetComponent<RaycastUI>().OnMouseExit();
     }
 }

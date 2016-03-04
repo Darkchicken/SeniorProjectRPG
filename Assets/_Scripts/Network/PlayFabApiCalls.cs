@@ -67,6 +67,7 @@ public class PlayFabApiCalls : MonoBehaviour
             PhotonNetwork.ConnectUsingSettings("1.0");
             PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
             GetCatalogItems();
+            GetCatalogQuests();
         }, (error) =>
         {
             PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);
@@ -248,22 +249,23 @@ public class PlayFabApiCalls : MonoBehaviour
             CharacterId = PlayFabDataStore.characterId
         };
         PlayFabClientAPI.GetCharacterInventory(request, (result) =>
-        {
-            Debug.Log(result.Inventory.Count);
-            
+        {       
             foreach (var item in result.Inventory)
             {
-                if (!PlayFabDataStore.playerAllRunes.ContainsKey(item.ItemId))
+                if (item.ItemClass == "Skill" || item.ItemClass == "Modifier")
                 {
-                    
-                    if(item.CustomData == null)
+                    if (!PlayFabDataStore.playerAllRunes.ContainsKey(item.ItemId))
                     {
-                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
-                           
-                    }
-                    else
-                    {
-                        PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+
+                        if (item.CustomData == null)
+                        {
+                            PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
+
+                        }
+                        else
+                        {
+                            PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Active"]));
+                        }
                     }
                 }
             }
@@ -409,4 +411,72 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
+    //Gets all the quests in the game and stores it
+    public static void GetCatalogQuests()
+    {
+        var request = new GetCatalogItemsRequest()
+        {
+        };
+        PlayFabClientAPI.GetCatalogItems(request, (result) =>
+        {
+            foreach (var item in result.Catalog)
+            {
+                if (item.ItemClass == "Quest")
+                {
+                    string[] customData = item.CustomData.Split('"');
+                    //Debug.Log("Bundled items" + item.Bundle.BundledItems);
+
+                    PlayFabDataStore.catalogQuests.Add(item.ItemId, new CatalogQuest(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], item.Bundle.BundledItems, item.Bundle.BundledVirtualCurrencies));
+                }
+            }
+            Debug.Log("Quests Retrieved");
+        },
+        (error) =>
+        {
+            Debug.Log("Can't get Quests");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    //Gets all the quests that player either completed or is on
+    public static void GetAllCharacterQuests()
+    {
+        var request = new GetCharacterInventoryRequest()
+        {
+            CharacterId = PlayFabDataStore.characterId
+        };
+        PlayFabClientAPI.GetCharacterInventory(request, (result) =>
+        {
+            foreach (var item in result.Inventory)
+            {
+                if(item.ItemClass == "Quest")
+                {
+                    if (!PlayFabDataStore.playerAllQuests.ContainsKey(item.ItemId))
+                    {
+
+                        if (item.CustomData == null)
+                        {
+                            PlayFabDataStore.playerAllQuests.Add(item.ItemId, new PlayerQuest(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
+
+                        }
+                        else
+                        {
+                            PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Completed"]));
+                        }
+                    }
+                }
+                
+            }
+            Debug.Log("Character Quests are retrieved");
+            RuneWindow.SortAllRunes();
+        },
+        (error) =>
+        {
+            Debug.Log("Character Quests can't retrieved!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
 }

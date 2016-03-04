@@ -90,7 +90,7 @@ public class Runes : MonoBehaviour
     public static GameObject mainEnemy;
     public static Vector3 position;
     public static PhotonView photonView;
-    public float stopDistanceForAttack = 2f;
+    public float stopDistanceForAttack = 3f;
 
     public static bool isFreezing = false;
     public static bool isStunning = false;
@@ -146,6 +146,8 @@ public class Runes : MonoBehaviour
         enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
     }
 
+
+    
     /// <summary>
     /// Hit an enemy for 320% weapon damage.
     /// </summary>
@@ -161,6 +163,7 @@ public class Runes : MonoBehaviour
             {
                 if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
+                    transform.LookAt(targetEnemy.transform.position);
                     tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
@@ -179,7 +182,8 @@ public class Runes : MonoBehaviour
                     //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
                     mainEnemy = null;
                     attackTimer = 0f;
-                    playerAnimation.SetTrigger("ATTACK 1");
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 1");
+                    //playerAnimation.SetTrigger("ATTACK 1");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
@@ -193,6 +197,7 @@ public class Runes : MonoBehaviour
             }
         }
     }
+
     /// <summary>
     /// Swing your weapon and deal 200% weapon damage to all enemies in front of you who caught in the swing.
     /// </summary>
@@ -236,7 +241,60 @@ public class Runes : MonoBehaviour
                     }
                     mainEnemy = null;
                     attackTimer = 0f;
-                    playerAnimation.SetTrigger("ATTACK 2");
+                    //playerAnimation.SetTrigger("ATTACK 2");
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                    {
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                    }
+                    else
+                    {
+                        SetPlayerResource(100);
+                    }
+
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Hit an enemy for 250% weapon damage.
+    /// </summary>
+    public void Rune_MagicBolt()
+    {
+        runeId = "Rune_MagicBolt";
+        mainEnemy = targetEnemy;
+
+        if (targetEnemy != null)
+        {
+            stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
+            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
+            {
+                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                {
+                    transform.LookAt(targetEnemy.transform.position);
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                            //Invoke(modifier.Key, 0);
+                        }
+                    }
+                    GameObject bolt = (GameObject)Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity);
+                    bolt.GetComponent<HomingShots>().target = targetEnemy;
+                    ApplyDamage(targetEnemy);
+                    //targetEnemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Slam"].attackPercentage / 100, tempCriticalChance);
+                    mainEnemy = null;
+                    attackTimer = 0f;
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
+                    //playerAnimation.SetTrigger("ATTACK SPELL");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);

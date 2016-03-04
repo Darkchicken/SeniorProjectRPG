@@ -28,7 +28,7 @@ public class EnemyMovement :MonoBehaviour
         controller = GetComponent<NavMeshAgent>();
         enemyAnimation = GetComponent<Animator>();
         combatManager = GetComponent<EnemyCombatManager>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         initialPosition = transform.position;
         controller.stoppingDistance = chaseStopDistance;
     }
@@ -39,7 +39,7 @@ public class EnemyMovement :MonoBehaviour
 
         if (combatManager.playerAttackList.Count != 0)
         {
-            if (isInCombat && !immuneToAggro && InChasingRange() && !InAttackingRange())
+            if (isInCombat && /*!immuneToAggro && InChasingRange() &&*/ !InAttackingRange())
             {
                 MoveToPosition(combatManager.playerAttackList[0].transform.position);
                 controller.stoppingDistance = chaseStopDistance;
@@ -51,7 +51,7 @@ public class EnemyMovement :MonoBehaviour
             }
         }
 
-        if ((!InChasingRange() || combatManager.playerAttackList.Count == 0) && isInCombat)
+        if ((/*!InChasingRange() || */combatManager.playerAttackList.Count == 0) && isInCombat)
         {
             MoveToPosition(initialPosition);
             controller.stoppingDistance = 0;
@@ -59,26 +59,7 @@ public class EnemyMovement :MonoBehaviour
             isInCombat = false;
         }
 
-        if (isMoving_Animation && controller.velocity == Vector3.zero)
-        {
-            idleTimer += Time.deltaTime;
-            if (idleTimer >= 0.05f)
-            {
-                isMoving_Animation = false;
-                enemyAnimation.SetBool("IsMoving", false);
-                if (isInCombat)
-                {
-                    enemyAnimation.SetTrigger("IDLE WEAPON");
-                }
-                else
-                {
-                    enemyAnimation.SetTrigger("IDLE");
-                }
-
-                idleTimer = 0f;
-                immuneToAggro = false;
-            }
-        }
+        enemyAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
     }
 
@@ -110,7 +91,7 @@ public class EnemyMovement :MonoBehaviour
             isInCombat = true;
         }
     }
-
+    /*
     bool InChasingRange() // returns true if enemy is not too far from its initial location
     {
         if (Vector3.Distance(initialPosition, transform.position) > chasingRange)
@@ -121,7 +102,7 @@ public class EnemyMovement :MonoBehaviour
         {
             return true;
         }
-    }
+    }*/
 
     bool InAttackingRange()
     {
@@ -145,24 +126,9 @@ public class EnemyMovement :MonoBehaviour
 
     void MoveToPosition(Vector3 position)
     {
-        
+
         transform.LookAt(position);
         controller.SetDestination(position);
-
-
-        if (!isMoving_Animation)
-        {
-            //isChasing = true;
-            isMoving_Animation = true;
-            enemyAnimation.SetBool("IsMoving", true);
-            enemyAnimation.SetTrigger("RUN");
-
-        }
-    }
-
-    public GameObject targetPlayer()
-    {
-        return player;
     }
 
 

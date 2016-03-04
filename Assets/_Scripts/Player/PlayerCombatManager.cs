@@ -28,16 +28,16 @@ public class PlayerCombatManager : Runes
         //Primary Skill
         if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove && canAttack)
         {
-            locatePosition(); //Find the clicked position and check if enemy clicked
             skillSlot = 5;
-            //isFreezing = false;
-            //isStunning = false;
-            if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            
+            locatePosition(); //Find the clicked position and check if enemy clicked
+
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
+                stopDistanceForAttack = PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[5]].attackRange;
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }
-            
 
         }
 
@@ -45,9 +45,9 @@ public class PlayerCombatManager : Runes
         if ((Input.GetMouseButtonDown(1) || actionBarSkillId == "RC") && canMove && canAttack)
         {
             skillSlot = 6;
+
             if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
-                Debug.Log("ATTAK");
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }          
@@ -75,15 +75,9 @@ public class PlayerCombatManager : Runes
             playerAnimation.SetTrigger("ATTACK 3");
         }
 
-
-        if(isMoving && controller.velocity == Vector3.zero)
-        {
-            isMoving = false;
-        }
-
         playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
-        if (targetEnemy != null && isMoving)
+        if (targetEnemy != null && Vector3.Distance(targetEnemy.transform.position, transform.position) > stopDistanceForAttack)
         {
             if (targetEnemy.CompareTag("Enemy"))
             {
@@ -91,9 +85,8 @@ public class PlayerCombatManager : Runes
                 MoveToPosition();
             }
         }
-
     }
-  
+    
     void locatePosition()
     {
 
@@ -115,7 +108,11 @@ public class PlayerCombatManager : Runes
                 controller.stoppingDistance = 0f;
             }
         }
-        MoveToPosition();
+
+        if(targetEnemy == null)
+        {
+            MoveToPosition();
+        }
     }
 
 
@@ -123,21 +120,6 @@ public class PlayerCombatManager : Runes
     {
         transform.LookAt(position);
         controller.SetDestination(position);
-
-        if (!isMoving)
-        {
-            if (hit.transform.tag == "Enemy" && Vector3.Distance(hit.transform.position, transform.position) <= stopDistanceForAttack)
-            {
-
-            }
-            else
-            {
-                //playerAnimation.SetTrigger("RUN");
-                isMoving = true;
-                //playerAnimation.SetBool("IsMoving", true);
-            }
-
-        }
     }
 
 

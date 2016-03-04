@@ -26,11 +26,14 @@ public class NetworkPlayerScript : MonoBehaviour {
         {
             Debug.LogError("This has no animator attached to sync");
         }
+       
         //set proper name and tag to distinguish local player from others
         if (photonView.isMine)//isLocalPlayer)
         {
             gameObject.tag = "Player";
             gameObject.name = "LOCAL player";
+            //new name change
+            //gameObject.name = photonView.ownerId.ToString();
         }
         else
         {
@@ -41,11 +44,13 @@ public class NetworkPlayerScript : MonoBehaviour {
                 //set player's layer to default so you can click on them
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 gameObject.name = "Network Enemy";
+                //gameObject.name = photonView.ownerId.ToString();
             }
             else
             {
                 gameObject.tag = "Player";
                 gameObject.name = "Network player";
+                //gameObject.name = photonView.ownerId.ToString();
             }
            
         }
@@ -65,7 +70,15 @@ public class NetworkPlayerScript : MonoBehaviour {
         }
 
     }
-
+    [PunRPC]
+    void SendTrigger(int sentId, string triggerName)
+    {
+        //Debug.Log("I received an animation trigger for " + sentId + " and my id is " + photonView.viewID);
+        if (photonView.viewID == sentId)
+        {
+           anim.SetTrigger(triggerName);
+        }
+    }
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -74,9 +87,12 @@ public class NetworkPlayerScript : MonoBehaviour {
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             //send all animator variables
-            stream.SendNext(anim.GetFloat("MOVE"));
-            stream.SendNext(anim.GetBool("INCOMBAT"));
-            stream.SendNext(anim.GetBool("Attack"));
+            if (anim != null)
+            {
+                stream.SendNext(anim.GetFloat("MOVE"));
+                stream.SendNext(anim.GetBool("INCOMBAT"));
+                stream.SendNext(anim.GetBool("Attack"));
+            }
         }
         else
         {
@@ -84,9 +100,12 @@ public class NetworkPlayerScript : MonoBehaviour {
             playerPos = (Vector3)stream.ReceiveNext();
             playerRot = (Quaternion)stream.ReceiveNext();
             //receive animator variables from other player
-            anim.SetFloat("MOVE", (float)stream.ReceiveNext());
-            anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
-            anim.SetBool("Attack", (bool)stream.ReceiveNext());
+            if (anim != null)
+            {
+                anim.SetFloat("MOVE", (float)stream.ReceiveNext());
+                anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
+                anim.SetBool("Attack", (bool)stream.ReceiveNext());
+            }
 
         }
     }

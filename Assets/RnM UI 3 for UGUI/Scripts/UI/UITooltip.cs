@@ -838,6 +838,7 @@ namespace UnityEngine.UI
 		{
 			if (mInstance != null)
 				mInstance.Internal_AddDescription(description);
+            
 		}
 		
 		/// <summary>

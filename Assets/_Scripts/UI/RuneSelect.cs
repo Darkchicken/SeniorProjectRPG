@@ -60,6 +60,11 @@ public class RuneSelect : MonoBehaviour
             {
                 runeToggle.interactable = true;
                 runeDisabledImage.enabled = false;
+                
+            }
+            if (!PlayFabDataStore.catalogRuneImages.ContainsKey(runeId))
+            {
+                PlayFabDataStore.catalogRuneImages.Add(runeId, runeImage.sprite);
             }
         }
     }
