@@ -424,8 +424,9 @@ public class PlayFabApiCalls : MonoBehaviour
                 if (item.ItemClass == "Quest")
                 {
                     string[] customData = item.CustomData.Split('"');
+                    //Debug.Log("Bundled items" + item.Bundle.BundledItems);
 
-                    PlayFabDataStore.catalogQuests.Add(item.ItemId, new CatalogQuest(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], item.Bundle.BundledItems));
+                    PlayFabDataStore.catalogQuests.Add(item.ItemId, new CatalogQuest(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], item.Bundle.BundledItems, item.Bundle.BundledVirtualCurrencies));
                 }
             }
             Debug.Log("Quests Retrieved");

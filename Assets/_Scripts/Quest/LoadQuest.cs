@@ -7,6 +7,7 @@ public class LoadQuest : MonoBehaviour {
     public string questId;
     public Text title;
     public Text description;
+    public Text currencyAmount;
     public GameObject questRequirementPrefab;
     public GameObject questRewardPrefab;
     public Transform requirementParentTransform;
@@ -35,11 +36,22 @@ public class LoadQuest : MonoBehaviour {
             obj.GetComponent<QuestReward>().SetRewardIcon();
         }
 
+        if(PlayFabDataStore.catalogQuests[questId].currencies != null)
+        {
+            foreach (var currency in PlayFabDataStore.catalogQuests[questId].currencies)
+            {
+                currencyAmount.transform.parent.gameObject.SetActive(true);
+                currencyAmount.text = currency.Value.ToString();
+            }
+        }
+        
+
     }
 
     void OnDisable()
     {
-        foreach(Transform child in rewardParentTransform)
+        currencyAmount.transform.parent.gameObject.SetActive(false);
+        foreach (Transform child in rewardParentTransform)
         {
             Destroy(child.gameObject);
         }

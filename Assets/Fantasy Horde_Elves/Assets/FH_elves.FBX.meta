@@ -720,7 +720,40 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nSource avatar hierarchy doesn't match one found in
+      this file:\n\tBone 'ElfLThigh' not found\n\tBone 'ElfRThigh' not found\n\tBone
+      'ElfLCalf' not found\n\tBone 'ElfRCalf' not found\n\tBone 'ElfLFoot' not found\n\tBone
+      'ElfRFoot' not found\n\tBone 'ElfSpine1' not found\n\tBone 'ElfSpine2' not found\n\tBone
+      'ElfNeck' not found\n\tBone 'ElfHead' not found\n\tBone 'ElfLCollarbone' not
+      found\n\tBone 'ElfRCollarbone' not found\n\tBone 'ElfLUpperarm' not found\n\tBone
+      'ElfRUpperarm' not found\n\tBone 'ElfLForearm' not found\n\tBone 'ElfRForearm'
+      not found\n\tBone 'ElfLPalm' not found\n\tBone 'ElfRPalm' not found\n\tBone
+      'ElfLDigit11' not found\n\tBone 'ElfRDigit11' not found\n\tBone 'Elfmouth' not
+      found\n\tBone 'ElfLDigit11 1' not found\n\tBone 'ElfLDigit12' not found\n\tBone
+      'ElfLDigit13' not found\n\tBone 'ElfLDigit21' not found\n\tBone 'ElfLDigit22'
+      not found\n\tBone 'ElfLDigit23' not found\n\tBone 'ElfLDigit31' not found\n\tBone
+      'ElfLDigit32' not found\n\tBone 'ElfLDigit33' not found\n\tBone 'ElfLDigit41'
+      not found\n\tBone 'ElfLDigit42' not found\n\tBone 'ElfLDigit43' not found\n\tBone
+      'ElfLDigit51' not found\n\tBone 'ElfLDigit52' not found\n\tBone 'ElfLDigit53'
+      not found\n\tBone 'ElfRDigit11 1' not found\n\tBone 'ElfRDigit12' not found\n\tBone
+      'ElfRDigit13' not found\n\tBone 'ElfRDigit21' not found\n\tBone 'ElfRDigit22'
+      not found\n\tBone 'ElfRDigit23' not found\n\tBone 'ElfRDigit31' not found\n\tBone
+      'ElfRDigit32' not found\n\tBone 'ElfRDigit33' not found\n\tBone 'ElfRDigit41'
+      not found\n\tBone 'ElfRDigit42' not found\n\tBone 'ElfRDigit43' not found\n\tBone
+      'ElfRDigit51' not found\n\tBone 'ElfRDigit52' not found\n\tBone 'ElfRDigit53'
+      not found\n\nDefault bone length found in this file is different form the one
+      found in the source avatar:\n\t'ElfLDigit21' : position error = 3.216477 mm\n\t'ElfLDigit31'
+      : position error = 6.347905 mm\n\t'ElfLDigit32' : position error = 2.618157
+      mm\n\t'ElfLDigit33' : position error = 1.733782 mm\n\t'ElfRDigit21' : position
+      error = 3.216548 mm\n\t'ElfRDigit31' : position error = 6.347932 mm\n\t'ElfRDigit32'
+      : position error = 2.618270 mm\n\t'ElfRDigit33' : position error = 1.733625
+      mm\n\nInbetween bone default rotation found in this file is different from the
+      one found in the source avatar:\n\t'ElfSpine3' : rotation error = 4.367168 deg\n\t'ElfRibcage'
+      : rotation error = 1.594740 deg\n\nClip 'Take 001' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'ElfSpine3' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'ElfRibcage' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -885,7 +918,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -941,7 +974,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -969,7 +1002,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1081,7 +1114,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1109,7 +1142,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1137,7 +1170,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1165,7 +1198,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
