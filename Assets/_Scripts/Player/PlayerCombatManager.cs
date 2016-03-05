@@ -46,15 +46,13 @@ public class PlayerCombatManager : Runes
         {
             skillSlot = 6;
 
-            if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            locatePosition();
+
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }          
-            else
-            {
-                locatePosition();
-            }
             
         }
         if (Input.GetKeyDown("1") || actionBarSkillId == "1")

@@ -61,4 +61,13 @@ public class LoadQuest : MonoBehaviour {
             Destroy(child.gameObject);
         }
     }
+
+    public void AcceptQuest()
+    {
+        string[] items = { questId };
+        PlayFabApiCalls.GrantItemsToCharacter(items, "IsCompleted");
+        HUD_Manager.hudManager.ToggleQuestWindow();
+
+    }
+
 }

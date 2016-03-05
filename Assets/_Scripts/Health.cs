@@ -15,6 +15,9 @@ public class Health : MonoBehaviour {
     private bool dead = false;
     private float navMeshSpeed;
 
+    public bool isBleeding = false;
+    public int maxBleedCount = 0;
+    public int bleedDamage = 0;
     public bool isCriticalHit = false;
     public int criticalHitValue = 0;
     public float maxCriticalHitTime = 0f;
@@ -30,12 +33,15 @@ public class Health : MonoBehaviour {
     private float criticalHitTimer = 0f;
     private float chillTimer = 0f;
     private float freezeTimer = 0f;
-    private float stunTimer;
+    private float stunTimer = 0f;
+    private float bleedTimer = 0f;
 
     private bool stunActivate = true;
     private bool chillActivate = true;
     private bool freezeActivate = true;
     private bool critActivate = false;
+
+    private int bleedCount = 1;
 
     
 
@@ -102,6 +108,16 @@ public class Health : MonoBehaviour {
     }
 
     [PunRPC]
+    public void SetBleeding(int viewId, bool _isBleeding, int _maxBleedCount, int _bleedDamage)
+    {
+        isBleeding = _isBleeding;
+        maxBleedCount = _maxBleedCount;
+        bleedDamage = _bleedDamage / _maxBleedCount;
+        bleedTimer = 0f;
+        bleedCount = 1;
+    }
+
+    [PunRPC]
     public void SetFreeze(int viewId, bool _isFrozen, float _maxFreezeTime)
     {
         isFrozen = _isFrozen;
@@ -130,6 +146,23 @@ public class Health : MonoBehaviour {
         criticalHitTimer += Time.deltaTime;
         freezeTimer += Time.deltaTime;
         stunTimer += Time.deltaTime;
+        bleedTimer += Time.deltaTime;
+
+        if (isBleeding)
+        {
+            if(bleedTimer >= bleedCount)
+            {
+                Debug.Log("Bleed count: " + bleedCount);
+                Debug.Log("Bleed Damage: " + bleedDamage);
+                bleedCount++;
+                    
+                TakeDamage(gameObject, bleedDamage, 0);
+                if(bleedCount > maxBleedCount)
+                {
+                    isBleeding = false;
+                }
+            }
+        }
 
         if (isFrozen)
         {

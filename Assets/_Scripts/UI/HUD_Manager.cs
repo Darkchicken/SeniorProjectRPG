@@ -20,6 +20,7 @@ public class HUD_Manager : MonoBehaviour {
     public Image enemyHealth;
     public Text enemyHealthText;
     public Text playerHealthText;
+    public Text playerResourceText;
 
     public Text playerName;
     void Update()
@@ -27,6 +28,7 @@ public class HUD_Manager : MonoBehaviour {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
         resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
         playerHealthText.text = PlayFabDataStore.playerCurrentHealth + "/" + PlayFabDataStore.playerMaxHealth;
+        playerResourceText.text = PlayFabDataStore.playerCurrentResource + "/" + PlayFabDataStore.playerMaxResource;
     }
 
     void OnEnable()
