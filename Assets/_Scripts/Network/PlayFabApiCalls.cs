@@ -406,11 +406,10 @@ public class PlayFabApiCalls : MonoBehaviour
                 if (item.ItemClass == "Skill" || item.ItemClass == "Modifier")
                 {
                     string[] customData = item.CustomData.Split('"');
-                    //Debug.Log(item.ItemId);
 
                     PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], int.Parse(customData[7]), 
                         int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]), 
-                        int.Parse(customData[35]), float.Parse(customData[39]), float.Parse(customData[43])));
+                        int.Parse(customData[35]), float.Parse(customData[39]), float.Parse(customData[43]), customData[47].ToString()));
                 }
             }
             Debug.Log("Catalog Retrieved");

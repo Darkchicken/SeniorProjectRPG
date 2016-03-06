@@ -9,6 +9,8 @@ public class RuneAssignSkillSlot : MonoBehaviour {
     public int skillSlot;
     public Image runeIcon;
 
+    private float cooldownTimer;
+
     void Start()
     {
         ActionBar.skillSlots.Add(this);
@@ -23,4 +25,6 @@ public class RuneAssignSkillSlot : MonoBehaviour {
         }
         
     }
+
+
 }

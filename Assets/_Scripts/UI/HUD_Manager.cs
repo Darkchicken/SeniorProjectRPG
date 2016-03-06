@@ -22,6 +22,17 @@ public class HUD_Manager : MonoBehaviour {
     public Text playerHealthText;
     public Text playerResourceText;
 
+    public Image ActionBarCooldownImage1;
+    public Image ActionBarCooldownImage2;
+    public Image ActionBarCooldownImage3;
+    public Image ActionBarCooldownImage4;
+
+    public Image ActionBarDisabledImage1;
+    public Image ActionBarDisabledImage2;
+    public Image ActionBarDisabledImage3;
+    public Image ActionBarDisabledImage4;
+    public Image ActionBarDisabledImage6;
+
     public Text playerName;
     void Update()
     {
@@ -29,6 +40,62 @@ public class HUD_Manager : MonoBehaviour {
         resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
         playerHealthText.text = PlayFabDataStore.playerCurrentHealth + "/" + PlayFabDataStore.playerMaxHealth;
         playerResourceText.text = PlayFabDataStore.playerCurrentResource + "/" + PlayFabDataStore.playerMaxResource;
+
+        if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(1))
+        {
+            if (PlayFabDataStore.playerCurrentResource < PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[1]].resourceUsage)
+            {
+                ActionBarDisabledImage1.enabled = true;
+            }
+            else
+            {
+                ActionBarDisabledImage1.enabled = false;
+            }
+        }
+        if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(2))
+        {
+            if (PlayFabDataStore.playerCurrentResource < PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[2]].resourceUsage)
+            {
+                ActionBarDisabledImage2.enabled = true;
+            }
+            else
+            {
+                ActionBarDisabledImage2.enabled = false;
+            }
+        }
+        if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(3))
+        {
+            if (PlayFabDataStore.playerCurrentResource < PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[3]].resourceUsage)
+            {
+                ActionBarDisabledImage3.enabled = true;
+            }
+            else
+            {
+                ActionBarDisabledImage3.enabled = false;
+            }
+        }
+        if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(4))
+        {
+            if (PlayFabDataStore.playerCurrentResource < PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[4]].resourceUsage)
+            {
+                ActionBarDisabledImage4.enabled = true;
+            }
+            else
+            {
+                ActionBarDisabledImage4.enabled = false;
+            }
+        }
+        if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(6))
+        {
+            if (PlayFabDataStore.playerCurrentResource < PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[6]].resourceUsage)
+            {
+                ActionBarDisabledImage6.enabled = true;
+            }
+            else
+            {
+                ActionBarDisabledImage6.enabled = false;
+            }
+        }
     }
 
     void OnEnable()

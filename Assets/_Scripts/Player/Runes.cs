@@ -17,12 +17,29 @@ public class Runes : MonoBehaviour
     public static bool isFreezing = false;
     public static bool isStunning = false;
 
+    private static float playerSpeed;
+    private static bool isPlayerSpeeding = false;
+    private static float maxSpeedingTime;
+    private static float increasedSpeedTimer;
     private PlayerCombatManager playerCombatManager;
-    private static float attackTimer = 0f;
+    private static float attackTimerSkillSlot1 = 15f;
+    private static float attackTimerSkillSlot2 = 15f;
+    private static float attackTimerSkillSlot3 = 15f;
+    private static float attackTimerSkillSlot4 = 15f;
+    private static float attackTimerSkillSlot5 = 15f;
+    private static float attackTimerSkillSlot6 = 15f;
+    private static bool updateCooldownImage1 = false;
+    private static bool updateCooldownImage2 = false;
+    private static bool updateCooldownImage3 = false;
+    private static bool updateCooldownImage4 = false;
+    private static bool updateCooldownImage5 = false;
+    private static bool updateCooldownImage6 = false;
     private static int tempWeaponDamage;
     private static int tempCriticalChance;
     private static int tempResourceGeneration;
     private static int tempResourceUsage;
+    private static string tempDamageType;
+    private static float tempSpeed;
     private static string runeId;
 
     void Start()
@@ -33,11 +50,65 @@ public class Runes : MonoBehaviour
         playerAnimation = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
         photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
+        playerSpeed = controller.speed;
     }
 
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        attackTimerSkillSlot1 += Time.deltaTime;
+        attackTimerSkillSlot2 += Time.deltaTime;
+        attackTimerSkillSlot3 += Time.deltaTime;
+        attackTimerSkillSlot4 += Time.deltaTime;
+        attackTimerSkillSlot5 += Time.deltaTime;
+        attackTimerSkillSlot6 += Time.deltaTime;
+
+        increasedSpeedTimer += Time.deltaTime;
+
+        if(isPlayerSpeeding && increasedSpeedTimer > maxSpeedingTime)
+        {
+            isPlayerSpeeding = false;
+            controller.speed = playerSpeed;
+        }
+
+        if(updateCooldownImage1)
+        {
+            HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1 - attackTimerSkillSlot1 / PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[1]].cooldown;
+            if(HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount == 0)
+            {
+                updateCooldownImage1 = false;
+                HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = false;
+            }
+        }
+
+        if (updateCooldownImage2)
+        {
+            HUD_Manager.hudManager.ActionBarCooldownImage2.fillAmount = 1 - attackTimerSkillSlot2 / PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[2]].cooldown;
+            if (HUD_Manager.hudManager.ActionBarCooldownImage2.fillAmount == 0)
+            {
+                updateCooldownImage2 = false;
+                HUD_Manager.hudManager.ActionBarCooldownImage2.enabled = false;
+            }
+        }
+
+        if (updateCooldownImage3)
+        {
+            HUD_Manager.hudManager.ActionBarCooldownImage3.fillAmount = 1 - attackTimerSkillSlot3 / PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[3]].cooldown;
+            if (HUD_Manager.hudManager.ActionBarCooldownImage3.fillAmount == 0)
+            {
+                updateCooldownImage3 = false;
+                HUD_Manager.hudManager.ActionBarCooldownImage3.enabled = false;
+            }
+        }
+
+        if (updateCooldownImage4)
+        {
+            HUD_Manager.hudManager.ActionBarCooldownImage4.fillAmount = 1 - attackTimerSkillSlot4 / PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[4]].cooldown;
+            if (HUD_Manager.hudManager.ActionBarCooldownImage4.fillAmount == 0)
+            {
+                updateCooldownImage4 = false;
+                HUD_Manager.hudManager.ActionBarCooldownImage4.enabled = false;
+            }
+        }
     }
 
     [PunRPC]
@@ -60,7 +131,7 @@ public class Runes : MonoBehaviour
 
     void ApplyDamage(GameObject enemy)
     {
-        enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance);
+        enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance, tempDamageType);
     }
 
 
@@ -78,7 +149,7 @@ public class Runes : MonoBehaviour
             stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
             if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
             {
-                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 1");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
@@ -93,6 +164,7 @@ public class Runes : MonoBehaviour
                     tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
 
                     foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
                     {
@@ -105,7 +177,7 @@ public class Runes : MonoBehaviour
                     }
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
-                    attackTimer = 0f;
+                    attackTimerSkillSlot5 = 0f;
                 }
             }
         }
@@ -124,7 +196,7 @@ public class Runes : MonoBehaviour
             stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
             if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
             {
-                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
                     for (int i = 0; i < hitEnemies.Length; i++)
@@ -143,6 +215,7 @@ public class Runes : MonoBehaviour
                             tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                             tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                             tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                            tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
 
                             targetEnemy = hitEnemies[i].gameObject;
                             foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
@@ -158,7 +231,7 @@ public class Runes : MonoBehaviour
                         }
                     }
                     mainEnemy = null;
-                    attackTimer = 0f;
+                    attackTimerSkillSlot5 = 0f;
                 }
             }
         }
@@ -177,7 +250,7 @@ public class Runes : MonoBehaviour
             stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
             if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
             {
-                if (attackTimer >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
@@ -192,6 +265,7 @@ public class Runes : MonoBehaviour
                     tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
 
                     foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
                     {
@@ -206,7 +280,7 @@ public class Runes : MonoBehaviour
                     bolt.GetComponent<HomingShots>().target = targetEnemy;
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
-                    attackTimer = 0f;
+                    attackTimerSkillSlot5 = 0f;
                 }
             }
         }
@@ -235,6 +309,7 @@ public class Runes : MonoBehaviour
                         tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                         tempCriticalChance = PlayFabDataStore.playerCriticalChance + GetPlayerResource() % 5 * PlayFabDataStore.catalogRunes[runeId].increasedCrit;
                         tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                        tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
 
                         targetEnemy = hitEnemies[i].gameObject;
                         foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
@@ -274,6 +349,7 @@ public class Runes : MonoBehaviour
                     tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance; ;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
 
                     targetEnemy = hitEnemies[i].gameObject;
                     foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
@@ -291,6 +367,142 @@ public class Runes : MonoBehaviour
             }
         }
 
+    }
+
+    /// <summary>
+    /// Summon a lightning that spins around you, dealing 320% weapon damage to all enemies hit.
+    /// </summary>
+    public void Rune_LightWarp()
+    {
+        runeId = "Rune_LightWarp";
+
+        if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
+        {
+            
+
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            for (int i = 0; i < hitEnemies.Length; i++)
+            {
+                if (hitEnemies[i].CompareTag("Enemy"))
+                {
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance; ;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                    targetEnemy = hitEnemies[i].gameObject;
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 6)
+                        {
+                            Debug.Log("Modifier: " + modifier.Key);
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                        }
+                    }
+                    ApplyDamage(targetEnemy);
+                }
+            }
+            GameObject vortex = (GameObject)Instantiate(Resources.Load("LightWarp"), transform.position, Quaternion.identity);
+            vortex.transform.SetParent(gameObject.transform);
+            SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "LIGHT WARP");
+        }
+    }
+
+    /// <summary>
+    /// Smash the ground, stunning all enemies within 14 yards for 4 seconds.
+    /// </summary>
+    public void Rune_GroundClash()
+    {
+        runeId = "Rune_GroundClash";
+
+        if (attackTimerSkillSlot1 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+        {
+            
+
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            for (int i = 0; i < hitEnemies.Length; i++)
+            {
+                if (hitEnemies[i].CompareTag("Enemy"))
+                {
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance; ;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                    targetEnemy = hitEnemies[i].gameObject;
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 1)
+                        {
+                            Debug.Log("Modifier: " + modifier.Key);
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                        }
+                    }
+                    targetEnemy.gameObject.GetComponent<PhotonView>().RPC("SetStun", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_GroundClash"].effectTime);
+                }
+            }
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "GROUND CLASH");
+            if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+            {
+                SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+            }
+            else
+            {
+                SetPlayerResource(100);
+            }
+            GameObject groundClash = (GameObject)Instantiate(Resources.Load("GroundClash"), transform.position, Quaternion.identity);
+            attackTimerSkillSlot1 = 0f;
+            HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
+            HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;
+            updateCooldownImage1 = true;
+        }
+    }
+
+    /// <summary>
+    /// Increase movement speed by 30% for 3 seconds
+    /// </summary>
+    public void Rune_Dash()
+    {
+        runeId = "Rune_Dash";
+
+        if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
+        {
+            controller.speed = playerSpeed;
+            tempSpeed = controller.speed;
+            Debug.Log(tempSpeed);
+            SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
+            controller.speed += controller.speed * PlayFabDataStore.catalogRunes[runeId].increasedSpeed / 100;
+            Debug.Log(controller.speed);
+            maxSpeedingTime = PlayFabDataStore.catalogRunes[runeId].effectTime;
+            increasedSpeedTimer = 0f;
+            isPlayerSpeeding = true;
+        }
+    }
+
+    /// <summary>
+    /// Increase movement speed by 30% for 3 seconds
+    /// </summary>
+    public void Rune_Reckless()
+    {
+        runeId = "Rune_Reckless";
+
+        if (attackTimerSkillSlot1 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+        {
+            if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
+            {
+                SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
+                GetComponent<PhotonView>().RPC("SetDamageReduction", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_Reckless"].attackPercentage, PlayFabDataStore.catalogRunes["Rune_Reckless"].effectTime);
+            }
+            attackTimerSkillSlot1 = 0f;
+            HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
+            HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;
+            updateCooldownImage1 = true;
+        }
     }
 
     /// <summary>
@@ -335,7 +547,7 @@ public class Runes : MonoBehaviour
                 if (hitEnemies[i].CompareTag("Enemy") && hitEnemies[i].gameObject != mainEnemy)
                 {
                     Debug.Log("Breach: " + hitEnemies[i].gameObject);
-                    hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(hitEnemies[i].gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance);
+                    hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(hitEnemies[i].gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance, PlayFabDataStore.catalogRunes["Rune_Breach"].damageType);
                 }
             }
         }
