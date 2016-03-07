@@ -66,6 +66,8 @@ public class LoadQuest : MonoBehaviour {
     {
         string[] items = { questId };
         PlayFabApiCalls.GrantItemsToCharacter(items, "IsCompleted");
+        PlayFabDataStore.playerActiveQuests.Add(questId);
+        QuestTracker.questTracker.LoadTrackerQuests();
         HUD_Manager.hudManager.ToggleQuestWindow();
 
     }

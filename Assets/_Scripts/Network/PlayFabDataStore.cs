@@ -29,6 +29,8 @@ public class PlayFabDataStore : MonoBehaviour
     public static Dictionary<string, CatalogQuest> catalogQuests = new Dictionary<string, CatalogQuest>();
     public static Dictionary<string, PlayerQuest> playerAllQuests = new Dictionary<string, PlayerQuest>();
 
+    public static List<string> playerActiveQuests = new List<string>();
+
     //Player
 
     public static int playerLevel;
