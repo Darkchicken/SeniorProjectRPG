@@ -420,7 +420,8 @@ public class Runes : MonoBehaviour
 
         if (attackTimerSkillSlot1 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
         {
-            
+            controller.Stop();
+            controller.ResetPath();
 
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
             for (int i = 0; i < hitEnemies.Length; i++)
