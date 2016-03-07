@@ -21,6 +21,9 @@ public class Health : MonoBehaviour {
     private bool dead = false;
     private float navMeshSpeed;
 
+    public bool isBleeding = false;
+    public int maxBleedCount = 0;
+    public int bleedDamage = 0;
     public bool isCriticalHit = false;
     public int criticalHitValue = 0;
     public float maxCriticalHitTime = 0f;
@@ -32,16 +35,25 @@ public class Health : MonoBehaviour {
     public int stunChance = 0;
     public float maxStunTime = 0f;
     public int increasedDamagePercentage = 0;
+    public bool isDamageReduced = false;
+    public int reducedDamagePercentage = 0;
+    public bool immuneToBeControlled = false;
+    public float maxImmuneToControlTime = 0f;
+
 
     private float criticalHitTimer = 0f;
     private float chillTimer = 0f;
     private float freezeTimer = 0f;
-    private float stunTimer;
+    private float stunTimer = 0f;
+    private float bleedTimer = 0f;
+    private float immuneToControlTimer = 0f;
 
     private bool stunActivate = true;
     private bool chillActivate = true;
     private bool freezeActivate = true;
     private bool critActivate = false;
+
+    private int bleedCount = 1;
 
     
 
@@ -113,6 +125,27 @@ public class Health : MonoBehaviour {
     }
 
     [PunRPC]
+    public void SetDamageReduction(int viewId, bool _isDamageReduced, int _reducedDamagePercentage, float _immuneToControlTime)
+    {
+        isDamageReduced = _isDamageReduced;
+        reducedDamagePercentage = _reducedDamagePercentage;
+        immuneToBeControlled = true;
+        maxImmuneToControlTime = _immuneToControlTime;
+        immuneToControlTimer = 0f;
+
+}
+
+[PunRPC]
+    public void SetBleeding(int viewId, bool _isBleeding, int _maxBleedCount, int _bleedDamage)
+    {
+        isBleeding = _isBleeding;
+        maxBleedCount = _maxBleedCount;
+        bleedDamage = _bleedDamage / _maxBleedCount;
+        bleedTimer = 0f;
+        bleedCount = 1;
+    }
+
+    [PunRPC]
     public void SetFreeze(int viewId, bool _isFrozen, float _maxFreezeTime)
     {
         isFrozen = _isFrozen;
@@ -141,8 +174,35 @@ public class Health : MonoBehaviour {
         criticalHitTimer += Time.deltaTime;
         freezeTimer += Time.deltaTime;
         stunTimer += Time.deltaTime;
+        bleedTimer += Time.deltaTime;
+        immuneToControlTimer += Time.deltaTime;
 
-        if (isFrozen)
+        if(isDamageReduced)
+        {
+            if(immuneToControlTimer >= maxImmuneToControlTime)
+            {
+                isDamageReduced = false;
+            }
+        }
+
+
+        if (isBleeding)
+        {
+            if(bleedTimer >= bleedCount)
+            {
+                Debug.Log("Bleed count: " + bleedCount);
+                Debug.Log("Bleed Damage: " + bleedDamage);
+                bleedCount++;
+                    
+                TakeDamage(gameObject, bleedDamage, 0, "Natural");
+                if(bleedCount > maxBleedCount)
+                {
+                    isBleeding = false;
+                }
+            }
+        }
+
+        if (isFrozen && !immuneToBeControlled)
         {
             if(freezeActivate)
             {
@@ -163,7 +223,7 @@ public class Health : MonoBehaviour {
 
         }
         
-        if (isStunned)
+        if (isStunned && !immuneToBeControlled)
         {
             if(stunActivate)
             {
@@ -260,7 +320,7 @@ public class Health : MonoBehaviour {
 
     }
 
-    public void TakeDamage(GameObject source, int damageTaken, int criticalChance)
+    public void TakeDamage(GameObject source, int damageTaken, int criticalChance, string damageType)
     {
         if (!dead)
         {
@@ -275,6 +335,10 @@ public class Health : MonoBehaviour {
             if (Random.Range(0, 100) <= criticalChance + criticalHitValue)
             {
                 damageTaken *= 2; //if it's a critical, double the damage
+            }
+            if(isDamageReduced)
+            {
+                damageTaken -= damageTaken * reducedDamagePercentage / 100;
             }
         }
         photonView.RPC("ApplyDamageTaken", PhotonTargets.AllViaServer, photonView.viewID, damageTaken);

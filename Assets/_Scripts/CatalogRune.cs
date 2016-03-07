@@ -22,6 +22,7 @@ public class CatalogRune
     public int increasedSpeed;
     public float effectTime;
     public float cooldown;
+    public string damageType;
 
     void Awake()
     {
@@ -29,7 +30,7 @@ public class CatalogRune
     }
 
     public CatalogRune(string _itemId, string _itemClass, string _displayName, string _description, string _skillSlot, int _resourceGeneration, int _resourceUsage, int _attackRange,
-        int _attackRadius, int _attackPercentage, int _increasedDamage, int _increasedCrit, int _increasedSpeed, float _effecTime, float _cooldown)
+        int _attackRadius, int _attackPercentage, int _increasedDamage, int _increasedCrit, int _increasedSpeed, float _effecTime, float _cooldown, string _damageType)
     {
         itemId = _itemId;
         itemClass = _itemClass;
@@ -46,5 +47,6 @@ public class CatalogRune
         increasedSpeed = _increasedSpeed;
         effectTime = _effecTime;
         cooldown = _cooldown;
+        damageType = _damageType;
     }
 }

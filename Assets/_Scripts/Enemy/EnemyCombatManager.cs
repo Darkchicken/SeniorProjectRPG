@@ -7,6 +7,7 @@ public class EnemyCombatManager : MonoBehaviour
     public int attackRange;
     public int attackDamage;
     public float attackSpeed;
+    public string damageType;
     public List<GameObject> playerAttackList;
 
     private Animator enemyAnimation;
@@ -29,7 +30,7 @@ public class EnemyCombatManager : MonoBehaviour
             if (attackTimer >= attackSpeed && !playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange())
             {
                 //playerAttackList[0].GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID, 5/*attackDamage*/, 5);
-                playerAttackList[0].GetComponent<Health>().TakeDamage(gameObject, 25/*attackDamage*/, 5);
+                playerAttackList[0].GetComponent<Health>().TakeDamage(gameObject, 5/*attackDamage*/, 5, damageType);
                 enemyAnimation.SetTrigger("ATTACK 1");
                 attackTimer = 0f;
             }

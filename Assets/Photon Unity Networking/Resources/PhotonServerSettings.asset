@@ -46,4 +46,6 @@ MonoBehaviour:
   - AttackAnimation
   - SyncAttackAnimation
   - SendTrigger
+  - SetBleeding
+  - SetDamageReduction
   DisableAutoOpenWizard: 1
