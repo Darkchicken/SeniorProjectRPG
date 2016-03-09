@@ -24,13 +24,8 @@ public class GameManager : MonoBehaviour
 
         Invoke("SortRunes", 1);
         Invoke("SetPlayerData", 1.5f);
-        Invoke("RefreshActionBar", 2);
-        
+        Invoke("RefreshActionBar", 2);   
     }
-
-   
-
-    
 
     void SortRunes()
     {
@@ -49,6 +44,11 @@ public class GameManager : MonoBehaviour
     {
         runes.gameObject.SetActive(false);
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+    }
+
+    public void CalculatePlayerStats()
+    {
+
     }
 
     

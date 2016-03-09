@@ -29,7 +29,7 @@ public class PlayerCombatManager : Runes
         if ((Input.GetMouseButtonDown(0) || actionBarSkillId == "LC") && canMove && canAttack)
         {
             skillSlot = 5;
-            
+
             locatePosition(); //Find the clicked position and check if enemy clicked
 
             if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
@@ -46,33 +46,59 @@ public class PlayerCombatManager : Runes
         {
             skillSlot = 6;
 
-            if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            locatePosition();
+
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
                 Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
                 actionBarSkillId = null;
             }          
-            else
-            {
-                locatePosition();
-            }
             
         }
+        //Action Bar #1
         if (Input.GetKeyDown("1") || actionBarSkillId == "1")
         {
-            actionBarSkillId = null;
-            playerAnimation.SetTrigger("ATTACK 1");
+            skillSlot = 1;
 
-            
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            {
+                Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
+                actionBarSkillId = null;
+            }
+
+
         }
+
         if(Input.GetKeyDown("2") || actionBarSkillId == "2")
         {
-            actionBarSkillId = null;
-            playerAnimation.SetTrigger("ATTACK 2");
+            skillSlot = 2;
+
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            {
+                Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
+                actionBarSkillId = null;
+            }
         }
         if(Input.GetKeyDown("3") || actionBarSkillId == "3")
         {
-            actionBarSkillId = null;
-            playerAnimation.SetTrigger("ATTACK 3");
+            skillSlot = 3;
+
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            {
+                Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
+                actionBarSkillId = null;
+            }
+        }
+
+        if (Input.GetKeyDown("4") || actionBarSkillId == "4")
+        {
+            skillSlot = 4;
+
+            if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
+            {
+                Invoke(PlayFabDataStore.playerActiveSkillRunes[skillSlot], 0);
+                actionBarSkillId = null;
+            }
         }
 
         playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);

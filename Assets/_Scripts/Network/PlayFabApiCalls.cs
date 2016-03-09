@@ -66,13 +66,22 @@ public class PlayFabApiCalls : MonoBehaviour
             PhotonNetwork.AuthValues.UserId = PlayFabDataStore.playFabId;
             PhotonNetwork.ConnectUsingSettings("1.0");
             PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
-            GetCatalogItems();
+            GetCatalogRunes();
             GetCatalogQuests();
         }, (error) =>
         {
             PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);
         });
     }
+
+    //Calls each function that retrieves character data - Use this when you need to update data in game
+    public static void GetAllPlayfabData()
+    {
+        GetCharacterData();
+        GetAllCharacterQuests();
+        GetAllCharacterRunes();
+    }
+
 
     //Receives all characters belong to the user
     public static void GetAllUsersCharacters(string playfabId, string target)
@@ -178,7 +187,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Grant character the items in the array
-    public static void GrantRunesToCharacter(string[] items)
+    public static void GrantItemsToCharacter(string[] items, string customDataTitle)
     {
         var request = new RunCloudScriptRequest()
         {
@@ -188,7 +197,7 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
             string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
-            SetCustomDataOnItem("Active", "0", splitResult[19]);    
+            SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);    
         },
         (error) =>
         {
@@ -343,6 +352,7 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
+    //Updates User Data - Used to set room ID for now
     public static void UpdateUserData(Dictionary<string, string> data)
     {
         var request = new UpdateUserDataRequest()
@@ -362,6 +372,7 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
+    //Gets specific user's room name
     public static void GetUserRoomName(string playFabId)
     {
         Debug.Log(playFabId);
@@ -382,7 +393,8 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    public static void GetCatalogItems()
+    //Gets all the runes in the catalog and stores them
+    public static void GetCatalogRunes()
     {
         var request = new GetCatalogItemsRequest()
         {
@@ -394,11 +406,10 @@ public class PlayFabApiCalls : MonoBehaviour
                 if (item.ItemClass == "Skill" || item.ItemClass == "Modifier")
                 {
                     string[] customData = item.CustomData.Split('"');
-                    //Debug.Log(item.ItemId);
 
                     PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], int.Parse(customData[7]), 
                         int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]), 
-                        int.Parse(customData[35]), float.Parse(customData[39]), float.Parse(customData[43])));
+                        int.Parse(customData[35]), float.Parse(customData[39]), float.Parse(customData[43]), customData[47].ToString()));
                 }
             }
             Debug.Log("Catalog Retrieved");
@@ -411,7 +422,7 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    //Gets all the quests in the game and stores it
+    //Gets all the quests in the game and stores them
     public static void GetCatalogQuests()
     {
         var request = new GetCatalogItemsRequest()
@@ -424,7 +435,6 @@ public class PlayFabApiCalls : MonoBehaviour
                 if (item.ItemClass == "Quest")
                 {
                     string[] customData = item.CustomData.Split('"');
-                    //Debug.Log("Bundled items" + item.Bundle.BundledItems);
 
                     PlayFabDataStore.catalogQuests.Add(item.ItemId, new CatalogQuest(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], item.Bundle.BundledItems, item.Bundle.BundledVirtualCurrencies));
                 }
@@ -462,7 +472,7 @@ public class PlayFabApiCalls : MonoBehaviour
                         }
                         else
                         {
-                            PlayFabDataStore.playerAllRunes.Add(item.ItemId, new PlayerRune(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["Completed"]));
+                            PlayFabDataStore.playerAllQuests.Add(item.ItemId, new PlayerQuest(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["IsCompleted"]));
                         }
                     }
                 }
