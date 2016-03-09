@@ -49,12 +49,13 @@ public class MiniMapCameraFollow : MonoBehaviour {
             {
                 transform.position = new Vector3(player.position.x, cameraHeight, player.position.z);
                 //set pin rotation
-                //make the pin's z rotation the same as the player's y rotation
-                Debug.Log(player.rotation.y);
-                //playerPin.Rotate(0, 0, player.rotation.y);
+                //store the player's y rotation
                 float playerRot = -player.eulerAngles.y;
-                playerPin.rotation = Quaternion.Euler(0, 0,playerRot);
-                Debug.Log(playerPin.rotation);
+                //create a new rotation that will change the z value by the amount of the player's y rotation
+                Quaternion newRot = Quaternion.Euler(0, 0, playerRot);
+                //lerp the rotation of the player pin from its original rotation to the new rotation at speed 4
+                playerPin.rotation = Quaternion.Lerp(playerPin.rotation, newRot, Time.deltaTime*4);
+
             }
         }
     }
