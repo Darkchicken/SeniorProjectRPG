@@ -6,21 +6,25 @@ public class MiniMapCameraFollow : MonoBehaviour {
     //public float smoothing = 5f;
     //public Vector3 offset = new Vector3(0f, 100f, 0f);
     public float cameraHeight = 100f;
-    private float maxHeight = 150f;
-    private float minHeight = 50f;
+    private float maxHeight = 100f;
+    private float minHeight = 20f;
     private float zoomAmount = 10f;
+
     private Transform player;
+
+    private RectTransform playerPin;
     //taken from original calculations, can be modified if necessary
 
     private bool following = false;
 
     void Start()
     {
+        playerPin = GameObject.Find("Unit Pin (Player)").GetComponent<RectTransform>();
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
 
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            transform.position = new Vector3(player.position.x,cameraHeight, player.position.z)  ;
+            transform.position = new Vector3(player.position.x,cameraHeight, player.position.z);
             following = true;
         }
     }
@@ -44,10 +48,13 @@ public class MiniMapCameraFollow : MonoBehaviour {
             else
             {
                 transform.position = new Vector3(player.position.x, cameraHeight, player.position.z);
-                /*
-                Vector3 targetCamPos = player.position + offset;
-                transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
-                */
+                //set pin rotation
+                //make the pin's z rotation the same as the player's y rotation
+                Debug.Log(player.rotation.y);
+                //playerPin.Rotate(0, 0, player.rotation.y);
+                float playerRot = -player.eulerAngles.y;
+                playerPin.rotation = Quaternion.Euler(0, 0,playerRot);
+                Debug.Log(playerPin.rotation);
             }
         }
     }
