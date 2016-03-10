@@ -127,6 +127,25 @@ public class PlayerCombatManager : Runes
                 controller.stoppingDistance = stopDistanceForAttack;
                 isInCombat = true;
             }
+            //
+            else if(hit.transform.tag == "NPC")
+            {
+
+                float dist = Vector3.Distance(hit.transform.position, transform.position);
+                //Debug.Log("Distance to npc is " +dist);
+                if (dist > 3)
+                {
+                    targetEnemy = null;
+                    position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                    controller.stoppingDistance = 2f;
+                }
+                else
+                {
+                    Debug.Log("You started a conversation with this npc");
+                }
+                
+            }
+            //
             else
             {
                 targetEnemy = null;
