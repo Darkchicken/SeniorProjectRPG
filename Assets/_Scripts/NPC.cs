@@ -6,16 +6,28 @@ public class NPC : MonoBehaviour {
     public string[] dialogue;
     Dialogue dialogueManager;
     GameObject player;
+    Camera dialogueCamera;
+    //offset from transform.position for each npc
+    public Vector3 faceLocation;
+    //how close to set camera to npc's face
+    public float faceDistance;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         dialogueManager = GameObject.Find("GameManager").GetComponent<Dialogue>();
+        dialogueCamera = GameObject.Find("DialogueCamera").GetComponent<Camera>();
     }
     
     public void ClickedNPC()
     {
         //activate dialogue box
         dialogueManager.StartDialogue(dialogue);
+        dialogueCamera.transform.position = transform.position+faceLocation;
+        dialogueCamera.transform.rotation = transform.rotation;
+        dialogueCamera.transform.Rotate(0,180,0);
+        dialogueCamera.transform.Translate(Vector3.back*faceDistance);
+        //dialogueCamera.transform.Translate(Vector3.up * 5);
 
 
     }
