@@ -6,31 +6,36 @@ public class Dialogue : MonoBehaviour {
 
     GameObject dialogueBox;
     Text dialogueText;
-
+    string[] messageList;
+    int messageCount = 0;
+    int totalMessages = 0;
 	// Use this for initialization
 	void Start ()
     {
+       
         dialogueBox = GameObject.Find("DialogueBox");
-        dialogueText = dialogueBox.transform.FindChild("DialogueText").GetComponent<Text>();
+        dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+        dialogueBox.SetActive(false);
+    }
+	void Update()
+    {
+        if (totalMessages > 0 && (Input.GetKeyDown(KeyCode.Space)))
+        {
+            NextMessage();
+        }
     }
 	
-	// Update is called once per frame
-	void Update ()
+    public void StartDialogue(string[] messages)
     {
-	    
-	}
-    public void StartDialogue()
-    {
+        messageList = messages;
         dialogueBox.SetActive(true);
-    }
-    public void DialogueMessage(string[] messages)
-    {
+        //set count to 0
+        messageCount = 0;
         //get number of messages in dialogue
-        int messageCount = 0; 
-        int totalMessages = messages.Length;
+        totalMessages = messages.Length;
         //display first message
         dialogueText.text = messages[0];
-        
+        /*
         while(messageCount != totalMessages)
         {
             if(Input.GetKeyDown(KeyCode.Return))
@@ -41,10 +46,26 @@ public class Dialogue : MonoBehaviour {
                 dialogueText.text = messages[messageCount];
             }
         }
-        EndDialogue();
+        dialogueBox.SetActive(false);
+        */
+    }
+    public void NextMessage()
+    {
+        messageCount++;
+        if (messageCount < totalMessages)
+        {
+            dialogueText.text = messageList[messageCount];
+        }
+        else
+        {
+            EndDialogue();
+        }
     }
     public void EndDialogue()
     {
+        totalMessages = 0;
+        messageCount = 0;
         dialogueBox.SetActive(false);
     }
-}
+
+    }
