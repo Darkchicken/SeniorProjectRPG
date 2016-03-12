@@ -6,6 +6,8 @@ public class Dialogue : MonoBehaviour {
 
     GameObject dialogueBox;
     Text dialogueText;
+    Text displayName;
+    
     string[] messageList;
     int messageCount = 0;
     int totalMessages = 0;
@@ -15,6 +17,7 @@ public class Dialogue : MonoBehaviour {
        
         dialogueBox = GameObject.Find("DialogueBox");
         dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+        displayName = GameObject.Find("DialogueName").GetComponent<Text>();
         dialogueBox.SetActive(false);
     }
 	void Update()
@@ -25,8 +28,9 @@ public class Dialogue : MonoBehaviour {
         }
     }
 	
-    public void StartDialogue(string[] messages)
+    public void StartDialogue(string name,string[] messages)
     {
+        displayName.text = name;
         messageList = messages;
         dialogueBox.SetActive(true);
         //set count to 0
@@ -63,6 +67,7 @@ public class Dialogue : MonoBehaviour {
     }
     public void EndDialogue()
     {
+       
         totalMessages = 0;
         messageCount = 0;
         dialogueBox.SetActive(false);

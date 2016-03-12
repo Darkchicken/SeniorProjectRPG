@@ -11,6 +11,8 @@ public class NPC : MonoBehaviour {
     public Vector3 faceLocation;
     //how close to set camera to npc's face
     public float faceDistance;
+    //name of npc
+    public string npcName;
     
     void Start()
     {
@@ -22,7 +24,7 @@ public class NPC : MonoBehaviour {
     public void ClickedNPC()
     {
         //activate dialogue box
-        dialogueManager.StartDialogue(dialogue);
+        dialogueManager.StartDialogue(npcName,dialogue);
         dialogueCamera.transform.position = transform.position+faceLocation;
         dialogueCamera.transform.rotation = transform.rotation;
         dialogueCamera.transform.Rotate(0,180,0);
