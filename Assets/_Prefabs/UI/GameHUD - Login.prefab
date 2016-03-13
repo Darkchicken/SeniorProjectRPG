@@ -8147,6 +8147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterList: {fileID: 11490728}
   characterListToggle: {fileID: 11436546}
+  characterCreation: {fileID: 0}
 --- !u!114 &11463720
 MonoBehaviour:
   m_ObjectHideFlags: 1

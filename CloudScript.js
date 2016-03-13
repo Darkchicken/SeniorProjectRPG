@@ -15,6 +15,16 @@ handlers.newCharacter = function (args)
   return characterID;
 }
 
+handlers.removeCharacter = function (args)
+{
+  var characterID = server.DeleteCharacterFromUser({
+    PlayFabId: currentPlayerId,
+    CharacterId: args.characterId,
+    SaveCharacterInventory: args.saveInventory
+  });
+  return characterID;
+}
+
 handlers.setCustomDataToGrantedItem = function(args)
 {
   var request = server.UpdateUserInventoryItemCustomData({
@@ -65,3 +75,21 @@ handlers.moveItemFromUserToCharacter = function (args)
   return request;		
 }
 
+
+
+handlers.addFriend = function (args)
+{
+  var request = server.AddFriend({
+    PlayFabId: currentPlayerId,
+    FriendUsername: args.userName
+  });
+  return request;		
+}
+handlers.getFriendsList = function (args)
+{
+  var request = server.GetFriendsList({
+    PlayFabId: currentPlayerId
+    
+  });
+  return request;		
+}

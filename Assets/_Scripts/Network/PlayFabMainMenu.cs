@@ -11,6 +11,7 @@ public class PlayFabMainMenu : MonoBehaviour
 {
     public UICharacterSelect_List characterList;
     public ToggleGroup characterListToggle;
+    public Canvas characterCreation;
 
     public static PlayFabMainMenu playfabMainMenu;
     private bool isCharacterSelected;
@@ -64,6 +65,17 @@ public class PlayFabMainMenu : MonoBehaviour
     public void GetAllRunes()
     {
         PlayFabApiCalls.GetAllCharacterRunes();
+    }
+
+    public void CreateNewCharacter()
+    {
+        characterCreation.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    public void RemoveCharacter()
+    {
+
     }
 
 

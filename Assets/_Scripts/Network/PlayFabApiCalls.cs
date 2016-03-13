@@ -93,14 +93,18 @@ public class PlayFabApiCalls : MonoBehaviour
 
         PlayFabClientAPI.GetAllUsersCharacters(request, (result) =>
         {
-            if(target == "Player")
+            if (target == "Player")
             {
-                foreach(var character in result.Characters)
+                foreach (var character in result.Characters)
                 {
-                    PlayFabDataStore.characters.Add(character.CharacterName, character.CharacterId);
+                    if (!PlayFabDataStore.characters.ContainsKey(character.CharacterName))
+                    {
+                        PlayFabDataStore.characters.Add(character.CharacterName, character.CharacterId);
+                    }
+
                 }
             }
-            else
+            /*else
             {
                 foreach (var character in result.Characters)
                 {
@@ -109,7 +113,7 @@ public class PlayFabApiCalls : MonoBehaviour
                         PlayFabDataStore.friendCharacterId = character.CharacterId;
                     }
                 }
-            }
+            }*/
             
         }, (error) =>
         {
@@ -129,10 +133,34 @@ public class PlayFabApiCalls : MonoBehaviour
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-       
+            string[] splitResult = result.ResultsEncoded.Split('"');
+            SetCharacterInitialData(splitResult[3]);
+            
         }, (error) =>
         {
+            PlayFabCreateCharacter.playFabCreateCharacter.errorText.text = error.ErrorMessage;
             Debug.Log("Character not created!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    //Remove character
+    public static void RemoveCharacter(string Id)
+    {
+        var request = new RunCloudScriptRequest()
+        {
+            ActionId = "removeCharacter",
+            Params = new { characterId = Id, saveInventorycharacter = false }
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log("Character Removed!");
+            PlayFabMainMenu.playfabMainMenu.ListCharacters();
+
+        }, (error) =>
+        {
+            Debug.Log("Character cannot Removed!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });
@@ -167,20 +195,22 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    //Updates character's custom data to playfab
-    public static void UpdateCharacterData()
+    //Set character's custom data to playfab
+    public static void SetCharacterInitialData(string characterId)
     {
         var request = new UpdateCharacterDataRequest()
         {
-            CharacterId = PlayFabDataStore.characterId,
-            Data = PlayFabDataStore.playerData
+            CharacterId = characterId,
+            Data = PlayFabDataStore.playerInitialData
         };
         PlayFabClientAPI.UpdateCharacterData(request, (result) =>
         {
-            Debug.Log("Stats Updated!");
+            PlayFabCreateCharacter.playFabCreateCharacter.mainMenu.gameObject.SetActive(true);
+            PlayFabCreateCharacter.playFabCreateCharacter.gameObject.SetActive(false);
+            Debug.Log("Initial Data Set!");
         }, (error) =>
         {
-            Debug.Log("Stats Failed!");
+            Debug.Log("Data Set Failed!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });

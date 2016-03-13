@@ -45,7 +45,7 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerVitality;
     public static int playerCriticalChance;
     public static int playerWeaponDamage;
-    public static Dictionary<string, string> playerData = new Dictionary<string, string>()
+    public static Dictionary<string, string> playerInitialData = new Dictionary<string, string>()
     {
         {"Level", "1" },
         {"Experience", "1" },

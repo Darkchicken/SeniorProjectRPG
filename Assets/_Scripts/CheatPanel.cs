@@ -20,10 +20,6 @@ public class CheatPanel : MonoBehaviour
         PlayFabApiCalls.RevokeInventoryItem(itemInstanceId);
     }
 
-    public void UpdateCharacterData()
-    {
-        PlayFabApiCalls.UpdateCharacterData();
-    }
 
     public void GetCharacterRunes()
     {
