@@ -3454,6 +3454,9 @@ MonoBehaviour:
   enemyHealthText: {fileID: 0}
   health: 100
   maxHealth: 0
+  isBleeding: 0
+  maxBleedCount: 0
+  bleedDamage: 0
   isCriticalHit: 0
   criticalHitValue: 0
   maxCriticalHitTime: 0
@@ -3465,6 +3468,10 @@ MonoBehaviour:
   stunChance: 0
   maxStunTime: 0
   increasedDamagePercentage: 0
+  isDamageReduced: 0
+  reducedDamagePercentage: 0
+  immuneToBeControlled: 0
+  maxImmuneToControlTime: 0
 --- !u!114 &11479304
 MonoBehaviour:
   m_ObjectHideFlags: 1
