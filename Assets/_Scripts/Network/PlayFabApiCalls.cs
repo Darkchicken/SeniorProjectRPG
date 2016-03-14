@@ -78,8 +78,6 @@ public class PlayFabApiCalls : MonoBehaviour
     public static void GetAllPlayfabData()
     {
         GetCharacterStats();
-        GetAllCharacterQuests();
-        GetAllCharacterRunes();
     }
 
 
@@ -537,8 +535,8 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    //Gets all the quests that player either completed or is on
-    public static void GetAllCharacterQuests()
+    //Gets all the quests that player completed
+    public static void GetCharacterCompletedQuests()
     {
         var request = new GetCharacterInventoryRequest()
         {
@@ -550,24 +548,15 @@ public class PlayFabApiCalls : MonoBehaviour
             {
                 if(item.ItemClass == "Quest")
                 {
-                    if (!PlayFabDataStore.playerAllQuests.ContainsKey(item.ItemId))
+                    if (!PlayFabDataStore.playerCompletedQuests.Contains(item.ItemId))
                     {
-
-                        if (item.CustomData == null)
-                        {
-                            PlayFabDataStore.playerAllQuests.Add(item.ItemId, new PlayerQuest(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, "0"));
-
-                        }
-                        else
-                        {
-                            PlayFabDataStore.playerAllQuests.Add(item.ItemId, new PlayerQuest(item.ItemId, item.ItemInstanceId, item.ItemClass, item.DisplayName, item.CustomData["IsCompleted"]));
-                        }
+                        PlayFabDataStore.playerCompletedQuests.Add(item.ItemId);
                     }
                 }
                 
             }
             Debug.Log("Character Quests are retrieved");
-            RuneWindow.SortAllRunes();
+            //RuneWindow.SortAllRunes();
         },
         (error) =>
         {
