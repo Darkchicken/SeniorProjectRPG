@@ -70,7 +70,7 @@ public class Health : MonoBehaviour {
 
         rend = GetComponent<MeshRenderer>();                          //instantiates renderer
         shaderNormal = Shader.Find(".ShaderTalk/Fresnel");                    //sets shader as Fresnel for the normal state of enemies
-        shaderHighlight = Shader.Find(".ShaderTalk/Fresnel Object Light Up"); //sets shader as Fresnel that highlights enemies
+        shaderHighlight = Shader.Find("Toon/Lit Outline"); //sets shader as Fresnel that highlights enemies
 
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
         enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
@@ -430,8 +430,9 @@ public class Health : MonoBehaviour {
                 enemyHealthFillImage.fillAmount = (float)health / (float)maxHealth;
                 enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
                 enemyHealthText.text = health + "/" + maxHealth;
-                rend.material.shader = shaderHighlight; // highlights target
-                
+                gameObject.GetComponent<Material>().SetFloat("_Outline", 0.0099f); // highlights target
+
+
             }
 
         }
@@ -442,7 +443,7 @@ public class Health : MonoBehaviour {
         if (tag == "Enemy")
         {
             enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
-            rend.material.shader = shaderNormal;    //changes back to normal shading
+            gameObject.GetComponent<Material>().SetFloat("_Outline", 0); // changes target highlight back to normal
         }
     }
 
