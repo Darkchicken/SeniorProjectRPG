@@ -77,7 +77,7 @@ public class PlayFabApiCalls : MonoBehaviour
     //Calls each function that retrieves character data - Use this when you need to update data in game
     public static void GetAllPlayfabData()
     {
-        GetCharacterData();
+        GetCharacterStats();
         GetAllCharacterQuests();
         GetAllCharacterRunes();
     }
@@ -167,7 +167,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Get custom data of the character and set them to their locals
-    public static void GetCharacterData()
+    public static void GetCharacterStats()
     {
         var request = new GetCharacterDataRequest()
         {
@@ -405,7 +405,6 @@ public class PlayFabApiCalls : MonoBehaviour
     //Gets specific user's room name
     public static void GetUserRoomName(string playFabId)
     {
-        Debug.Log(playFabId);
         var request = new GetUserDataRequest()
         {
             PlayFabId = playFabId   
@@ -422,6 +421,60 @@ public class PlayFabApiCalls : MonoBehaviour
             Debug.Log(error.ErrorDetails);
         });
     }
+
+    //Creates or Updates a data on a character
+    public static void UpdateCharacterData(Dictionary<string, string> data)
+    {
+        var request = new UpdateCharacterDataRequest()
+        {
+            CharacterId = PlayFabDataStore.characterId,
+            Data = data
+        };
+        PlayFabClientAPI.UpdateCharacterData(request, (result) =>
+        {
+            Debug.Log("Character Data Set");
+        }, (error) =>
+        {
+            Debug.Log("Data Set Failed!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    //Gets a specific character data
+    public static void GetQuestLog()
+    {
+        var request = new GetCharacterDataRequest()
+        {
+            CharacterId = PlayFabDataStore.characterId
+        };
+        PlayFabClientAPI.GetCharacterData(request, (result) =>
+        {
+            Debug.Log(result.Data["QuestLog"].Value);
+            string[] customData = result.Data["QuestLog"].Value.Split('#');
+            Debug.Log(customData.Length);
+            foreach(var quest in customData)
+            {
+                if(!PlayFabDataStore.playerQuestLog.Contains(quest))
+                {
+                    Debug.Log(quest);
+                    PlayFabDataStore.playerQuestLog.Add(quest);
+                }  
+            }
+
+            QuestTracker.questTracker.LoadTrackerQuests();
+            Debug.Log("Quest Log retrieved and set");
+
+        }, (error) =>
+        {
+            Debug.Log("Quest Log Cannot Retrieved!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+
+
 
     //Gets all the runes in the catalog and stores them
     public static void GetCatalogRunes()

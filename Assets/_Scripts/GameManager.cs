@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour
         runes.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
         PlayFabApiCalls.GetAllCharacterQuests();
-        PlayFabApiCalls.GetCharacterData();
+        PlayFabApiCalls.GetCharacterStats();
         PlayFabApiCalls.GetFriendsList();
+        PlayFabApiCalls.GetQuestLog();
 
         Invoke("SortRunes", 1);
         Invoke("SetPlayerData", 1.5f);

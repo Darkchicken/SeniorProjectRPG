@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LoadQuest : MonoBehaviour {
 
@@ -64,9 +65,17 @@ public class LoadQuest : MonoBehaviour {
 
     public void AcceptQuest()
     {
-        string[] items = { questId };
-        PlayFabApiCalls.GrantItemsToCharacter(items, "IsCompleted");
-        PlayFabDataStore.playerActiveQuests.Add(questId);
+        string questLogString = null;
+        foreach(var quest in PlayFabDataStore.playerQuestLog)
+        {
+            questLogString += quest + "#";
+        }
+        questLogString += questId;
+
+        Dictionary<string, string> customData = new Dictionary<string, string>();
+        customData.Add("QuestLog", questLogString);
+        PlayFabDataStore.playerQuestLog.Add(questId);
+        PlayFabApiCalls.UpdateCharacterData(customData);
         QuestTracker.questTracker.LoadTrackerQuests();
         HUD_Manager.hudManager.ToggleQuestWindow();
 

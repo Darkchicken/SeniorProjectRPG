@@ -32,7 +32,7 @@ public class QuestTracker : MonoBehaviour
         }
         if (questPanelTransform.gameObject.activeInHierarchy == true)
         {
-            foreach (var quest in PlayFabDataStore.playerActiveQuests)
+            foreach (var quest in PlayFabDataStore.playerQuestLog)
             {
                 GameObject questObj = Instantiate(questPrefab);
                 questObj.transform.SetParent(questGridTransform, false);
