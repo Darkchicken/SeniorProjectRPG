@@ -450,17 +450,22 @@ public class PlayFabApiCalls : MonoBehaviour
         };
         PlayFabClientAPI.GetCharacterData(request, (result) =>
         {
-            Debug.Log(result.Data["QuestLog"].Value);
-            string[] customData = result.Data["QuestLog"].Value.Split('#');
-            Debug.Log(customData.Length);
-            foreach(var quest in customData)
+            if (result.Data.ContainsKey("QuestLog"))
             {
-                if(!PlayFabDataStore.playerQuestLog.Contains(quest))
+                Debug.Log(result.Data["QuestLog"].Value);
+                string[] customData = result.Data["QuestLog"].Value.Split('#');
+                Debug.Log(customData.Length);
+
+                foreach (var quest in customData)
                 {
-                    Debug.Log(quest);
-                    PlayFabDataStore.playerQuestLog.Add(quest);
-                }  
-            }
+                    if (!PlayFabDataStore.playerQuestLog.Contains(quest))
+                    {
+                        Debug.Log(quest);
+                        PlayFabDataStore.playerQuestLog.Add(quest);
+                    }
+                }
+            } 
+            
 
             QuestTracker.questTracker.LoadTrackerQuests();
             Debug.Log("Quest Log retrieved and set");
