@@ -5,6 +5,10 @@ public class NPC : MonoBehaviour {
 
     public string[] dialogue;
     Dialogue dialogueManager;
+    [Header("Drop Quest Panel Here")]
+    public GameObject questPanel;
+    [Header("Type Quest IDs for this NPC")]
+    public string[] questId;
     GameObject player;
     Camera dialogueCamera;
     //offset from transform.position for each npc
@@ -39,7 +43,18 @@ public class NPC : MonoBehaviour {
         if (Vector3.Distance(player.transform.position, transform.position) < 3)
         {
             ClickedNPC();
+            StartQuest(0);
         }
     }
-
+    public void StartQuest(int questIndex)
+    {
+        //if the player has not already accepted this quest or completed this quest
+        if (!PlayFabDataStore.playerQuestLog.Contains(questId[questIndex]) 
+            && !PlayFabDataStore.playerCompletedQuests.Contains(questId[questIndex]))
+        {
+            //set the quest panel's quest id to the quest carried by the current npc
+            questPanel.GetComponent<LoadQuest>().questId = questId[questIndex];
+            questPanel.SetActive(true);
+        }
+    }
 }
