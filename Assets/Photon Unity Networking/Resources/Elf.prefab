@@ -2570,7 +2570,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.569557, y: 0, z: 46.263947}
+  m_LocalPosition: {x: 397.00494, y: 5.420253, z: 58.194153}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 452510}
@@ -3452,6 +3452,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealthFillImage: {fileID: 0}
   enemyHealthText: {fileID: 0}
+  defaultShader: {fileID: 4800000, guid: 44b54c59129572f469a949a22bc08cd0, type: 3}
+  outlineShader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
   health: 100
   maxHealth: 0
   isBleeding: 0

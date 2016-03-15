@@ -4,6 +4,8 @@ using System.Collections;
 public class NPC : MonoBehaviour {
 
     public string[] dialogue;
+    public Shader defaultShader;
+    public Shader outlineShader;
     Dialogue dialogueManager;
     [Header("Drop Quest Panel Here")]
     public GameObject questPanel;
@@ -37,6 +39,8 @@ public class NPC : MonoBehaviour {
 
 
     }
+
+
     public void OnMouseDown()
     {
         //if the player is within 3 units of the npc
@@ -56,5 +60,15 @@ public class NPC : MonoBehaviour {
             questPanel.GetComponent<LoadQuest>().questId = questId[questIndex];
             questPanel.SetActive(true);
         }
+    }
+
+    void OnMouseOver()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().material.shader = outlineShader;
+    }
+
+    void OnMouseExit()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().material.shader = defaultShader;
     }
 }

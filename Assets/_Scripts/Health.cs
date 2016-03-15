@@ -7,6 +7,9 @@ public class Health : MonoBehaviour {
     public Image enemyHealthFillImage;
     public Text enemyHealthText;
 
+    public Shader defaultShader;
+    public Shader outlineShader;
+
     public int health;
     public int maxHealth;
 
@@ -420,6 +423,7 @@ public class Health : MonoBehaviour {
                 enemyHealthFillImage.transform.parent.gameObject.SetActive(true);
                 enemyHealthText.text = health + "/" + maxHealth;
 
+                GetComponentInChildren<SkinnedMeshRenderer>().material.shader = outlineShader;
             }
 
         }
@@ -430,6 +434,7 @@ public class Health : MonoBehaviour {
         if (tag == "Enemy")
         {
             enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
+            GetComponentInChildren<SkinnedMeshRenderer>().material.shader = defaultShader;
         }
     }
 
