@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour {
@@ -8,7 +9,7 @@ public class Dialogue : MonoBehaviour {
     Text dialogueText;
     Text displayName;
     
-    string[] messageList;
+    List<string> messageList;
     int messageCount = 0;
     int totalMessages = 0;
 	// Use this for initialization
@@ -28,7 +29,7 @@ public class Dialogue : MonoBehaviour {
         }
     }
 	
-    public void StartDialogue(string name,string[] messages)
+    public void StartDialogue(string name,List<string> messages)
     {
         displayName.text = name;
         messageList = messages;
@@ -36,7 +37,7 @@ public class Dialogue : MonoBehaviour {
         //set count to 0
         messageCount = 0;
         //get number of messages in dialogue
-        totalMessages = messages.Length;
+        totalMessages = messages.Count;
         //display first message
         dialogueText.text = messages[0];
         /*

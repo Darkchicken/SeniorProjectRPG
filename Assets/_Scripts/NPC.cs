@@ -1,45 +1,77 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NPC : MonoBehaviour {
 
-    public string[] dialogue;
+    public List<string> dialogue;
     public Shader defaultShader;
     public Shader outlineShader;
-    Dialogue dialogueManager;
+
+    
     [Header("Drop Quest Panel Here")]
     public GameObject questPanel;
+    public GameObject acceptButton;
+    public GameObject declineButton;
+    public GameObject completeButton;
+
 
     //what quests this npc can grant
     [Header("Quest IDs this NPC can start")]
-    public string[] questId;
+    public List<string> startingQuests;
     //what quests this npc can complete
     [Header("Quest IDs this NPC can end")]
-    public string[] endQuestId;
-    
+    public List<string> endingQuests;
 
-    bool finishingQuest = false;
-
-    GameObject player;
-    Camera dialogueCamera;
     //offset from transform.position for each npc
     public Vector3 faceLocation;
     //how close to set camera to npc's face
     public float faceDistance;
     //name of npc
     public string npcName;
-    
+
+    private bool finishingQuest = false;
+    private int endQuestId;
+    private GameObject player;
+    private Camera dialogueCamera;
+    private Dialogue dialogueManager;
+    //private Color questOutlineColor = new Color(255, 255, 0, 255);
+
+
     void Start()
     {
-       
+
         player = GameObject.FindGameObjectWithTag("Player");
         dialogueManager = GameObject.Find("GameManager").GetComponent<Dialogue>();
         dialogueCamera = GameObject.Find("DialogueCamera").GetComponent<Camera>();
     }
+
+    void Update()
+    {
+        if(!finishingQuest)
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < 30)
+            {
+                foreach (var quest in PlayFabDataStore.playerQuestLog)
+                {
+                    if (endingQuests.Contains(quest))
+                    {
+                        //GetComponentInChildren<SkinnedMeshRenderer>().material.shader = outlineShader;
+                        //GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("_OutlineColor", questOutlineColor);
+                        endQuestId = endingQuests.IndexOf(quest);
+                        finishingQuest = true;
+                        Debug.Log(finishingQuest);
+                        break;
+                    }
+                }
+            }
+        }
+        
+    }
     
     public void ClickedNPC()
     {
-        
+
         //activate dialogue box
         dialogueManager.StartDialogue(npcName,dialogue);
         dialogueCamera.transform.position = transform.position+faceLocation;
@@ -54,7 +86,7 @@ public class NPC : MonoBehaviour {
 
     public void OnMouseDown()
     {
-        /////////////////////////////test code
+        /*/////////////////////////////test code
         //PlayFabDataStore.playerCompletedQuests.Clear();
         Debug.Log("Current Quests: ");
         foreach(string quests in PlayFabDataStore.playerQuestLog)
@@ -66,51 +98,68 @@ public class NPC : MonoBehaviour {
         {
             Debug.Log(quests);
         }
-        ///////////////////////////
+        ///////////////////////////*/
+
         //if the player is within 3 units of the npc
         if (Vector3.Distance(player.transform.position, transform.position) < 3)
         {
-            finishingQuest = false;
+            //finishingQuest = false;
             ClickedNPC();
-            for(int i = 0; i < endQuestId.Length; i++)
+            /*for(int i = 0; i < endQuestId.Count; i++)
             {
                 EndQuest(i);
                 if(finishingQuest == true)
                 {
                     break;
                 }
+            }*/
+            if (finishingQuest)
+            {
+                finishingQuest = false;
+                EndQuest();
             }
-            //if you arent finishing a quest and this npc has quests to give
-            if (finishingQuest == false && questId.Length!=0)
+            //if you aren't finishing a quest and this npc has quests to give
+            if (finishingQuest == false && startingQuests.Count != 0)
             {
                 StartQuest(0);
             }
+            
         }
     }
     public void StartQuest(int questIndex)
     {
         //if this npc is not a quest giver
-        if(questId.Length == 0)
+        if(startingQuests.Count == 0)
         {
             return;
         }
         //if the player has not already accepted this quest or completed this quest
-        if (!PlayFabDataStore.playerQuestLog.Contains(questId[questIndex]) 
-            && !PlayFabDataStore.playerCompletedQuests.Contains(questId[questIndex]))
+        if (!PlayFabDataStore.playerQuestLog.Contains(startingQuests[questIndex]) 
+            && !PlayFabDataStore.playerCompletedQuests.Contains(startingQuests[questIndex]))
         {
             //set the quest panel's quest id to the quest carried by the current npc
-            questPanel.GetComponent<LoadQuest>().questId = questId[questIndex];
+            questPanel.GetComponent<LoadQuest>().questId = startingQuests[questIndex];
+            acceptButton.SetActive(true);
+            declineButton.SetActive(true);
+            completeButton.SetActive(false);
             questPanel.SetActive(true);
         }
     }
-    public void EndQuest(int questIndex)
+    public void EndQuest()
     {
         //if this npc is not a quest ender
-        if (endQuestId.Length == 0)
+        if (endingQuests.Count == 0)
         {
             return;
         }
-        //if the player has accepted this quest and has not completed it
+        Debug.Log("Ending Quest");
+        questPanel.GetComponent<LoadQuest>().questId = endingQuests[endQuestId];
+        acceptButton.SetActive(false);
+        declineButton.SetActive(false);
+        completeButton.SetActive(true);
+        questPanel.SetActive(true);
+
+        /*//if the player has accepted this quest and has not completed it
         if (PlayFabDataStore.playerQuestLog.Contains(endQuestId[questIndex])
             && !PlayFabDataStore.playerCompletedQuests.Contains(endQuestId[questIndex]))
         {
@@ -121,7 +170,7 @@ public class NPC : MonoBehaviour {
             Debug.Log("You completed "+ endQuestId[questIndex]);
             //questPanel.GetComponent<LoadQuest>().questId = questId[questIndex];
             //questPanel.SetActive(true);
-        }
+        }*/
     }
 
 

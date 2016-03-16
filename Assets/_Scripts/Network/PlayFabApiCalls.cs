@@ -215,7 +215,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Grant character the items in the array
-    public static void GrantItemsToCharacter(string[] items, string customDataTitle)
+    public static void GrantItemsToCharacter(string[] items, string customDataTitle, string itemType)
     {
         var request = new RunCloudScriptRequest()
         {
@@ -224,8 +224,11 @@ public class PlayFabApiCalls : MonoBehaviour
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-            string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
-            SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);    
+            if(itemType == "Rune")
+            {
+                string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+                SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+            }      
         },
         (error) =>
         {
@@ -450,6 +453,7 @@ public class PlayFabApiCalls : MonoBehaviour
         {
             if (result.Data.ContainsKey("QuestLog"))
             {
+                
                 Debug.Log(result.Data["QuestLog"].Value);
                 string[] customData = result.Data["QuestLog"].Value.Split('#');
                 Debug.Log(customData.Length);
@@ -462,6 +466,7 @@ public class PlayFabApiCalls : MonoBehaviour
                         PlayFabDataStore.playerQuestLog.Add(quest);
                     }
                 }
+                //PlayFabDataStore.playerQuestLog.Add("Quest_Initial"); Testing
             } 
             
 

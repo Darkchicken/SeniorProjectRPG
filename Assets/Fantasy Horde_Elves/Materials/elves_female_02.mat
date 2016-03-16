@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: elves_female_02
-  m_Shader: {fileID: 22, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 44b54c59129572f469a949a22bc08cd0, type: 3}
   m_ShaderKeywords: _TEX_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -24,16 +24,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Cube
+          name: _ToonShade
         second:
-          m_Texture: {fileID: 8900000, guid: 464a1f4b99a8ea447a6d5175902a3937, type: 2}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ToonShade
+          name: _Cube
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 8900000, guid: 464a1f4b99a8ea447a6d5175902a3937, type: 2}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -43,12 +43,12 @@ Material:
         second: 0.041306987
       data:
         first:
-          name: _TintColor
-        second: 0
-      data:
-        first:
           name: _DetailTex
         second: 1
+      data:
+        first:
+          name: _TintColor
+        second: 0
       data:
         first:
           name: _VertexColor
@@ -60,7 +60,7 @@ Material:
       data:
         first:
           name: _Outline
-        second: 1
+        second: 1.5
     m_Colors:
       data:
         first:
@@ -72,9 +72,9 @@ Material:
         second: {r: 0.9485294, g: 0.9485294, b: 0.9485294, a: 1}
       data:
         first:
-          name: _ReflectColor
-        second: {r: 1, g: 1, b: 1, a: 0.5}
+          name: _OutlineColor
+        second: {r: 1, g: 1, b: 0, a: 1}
       data:
         first:
-          name: _OutlineColor
-        second: {r: 1, g: 0, b: 0, a: 1}
+          name: _ReflectColor
+        second: {r: 1, g: 1, b: 1, a: 0.5}
