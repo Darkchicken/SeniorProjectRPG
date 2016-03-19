@@ -65,8 +65,12 @@ public class NetworkPlayerScript : MonoBehaviour {
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, playerPos, 0.1f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, playerRot, 0.1f);
+            //prevent syncing on entrance to room
+            if (playerPos != Vector3.zero)
+            {
+                transform.position = Vector3.Lerp(transform.position, playerPos, 0.1f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, playerRot, 0.1f);
+            }
         }
 
     }
