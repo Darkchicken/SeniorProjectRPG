@@ -38,10 +38,12 @@ public class PlayerPortrait : MonoBehaviour
     }
    void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.P))
         {
             UpdatePortrait();
         }
+        */
     }
     public void UpdatePortrait()
     {
