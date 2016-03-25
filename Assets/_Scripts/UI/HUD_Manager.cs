@@ -14,6 +14,7 @@ public class HUD_Manager : MonoBehaviour {
     public Canvas cheatWindow;
     public Canvas friendsWindow;
     public Canvas questWindow;
+    public Canvas optionWindow;
 
     public Image healthGlobe;
     public Image resourceGlobe;
@@ -137,6 +138,28 @@ public class HUD_Manager : MonoBehaviour {
     {
         questWindow.GetComponent<RaycastUI>().OnMouseExit();
         questWindow.gameObject.SetActive(!questWindow.gameObject.activeInHierarchy);
+    }
+
+    public void ToggleOptionWindow()
+    {
+        optionWindow.GetComponent<RaycastUI>().OnMouseExit();
+        optionWindow.gameObject.SetActive(!optionWindow.gameObject.activeInHierarchy);
+    }
+
+    public void Logout()
+    {
+        PhotonNetwork.LoadLevel("Login");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ReturnToGame()
+    {
+        optionWindow.GetComponent<RaycastUI>().OnMouseExit();
+        optionWindow.gameObject.SetActive(false);
     }
 
 
