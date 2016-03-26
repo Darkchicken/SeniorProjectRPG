@@ -89,7 +89,7 @@ namespace UnityEngine.UI
 			this.Unassign();
 			
 			// Use the base class assign to set the icon
-			this.Assign(itemInfo.Icon);
+			this.Assign(itemInfo.icon);
 			
 			// Set the spell info
 			this.m_ItemInfo = itemInfo;
@@ -208,12 +208,12 @@ namespace UnityEngine.UI
 		/// </summary>
 		/// <param name="itemInfo">Item info.</param>
 		public static void PrepareTooltip(UIItemInfo itemInfo)
-		{
+		{/*
 			if (itemInfo == null)
 				return;
 			
 			// Set the title and description
-			UITooltip.AddTitle(itemInfo.Name);
+			UITooltip.AddTitle(itemInfo.name);
 			
 			// Item types
 			UITooltip.AddLineColumn(itemInfo.Type);
@@ -237,7 +237,7 @@ namespace UnityEngine.UI
 			
 			// Set the item description if not empty
 			if (!string.IsNullOrEmpty(itemInfo.Description))
-				UITooltip.AddDescription(itemInfo.Description);
+				UITooltip.AddDescription(itemInfo.Description);*/
 		}
 		
 		/// <summary>

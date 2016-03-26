@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace UnityEngine.UI
 {
 	public class UIItemDatabase : ScriptableObject {
-	
-		public UIItemInfo[] items;
+
+        public static UIItemDatabase uiItemDatabase;
+        public List<UIItemInfo> items;
+
+        void Awake()
+        {
+            uiItemDatabase = this;
+        }
 		
 		/// <summary>
 		/// Get the specified ItemInfo by index.
@@ -15,17 +22,18 @@ namespace UnityEngine.UI
 		{
 			return (this.items[index]);
 		}
+
 		
 		/// <summary>
 		/// Gets the specified ItemInfo by ID.
 		/// </summary>
 		/// <returns>The ItemInfo or NULL if not found.</returns>
 		/// <param name="ID">The item ID.</param>
-		public UIItemInfo GetByID(int ID)
+		public UIItemInfo GetByID(int id)
 		{
-			for (int i = 0; i < this.items.Length; i++)
+			for (int i = 0; i < this.items.Count; i++)
 			{
-				if (this.items[i].ID == ID)
+				if (this.items[i].id == id)
 					return this.items[i];
 			}
 			

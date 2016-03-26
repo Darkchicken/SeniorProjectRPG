@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
@@ -315,6 +316,32 @@ public class PlayFabApiCalls : MonoBehaviour
         (error) =>
         {
             Debug.Log("Catalog can't retrieved!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
+
+    //Get character's items
+    public static void GetAllCharacterItems()
+    {
+        var request = new GetCharacterInventoryRequest()
+        {
+            CharacterId = PlayFabDataStore.characterId
+        };
+        PlayFabClientAPI.GetCharacterInventory(request, (result) =>
+        {
+            foreach (var item in result.Inventory)
+            {
+                if (item.ItemClass == "Item")
+                {
+                }
+            }
+            Debug.Log("Items are retrieved");
+        },
+        (error) =>
+        {
+            Debug.Log("Items can't retrieved!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });

@@ -76,7 +76,7 @@ namespace UnityEngine.UI
 			this.Unassign();
 			
 			// Use the base class assign to set the icon
-			this.Assign(itemInfo.Icon);
+			this.Assign(itemInfo.icon);
 			
 			// Set the spell info
 			this.m_ItemInfo = itemInfo;
@@ -127,7 +127,7 @@ namespace UnityEngine.UI
 		/// <param name="info">Info.</param>
 		public virtual bool CheckEquipType(UIItemInfo info)
 		{
-			if (info.EquipType != this.equipType)
+			if (info.equipType != this.equipType)
 				return false;
 			
 			return true;

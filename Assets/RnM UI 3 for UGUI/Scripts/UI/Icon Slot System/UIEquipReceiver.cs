@@ -152,7 +152,7 @@ namespace UnityEngine.UI
 				if (itemSlot != null && itemSlot.IsAssigned())
 				{
 					// Try finding a suitable slot to equip
-					UIEquipSlot equipSlot = this.GetSlotByType(itemSlot.GetItemInfo().EquipType);
+					UIEquipSlot equipSlot = this.GetSlotByType(itemSlot.GetItemInfo().equipType);
 					
 					if (equipSlot != null)
 					{

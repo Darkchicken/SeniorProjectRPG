@@ -74,10 +74,10 @@ namespace UnityEngine.UI
 				this.m_Slot.Assign(slot.GetItemInfo());
 			
 			if (this.m_NameText != null)
-				this.m_NameText.text = slot.GetItemInfo().Name;
+				this.m_NameText.text = slot.GetItemInfo().name;
 			
-			if (this.m_DescriptionText != null)
-				this.m_DescriptionText.text = slot.GetItemInfo().Subtype + " " + slot.GetItemInfo().Type;
+			/*if (this.m_DescriptionText != null)
+				this.m_DescriptionText.text = slot.GetItemInfo().Subtype + " " + slot.GetItemInfo().Type;*/
 			
 			// Save a ref to the slot
 			this.m_SelectedSlot = slot;
