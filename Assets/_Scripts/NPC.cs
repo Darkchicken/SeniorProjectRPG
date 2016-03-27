@@ -73,7 +73,7 @@ public class NPC : MonoBehaviour {
     {
 
         //activate dialogue box
-        dialogueManager.StartDialogue(npcName,dialogue);
+        dialogueManager.StartDialogue(npcName,dialogue, transform.position);
         dialogueCamera.transform.position = transform.position+faceLocation;
         dialogueCamera.transform.rotation = transform.rotation;
         dialogueCamera.transform.Rotate(0,180,0);

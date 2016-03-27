@@ -8,10 +8,16 @@ public class Dialogue : MonoBehaviour {
     GameObject dialogueBox;
     Text dialogueText;
     Text displayName;
-    
+    double textTimer = 0;
+    double timeToSwitch = 5;
+
     List<string> messageList;
     int messageCount = 0;
     int totalMessages = 0;
+
+    Vector3 npcPosition = Vector3.zero;
+    bool inConversation = false;
+    GameObject player;
 	// Use this for initialization
 	void Start ()
     {
@@ -20,17 +26,32 @@ public class Dialogue : MonoBehaviour {
         dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
         displayName = GameObject.Find("DialogueName").GetComponent<Text>();
         dialogueBox.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	void Update()
     {
-        if (totalMessages > 0 && (Input.GetKeyDown(KeyCode.Space)))
+        if(dialogueBox.activeSelf == true)
+        {
+            textTimer += Time.deltaTime;
+            
+        }
+        if (totalMessages > 0 && ((Input.GetKeyDown(KeyCode.Space)) || textTimer > timeToSwitch))
         {
             NextMessage();
         }
+        if(inConversation && Vector3.Distance(player.transform.position, npcPosition) > 6)
+        {
+            //Debug.Log(Vector3.Distance(player.transform.position, npcPosition));
+            EndDialogue();
+        }
+        
     }
 	
-    public void StartDialogue(string name,List<string> messages)
+    public void StartDialogue(string name,List<string> messages, Vector3 npcPos)
     {
+        
+        npcPosition = npcPos;
+        inConversation = true;
         displayName.text = name;
         messageList = messages;
         dialogueBox.SetActive(true);
@@ -56,6 +77,7 @@ public class Dialogue : MonoBehaviour {
     }
     public void NextMessage()
     {
+        textTimer = 0;
         messageCount++;
         if (messageCount < totalMessages)
         {
@@ -72,6 +94,11 @@ public class Dialogue : MonoBehaviour {
         totalMessages = 0;
         messageCount = 0;
         dialogueBox.SetActive(false);
+        textTimer = 0;
+        inConversation = false;
+        npcPosition = Vector3.zero;
+        
     }
+   
 
     }
