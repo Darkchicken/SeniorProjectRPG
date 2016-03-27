@@ -6,7 +6,8 @@ namespace UnityEngine.UI
 	[Serializable]
 	public class UIItemInfo
 	{
-		public static int id = 0;
+        public static int counter = 0;
+		public int id;
 		public string name;
 		public Sprite icon;
 		//public string description;
@@ -26,7 +27,7 @@ namespace UnityEngine.UI
 
         public UIItemInfo(string _name, string _iconName, int _equipType, int _damage, int _armor, int _vitality, int _strength, int _intellect, int _spirit, int _crit)
         {
-            id++;
+            id = ++counter;
             name = _name;
         }
 
