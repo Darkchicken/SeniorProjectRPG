@@ -111,38 +111,38 @@ public class HUD_Manager : MonoBehaviour {
     }
 	public void ToggleCharacterWindow()
     {
-        characterWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         characterWindow.gameObject.SetActive(!characterWindow.gameObject.activeInHierarchy);
     }
 
     public void ToggleRuneWindow()
     {
-        runeWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         runeWindow.gameObject.SetActive(!runeWindow.gameObject.activeInHierarchy);
         
     }
 
     public void ToggleCheatPanel()
     {
-        cheatWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         cheatWindow.gameObject.SetActive(!cheatWindow.gameObject.activeInHierarchy);
     }
 
     public void ToggleFriendsList()
     {
-        friendsWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         friendsWindow.gameObject.SetActive(!friendsWindow.gameObject.activeInHierarchy);
     }
 
     public void ToggleQuestWindow()
     {
-        questWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         questWindow.gameObject.SetActive(!questWindow.gameObject.activeInHierarchy);
     }
 
     public void ToggleOptionWindow()
     {
-        optionWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         optionWindow.gameObject.SetActive(!optionWindow.gameObject.activeInHierarchy);
     }
 
@@ -158,7 +158,7 @@ public class HUD_Manager : MonoBehaviour {
 
     public void ReturnToGame()
     {
-        optionWindow.GetComponent<RaycastUI>().OnMouseExit();
+        GetComponent<RaycastUI>().OnMouseExit();
         optionWindow.gameObject.SetActive(false);
     }
 

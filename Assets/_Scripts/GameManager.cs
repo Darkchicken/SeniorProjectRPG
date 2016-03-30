@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         loading.gameObject.SetActive(true);
         runes.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
+        PlayFabApiCalls.GetAllCharacterItems();
         PlayFabApiCalls.GetCharacterCompletedQuests();
         PlayFabApiCalls.GetCharacterStats();
         PlayFabApiCalls.GetFriendsList();

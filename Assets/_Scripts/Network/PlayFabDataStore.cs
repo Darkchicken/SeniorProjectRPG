@@ -27,10 +27,11 @@ public class PlayFabDataStore : MonoBehaviour
     public static Dictionary<int, string> playerActiveSkillRunes = new Dictionary<int, string>();
     public static Dictionary<string, int> playerActiveModifierRunes = new Dictionary<string, int>();
     public static Dictionary<string, CatalogQuest> catalogQuests = new Dictionary<string, CatalogQuest>();
-    //public static Dictionary<string, PlayerQuest> playerAllQuests = new Dictionary<string, PlayerQuest>();
+    public static Dictionary<string, UIItemInfo> catalogItems = new Dictionary<string, UIItemInfo>();
 
     public static List<string> playerCompletedQuests = new List<string>();
     public static List<string> playerQuestLog = new List<string>();
+    public static List<string> playerInventory = new List<string>();
 
     //Player
 
@@ -44,7 +45,9 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerIntellect;
     public static int playerDexterity;
     public static int playerVitality;
+    public static int playerSpirit;
     public static int playerCriticalChance;
+    public static int playerArmor;
     public static int playerWeaponDamage;
     public static Dictionary<string, string> playerInitialData = new Dictionary<string, string>()
     {

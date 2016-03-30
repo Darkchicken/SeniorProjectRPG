@@ -12,22 +12,32 @@ public class Test_UIItemSlot_Assign : MonoBehaviour {
 	{
 		if (this.slot == null)
 			this.slot = this.GetComponent<UIItemSlot>();
+        if (PlayFabDataStore.playerInventory.Count >= assignItem)
+        {
+            itemDatabase.items.Add(PlayFabDataStore.catalogItems[PlayFabDataStore.playerInventory[assignItem - 1]]);
+        }
+            
 	}
 	
 	void Start()
 	{
-		if (this.slot == null || this.itemDatabase == null)
-		{
-			this.Destruct();
-			return;
-		}
-		
-		this.slot.Assign(this.itemDatabase.GetByID(this.assignItem));
-		this.Destruct();
-	}
-	
-	private void Destruct()
+        if (this.slot == null || PlayFabDataStore.playerInventory == null)
+        {
+            this.Destruct();
+            return;
+        }
+        slot.Assign(itemDatabase.GetByID(assignItem - 1));
+        Destruct();
+
+    }
+
+    private void Destruct()
 	{
 		DestroyImmediate(this);
 	}
+
+    void OnApplicationQuit()
+    {
+        itemDatabase.items.Clear();
+    }
 }

@@ -11,7 +11,7 @@ namespace UnityEngine.UI
 
         void Awake()
         {
-            uiItemDatabase = this;
+            //uiItemDatabase = this;
         }
 		
 		/// <summary>
@@ -31,13 +31,16 @@ namespace UnityEngine.UI
 		/// <param name="ID">The item ID.</param>
 		public UIItemInfo GetByID(int id)
 		{
-			for (int i = 0; i < this.items.Count; i++)
+			/*for (int i = 0; i < this.items.Count; i++)
 			{
 				if (this.items[i].id == id)
 					return this.items[i];
-			}
-			
-			return null;
+			}*/
+			if(items.Count > id)
+            {
+                return items[id];
+            }
+            return null;
 		}
 	}
 }

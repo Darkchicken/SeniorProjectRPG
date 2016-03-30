@@ -69,6 +69,7 @@ public class PlayFabApiCalls : MonoBehaviour
             PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
             GetCatalogRunes();
             GetCatalogQuests();
+            GetCatalogItems();
         }, (error) =>
         {
             PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);
@@ -182,7 +183,9 @@ public class PlayFabApiCalls : MonoBehaviour
             PlayFabDataStore.playerIntellect = int.Parse(result.Data["Intellect"].Value);
             PlayFabDataStore.playerDexterity = int.Parse(result.Data["Dexterity"].Value);
             PlayFabDataStore.playerVitality = int.Parse(result.Data["Vitality"].Value);
+            PlayFabDataStore.playerVitality = int.Parse(result.Data["Spirit"].Value);
             PlayFabDataStore.playerCriticalChance = int.Parse(result.Data["Critical Chance"].Value);
+            PlayFabDataStore.playerVitality = int.Parse(result.Data["Armor"].Value);
             PlayFabDataStore.playerWeaponDamage = int.Parse(result.Data["Weapon Damage"].Value);
             Debug.Log("Data successfully retrieved!");
 
@@ -322,31 +325,7 @@ public class PlayFabApiCalls : MonoBehaviour
 
     }
 
-    //Get character's items
-    public static void GetAllCharacterItems()
-    {
-        var request = new GetCharacterInventoryRequest()
-        {
-            CharacterId = PlayFabDataStore.characterId
-        };
-        PlayFabClientAPI.GetCharacterInventory(request, (result) =>
-        {
-            foreach (var item in result.Inventory)
-            {
-                if (item.ItemClass == "Item")
-                {
-                }
-            }
-            Debug.Log("Items are retrieved");
-        },
-        (error) =>
-        {
-            Debug.Log("Items can't retrieved!");
-            Debug.Log(error.ErrorMessage);
-            Debug.Log(error.ErrorDetails);
-        });
 
-    }
 
     public static void SetCustomDataOnItem(string key, string value, string itemInstanceId)
     {
@@ -540,6 +519,36 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
+    //Gets all the items in the game and stores them
+    public static void GetCatalogItems()
+    {
+        var request = new GetCatalogItemsRequest()
+        {
+        };
+        PlayFabClientAPI.GetCatalogItems(request, (result) =>
+        {
+            foreach (var item in result.Catalog)
+            {
+                if (item.ItemClass == "Item")
+                {
+                    string[] customData = item.CustomData.Split('"');
+
+                    PlayFabDataStore.catalogItems.Add(item.ItemId, new UIItemInfo(item.DisplayName, customData[3], int.Parse(customData[7]),
+                        int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]),
+                        int.Parse(customData[35])));
+                }
+            }
+            Debug.Log("Items are retrieved");
+        },
+        (error) =>
+        {
+            Debug.Log("Items can't retrieved!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
+
     //Gets all the quests in the game and stores them
     public static void GetCatalogQuests()
     {
@@ -593,6 +602,34 @@ public class PlayFabApiCalls : MonoBehaviour
         (error) =>
         {
             Debug.Log("Character Quests can't retrieved!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+
+    }
+
+    //Gets all the quests that player completed
+    public static void GetAllCharacterItems()
+    {
+        var request = new GetCharacterInventoryRequest()
+        {
+            CharacterId = PlayFabDataStore.characterId
+        };
+        PlayFabClientAPI.GetCharacterInventory(request, (result) =>
+        {
+            foreach (var item in result.Inventory)
+            {
+                if (item.ItemClass == "Item")
+                {
+                        PlayFabDataStore.playerInventory.Add(item.ItemId);
+                }
+
+            }
+            Debug.Log("Character Items are retrieved");
+        },
+        (error) =>
+        {
+            Debug.Log("Character Items can't retrieved!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });
