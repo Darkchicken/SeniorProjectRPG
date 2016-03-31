@@ -6,9 +6,9 @@ public class Test_UIEquipSlot_Assign : MonoBehaviour {
 	
 	public UIEquipSlot slot;
 	public UIItemDatabase itemDatabase;
-	public int assignItem;
+	public string itemType;
 	
-	void Awake()
+	void OnEnable()
 	{
 		if (this.slot == null)
 			this.slot = this.GetComponent<UIEquipSlot>();
@@ -22,8 +22,12 @@ public class Test_UIEquipSlot_Assign : MonoBehaviour {
 			return;
 		}
 		
-		this.slot.Assign(this.itemDatabase.GetByID(this.assignItem));
-		this.Destruct();
+        if(PlayFabDataStore.playerEquippedItems.ContainsKey(itemType))
+        {
+            this.slot.Assign(PlayFabDataStore.catalogItems[PlayFabDataStore.playerEquippedItems[itemType].itemId]);
+            this.Destruct();
+        }
+		
 	}
 	
 	private void Destruct()

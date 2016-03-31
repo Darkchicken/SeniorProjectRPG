@@ -12,8 +12,8 @@ namespace UnityEngine.UI
 		public Sprite icon;
 		//public string description;
 		public UIEquipmentType equipType;
-		//public int itemType;
-		//public string type;
+		public string itemType;
+        public string itemClass;
 		//public string subtype;
 		public int damage;
 		//public float attackSpeed;
@@ -25,12 +25,14 @@ namespace UnityEngine.UI
         public int spirit;
         public int crit;
 
-        public UIItemInfo(string _name, string _iconName, int _equipType, int _damage, int _armor, int _vitality, int _strength, int _intellect, int _spirit, int _crit)
+        public UIItemInfo(string _name, string _iconName, int _equipType, string _itemType, int _damage, int _armor, int _vitality, int _strength, int _intellect, int _spirit, int _crit)
         {
             //id = counter;
             name = _name;
             icon = Resources.Load<Sprite>(_iconName);
             equipType = (UIEquipmentType)_equipType;
+            itemType = _itemType;
+            itemClass = "Item";
             damage = _damage;
             armor = _armor;
             vitality = _vitality;
@@ -38,6 +40,7 @@ namespace UnityEngine.UI
             intellect = _intellect;
             spirit = _spirit;
             crit = _crit;
+
             //counter++;
         }
 

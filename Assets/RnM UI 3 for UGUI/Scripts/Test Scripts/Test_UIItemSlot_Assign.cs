@@ -8,13 +8,13 @@ public class Test_UIItemSlot_Assign : MonoBehaviour {
 	public UIItemDatabase itemDatabase;
 	public int assignItem;
 	
-	void Awake()
+	void OnEnable()
 	{
 		if (this.slot == null)
 			this.slot = this.GetComponent<UIItemSlot>();
         if (PlayFabDataStore.playerInventory.Count >= assignItem)
         {
-            itemDatabase.items.Add(PlayFabDataStore.catalogItems[PlayFabDataStore.playerInventory[assignItem - 1]]);
+            itemDatabase.items.Add(PlayFabDataStore.catalogItems[PlayFabDataStore.playerInventory[assignItem - 1].itemId]);
         }
             
 	}

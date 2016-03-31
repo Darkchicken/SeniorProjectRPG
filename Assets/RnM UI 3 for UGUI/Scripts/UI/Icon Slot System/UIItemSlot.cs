@@ -208,7 +208,7 @@ namespace UnityEngine.UI
 		/// </summary>
 		/// <param name="itemInfo">Item info.</param>
 		public static void PrepareTooltip(UIItemInfo itemInfo)
-		{/*
+		{
 			if (itemInfo == null)
 				return;
 			
@@ -216,10 +216,10 @@ namespace UnityEngine.UI
 			UITooltip.AddTitle(itemInfo.name);
 			
 			// Item types
-			UITooltip.AddLineColumn(itemInfo.Type);
-			UITooltip.AddLineColumn(itemInfo.Subtype);
+			UITooltip.AddLineColumn(itemInfo.itemType);
+			//UITooltip.AddLineColumn(itemInfo.Subtype);
 			
-			if (itemInfo.ItemType == 1)
+			/*if (itemInfo.ItemType == 1)
 			{
 				UITooltip.AddLineColumn(itemInfo.Damage.ToString() + " Damage");
 				UITooltip.AddLineColumn(itemInfo.AttackSpeed.ToString("0.0") + " Attack speed");
@@ -230,15 +230,33 @@ namespace UnityEngine.UI
 			{
 				UITooltip.AddLineColumn(itemInfo.Block.ToString() + " Block");
 				UITooltip.AddLineColumn(itemInfo.Armor.ToString() + " Armor");
-			}
+			}*/
 		
-			UITooltip.AddLine("+" + itemInfo.Stamina.ToString() + " Stamina", new RectOffset(0, 0, 6, 0));
-			UITooltip.AddLine("+" + itemInfo.Strength.ToString() + " Strength");
-			
-			// Set the item description if not empty
-			if (!string.IsNullOrEmpty(itemInfo.Description))
-				UITooltip.AddDescription(itemInfo.Description);*/
-		}
+            if(itemInfo.vitality > 0)
+            {
+                UITooltip.AddLine("+" + itemInfo.vitality.ToString() + " Vitality", new RectOffset(0, 0, 6, 0));
+            }
+            if (itemInfo.strength > 0)
+            {
+                UITooltip.AddLine("+" + itemInfo.strength.ToString() + " Strength");
+            }
+            if (itemInfo.intellect > 0)
+            {
+                UITooltip.AddLine("+" + itemInfo.intellect.ToString() + " Intellect");
+            }
+            if (itemInfo.spirit > 0)
+            {
+                UITooltip.AddLine("+" + itemInfo.spirit.ToString() + " Spirit");
+            }
+            if (itemInfo.crit > 0)
+            {
+                UITooltip.AddLine("+" + itemInfo.crit.ToString() + " Critical Chance");
+            }
+
+
+
+
+        }
 		
 		/// <summary>
 		/// Raises the tooltip event.

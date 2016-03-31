@@ -219,7 +219,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Grant character the items in the array
-    public static void GrantItemsToCharacter(string[] items, string customDataTitle, string itemType)
+    public static void GrantItemsToCharacter(string[] items, string customDataTitle, string itemClass)
     {
         var request = new RunCloudScriptRequest()
         {
@@ -228,11 +228,16 @@ public class PlayFabApiCalls : MonoBehaviour
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-            if(itemType == "Rune")
+            if(itemClass == "Rune")
             {
                 string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
                 SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
-            }      
+            }
+            if (itemClass == "Item")
+            {
+                string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+                SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+            }
         },
         (error) =>
         {
@@ -534,8 +539,8 @@ public class PlayFabApiCalls : MonoBehaviour
                     string[] customData = item.CustomData.Split('"');
 
                     PlayFabDataStore.catalogItems.Add(item.ItemId, new UIItemInfo(item.DisplayName, customData[3], int.Parse(customData[7]),
-                        int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]),
-                        int.Parse(customData[35])));
+                        customData[11], int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]),
+                        int.Parse(customData[35]), int.Parse(customData[39])));
                 }
             }
             Debug.Log("Items are retrieved");
@@ -608,7 +613,7 @@ public class PlayFabApiCalls : MonoBehaviour
 
     }
 
-    //Gets all the quests that player completed
+    //Gets all the items that player completed
     public static void GetAllCharacterItems()
     {
         var request = new GetCharacterInventoryRequest()
@@ -621,7 +626,20 @@ public class PlayFabApiCalls : MonoBehaviour
             {
                 if (item.ItemClass == "Item")
                 {
-                        PlayFabDataStore.playerInventory.Add(item.ItemId);
+                    
+                    if (item.CustomData == null)
+                    {
+                        PlayFabDataStore.playerInventory.Add(new PlayerItemInfo(item.ItemId, item.ItemInstanceId, "0"));
+                    }
+                    else
+                    {
+                        PlayFabDataStore.playerInventory.Add(new PlayerItemInfo(item.ItemId, item.ItemInstanceId, item.CustomData["IsEquipped"].ToString()));
+                        if (item.CustomData["IsEquipped"] == "1")
+                        {
+                            
+                            PlayFabDataStore.playerEquippedItems.Add(PlayFabDataStore.catalogItems[item.ItemId].itemType, PlayFabDataStore.playerInventory[PlayFabDataStore.playerInventory.Count - 1]);
+                        }
+                    }
                 }
 
             }
