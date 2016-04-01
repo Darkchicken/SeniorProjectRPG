@@ -66,7 +66,7 @@ public class PlayFabApiCalls : MonoBehaviour
             PhotonNetwork.AuthValues.AddAuthParameter("Token", result.PhotonCustomAuthenticationToken);
             PhotonNetwork.AuthValues.UserId = PlayFabDataStore.playFabId;
             PhotonNetwork.ConnectUsingSettings("1.0");
-            PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
+            
             GetCatalogRunes();
             GetCatalogQuests();
             GetCatalogItems();
@@ -177,16 +177,16 @@ public class PlayFabApiCalls : MonoBehaviour
         {    
             PlayFabDataStore.playerLevel = int.Parse(result.Data["Level"].Value);
             PlayFabDataStore.playerExperience = int.Parse(result.Data["Experience"].Value);
-            PlayFabDataStore.playerMaxHealth = int.Parse(result.Data["Health"].Value);
+            PlayFabDataStore.playerBaseHealth = int.Parse(result.Data["Health"].Value);
             PlayFabDataStore.playerMaxResource = int.Parse(result.Data["Resource"].Value);
-            PlayFabDataStore.playerStrength = int.Parse(result.Data["Strength"].Value);
-            PlayFabDataStore.playerIntellect = int.Parse(result.Data["Intellect"].Value);
-            PlayFabDataStore.playerDexterity = int.Parse(result.Data["Dexterity"].Value);
-            PlayFabDataStore.playerVitality = int.Parse(result.Data["Vitality"].Value);
-            PlayFabDataStore.playerVitality = int.Parse(result.Data["Spirit"].Value);
-            PlayFabDataStore.playerCriticalChance = int.Parse(result.Data["Critical Chance"].Value);
-            PlayFabDataStore.playerVitality = int.Parse(result.Data["Armor"].Value);
-            PlayFabDataStore.playerWeaponDamage = int.Parse(result.Data["Weapon Damage"].Value);
+            PlayFabDataStore.playerBaseStrength = int.Parse(result.Data["Strength"].Value);
+            PlayFabDataStore.playerBaseIntellect = int.Parse(result.Data["Intellect"].Value);
+            PlayFabDataStore.playerBaseDexterity = int.Parse(result.Data["Dexterity"].Value);
+            PlayFabDataStore.playerBaseVitality = int.Parse(result.Data["Vitality"].Value);
+            PlayFabDataStore.playerBaseSpirit = int.Parse(result.Data["Spirit"].Value);
+            PlayFabDataStore.playerBaseCriticalChance = int.Parse(result.Data["Critical Chance"].Value);
+            PlayFabDataStore.playerArmor = int.Parse(result.Data["Armor"].Value);
+            //PlayFabDataStore.playerBaseWeaponDamage = int.Parse(result.Data["Weapon Damage"].Value);
             Debug.Log("Data successfully retrieved!");
 
         }, (error) =>
@@ -544,6 +544,7 @@ public class PlayFabApiCalls : MonoBehaviour
                 }
             }
             Debug.Log("Items are retrieved");
+            PlayFabUserLogin.playfabUserLogin.Authentication("AUTHENTICATING...", 1);
         },
         (error) =>
         {

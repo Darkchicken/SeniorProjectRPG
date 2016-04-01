@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public Canvas loading;
     public Canvas runes;
+    public Canvas character;
     public UIItemDatabase itemDatabase;
     public static List<GameObject> players = new List<GameObject>();
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         itemDatabase.items.Clear();
         loading.gameObject.SetActive(true);
         runes.gameObject.SetActive(true);
+        //character.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
         PlayFabApiCalls.GetAllCharacterItems();
         PlayFabApiCalls.GetCharacterCompletedQuests();
@@ -26,9 +28,13 @@ public class GameManager : MonoBehaviour
         PlayFabApiCalls.GetFriendsList();
         PlayFabApiCalls.GetQuestLog();
 
-        //Invoke("SortRunes", 1);
+        //Invoke("CalculateStats", 1);
         Invoke("SetPlayerData", 1.5f);
         Invoke("RefreshActionBar", 2);   
+    }
+    void CalculateStats()
+    {
+        CharacterStats.characterStats.CalculateStats();
     }
 
     void SortRunes()
@@ -47,6 +53,8 @@ public class GameManager : MonoBehaviour
     void SetPlayerData()
     {
         runes.gameObject.SetActive(false);
+        //character.gameObject.SetActive(false);
+        PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth;
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
 

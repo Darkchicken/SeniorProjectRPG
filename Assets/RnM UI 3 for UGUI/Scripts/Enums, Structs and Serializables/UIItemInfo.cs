@@ -31,7 +31,7 @@ namespace UnityEngine.UI
             //id = counter;
             itemId = _itemId;
             name = _name;
-            icon = Resources.Load<Sprite>(_iconName);
+            icon = Resources.Load<Sprite>("ItemIcons/" + _iconName);
             equipType = (UIEquipmentType)_equipType;
             itemType = _itemType;
             itemClass = "Item";
