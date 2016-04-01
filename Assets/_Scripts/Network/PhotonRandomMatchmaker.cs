@@ -16,6 +16,7 @@ public class PhotonRandomMatchmaker : PunBehaviour
 
     public override void OnJoinedLobby()
     {
+        PhotonNetwork.automaticallySyncScene = true;
         //PhotonNetwork.JoinRandomRoom();
         PhotonNetwork.CreateRoom(null);
     }
