@@ -51,6 +51,7 @@ public class Health : MonoBehaviour {
     private bool critActivate = false;
 
     private int bleedCount = 1;
+    private int counter = 0;
 
     
 
@@ -67,7 +68,9 @@ public class Health : MonoBehaviour {
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
         enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
         
+
         Invoke("InitializeHealth", 1);
+        Invoke("StartHealthRegenration", 10);
     }
 
     void InitializeHealth()
@@ -93,6 +96,12 @@ public class Health : MonoBehaviour {
                 }
             }
         }
+        
+    }
+
+    void StartHealthRegenration()
+    {
+        StartCoroutine(HealthRegeneration());
     }
 
     void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
@@ -103,6 +112,11 @@ public class Health : MonoBehaviour {
     public void UpdateHealth()
     {
         photonView.RPC("SetHealth", PhotonTargets.AllViaServer, health, maxHealth);
+    }
+
+    public void CharacterStatsUpdateHealth(int _maxHealth)
+    {
+        photonView.RPC("SetHealth", PhotonTargets.AllViaServer, health, _maxHealth);
     }
 
     [PunRPC]
@@ -158,6 +172,28 @@ public class Health : MonoBehaviour {
         isChilled = _isChilled;
         maxChillTime = _maxChillTime;
         increasedDamagePercentage = _increasedDamagePercentage;
+    }
+
+    IEnumerator HealthRegeneration()
+    {
+        if (PlayFabDataStore.playerCurrentHealth + PlayFabDataStore.playerSpirit / 5 <= PlayFabDataStore.playerMaxHealth)
+        {
+            Debug.Log(PlayFabDataStore.playerSpirit / 5);
+            PlayFabDataStore.playerCurrentHealth += PlayFabDataStore.playerSpirit / 5;
+            health = PlayFabDataStore.playerCurrentHealth;
+        }
+        else
+        {
+            health = PlayFabDataStore.playerMaxHealth;
+        }
+        
+        UpdateHealth();
+
+        yield return new WaitForSeconds(1);
+        
+
+        StartCoroutine(HealthRegeneration());
+
     }
 
     void Update()

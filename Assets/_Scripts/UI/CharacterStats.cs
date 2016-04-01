@@ -17,14 +17,24 @@ public class CharacterStats : MonoBehaviour {
     public Text textSpellPower;
     public Text textAttackPower;
 
+    private float calculationTimer = 0f;
+    private float calculationTimerMax = 0f;
+
     void Awake()
     {
         characterStats = this;
+        calculationTimerMax = 1;
     }
 
     void OnEnable()
     {
         CalculateStats();
+        
+    }
+
+    void Update()
+    {
+        calculationTimer += Time.deltaTime;
     }
 
     void SetStatsText()
@@ -45,6 +55,7 @@ public class CharacterStats : MonoBehaviour {
 
     public void CalculateStats()
     {
+        calculationTimer = 0;
         Debug.Log("Calculating the Stats...");
         CalculateVitality();
         CalculateStrength();
@@ -56,6 +67,13 @@ public class CharacterStats : MonoBehaviour {
         CalculateWeaponDamage();
         CalculateSpellPower();
         CalculateAttackPower();
+        Invoke("UpdateHealth", 0);
+        
+    }
+
+    void UpdateHealth()
+    {
+        GameManager.players[0].GetComponent<Health>().CharacterStatsUpdateHealth(PlayFabDataStore.playerMaxHealth);
     }
 
     void CalculateVitality()
@@ -69,6 +87,11 @@ public class CharacterStats : MonoBehaviour {
         PlayFabDataStore.playerVitality = PlayFabDataStore.playerBaseVitality + vitality;
         PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth + PlayFabDataStore.playerVitality * 10;
         textVitality.text = PlayFabDataStore.playerVitality.ToString();
+        Debug.Log("Health Max: " + PlayFabDataStore.playerMaxHealth);
+        if(PlayFabDataStore.playerMaxHealth < PlayFabDataStore.playerCurrentHealth)
+        {
+            PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+        }
     }
     void CalculateStrength()
     {

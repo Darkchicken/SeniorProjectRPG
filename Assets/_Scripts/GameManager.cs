@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
         itemDatabase.items.Clear();
         loading.gameObject.SetActive(true);
         runes.gameObject.SetActive(true);
-        //character.gameObject.SetActive(true);
         PlayFabApiCalls.GetAllCharacterRunes();
         PlayFabApiCalls.GetAllCharacterItems();
         PlayFabApiCalls.GetCharacterCompletedQuests();
@@ -29,9 +28,13 @@ public class GameManager : MonoBehaviour
         PlayFabApiCalls.GetQuestLog();
 
         //Invoke("CalculateStats", 1);
-        Invoke("SetPlayerData", 1.5f);
-        Invoke("RefreshActionBar", 2);   
+        
+        
+        Invoke("SetPlayerHealth", 2);
+        Invoke("RefreshActionBar", 3);
+        Invoke("UpdatePlayerHealth", 5);
     }
+
     void CalculateStats()
     {
         CharacterStats.characterStats.CalculateStats();
@@ -43,20 +46,34 @@ public class GameManager : MonoBehaviour
         RuneWindow.SortAllRunes();
 
     }
-    void RefreshActionBar()
-    {
-        ActionBar.RefreshActionBar();
-        Debug.Log("RefreshedActionBar");
-        RuneWindow.ToggleWindows();
-    }
 
-    void SetPlayerData()
+    void SetPlayerHealth()
     {
         runes.gameObject.SetActive(false);
-        //character.gameObject.SetActive(false);
         PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth;
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
+
+    void RefreshActionBar()
+    {
+        character.gameObject.SetActive(true);
+        ActionBar.RefreshActionBar();
+        Debug.Log("RefreshedActionBar");
+        RuneWindow.ToggleWindows();
+        
+
+    }
+
+    void UpdatePlayerHealth()
+    {
+        PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth;
+        character.gameObject.SetActive(false);
+        character.gameObject.SetActive(true);
+        character.gameObject.SetActive(false);
+        PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+    }
+
+    
 
     public void CalculatePlayerStats()
     {
