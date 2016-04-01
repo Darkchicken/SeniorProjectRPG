@@ -98,22 +98,33 @@ namespace UnityEngine.UI
 			if (source is UIItemSlot)
 			{
 				UIItemSlot sourceSlot = source as UIItemSlot;
-				
-				// Check if the equipment type matches the target slot
-				if (!this.CheckEquipType(sourceSlot.GetItemInfo()))
+                Debug.Log("UIEquipSlot 1");
+                // Check if the equipment type matches the target slot
+                if (!this.CheckEquipType(sourceSlot.GetItemInfo()))
 					return false;
-				
-				return this.Assign(sourceSlot.GetItemInfo());
+
+                //Dragging Item from the inventory slot to Equip sets playfab data - this only works when equip slot is empty
+                foreach (var item in PlayFabDataStore.playerInventoryInfo[sourceSlot.GetItemInfo().itemId])
+                {
+                    if (item.isEquipped == "0")
+                    {
+                        item.isEquipped = "1";
+                        PlayFabDataStore.playerEquippedItems.Add(sourceSlot.GetItemInfo().itemType, item);
+                        PlayFabApiCalls.SetCustomDataOnItem("IsEquipped", "1", item.itemInstanceId);
+                    }
+                }
+                Debug.Log("Item Equipped from UIItemSlot");
+                return this.Assign(sourceSlot.GetItemInfo());
 			}
 			else if (source is UIEquipSlot)
 			{
 				UIEquipSlot sourceSlot = source as UIEquipSlot;
-				
-				// Check if the equipment type matches the target slot
-				if (!this.CheckEquipType(sourceSlot.GetItemInfo()))
+                Debug.Log("UIEquipSlot 2");
+                // Check if the equipment type matches the target slot
+                if (!this.CheckEquipType(sourceSlot.GetItemInfo()))
 					return false;
-				
-				return this.Assign(sourceSlot.GetItemInfo());
+                
+                return this.Assign(sourceSlot.GetItemInfo());
 			}
 			
 			// Default
@@ -147,7 +158,10 @@ namespace UnityEngine.UI
 			// Invoke the on unassign event
 			if (this.onUnassign != null)
 				this.onUnassign.Invoke(this);
-		}
+
+            
+
+        }
 		
 		/// <summary>
 		/// Determines whether this slot can swap with the specified target slot.
@@ -158,14 +172,46 @@ namespace UnityEngine.UI
 		{
 			if ((target is UIItemSlot) || (target is UIEquipSlot))
 			{
-				// Check if the equip slot accpets this item
-				if (target is UIEquipSlot)
+                Debug.Log("0" + GetItemInfo().itemId);
+                //Dragging and dropping an item from the inventory slot swaps the items and sets the playfab data for the swapped item - for the one that was already equipped
+                foreach (var item in PlayFabDataStore.playerInventoryInfo[GetItemInfo().itemId])
+                {
+                    if (item.isEquipped == "1")
+                    {
+                        item.isEquipped = "0";
+                        PlayFabApiCalls.SetCustomDataOnItem("IsEquipped", "0", item.itemInstanceId);
+                    }
+                }
+                Debug.Log("Item UnEquipped from slotSwap");
+
+                // Check if the equip slot accpets this item
+                if (target is UIEquipSlot)
 				{
-					return (target as UIEquipSlot).CheckEquipType(this.GetItemInfo());
+                    Debug.Log("UIEquipSlot 3");
+                    return (target as UIEquipSlot).CheckEquipType(this.GetItemInfo());
 				}
-				
-				// It's an item slot
-				return true;
+                if (target is UIItemSlot)
+                {
+                    Debug.Log("UIEquipSlot 4");
+                    Debug.Log("1 " + GetItemInfo().itemId);
+                    UIItemSlot sourceSlot = target as UIItemSlot;
+                    if (sourceSlot != null)
+                    {
+                        //Dragging Item from the equip slot to Inventory sets playfab data
+                        foreach (var item in PlayFabDataStore.playerInventoryInfo[sourceSlot.GetItemInfo().itemId])
+                        {
+                            if (item.isEquipped == "0")
+                            {
+                                item.isEquipped = "1";
+                                PlayFabDataStore.playerEquippedItems[sourceSlot.GetItemInfo().itemType] = item;
+                                PlayFabApiCalls.SetCustomDataOnItem("IsEquipped", "1", item.itemInstanceId);
+                            }
+                        }
+                        Debug.Log("Item Equipped in UIEquipSlot slotSwap");
+                    }
+                }
+                // It's an item slot
+                return true;
 			}
 			
 			// Default
@@ -187,16 +233,16 @@ namespace UnityEngine.UI
 			if (sourceObject is UIItemSlot)
 			{
 				sourceItemInfo = (sourceObject as UIItemSlot).GetItemInfo();
-				
-				// Assign the source slot by this one
-				assign1 = (sourceObject as UIItemSlot).Assign(this.GetItemInfo());
+                
+                // Assign the source slot by this one
+                assign1 = (sourceObject as UIItemSlot).Assign(this.GetItemInfo());
 			}
 			else if (sourceObject is UIEquipSlot)
 			{
 				sourceItemInfo = (sourceObject as UIEquipSlot).GetItemInfo();
-				
-				// Assign the source slot by this one
-				assign1 = (sourceObject as UIEquipSlot).Assign(this.GetItemInfo());
+
+                // Assign the source slot by this one
+                assign1 = (sourceObject as UIEquipSlot).Assign(this.GetItemInfo());
 			}
 			else
 			{

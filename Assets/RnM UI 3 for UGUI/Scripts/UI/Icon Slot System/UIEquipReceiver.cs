@@ -151,8 +151,21 @@ namespace UnityEngine.UI
 				// Make sure the slot we are dropping is valid and assigned
 				if (itemSlot != null && itemSlot.IsAssigned())
 				{
-					// Try finding a suitable slot to equip
-					UIEquipSlot equipSlot = this.GetSlotByType(itemSlot.GetItemInfo().equipType);
+                    Debug.Log("1 " + itemSlot.GetItemInfo().itemId);
+                    //Dragging and dropping an item from the inventory slot to Equip screen sets playfab data
+                    foreach (var item in PlayFabDataStore.playerInventoryInfo[itemSlot.GetItemInfo().itemId])
+                    {
+                        if (item.isEquipped == "0")
+                        {
+                            item.isEquipped = "1";
+                            PlayFabDataStore.playerEquippedItems[itemSlot.GetItemInfo().itemType] = item;
+                            PlayFabApiCalls.SetCustomDataOnItem("IsEquipped", "1", item.itemInstanceId);
+                            break;
+                        }
+                    }
+                    Debug.Log("Item Equipped from OnDrop");
+                    // Try finding a suitable slot to equip
+                    UIEquipSlot equipSlot = this.GetSlotByType(itemSlot.GetItemInfo().equipType);
 					
 					if (equipSlot != null)
 					{

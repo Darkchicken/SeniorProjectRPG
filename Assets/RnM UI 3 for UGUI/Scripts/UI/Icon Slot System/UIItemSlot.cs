@@ -111,16 +111,35 @@ namespace UnityEngine.UI
 			if (source is UIItemSlot)
 			{
 				UIItemSlot sourceSlot = source as UIItemSlot;
-				
-				if (sourceSlot != null)
-					return this.Assign(sourceSlot.GetItemInfo());
+
+                Debug.Log("UIItemSlot 1");
+                if (sourceSlot != null)
+                {
+                    Debug.Log("UIItemSlot 2");
+                    return this.Assign(sourceSlot.GetItemInfo());
+                }
 			}
 			else if (source is UIEquipSlot)
 			{
 				UIEquipSlot sourceSlot = source as UIEquipSlot;
-				
-				if (sourceSlot != null)
-					return this.Assign(sourceSlot.GetItemInfo());
+                Debug.Log("UIItemSlot 3");
+                if (sourceSlot != null)
+                {
+                    //Dragging Item from the equip slot to Inventory sets playfab data
+                    foreach (var item in PlayFabDataStore.playerInventoryInfo[sourceSlot.GetItemInfo().itemId])
+                    {
+                        if (item.isEquipped == "1")
+                        {
+                            item.isEquipped = "0";
+                            PlayFabDataStore.playerEquippedItems.Remove(sourceSlot.GetItemInfo().itemType);
+                            PlayFabApiCalls.SetCustomDataOnItem("IsEquipped", "0", item.itemInstanceId);
+                        }
+                    }
+                    Debug.Log("Item UnEquipped in UIEquipSlot");
+
+                    return this.Assign(sourceSlot.GetItemInfo());
+                }
+                    
 			}
 			
 			// Default

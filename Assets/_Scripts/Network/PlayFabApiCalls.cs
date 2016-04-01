@@ -538,9 +538,9 @@ public class PlayFabApiCalls : MonoBehaviour
                 {
                     string[] customData = item.CustomData.Split('"');
 
-                    PlayFabDataStore.catalogItems.Add(item.ItemId, new UIItemInfo(item.DisplayName, customData[3], int.Parse(customData[7]),
+                    PlayFabDataStore.catalogItems.Add(item.ItemId, new UIItemInfo(item.ItemId, item.DisplayName, customData[3], int.Parse(customData[7]),
                         customData[11], int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]),
-                        int.Parse(customData[35]), int.Parse(customData[39])));
+                        int.Parse(customData[35]), int.Parse(customData[39]), int.Parse(customData[43])));
                 }
             }
             Debug.Log("Items are retrieved");
@@ -626,18 +626,57 @@ public class PlayFabApiCalls : MonoBehaviour
             {
                 if (item.ItemClass == "Item")
                 {
+                    List<PlayerItemInfo> itemInfoList = new List<PlayerItemInfo>();
                     
                     if (item.CustomData == null)
                     {
-                        PlayFabDataStore.playerInventory.Add(new PlayerItemInfo(item.ItemId, item.ItemInstanceId, "0"));
+                        PlayerItemInfo itemInfo = new PlayerItemInfo(item.ItemId, item.ItemInstanceId, "0");
+                        PlayFabDataStore.playerInventory.Add(item.ItemId);
+                        Debug.Log("1");
+                        if(PlayFabDataStore.playerInventoryInfo.ContainsKey(item.ItemId))
+                        {
+                            Debug.Log("2");
+                            PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
+                            Debug.Log("3");
+                        }
+                        else
+                        {
+                            Debug.Log("4");
+                            PlayFabDataStore.playerInventoryInfo.Add(item.ItemId, itemInfoList);
+                            Debug.Log("5");
+                            PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
+                            Debug.Log("6");
+                        }
                     }
                     else
                     {
-                        PlayFabDataStore.playerInventory.Add(new PlayerItemInfo(item.ItemId, item.ItemInstanceId, item.CustomData["IsEquipped"].ToString()));
+                        Debug.Log("7");
+                        PlayerItemInfo itemInfo = new PlayerItemInfo(item.ItemId, item.ItemInstanceId, item.CustomData["IsEquipped"].ToString());
+                        Debug.Log("8");
+                        if (PlayFabDataStore.playerInventoryInfo.ContainsKey(item.ItemId))
+                        {
+                            Debug.Log("8");
+                            PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
+                            Debug.Log("9");
+                        }
+                        else
+                        {
+                            Debug.Log("10");
+                            PlayFabDataStore.playerInventoryInfo.Add(item.ItemId, itemInfoList);
+                            Debug.Log("11");
+                            PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
+                            Debug.Log("12");
+                        }
                         if (item.CustomData["IsEquipped"] == "1")
                         {
-                            
-                            PlayFabDataStore.playerEquippedItems.Add(PlayFabDataStore.catalogItems[item.ItemId].itemType, PlayFabDataStore.playerInventory[PlayFabDataStore.playerInventory.Count - 1]);
+                            Debug.Log("Equipped item added to the equipped dictionary");
+                            Debug.Log("13");
+                            PlayFabDataStore.playerEquippedItems.Add(PlayFabDataStore.catalogItems[item.ItemId].itemType, itemInfo);
+                            Debug.Log("14");
+                        }
+                        else
+                        {
+                            PlayFabDataStore.playerInventory.Add(item.ItemId);
                         }
                     }
                 }

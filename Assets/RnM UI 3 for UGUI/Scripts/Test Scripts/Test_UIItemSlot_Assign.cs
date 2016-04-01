@@ -14,7 +14,7 @@ public class Test_UIItemSlot_Assign : MonoBehaviour {
 			this.slot = this.GetComponent<UIItemSlot>();
         if (PlayFabDataStore.playerInventory.Count >= assignItem)
         {
-            itemDatabase.items.Add(PlayFabDataStore.catalogItems[PlayFabDataStore.playerInventory[assignItem - 1].itemId]);
+            itemDatabase.items.Add(PlayFabDataStore.catalogItems[PlayFabDataStore.playerInventory[assignItem - 1]]);
         }
             
 	}
