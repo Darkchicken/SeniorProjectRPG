@@ -48,9 +48,13 @@ public class NPC : MonoBehaviour {
 
     void Update()
     {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         if(!finishingQuest)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < 30)
+            if (player != null && Vector3.Distance(player.transform.position, transform.position) < 30)
             {
                 foreach (var quest in PlayFabDataStore.playerQuestLog)
                 {

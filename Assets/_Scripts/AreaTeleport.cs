@@ -18,7 +18,7 @@ public class AreaTeleport : MonoBehaviour {
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-        if (Vector3.Distance(player.transform.position, transform.position) < 2)
+        if (player != null && Vector3.Distance(player.transform.position, transform.position) < 2)
         {
             PhotonNetwork.LoadLevel(levelToTeleport);
         }

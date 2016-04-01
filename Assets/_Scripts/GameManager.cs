@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     //This is where we call all our Database when loading a scene
 	void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
         itemDatabase.items.Clear();
         loading.gameObject.SetActive(true);
         runes.gameObject.SetActive(true);

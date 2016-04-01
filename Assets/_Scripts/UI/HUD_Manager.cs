@@ -35,6 +35,11 @@ public class HUD_Manager : MonoBehaviour {
     public Image ActionBarDisabledImage6;
 
     public Text playerName;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
     void Update()
     {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
