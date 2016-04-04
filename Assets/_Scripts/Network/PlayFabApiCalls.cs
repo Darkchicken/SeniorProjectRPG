@@ -507,8 +507,8 @@ public class PlayFabApiCalls : MonoBehaviour
             {
                 if (item.ItemClass == "Skill" || item.ItemClass == "Modifier")
                 {
+                    
                     string[] customData = item.CustomData.Split('"');
-
                     PlayFabDataStore.catalogRunes.Add(item.ItemId, new CatalogRune(item.ItemId, item.ItemClass, item.DisplayName, item.Description, customData[3], int.Parse(customData[7]), 
                         int.Parse(customData[11]), int.Parse(customData[15]), int.Parse(customData[19]), int.Parse(customData[23]), int.Parse(customData[27]), int.Parse(customData[31]), 
                         int.Parse(customData[35]), float.Parse(customData[39]), float.Parse(customData[43]), customData[47].ToString()));
@@ -692,5 +692,28 @@ public class PlayFabApiCalls : MonoBehaviour
             Debug.Log(error.ErrorDetails);
         });
 
+    }
+
+    //Get Loot Drop
+    public static void GetLoot(string[] items, string customDataTitle, string itemClass)
+    {
+        var request = new RunCloudScriptRequest()
+        {
+            ActionId = "grantItemsToCharacter",
+            Params = new { playFabId = PlayFabDataStore.playFabId, characterId = PlayFabDataStore.characterId, items = items }
+        };
+        PlayFabClientAPI.RunCloudScript(request, (result) =>
+        {
+            Debug.Log(result.ResultsEncoded.ToString());
+            string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+            Debug.Log("Split Result " + splitResult[61]); // 61st element is the itemId of the item granted from the drop table
+            Debug.Log("Split Result " + splitResult[65]); // 65th element is the itemInstanceId of the item granted from the drop table
+        },
+        (error) =>
+        {
+            Debug.Log("Item not Granted!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
     }
 }
