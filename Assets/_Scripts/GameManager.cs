@@ -82,6 +82,10 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    void OnLevelWasLoaded(int level)
+    {
+        players.Clear();
+    }
 
-    
-}
+
+    }
