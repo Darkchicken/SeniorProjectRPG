@@ -4,6 +4,8 @@ using System.Collections;
 public class AreaTeleport : MonoBehaviour {
 
     public string levelToTeleport;
+    public string spawnPointName;
+
     GameObject player;
 	// Use this for initialization
 	void Start ()
