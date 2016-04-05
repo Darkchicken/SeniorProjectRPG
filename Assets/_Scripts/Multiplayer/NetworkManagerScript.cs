@@ -8,11 +8,22 @@ public class NetworkManagerScript : MonoBehaviour {
     Runes playerRunes;
     CameraFollow cameraFollow;
     Health playerHealth;
-    public Transform spawnPoint;
+    Transform spawnPoint;
     public Transform enemySpawnPoint;
+    public string spawnPointName = "SpawnPoint";
     // Use this for initialization
+    /*
     void Awake ()
     {
+        enemySpawnPoint = GameObject.Find("SpawnPoint2").GetComponent<Transform>();
+        if (GameObject.Find(spawnPointName) != null)
+        {
+            spawnPoint = GameObject.Find(spawnPointName).GetComponent<Transform>();
+        }
+        else
+        {
+            spawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
+        }
         if (PhotonNetwork.isMasterClient)
         {
             PhotonNetwork.Instantiate("Orc", enemySpawnPoint.position, enemySpawnPoint.rotation, 0);
@@ -30,6 +41,7 @@ public class NetworkManagerScript : MonoBehaviour {
 
         
     }
+    */
 	
 	// Update is called once per frame
 	void Update () {
@@ -46,4 +58,32 @@ public class NetworkManagerScript : MonoBehaviour {
         //this doesnt work currently
         //Debug.Log(connected.name);
     }
+    void OnLevelWasLoaded(int level)
+    {
+        enemySpawnPoint = GameObject.Find("SpawnPoint2").GetComponent<Transform>();
+        if (GameObject.Find(spawnPointName) != null)
+        {
+            spawnPoint = GameObject.Find(spawnPointName).GetComponent<Transform>();
+        }
+        else
+        {
+            spawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
+        }
+        if (PhotonNetwork.isMasterClient)
+        {
+            PhotonNetwork.Instantiate("Orc", enemySpawnPoint.position, enemySpawnPoint.rotation, 0);
+        }
+        player = PhotonNetwork.Instantiate("Elf", spawnPoint.position, spawnPoint.rotation, 0);
+        combatManager = player.GetComponent<PlayerCombatManager>();
+        combatManager.enabled = true;
+        playerRunes = player.GetComponent<Runes>();
+        playerRunes.enabled = true;
+        //player.GetComponent<Health>().enabled = true;
+        cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        cameraFollow.enabled = true;
+        playerHealth = player.GetComponent<Health>();
+        //playerHealth.enabled = true;
+
+    }
+
 }

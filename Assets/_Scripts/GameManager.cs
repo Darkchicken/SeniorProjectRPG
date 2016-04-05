@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
     public UIItemDatabase itemDatabase;
     public static List<GameObject> players = new List<GameObject>();
 
+
     //This is where we call all our Database when loading a scene
 	void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(gameObject);
+        gameObject.name = "GameManager";
         itemDatabase.items.Clear();
         loading.gameObject.SetActive(true);
         runes.gameObject.SetActive(true);

@@ -6,6 +6,7 @@ using Photon;
 public class PhotonCalls : PunBehaviour
 {
     GameObject spawnPoint;
+    
     // static string friendRoomName = null; // get this directly from playfabdatastore
     //exits the current room
     public static void LeaveRoom()
@@ -58,8 +59,10 @@ public class PhotonCalls : PunBehaviour
         Debug.Log("Room name is: " + PhotonNetwork.room);
 
         GameObject player = PhotonNetwork.Instantiate("Elf", spawnPoint.transform.position, Quaternion.identity, 0);
+       
         player.GetComponent<PlayerCombatManager>().enabled = true;
         player.GetComponent<Runes>().enabled = true;
+        
         //set entering player to full health. This is now dealed someplace else
         //player.GetComponent<Health>().health = player.GetComponent<Health>().maxHealth;
 
