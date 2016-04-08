@@ -40,14 +40,20 @@ public class HUD_Manager : MonoBehaviour {
     {
         DontDestroyOnLoad(transform.gameObject);
     }
-    void Update()
+
+    public void SetHealthAndResource()
     {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
         resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
         playerHealthText.text = PlayFabDataStore.playerCurrentHealth + "/" + PlayFabDataStore.playerMaxHealth;
         playerResourceText.text = PlayFabDataStore.playerCurrentResource + "/" + PlayFabDataStore.playerMaxResource;
+    }
 
-        if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(1))
+    void Update()
+    {
+        SetHealthAndResource();
+
+        if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(1))
         {
             if (PlayFabDataStore.playerCurrentResource < PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[1]].resourceUsage)
             {

@@ -12,7 +12,7 @@ public class CheatPanel : MonoBehaviour
     public void GrantItem()
     {
         string[] items = { grantItemText.text };
-        PlayFabApiCalls.GetLoot(items, "Active", "Rune");
+        PlayFabApiCalls.GetLoot(items, null);
     }
 
     public void RevokeItem()

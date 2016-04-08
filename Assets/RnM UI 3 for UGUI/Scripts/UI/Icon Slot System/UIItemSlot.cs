@@ -232,7 +232,7 @@ namespace UnityEngine.UI
 				return;
 			
 			// Set the title and description
-			UITooltip.AddTitle(itemInfo.name);
+			UITooltip.AddTitle(itemInfo.displayName);
 			
 			// Item types
 			UITooltip.AddLineColumn(itemInfo.itemType);

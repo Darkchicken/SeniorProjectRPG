@@ -8,7 +8,7 @@ namespace UnityEngine.UI
 	{
         //public static int counter = 1;
 		public string itemId;
-		public string name;
+		public string displayName;
 		public Sprite icon;
 		//public string description;
 		public UIEquipmentType equipType;
@@ -30,7 +30,7 @@ namespace UnityEngine.UI
         {
             //id = counter;
             itemId = _itemId;
-            name = _name;
+            displayName = _name;
             icon = Resources.Load<Sprite>("ItemIcons/" + _iconName);
             equipType = (UIEquipmentType)_equipType;
             itemType = _itemType;

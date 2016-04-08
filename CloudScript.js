@@ -65,6 +65,26 @@ handlers.grantItemsToUser = function (args)
   return request;		
 }
 
+handlers.addUserVirtualCurrency = function (args)
+{
+  var request = server.AddUserVirtualCurrency({
+    PlayFabId: currentPlayerId,
+    VirtualCurrency: [args.currency],
+    Amount: [args.amount]
+  });
+  return request;		
+}
+
+handlers.subtractUserVirtualCurrency = function (args)
+{
+  var request = server.SubtractUserVirtualCurrency({
+    PlayFabId: currentPlayerId,
+    VirtualCurrency: [args.currency],
+    Amount: [args.amount]
+  });
+  return request;		
+}
+
 handlers.moveItemFromUserToCharacter = function (args)
 {
   var request = server.GrantItemsToCharacter({

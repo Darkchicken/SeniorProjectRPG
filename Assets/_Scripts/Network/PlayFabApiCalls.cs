@@ -633,47 +633,32 @@ public class PlayFabApiCalls : MonoBehaviour
                     {
                         PlayerItemInfo itemInfo = new PlayerItemInfo(item.ItemId, item.ItemInstanceId, "0");
                         PlayFabDataStore.playerInventory.Add(item.ItemId);
-                        Debug.Log("1");
                         if(PlayFabDataStore.playerInventoryInfo.ContainsKey(item.ItemId))
                         {
-                            Debug.Log("2");
                             PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
-                            Debug.Log("3");
                         }
                         else
                         {
-                            Debug.Log("4");
                             PlayFabDataStore.playerInventoryInfo.Add(item.ItemId, itemInfoList);
-                            Debug.Log("5");
                             PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
-                            Debug.Log("6");
                         }
                     }
                     else
                     {
-                        Debug.Log("7");
                         PlayerItemInfo itemInfo = new PlayerItemInfo(item.ItemId, item.ItemInstanceId, item.CustomData["IsEquipped"].ToString());
-                        Debug.Log("8");
                         if (PlayFabDataStore.playerInventoryInfo.ContainsKey(item.ItemId))
                         {
-                            Debug.Log("8");
                             PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
-                            Debug.Log("9");
                         }
                         else
                         {
-                            Debug.Log("10");
                             PlayFabDataStore.playerInventoryInfo.Add(item.ItemId, itemInfoList);
-                            Debug.Log("11");
                             PlayFabDataStore.playerInventoryInfo[item.ItemId].Add(itemInfo);
-                            Debug.Log("12");
                         }
                         if (item.CustomData["IsEquipped"] == "1")
                         {
                             Debug.Log("Equipped item added to the equipped dictionary");
-                            Debug.Log("13");
                             PlayFabDataStore.playerEquippedItems.Add(PlayFabDataStore.catalogItems[item.ItemId].itemType, itemInfo);
-                            Debug.Log("14");
                         }
                         else
                         {
@@ -695,7 +680,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Get Loot Drop
-    public static void GetLoot(string[] items, string customDataTitle, string itemClass)
+    public static void GetLoot(string[] items, GameObject enemy)
     {
         var request = new RunCloudScriptRequest()
         {
@@ -708,10 +693,71 @@ public class PlayFabApiCalls : MonoBehaviour
             string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
             Debug.Log("Split Result " + splitResult[61]); // 61st element is the itemId of the item granted from the drop table
             Debug.Log("Split Result " + splitResult[65]); // 65th element is the itemInstanceId of the item granted from the drop table
+            RevokeInventoryItem(splitResult[65]); // Remove the item granted from the loot table
+            enemy.GetComponent<DropItem>().dropItemId = splitResult[61];
         },
         (error) =>
         {
             Debug.Log("Item not Granted!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    //Add Currency to the user
+    public static void AddUserCurrency(int amount)
+    {
+        var request = new AddUserVirtualCurrencyRequest()
+        {
+            VirtualCurrency = "GC",
+            Amount = amount
+        };
+        PlayFabClientAPI.AddUserVirtualCurrency(request, (result) =>
+        {
+            PlayFabDataStore.playerCurrency = result.Balance;
+        },
+        (error) =>
+        {
+            Debug.Log("Currency Can't added!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    //Subtract Currency from the user
+    public static void SubtractUserCurrency(int amount)
+    {
+        var request = new SubtractUserVirtualCurrencyRequest()
+        {
+            VirtualCurrency = "GC",
+            Amount = amount
+        };
+        PlayFabClientAPI.SubtractUserVirtualCurrency(request, (result) =>
+        {
+            PlayFabDataStore.playerCurrency = result.Balance;
+        },
+        (error) =>
+        {
+            Debug.Log("Currency Can't subtracted!");
+            Debug.Log(error.ErrorMessage);
+            Debug.Log(error.ErrorDetails);
+        });
+    }
+
+    //Get Currency of the user
+    public static void GetUserVirtualCurrency()
+    {
+        var request = new GetUserInventoryRequest()
+        {
+            
+        };
+        PlayFabClientAPI.GetUserInventory(request, (result) =>
+        {
+            PlayFabDataStore.playerCurrency = result.VirtualCurrency["GC"];
+        },
+        (error) =>
+        {
+            Debug.Log("Currency Can't retrieved!");
             Debug.Log(error.ErrorMessage);
             Debug.Log(error.ErrorDetails);
         });

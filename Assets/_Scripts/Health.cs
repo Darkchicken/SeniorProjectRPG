@@ -115,6 +115,7 @@ public class Health : MonoBehaviour {
 
     public void UpdateHealth()
     {
+        HUD_Manager.hudManager.SetHealthAndResource();
         photonView.RPC("SetHealth", PhotonTargets.AllViaServer, health, maxHealth);
     }
 
@@ -444,6 +445,7 @@ public class Health : MonoBehaviour {
             }
             else
             {
+                GetComponent<DropItem>().GetDropItemId();
                 GetComponent<EnemyMovement>().enabled = false;
                 GetComponent<EnemyCombatManager>().enabled = false;
             } 

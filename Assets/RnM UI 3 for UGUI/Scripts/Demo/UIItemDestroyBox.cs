@@ -74,7 +74,7 @@ namespace UnityEngine.UI
 				this.m_Slot.Assign(slot.GetItemInfo());
 			
 			if (this.m_NameText != null)
-				this.m_NameText.text = slot.GetItemInfo().name;
+				this.m_NameText.text = slot.GetItemInfo().displayName;
 			
 			/*if (this.m_DescriptionText != null)
 				this.m_DescriptionText.text = slot.GetItemInfo().Subtype + " " + slot.GetItemInfo().Type;*/

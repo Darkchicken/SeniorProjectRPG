@@ -29,18 +29,20 @@ public class GameManager : MonoBehaviour
         PlayFabApiCalls.GetCharacterStats();
         PlayFabApiCalls.GetFriendsList();
         PlayFabApiCalls.GetQuestLog();
+        PlayFabApiCalls.GetUserVirtualCurrency();
 
         //Invoke("CalculateStats", 1);
         
         
-        Invoke("SetPlayerHealth", 2);
+        //Invoke("SetPlayerHealth", 2);
         Invoke("RefreshActionBar", 3);
         Invoke("UpdatePlayerHealth", 5);
     }
 
     void CalculateStats()
     {
-        CharacterStats.characterStats.CalculateStats();
+        //CharacterStats.characterStats.CalculateStats();
+        HUD_Manager.hudManager.GetComponent<CharacterStats>().CalculateStats();
     }
 
     void SortRunes()
@@ -52,36 +54,23 @@ public class GameManager : MonoBehaviour
 
     void SetPlayerHealth()
     {
-        runes.gameObject.SetActive(false);
-        PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth;
-        PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+        //PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth;
+        //PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
 
     void RefreshActionBar()
     {
-        character.gameObject.SetActive(true);
         ActionBar.RefreshActionBar();
         Debug.Log("RefreshedActionBar");
         RuneWindow.ToggleWindows();
-        
-
+        runes.gameObject.SetActive(false);
     }
 
     void UpdatePlayerHealth()
     {
-        PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth;
-        character.gameObject.SetActive(false);
-        character.gameObject.SetActive(true);
-        character.gameObject.SetActive(false);
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
     }
 
-    
-
-    public void CalculatePlayerStats()
-    {
-
-    }
     void OnLevelWasLoaded(int level)
     {
         players.Clear();

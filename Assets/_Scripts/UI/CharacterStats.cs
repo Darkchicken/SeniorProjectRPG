@@ -16,20 +16,25 @@ public class CharacterStats : MonoBehaviour {
     public Text textWeaponDamage;
     public Text textSpellPower;
     public Text textAttackPower;
+    public Text textCurrency;
 
     private float calculationTimer = 0f;
-    private float calculationTimerMax = 0f;
+    private float calculationTimerMax = 1f;
 
     void Awake()
     {
         characterStats = this;
-        calculationTimerMax = 1;
+    }
+
+    void Start()
+    {
+        Invoke("CalculateStats", 3);
+        
     }
 
     void OnEnable()
     {
-        CalculateStats();
-        
+        //SetStatsText();
     }
 
     void Update()
@@ -51,24 +56,29 @@ public class CharacterStats : MonoBehaviour {
         int critFraction = PlayFabDataStore.playerCriticalChance % 100;
         int critBase = PlayFabDataStore.playerCriticalChance / 100;
         textCrit.text = critBase.ToString() + "." + critFraction.ToString() + "%";
+        textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
     }
 
     public void CalculateStats()
     {
-        calculationTimer = 0;
-        Debug.Log("Calculating the Stats...");
-        CalculateVitality();
-        CalculateStrength();
-        CalculateDexterity();
-        CalculateIntellect();
-        CalculateSpirit();
-        CalculateCriticalChance();
-        CalculateArmor();
-        CalculateWeaponDamage();
-        CalculateSpellPower();
-        CalculateAttackPower();
-        Invoke("UpdateHealth", 0);
-        
+        if(calculationTimer > calculationTimerMax)
+        {
+            calculationTimer = 0;
+            Debug.Log("Calculating the Stats...");
+            CalculateVitality();
+            CalculateStrength();
+            CalculateDexterity();
+            CalculateIntellect();
+            CalculateSpirit();
+            CalculateCriticalChance();
+            CalculateArmor();
+            CalculateWeaponDamage();
+            CalculateSpellPower();
+            CalculateAttackPower();
+            textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
+            Invoke("UpdateHealth", 0);
+        }
+
     }
 
     void UpdateHealth()
