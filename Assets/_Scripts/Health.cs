@@ -70,7 +70,11 @@ public class Health : MonoBehaviour {
         
 
         Invoke("InitializeHealth", 1);
-        Invoke("StartHealthRegenration", 10);
+        if (tag == "Player")
+        {
+            Invoke("StartHealthRegenration", 10);
+        }
+            
     }
 
     void InitializeHealth()
