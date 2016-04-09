@@ -17,7 +17,7 @@ public class CheatPanel : MonoBehaviour
 
     public void RevokeItem()
     {
-        PlayFabApiCalls.RevokeInventoryItem(itemInstanceId);
+        PlayFabApiCalls.RevokeInventoryItem(null, itemInstanceId);
     }
 
 

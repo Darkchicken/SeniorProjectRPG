@@ -289,7 +289,7 @@ public class PlayFabApiCalls : MonoBehaviour
     }
 
     //Removes the specific item from the users inventory
-    public static void RevokeInventoryItem(string itemInstanceId)
+    public static void RevokeInventoryItem(string itemId, string itemInstanceId)
     {
         var request = new RunCloudScriptRequest()
         {
@@ -299,6 +299,11 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
             Debug.Log(result.Results);
+            if(itemId != null)
+            {
+                PlayFabDataStore.playerInventory.Remove(itemId);
+            }
+            
         },
         (error) =>
         {
@@ -734,7 +739,7 @@ public class PlayFabApiCalls : MonoBehaviour
             string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
             Debug.Log("Split Result " + splitResult[61]); // 61st element is the itemId of the item granted from the drop table
             Debug.Log("Split Result " + splitResult[65]); // 65th element is the itemInstanceId of the item granted from the drop table
-            RevokeInventoryItem(splitResult[65]); // Remove the item granted from the loot table
+            RevokeInventoryItem(null, splitResult[65]); // Remove the item granted from the loot table
             enemy.GetComponent<DropItem>().dropItemId = splitResult[61];
             enemy.GetComponent<DropItem>().isItemReceived = true;
 

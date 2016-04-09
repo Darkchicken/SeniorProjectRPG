@@ -72,8 +72,9 @@ namespace UnityEngine.UI
 				
 			if (this.m_Slot != null)
 				this.m_Slot.Assign(slot.GetItemInfo());
-			
-			if (this.m_NameText != null)
+            
+
+            if (this.m_NameText != null)
 				this.m_NameText.text = slot.GetItemInfo().displayName;
 			
 			/*if (this.m_DescriptionText != null)
@@ -81,7 +82,8 @@ namespace UnityEngine.UI
 			
 			// Save a ref to the slot
 			this.m_SelectedSlot = slot;
-		}
+            
+        }
 		
 		/// <summary>
 		/// Confirm the item destruction.
@@ -90,7 +92,18 @@ namespace UnityEngine.UI
 		{
 			if (this.m_SelectedSlot != null)
 			{
-				this.m_SelectedSlot.Unassign();
+
+                Debug.Log("Item Info" + m_SelectedSlot.GetItemInfo().itemId);
+                foreach(var item in PlayFabDataStore.playerInventoryInfo[m_SelectedSlot.GetItemInfo().itemId])
+                {
+                    if(item.isEquipped == "0")
+                    {
+                        PlayFabApiCalls.RevokeInventoryItem(item.itemId, item.itemInstanceId);
+                        PlayFabDataStore.playerInventoryInfo[m_SelectedSlot.GetItemInfo().itemId].Remove(item);
+                        break;
+                    }
+                }
+                this.m_SelectedSlot.Unassign();
 			}
 			
 			// Hide the window

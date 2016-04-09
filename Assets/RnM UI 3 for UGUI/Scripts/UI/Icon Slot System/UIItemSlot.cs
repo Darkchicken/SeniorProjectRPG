@@ -153,6 +153,8 @@ namespace UnityEngine.UI
 		{
 			// Remove the icon
 			base.Unassign();
+
+            Debug.Log("Unassigned the item");
 			
 			// Clear the spell info
 			this.m_ItemInfo = null;
