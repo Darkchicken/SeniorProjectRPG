@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
     void OnLevelWasLoaded(int level)
     {
         players.Clear();
+        if(SceneManager.GetActiveScene().name == "Login")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
