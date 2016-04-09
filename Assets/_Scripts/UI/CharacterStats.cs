@@ -42,7 +42,7 @@ public class CharacterStats : MonoBehaviour {
         calculationTimer += Time.deltaTime;
     }
 
-    void SetStatsText()
+    public void SetStatsText()
     {
         textStrength.text = PlayFabDataStore.playerStrength.ToString();
         textDexterity.text = PlayFabDataStore.playerDexterity.ToString();

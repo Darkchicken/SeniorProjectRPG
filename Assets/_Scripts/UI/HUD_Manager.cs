@@ -124,6 +124,20 @@ public class HUD_Manager : MonoBehaviour {
     {
         GetComponent<RaycastUI>().OnMouseExit();
         characterWindow.gameObject.SetActive(!characterWindow.gameObject.activeInHierarchy);
+        /*if(characterWindow.gameObject.activeInHierarchy == true)
+        {
+            foreach (var slot in UIItemSlot_Assign.inventorySlots)
+            {
+                slot.enabled = true;
+            }
+        }
+        else
+        {
+            foreach(var slot in UIItemSlot_Assign.inventorySlots)
+            {
+                slot.enabled = false;
+            }
+        }*/
     }
 
     public void ToggleRuneWindow()

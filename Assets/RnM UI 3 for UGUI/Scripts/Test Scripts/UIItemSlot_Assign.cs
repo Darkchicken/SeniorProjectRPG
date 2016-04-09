@@ -1,25 +1,37 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Test_UIItemSlot_Assign : MonoBehaviour {
-	
-	public UIItemSlot slot;
+public class UIItemSlot_Assign : MonoBehaviour {
+
+    public static List<UIItemSlot_Assign> inventorySlots = new List<UIItemSlot_Assign>();
+    public UIItemSlot slot;
 	public UIItemDatabase itemDatabase;
 	public int assignItem;
-	
-	void OnEnable()
+
+    private bool isAssigned = false;
+
+    void Awake()
+    {
+        inventorySlots.Add(this);
+    }
+
+    void OnEnable()
 	{
 		if (this.slot == null)
 			this.slot = this.GetComponent<UIItemSlot>();
-        if (PlayFabDataStore.playerInventory.Count >= assignItem)
+        
+        if (PlayFabDataStore.playerInventory.Count >= assignItem && !isAssigned)
         {
+            isAssigned = true;
             itemDatabase.items.Add(PlayFabDataStore.catalogItems[PlayFabDataStore.playerInventory[assignItem - 1]]);
+            SetItemToSlot();
         }
-            
-	}
+
+    }
 	
-	void Start()
+	void SetItemToSlot()
 	{
         if (this.slot == null || PlayFabDataStore.playerInventory == null)
         {
@@ -27,9 +39,15 @@ public class Test_UIItemSlot_Assign : MonoBehaviour {
             return;
         }
         slot.Assign(itemDatabase.GetByID(assignItem - 1));
-        Destruct();
+        //Destruct();
 
     }
+
+    public void SetItemToSlotInstant()
+    {
+        OnEnable();
+    }
+
 
     private void Destruct()
 	{

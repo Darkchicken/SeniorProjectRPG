@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DroppedItem : MonoBehaviour {
+public class DroppedItem : MonoBehaviour
+{
 
     public string itemId;
 
@@ -13,10 +14,27 @@ public class DroppedItem : MonoBehaviour {
 
     public void OnMouseDown()
     {
+        if (PlayFabDataStore.playerInventory.Count < PlayFabDataStore.playerInventorySlotCount)
+        {
+            string[] items = { itemId };
+            if (PlayFabDataStore.catalogItems.ContainsKey(itemId))
+            {
+                PlayFabApiCalls.GrantItemsToCharacter(items, "IsEquipped", "Item");
+
+            }
+            else if (PlayFabDataStore.catalogRunes.ContainsKey(itemId))
+            {
+                PlayFabApiCalls.GrantItemsToCharacter(items, "Active", "Rune");
+            }
+        }
+        if(itemId == "Item_Empty")
+        {
+            Debug.Log("currency added");
+            PlayFabApiCalls.AddUserCurrency(Random.Range(5, 50));
+        }
+        Debug.Log(itemId + " Item Looted from the ground");
+        Destroy(gameObject);
         
     }
 
-
-
-
-    }
+}

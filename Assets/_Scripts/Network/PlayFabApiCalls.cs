@@ -230,13 +230,54 @@ public class PlayFabApiCalls : MonoBehaviour
         {
             if(itemClass == "Rune")
             {
-                string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
-                SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+                
+                foreach(var item in items)
+                {
+                    string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+                    SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+
+                    if (!PlayFabDataStore.playerAllRunes.ContainsKey(item))
+                    {
+                        PlayFabDataStore.playerAllRunes.Add(item, new PlayerRune(item, splitResult[19], "Rune", PlayFabDataStore.catalogRunes[item].displayName, "0"));
+                    }
+                }
+                
             }
             if (itemClass == "Item")
             {
-                string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
-                SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+                List<PlayerItemInfo> itemInfoList = new List<PlayerItemInfo>();
+
+                foreach (var item in items)
+                {
+                    string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+                    SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+
+                    if (PlayFabDataStore.playerInventory.Count < PlayFabDataStore.playerInventorySlotCount)
+                    {
+                        Debug.Log("Item " + item);
+
+                        PlayFabDataStore.playerInventory.Add(item);
+                        PlayerItemInfo itemInfo = new PlayerItemInfo(item, splitResult[19], "0");
+
+                        if (PlayFabDataStore.playerInventoryInfo.ContainsKey(item))
+                        {
+                            PlayFabDataStore.playerInventoryInfo[item].Add(itemInfo);
+                        }
+                        else
+                        {
+                            PlayFabDataStore.playerInventoryInfo.Add(item, itemInfoList);
+                            PlayFabDataStore.playerInventoryInfo[item].Add(itemInfo);
+                        }
+                    }
+
+                    foreach (var slot in UIItemSlot_Assign.inventorySlots)
+                    {
+                        if (slot.assignItem == PlayFabDataStore.playerInventory.Count)
+                        {
+                            slot.SetItemToSlotInstant();
+                        }
+                    }
+                }
             }
         },
         (error) =>
@@ -695,6 +736,9 @@ public class PlayFabApiCalls : MonoBehaviour
             Debug.Log("Split Result " + splitResult[65]); // 65th element is the itemInstanceId of the item granted from the drop table
             RevokeInventoryItem(splitResult[65]); // Remove the item granted from the loot table
             enemy.GetComponent<DropItem>().dropItemId = splitResult[61];
+            enemy.GetComponent<DropItem>().isItemReceived = true;
+
+
         },
         (error) =>
         {
@@ -715,6 +759,8 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.AddUserVirtualCurrency(request, (result) =>
         {
             PlayFabDataStore.playerCurrency = result.Balance;
+            CharacterStats.characterStats.SetStatsText();
+            Debug.Log(amount + " gold looted. Total is " + result.Balance);
         },
         (error) =>
         {
@@ -735,6 +781,7 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.SubtractUserVirtualCurrency(request, (result) =>
         {
             PlayFabDataStore.playerCurrency = result.Balance;
+            CharacterStats.characterStats.SetStatsText();
         },
         (error) =>
         {
