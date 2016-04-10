@@ -36,10 +36,7 @@ public class HUD_Manager : MonoBehaviour {
 
     public Text playerName;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(transform.gameObject);
-    }
+    
 
     public void SetHealthAndResource()
     {
