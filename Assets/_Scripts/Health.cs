@@ -144,11 +144,12 @@ public class Health : MonoBehaviour {
         maxImmuneToControlTime = _immuneToControlTime;
         immuneToControlTimer = 0f;
 
-}
+    }
 
-[PunRPC]
+    [PunRPC]
     public void SetBleeding(int viewId, bool _isBleeding, int _maxBleedCount, int _bleedDamage)
     {
+        Debug.Log("I AM BLEEDINGGGG!!!!");
         isBleeding = _isBleeding;
         maxBleedCount = _maxBleedCount;
         bleedDamage = _bleedDamage / _maxBleedCount;

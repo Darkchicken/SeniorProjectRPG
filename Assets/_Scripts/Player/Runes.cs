@@ -12,6 +12,7 @@ public class Runes : MonoBehaviour
     public static GameObject mainEnemy;
     public static Vector3 position;
     public static PhotonView photonView;
+    public RaycastHit hit;
     public float stopDistanceForAttack = 3f;
 
     public static bool isFreezing = false;
@@ -152,6 +153,7 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 1");
+
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
@@ -199,11 +201,14 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
+
                     for (int i = 0; i < hitEnemies.Length; i++)
                     {
                         if (hitEnemies[i].CompareTag("Enemy"))
                         {
-                            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
+                            
                             if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                             {
                                 SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
@@ -253,6 +258,8 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
+                    GameObject bolt = Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity) as GameObject;
+
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
                         SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
@@ -276,7 +283,7 @@ public class Runes : MonoBehaviour
                             loadingMethod.Invoke(this, arguments);
                         }
                     }
-                    GameObject bolt = (GameObject)Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity);
+                    
                     bolt.GetComponent<HomingShots>().target = targetEnemy;
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
@@ -295,10 +302,13 @@ public class Runes : MonoBehaviour
         if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
         {
             SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
-            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "JUMP ATTACK");
+            
             controller.Stop();
             controller.ResetPath();
+
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "JUMP ATTACK");
             for (int i = 0; i < hitEnemies.Length; i++)
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
@@ -338,10 +348,13 @@ public class Runes : MonoBehaviour
         if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
         {
             SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
-            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "WHIRLWIND");
+            
             controller.Stop();
             controller.ResetPath();
+
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "WHIRLWIND");
             for (int i = 0; i < hitEnemies.Length; i++)
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
@@ -378,9 +391,11 @@ public class Runes : MonoBehaviour
 
         if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
         {
-            
 
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "LIGHT WARP");
+
             for (int i = 0; i < hitEnemies.Length; i++)
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
@@ -404,10 +419,10 @@ public class Runes : MonoBehaviour
                     ApplyDamage(targetEnemy);
                 }
             }
-            GameObject vortex = (GameObject)Instantiate(Resources.Load("LightWarp"), transform.position, Quaternion.identity);
+            GameObject vortex = Instantiate(Resources.Load("LightWarp"), transform.position, Quaternion.identity) as GameObject;
             vortex.transform.SetParent(gameObject.transform);
             SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
-            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "LIGHT WARP");
+            
         }
     }
 
@@ -424,6 +439,13 @@ public class Runes : MonoBehaviour
             controller.ResetPath();
 
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            attackTimerSkillSlot1 = 0f;
+            HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
+            HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;
+            updateCooldownImage1 = true;
+
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "GROUND CLASH");
+
             for (int i = 0; i < hitEnemies.Length; i++)
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
@@ -447,7 +469,7 @@ public class Runes : MonoBehaviour
                     targetEnemy.gameObject.GetComponent<PhotonView>().RPC("SetStun", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_GroundClash"].effectTime);
                 }
             }
-            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "GROUND CLASH");
+            
             if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
             {
                 SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
@@ -457,10 +479,7 @@ public class Runes : MonoBehaviour
                 SetPlayerResource(100);
             }
             GameObject groundClash = (GameObject)Instantiate(Resources.Load("GroundClash"), transform.position, Quaternion.identity);
-            attackTimerSkillSlot1 = 0f;
-            HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
-            HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;
-            updateCooldownImage1 = true;
+            
         }
     }
 
@@ -505,6 +524,206 @@ public class Runes : MonoBehaviour
             updateCooldownImage1 = true;
         }
     }
+
+    /// <summary>
+    /// Deal 380% weapon damage to all enemies within 9 yards.
+    /// </summary>
+    public void Rune_Obliterate()
+    {
+        runeId = "Rune_Obliterate";
+
+        if (attackTimerSkillSlot2 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+        {
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            attackTimerSkillSlot2 = 0f;
+            HUD_Manager.hudManager.ActionBarCooldownImage2.enabled = true;
+            HUD_Manager.hudManager.ActionBarCooldownImage2.fillAmount = 1;
+            updateCooldownImage2 = true;
+
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
+
+            for (int i = 0; i < hitEnemies.Length; i++)
+            {
+                if (hitEnemies[i].CompareTag("Enemy"))
+                {
+
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                    {
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                    }
+                    else
+                    {
+                        SetPlayerResource(100);
+                    }
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                    targetEnemy = hitEnemies[i].gameObject;
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                        }
+                    }
+                    ApplyDamage(targetEnemy);
+                }
+            }
+            mainEnemy = null;
+            
+
+        }
+    }
+
+    /// <summary>
+    /// Deal 380% weapon damage to all enemies within 9 yards.
+    /// </summary>
+    public void Rune_HolyShock()
+    {
+        StartCoroutine(ApplyHolyShock());
+    }
+
+    /// <summary>
+    /// Holy Shock Coroutine Call
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ApplyHolyShock()
+    {
+        runeId = "Rune_HolyShock";
+
+        if (attackTimerSkillSlot2 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+        {
+            attackTimerSkillSlot2 = 0f;
+            HUD_Manager.hudManager.ActionBarCooldownImage2.enabled = true;
+            HUD_Manager.hudManager.ActionBarCooldownImage2.fillAmount = 1;
+            updateCooldownImage2 = true;
+
+            GameObject holyShockEffect = Instantiate(Resources.Load("HolyShock_Effect"), transform.position, Quaternion.identity) as GameObject;
+            holyShockEffect.transform.parent = transform;
+
+            yield return new WaitForSeconds(PlayFabDataStore.catalogRunes[runeId].effectTime);
+
+            Debug.Log("Before Collider");
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            Debug.Log("After Collider " + hitEnemies.Length);
+
+            GameObject holyShockDamage = Instantiate(Resources.Load("HolyShock_Damage"), transform.position, Quaternion.identity) as GameObject;
+
+            //photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
+
+            for (int i = 0; i < hitEnemies.Length; i++)
+            {
+                Debug.Log(hitEnemies[i].tag);
+                if (hitEnemies[i].CompareTag("Enemy"))
+                {
+                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                    targetEnemy = hitEnemies[i].gameObject;
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                        }
+                    }
+                    ApplyDamage(targetEnemy);
+                }
+            }
+            mainEnemy = null;
+            targetEnemy = null;
+        }
+    }
+
+    /// <summary>
+    /// Summon an immense Meteor that plummets from the sky, crashing into enemies for 740% weapon damage as Fire. The ground it hits is scorched with molten fire that deals 235% weapon damage as Fire over 3 seconds
+    /// </summary>
+    public void Rune_RainOfFire()
+    {
+        StartCoroutine(ApplyRainOfFire());
+    }
+
+    /// <summary>
+    /// Rain of Fire Coroutine Call
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ApplyRainOfFire()
+    {
+        runeId = "Rune_RainOfFire";
+
+        if (GetPlayerResource() >= 0/*PlayFabDataStore.catalogRunes[runeId].resourceUsage*/)
+        {
+            //SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 1000))
+            {
+                Vector3 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                GameObject meteor = Instantiate(Resources.Load("Meteor"), position, Quaternion.identity) as GameObject;
+
+                yield return new WaitForSeconds(.9f);
+
+                Collider[] hitEnemies = Physics.OverlapSphere(position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+
+                GameObject meteorFireArea = Instantiate(Resources.Load("MeteorFireArea"), position , Quaternion.identity) as GameObject;
+                meteorFireArea.GetComponent<FireArea>().weaponDamage = PlayFabDataStore.playerWeaponDamage;
+                meteorFireArea.GetComponent<FireArea>().photonView = photonView;
+                meteorFireArea.GetComponent<FireArea>().damageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+
+                for (int i = 0; i < hitEnemies.Length; i++)
+                {
+                    if (hitEnemies[i].CompareTag("Enemy"))
+                    {
+
+                        if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                        {
+                            SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                        }
+                        else
+                        {
+                            SetPlayerResource(100);
+                        }
+                        tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                        tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                        tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                        tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                        targetEnemy = hitEnemies[i].gameObject;
+                        foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                        {
+                            if (modifier.Value == 5)
+                            {
+                                var loadingMethod = GetType().GetMethod(modifier.Key);
+                                var arguments = new object[] { targetEnemy };
+                                loadingMethod.Invoke(this, arguments);
+                            }
+                        }
+                        ApplyDamage(targetEnemy);
+                    }
+                }
+                mainEnemy = null;
+                targetEnemy = null;
+            }
+                
+            
+        }
+    }
+
+
+
+    //////////////////////////////
+    //Modifier Runes Start HERE...
+    //////////////////////////////
 
     /// <summary>
     /// Each hit Freezes the enemy for 1.5 seconds.

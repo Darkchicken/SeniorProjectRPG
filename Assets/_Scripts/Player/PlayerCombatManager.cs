@@ -11,7 +11,7 @@ public class PlayerCombatManager : Runes
     public bool canAttack = true;
      //sets by PlayerAttack script
 
-    private RaycastHit hit;
+    
     //private int skillAttackRange;
     private string actionBarSkillId;
 
@@ -72,6 +72,7 @@ public class PlayerCombatManager : Runes
         if(Input.GetKeyDown("2") || actionBarSkillId == "2")
         {
             skillSlot = 2;
+            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
