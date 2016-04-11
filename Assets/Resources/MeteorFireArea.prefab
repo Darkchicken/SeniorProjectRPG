@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 431062}
   - 198: {fileID: 19898408}
   - 199: {fileID: 19993808}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: black_flak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 444916}
   - 33: {fileID: 3393106}
   - 23: {fileID: 2300700}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stomp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 406726}
   - 198: {fileID: 19855478}
   - 199: {fileID: 19928714}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rock_flak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 487068}
   - 198: {fileID: 19817922}
   - 199: {fileID: 19969858}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - 54: {fileID: 5459530}
   - 114: {fileID: 11468180}
   - 135: {fileID: 13595476}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MeteorFireArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - 4: {fileID: 405814}
   - 198: {fileID: 19812494}
   - 199: {fileID: 19955622}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_flak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183250}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.399344, y: -0.0009997864, z: -4.2935123}
+  m_LocalPosition: {x: 1.4822736, y: -3.8873653, z: -17.943594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 405814}
@@ -293,7 +293,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183250}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.5

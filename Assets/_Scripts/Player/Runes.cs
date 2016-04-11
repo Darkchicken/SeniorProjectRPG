@@ -629,7 +629,7 @@ public class Runes : MonoBehaviour
                     targetEnemy = hitEnemies[i].gameObject;
                     foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
                     {
-                        if (modifier.Value == 5)
+                        if (modifier.Value == 2)
                         {
                             var loadingMethod = GetType().GetMethod(modifier.Key);
                             var arguments = new object[] { targetEnemy };
@@ -660,13 +660,16 @@ public class Runes : MonoBehaviour
     {
         runeId = "Rune_RainOfFire";
 
-        if (GetPlayerResource() >= 0/*PlayFabDataStore.catalogRunes[runeId].resourceUsage*/)
+        if (attackTimerSkillSlot2 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
         {
-            //SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
+            attackTimerSkillSlot2 = 0f;
+            HUD_Manager.hudManager.ActionBarCooldownImage2.enabled = true;
+            HUD_Manager.hudManager.ActionBarCooldownImage2.fillAmount = 1;
+            updateCooldownImage2 = true;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 1000))
             {
                 Vector3 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 GameObject meteor = Instantiate(Resources.Load("Meteor"), position, Quaternion.identity) as GameObject;
@@ -701,7 +704,7 @@ public class Runes : MonoBehaviour
                         targetEnemy = hitEnemies[i].gameObject;
                         foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
                         {
-                            if (modifier.Value == 5)
+                            if (modifier.Value == 2)
                             {
                                 var loadingMethod = GetType().GetMethod(modifier.Key);
                                 var arguments = new object[] { targetEnemy };
