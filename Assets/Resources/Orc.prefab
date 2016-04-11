@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472028}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orccloth1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419196}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLForearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401976}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLUpperarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - 4: {fileID: 454904}
   - 33: {fileID: 3338776}
   - 23: {fileID: 2316156}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orc_club
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474656}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcPelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403114}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcNeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477800}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLCalf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401800}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRUpperarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - 4: {fileID: 423208}
   - 33: {fileID: 3389368}
   - 23: {fileID: 2337568}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orc_shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451144}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcSpine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRCollarbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494772}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLDigit22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - 114: {fileID: 11451502}
   - 114: {fileID: 11486356}
   - 114: {fileID: 11444688}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orc
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406430}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438566}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - 4: {fileID: 428768}
   - 33: {fileID: 3381004}
   - 23: {fileID: 2382502}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orc_helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 465438}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447078}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLDigit11 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499448}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLDigit21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464514}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orccloth2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416742}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491194}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRDigit21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456760}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 422078}
   - 137: {fileID: 13731988}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412316}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461584}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414754}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcLCollarbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416514}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRDigit11 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449730}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473756}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcMouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493712}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRForearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402070}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRibcage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419610}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRCalf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493488}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454186}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OrcRDigit22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropTableId: ItemDropTable_1
   dropItemId: 
+  isItemReceived: 0
 --- !u!114 &11451502
 MonoBehaviour:
   m_ObjectHideFlags: 1

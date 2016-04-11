@@ -584,14 +584,14 @@ public class Runes : MonoBehaviour
     /// </summary>
     public void Rune_HolyShock()
     {
-        StartCoroutine(ApplyHolyShock());
+        StartCoroutine(HolyShockCoroutine());
     }
 
     /// <summary>
     /// Holy Shock Coroutine Call
     /// </summary>
     /// <returns></returns>
-    IEnumerator ApplyHolyShock()
+    IEnumerator HolyShockCoroutine()
     {
         runeId = "Rune_HolyShock";
 
@@ -606,9 +606,10 @@ public class Runes : MonoBehaviour
             holyShockEffect.transform.parent = transform;
 
             yield return new WaitForSeconds(PlayFabDataStore.catalogRunes[runeId].effectTime);
-
-            Debug.Log("Before Collider");
-            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            runeId = "Rune_HolyShock";
+            Debug.Log("Before Collider: " + gameObject.transform.position + "Radius: " + PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
             Debug.Log("After Collider " + hitEnemies.Length);
 
             GameObject holyShockDamage = Instantiate(Resources.Load("HolyShock_Damage"), transform.position, Quaternion.identity) as GameObject;
@@ -665,20 +666,19 @@ public class Runes : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 1000))
+            if (Physics.Raycast(ray, out hit, 100))
             {
                 Vector3 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 GameObject meteor = Instantiate(Resources.Load("Meteor"), position, Quaternion.identity) as GameObject;
 
-                yield return new WaitForSeconds(.9f);
+                Collider[] hitEnemies = Physics.OverlapSphere(position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
 
-                Collider[] hitEnemies = Physics.OverlapSphere(position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+                yield return new WaitForSeconds(.9f);
 
                 GameObject meteorFireArea = Instantiate(Resources.Load("MeteorFireArea"), position , Quaternion.identity) as GameObject;
                 meteorFireArea.GetComponent<FireArea>().weaponDamage = PlayFabDataStore.playerWeaponDamage;
                 meteorFireArea.GetComponent<FireArea>().photonView = photonView;
                 meteorFireArea.GetComponent<FireArea>().damageType = PlayFabDataStore.catalogRunes[runeId].damageType;
-
 
                 for (int i = 0; i < hitEnemies.Length; i++)
                 {

@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FXSpawn: {fileID: 0}
-  DestoyOnHit: 0
+  DestoyOnHit: 1
   FixRotation: 0
   LifeTimeAfterHit: 2
   LifeTime: 10

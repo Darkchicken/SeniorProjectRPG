@@ -72,7 +72,6 @@ public class PlayerCombatManager : Runes
         if(Input.GetKeyDown("2") || actionBarSkillId == "2")
         {
             skillSlot = 2;
-            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
             {
