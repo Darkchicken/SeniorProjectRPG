@@ -53,9 +53,7 @@ public class CharacterStats : MonoBehaviour {
         textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
         textSpellPower.text = PlayFabDataStore.playerSpellPower.ToString();
         textAttackPower.text =  PlayFabDataStore.playerAttackPower.ToString();
-        int critFraction = PlayFabDataStore.playerCriticalChance % 100;
-        int critBase = PlayFabDataStore.playerCriticalChance / 100;
-        textCrit.text = critBase.ToString() + "." + critFraction.ToString() + "%";
+        textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
         textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
     }
 
@@ -147,7 +145,7 @@ public class CharacterStats : MonoBehaviour {
         PlayFabDataStore.playerSpirit = PlayFabDataStore.playerBaseSpirit + spirit;
         textSpirit.text = PlayFabDataStore.playerSpirit.ToString();
     }
-    void CalculateCriticalChance()
+    public void CalculateCriticalChance()
     {
         int crit = 0;
         int intellect = 0;
@@ -157,10 +155,8 @@ public class CharacterStats : MonoBehaviour {
             intellect += PlayFabDataStore.catalogItems[item.Value.itemId].intellect;
         }
 
-        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + crit + intellect;
-        int critFraction = PlayFabDataStore.playerCriticalChance % 100;
-        int critBase = PlayFabDataStore.playerCriticalChance / 100;
-        textCrit.text = critBase.ToString() + "." + critFraction.ToString() + "%";
+        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + crit/100 + intellect/100;
+        textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
     }
     void CalculateArmor()
     {

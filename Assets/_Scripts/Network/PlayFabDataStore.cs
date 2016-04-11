@@ -58,8 +58,8 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerVitality;
     public static int playerBaseSpirit;
     public static int playerSpirit;
-    public static int playerBaseCriticalChance;
-    public static int playerCriticalChance;
+    public static float playerBaseCriticalChance;
+    public static float playerCriticalChance;
     public static int playerArmor;
     //public static int playerBaseWeaponDamage;
     public static int playerWeaponDamage;

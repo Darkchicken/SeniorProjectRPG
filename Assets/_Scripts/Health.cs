@@ -354,7 +354,7 @@ public class Health : MonoBehaviour {
 
     }
 
-    public void TakeDamage(GameObject source, int damageTaken, int criticalChance, string damageType)
+    public void TakeDamage(GameObject source, int damageTaken, float criticalChance, string damageType)
     {
         if (!dead)
         {
@@ -366,7 +366,7 @@ public class Health : MonoBehaviour {
             {
                 damageTaken += increasedDamagePercentage;
             }
-            if (Random.Range(0, 100) <= criticalChance + criticalHitValue)
+            if (Random.Range(0f, 100f) <= criticalChance + criticalHitValue)
             {
                 damageTaken *= 2; //if it's a critical, double the damage
             }

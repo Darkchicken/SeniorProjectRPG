@@ -35,8 +35,9 @@ public class Runes : MonoBehaviour
     private static bool updateCooldownImage4 = false;
     private static bool updateCooldownImage5 = false;
     private static bool updateCooldownImage6 = false;
+    private static float baseCriticalHitChance;
     private static int tempWeaponDamage;
-    private static int tempCriticalChance;
+    private static float tempCriticalChance;
     private static int tempResourceGeneration;
     private static int tempResourceUsage;
     private static string tempDamageType;
@@ -815,6 +816,24 @@ public class Runes : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Your Critical Hit Chance is increased by 8% for 5 seconds.
+    /// </summary>
+    public void Rune_KillingRampage(GameObject enemy)
+    {
+        Debug.Log("Killing rampage rune activated!");
+        tempCriticalChance += PlayFabDataStore.catalogRunes["Rune_KillingRampage"].increasedCrit;
+        PlayFabDataStore.playerCriticalChance = tempCriticalChance;
+        CharacterStats.characterStats.SetStatsText();
+        StartCoroutine(KillingRampageTimer());
+    }
+
+    IEnumerator KillingRampageTimer()
+    {
+        yield return new WaitForSeconds(PlayFabDataStore.catalogRunes["Rune_KillingRampage"].effectTime);
+
+        CharacterStats.characterStats.CalculateCriticalChance();
+    }
 
 
 
@@ -833,7 +852,8 @@ public class Runes : MonoBehaviour
 
 
 
-    
+
+
 
 
 }
