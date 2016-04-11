@@ -817,11 +817,10 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Your Critical Hit Chance is increased by 8% for 5 seconds.
+    /// Successful hit increases your Critical Hit Chance by 8% for 5 seconds.
     /// </summary>
     public void Rune_KillingRampage(GameObject enemy)
     {
-        Debug.Log("Killing rampage rune activated!");
         tempCriticalChance += PlayFabDataStore.catalogRunes["Rune_KillingRampage"].increasedCrit;
         PlayFabDataStore.playerCriticalChance = tempCriticalChance;
         CharacterStats.characterStats.SetStatsText();
@@ -834,6 +833,43 @@ public class Runes : MonoBehaviour
 
         CharacterStats.characterStats.CalculateCriticalChance();
     }
+
+    /// <summary>
+    /// Generate 5 Resource for each enemy hit.
+    /// </summary>
+    public void Rune_Momentum(GameObject enemy)
+    {
+        if (PlayFabDataStore.playerCurrentResource + PlayFabDataStore.catalogRunes["Rune_Momentum"].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+        {
+            PlayFabDataStore.playerCurrentResource += PlayFabDataStore.catalogRunes["Rune_Momentum"].resourceGeneration;
+            Debug.Log(PlayFabDataStore.catalogRunes["Rune_Momentum"].resourceGeneration + "resource added");
+        }
+        else
+        {
+            PlayFabDataStore.playerCurrentResource = PlayFabDataStore.playerMaxResource;
+        }
+    }
+
+    /// <summary>
+    /// Increase damage by 50% as Fire.
+    /// </summary>
+    public void Rune_Spree(GameObject enemy)
+    {
+        tempWeaponDamage += tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Spree"].increasedDamage / 100;
+        tempDamageType = PlayFabDataStore.catalogRunes["Rune_Spree"].damageType;
+    }
+
+    /// <summary>
+    /// Reduce the cooldown by 1 second for each enemy hit.
+    /// </summary>
+    public void Rune_EndlessPunishment(GameObject enemy)
+    {
+        Debug.Log("BEfore Time: " + attackTimerSkillSlot2);
+        attackTimerSkillSlot2 += PlayFabDataStore.catalogRunes["Rune_EndlessPunishment"].resourceUsage;
+        Debug.Log("After Time: " + attackTimerSkillSlot2);
+    }
+
+
 
 
 
