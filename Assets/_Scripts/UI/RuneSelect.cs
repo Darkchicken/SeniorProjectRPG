@@ -71,7 +71,6 @@ public class RuneSelect : MonoBehaviour
     {
         if (!PlayFabDataStore.catalogRuneImages.ContainsKey(runeId))
         {
-            Debug.Log("Rune catalog images set");
             PlayFabDataStore.catalogRuneImages.Add(runeId, runeImage.sprite);
         }
     }
