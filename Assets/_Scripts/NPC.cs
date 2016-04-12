@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour {
 
     
     [Header("Drop Quest Panel Here")]
-    public GameObject questPanel;
+    public Canvas questPanel;
     public GameObject acceptButton;
     public GameObject declineButton;
     public GameObject completeButton;
@@ -35,6 +35,7 @@ public class NPC : MonoBehaviour {
     private GameObject player;
     private Camera dialogueCamera;
     private Dialogue dialogueManager;
+    private GameObject gameManager;
     //private Color questOutlineColor = new Color(255, 255, 0, 255);
 
 
@@ -42,8 +43,13 @@ public class NPC : MonoBehaviour {
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        dialogueManager = GameObject.Find("GameManager").GetComponent<Dialogue>();
+        gameManager = GameObject.Find("GameManager");
+        dialogueManager = gameManager.GetComponent<Dialogue>();
         dialogueCamera = GameObject.Find("DialogueCamera").GetComponent<Camera>();
+        questPanel = gameManager.GetComponent<GameManager>().quest;
+        acceptButton = questPanel.gameObject.transform.Find("Button (Accept)").gameObject;
+        declineButton = questPanel.gameObject.transform.Find("Button (Decline)").gameObject;
+        completeButton = questPanel.gameObject.transform.Find("Button (Complete)").gameObject;
     }
 
     void Update()
@@ -146,7 +152,7 @@ public class NPC : MonoBehaviour {
             acceptButton.SetActive(true);
             declineButton.SetActive(true);
             completeButton.SetActive(false);
-            questPanel.SetActive(true);
+            questPanel.gameObject.SetActive(true);
         }
     }
     public void EndQuest()
@@ -161,7 +167,7 @@ public class NPC : MonoBehaviour {
         acceptButton.SetActive(false);
         declineButton.SetActive(false);
         completeButton.SetActive(true);
-        questPanel.SetActive(true);
+        questPanel.gameObject.SetActive(true);
 
         /*//if the player has accepted this quest and has not completed it
         if (PlayFabDataStore.playerQuestLog.Contains(endQuestId[questIndex])

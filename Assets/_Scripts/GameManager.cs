@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Canvas loading;
     public Canvas runes;
     public Canvas character;
+    public Canvas quest;
     public UIItemDatabase itemDatabase;
     public static List<GameObject> players = new List<GameObject>();
 
