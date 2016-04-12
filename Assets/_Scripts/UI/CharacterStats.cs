@@ -70,7 +70,7 @@ public class CharacterStats : MonoBehaviour {
             CalculateSpirit();
             CalculateCriticalChance();
             CalculateArmor();
-            CalculateWeaponDamage();
+            CalculatePhysicalDamage();
             CalculateSpellPower();
             CalculateAttackPower();
             textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
@@ -148,14 +148,12 @@ public class CharacterStats : MonoBehaviour {
     public void CalculateCriticalChance()
     {
         int crit = 0;
-        int intellect = 0;
         foreach (var item in PlayFabDataStore.playerEquippedItems)
         {
             crit += PlayFabDataStore.catalogItems[item.Value.itemId].crit;
-            intellect += PlayFabDataStore.catalogItems[item.Value.itemId].intellect;
         }
 
-        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + crit/100 + intellect/100;
+        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + crit / 100;
         textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
     }
     void CalculateArmor()
@@ -173,21 +171,32 @@ public class CharacterStats : MonoBehaviour {
         PlayFabDataStore.playerArmor = armor + strength + dexterity;
         textArmor.text = PlayFabDataStore.playerArmor.ToString();
     }
+
     void CalculateWeaponDamage()
     {
-        PlayFabDataStore.playerWeaponDamage = PlayFabDataStore.playerStrength * 2;
+        int damage = 0;
+        foreach (var item in PlayFabDataStore.playerEquippedItems)
+        {
+            damage += PlayFabDataStore.catalogItems[item.Value.itemId].damage;
+        }
+
+        PlayFabDataStore.playerWeaponDamage = damage;
+    }
+    void CalculatePhysicalDamage()
+    {
+        PlayFabDataStore.playerPhysicalDamage = PlayFabDataStore.playerWeaponDamage + (PlayFabDataStore.playerWeaponDamage * PlayFabDataStore.playerStrength / 100);
 
         textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
     }
     void CalculateSpellPower()
     {
-        PlayFabDataStore.playerSpellDamage = PlayFabDataStore.playerIntellect * 2;
+        PlayFabDataStore.playerSpellDamage = PlayFabDataStore.playerWeaponDamage + (PlayFabDataStore.playerWeaponDamage * PlayFabDataStore.playerIntellect / 100);
 
         textSpellPower.text = PlayFabDataStore.playerSpellDamage.ToString();
     }
     void CalculateAttackPower()
     {
-        PlayFabDataStore.playerWeaponDamage = PlayFabDataStore.playerDexterity * 2;
+        PlayFabDataStore.playerAttackPower = PlayFabDataStore.playerWeaponDamage + (PlayFabDataStore.playerWeaponDamage * PlayFabDataStore.playerDexterity / 100);
 
         textAttackPower.text = PlayFabDataStore.playerAttackPower.ToString();
     }

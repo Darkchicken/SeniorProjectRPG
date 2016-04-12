@@ -7,6 +7,9 @@ public class RuneWindow : MonoBehaviour
 {
     public List<GameObject> skillWindows;
     public List<GameObject> modifierWindows;
+    public List<GameObject> PassiveWindow;
+    public GameObject runeTabs;
+    public static GameObject runeTabsMenu;
     public static Dictionary<int, List<GameObject>> runeWindows = new Dictionary<int, List<GameObject>>();
     public static int activeMenu = 0;
     public static int activeTab = 0;
@@ -17,7 +20,8 @@ public class RuneWindow : MonoBehaviour
     {
         runeWindows.Add(0, skillWindows);
         runeWindows.Add(1, modifierWindows);
-        //ToggleWindows();
+        runeWindows.Add(2, PassiveWindow);
+        runeTabsMenu = runeTabs;
     }
 
     public static void SortAllRunes()
@@ -37,8 +41,17 @@ public class RuneWindow : MonoBehaviour
                 window.SetActive(false);
             }
         }
+        
+        
 
-        runeWindows[activeMenu][activeTab].SetActive(true);
+        if (activeMenu == 2)
+        {
+            runeWindows[activeMenu][0].SetActive(true);
+        }
+        else
+        {
+            runeWindows[activeMenu][activeTab].SetActive(true);
+        }
     }
 
 

@@ -10222,7 +10222,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 483266, guid: 3f152dcd56fe9ff409e275ac5d1573f3, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 445082, guid: 3f152dcd56fe9ff409e275ac5d1573f3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -21443,7 +21443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400194, guid: a64883bdae71338469a7c45cac20e21a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: a64883bdae71338469a7c45cac20e21a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -35973,7 +35973,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 410308, guid: e2e108c87ff7e5042980348e971723a6, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11440030, guid: e2e108c87ff7e5042980348e971723a6, type: 2}
       propertyPath: levelToTeleport

@@ -166,7 +166,7 @@ public class PlayFabApiCalls : MonoBehaviour
         });
     }
 
-    //Get custom data of the character and set them to their locals
+    //Get custom data of the character and set them to their locals // THESE WILL BE CONSTANT IN GAME -- DELETE THIS CALL!!!
     public static void GetCharacterStats()
     {
         var request = new GetCharacterDataRequest()

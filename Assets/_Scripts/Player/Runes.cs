@@ -506,15 +506,15 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Increase movement speed by 30% for 3 seconds
+    /// Reduce all damage taken by 50% and gain Immunity to all control-impairing effects for 5 seconds.
     /// </summary>
     public void Rune_Reckless()
     {
-        runeId = "Rune_Reckless";
+        runeId = "Rune_Reckless"; 
 
-        if (attackTimerSkillSlot1 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+        if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
         {
-            if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
+            if (attackTimerSkillSlot1 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
             {
                 SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
                 GetComponent<PhotonView>().RPC("SetDamageReduction", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_Reckless"].attackPercentage, PlayFabDataStore.catalogRunes["Rune_Reckless"].effectTime);
