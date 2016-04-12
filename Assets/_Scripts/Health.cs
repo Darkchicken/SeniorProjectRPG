@@ -185,16 +185,9 @@ public class Health : MonoBehaviour {
         if (PlayFabDataStore.playerCurrentHealth + Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5) <= PlayFabDataStore.playerMaxHealth)
         {
             Debug.Log(Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5));
-            if(Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5) == 0)
-            {
-                PlayFabDataStore.playerCurrentHealth += 1;
-                health = PlayFabDataStore.playerCurrentHealth;
-            }
-            else
-            {
-                PlayFabDataStore.playerCurrentHealth += Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5);
-                health = PlayFabDataStore.playerCurrentHealth;
-            }
+            PlayFabDataStore.playerCurrentHealth += Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5);
+            health = PlayFabDataStore.playerCurrentHealth;
+            
         }
         else
         {

@@ -270,6 +270,32 @@ public class PlayFabApiCalls : MonoBehaviour
                     }
                 }
             }
+            if (itemClass == "Quest")
+            {
+                foreach (var quest in items)
+                {
+                    if (PlayFabDataStore.catalogQuests[quest].currencies != null)
+                    {
+                        foreach (var currency in PlayFabDataStore.catalogQuests[quest].currencies)
+                        {
+                            AddUserCurrency(int.Parse(currency.Value.ToString()));
+                        }
+                    }
+                    foreach (var reward in PlayFabDataStore.catalogQuests[quest].rewards)
+                    {
+                        if(PlayFabDataStore.catalogRunes.ContainsKey(reward))
+                        {
+                            GetAllCharacterRunes();
+                        }
+                        else 
+                        if(PlayFabDataStore.catalogItems.ContainsKey(reward))
+                        {
+                            GetAllCharacterItems();
+                        }
+                    }
+                }
+                    
+            }
         },
         (error) =>
         {

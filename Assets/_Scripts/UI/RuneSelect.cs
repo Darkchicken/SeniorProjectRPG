@@ -62,10 +62,17 @@ public class RuneSelect : MonoBehaviour
                 runeDisabledImage.enabled = false;
                 
             }
-            if (!PlayFabDataStore.catalogRuneImages.ContainsKey(runeId))
-            {
-                PlayFabDataStore.catalogRuneImages.Add(runeId, runeImage.sprite);
-            }
+            
+        }
+        SetCatalogRuneImage();
+    }
+
+    void SetCatalogRuneImage()
+    {
+        if (!PlayFabDataStore.catalogRuneImages.ContainsKey(runeId))
+        {
+            Debug.Log("Rune catalog images set");
+            PlayFabDataStore.catalogRuneImages.Add(runeId, runeImage.sprite);
         }
     }
 

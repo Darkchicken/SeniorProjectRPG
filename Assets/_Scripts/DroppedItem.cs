@@ -27,7 +27,7 @@ public class DroppedItem : MonoBehaviour
                 PlayFabApiCalls.GrantItemsToCharacter(items, "Active", "Rune");
             }
         }
-        if(itemId == "Item_Empty")
+        if(itemId == "Item_Gold")
         {
             Debug.Log("currency added");
             PlayFabApiCalls.AddUserCurrency(Random.Range(5, 50));

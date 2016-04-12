@@ -45,7 +45,7 @@ public class PlayFabDataStore : MonoBehaviour
     public const int playerBaseIntellect = 8;
     public const int playerBaseDexterity = 8;
     public const int playerBaseVitality = 9;
-    public const int playerBaseSpirit = 1;
+    public const int playerBaseSpirit = 5;
     public const int playerBaseWeaponDamage = 1;
     public const float playerBaseCriticalChance = 0;
     public const int playerBaseArmor = 200;
