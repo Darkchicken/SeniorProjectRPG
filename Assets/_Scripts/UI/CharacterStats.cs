@@ -182,7 +182,7 @@ public class CharacterStats : MonoBehaviour {
             damage += PlayFabDataStore.catalogItems[item.Value.itemId].damage;
         }
 
-        PlayFabDataStore.playerWeaponDamage = damage;
+        PlayFabDataStore.playerWeaponDamage = PlayFabDataStore.playerBaseWeaponDamage + damage;
     }
     void CalculatePhysicalDamage()
     {

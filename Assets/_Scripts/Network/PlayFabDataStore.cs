@@ -46,6 +46,7 @@ public class PlayFabDataStore : MonoBehaviour
     public const int playerBaseDexterity = 8;
     public const int playerBaseVitality = 9;
     public const int playerBaseSpirit = 1;
+    public const int playerBaseWeaponDamage = 1;
     public const float playerBaseCriticalChance = 0;
     public const int playerBaseArmor = 200;
 
@@ -63,7 +64,7 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerSpirit;
     public static float playerCriticalChance;
     public static int playerArmor;
-    //public static int playerBaseWeaponDamage;
+    
     public static int playerWeaponDamage;
     public static int playerPhysicalDamage;
     public static int playerSpellDamage;
