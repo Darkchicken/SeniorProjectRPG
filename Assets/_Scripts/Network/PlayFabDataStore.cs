@@ -63,21 +63,21 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerArmor;
     //public static int playerBaseWeaponDamage;
     public static int playerWeaponDamage;
-    public static int playerSpellPower;
+    public static int playerSpellDamage;
     public static int playerAttackPower;
     public static Dictionary<string, string> playerInitialData = new Dictionary<string, string>()
     {
         {"Level", "1" },
         {"Experience", "0" },
-        {"Health", "55" },
-        {"MaxHealth", "55" },
+        {"Health", "40" },
+        {"MaxHealth", "40" },
         {"Resource", "100" },
-        {"Strength", "0" },
-        {"Intellect", "0" },
-        {"Dexterity", "0" },
-        {"Vitality", "0" },
+        {"Strength", "8" },
+        {"Intellect", "8" },
+        {"Dexterity", "8" },
+        {"Vitality", "10" },
         {"Spirit", "0" },
-        {"Armor", "0" },
+        {"Armor", "200" },
         {"Critical Chance", "0" },
         {"Weapon Damage", "0" }
     };

@@ -51,7 +51,7 @@ public class CharacterStats : MonoBehaviour {
         textSpirit.text = PlayFabDataStore.playerSpirit.ToString();
         textArmor.text = PlayFabDataStore.playerArmor.ToString();
         textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
-        textSpellPower.text = PlayFabDataStore.playerSpellPower.ToString();
+        textSpellPower.text = PlayFabDataStore.playerSpellDamage.ToString();
         textAttackPower.text =  PlayFabDataStore.playerAttackPower.ToString();
         textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
         textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
@@ -181,9 +181,9 @@ public class CharacterStats : MonoBehaviour {
     }
     void CalculateSpellPower()
     {
-        PlayFabDataStore.playerSpellPower = PlayFabDataStore.playerIntellect * 2;
+        PlayFabDataStore.playerSpellDamage = PlayFabDataStore.playerIntellect * 2;
 
-        textSpellPower.text = PlayFabDataStore.playerSpellPower.ToString();
+        textSpellPower.text = PlayFabDataStore.playerSpellDamage.ToString();
     }
     void CalculateAttackPower()
     {
