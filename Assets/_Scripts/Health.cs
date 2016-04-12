@@ -72,7 +72,7 @@ public class Health : MonoBehaviour {
         Invoke("InitializeHealth", 1);
         if (tag == "Player")
         {
-            Invoke("StartHealthRegenration", 10);
+            Invoke("StartHealthRegeneration", 10);
         }
             
     }
@@ -103,7 +103,7 @@ public class Health : MonoBehaviour {
         
     }
 
-    void StartHealthRegenration()
+    void StartHealthRegeneration()
     {
         StartCoroutine(HealthRegeneration());
     }
@@ -414,7 +414,7 @@ public class Health : MonoBehaviour {
                 if (PlayFabDataStore.playerCurrentHealth > damageTaken)
                 {
                     //anim.SetTrigger("TAKE DAMAGE");
-                    ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
+                    //ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                     PlayFabDataStore.playerCurrentHealth -= damageTaken;
                 }
@@ -445,6 +445,7 @@ public class Health : MonoBehaviour {
         if(tag == "Player")
         {
             GetComponent<PlayerCombatManager>().enabled = false;
+            StopCoroutine(HealthRegeneration());
         }
         if(tag == "Enemy")
         {

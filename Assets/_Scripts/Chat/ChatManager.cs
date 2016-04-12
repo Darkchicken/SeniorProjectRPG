@@ -23,7 +23,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     {
         chatClient = new ChatClient(this);
         characterName = PlayFabDataStore.characterName;
-        chatField.text = "<color=yellow>Welcome to Age of Aeternum! Have Fun!</color>\n";
+        chatField.text = "<color=yellow>Welcome to Soulless! Have Fun!</color>\n";
         Connect();
     }
 
