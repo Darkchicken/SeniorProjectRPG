@@ -177,15 +177,6 @@ public class PlayFabApiCalls : MonoBehaviour
         {    
             PlayFabDataStore.playerLevel = int.Parse(result.Data["Level"].Value);
             PlayFabDataStore.playerExperience = int.Parse(result.Data["Experience"].Value);
-            PlayFabDataStore.playerBaseHealth = int.Parse(result.Data["Health"].Value);
-            PlayFabDataStore.playerMaxResource = int.Parse(result.Data["Resource"].Value);
-            PlayFabDataStore.playerBaseStrength = int.Parse(result.Data["Strength"].Value);
-            PlayFabDataStore.playerBaseIntellect = int.Parse(result.Data["Intellect"].Value);
-            PlayFabDataStore.playerBaseDexterity = int.Parse(result.Data["Dexterity"].Value);
-            PlayFabDataStore.playerBaseVitality = int.Parse(result.Data["Vitality"].Value);
-            PlayFabDataStore.playerBaseSpirit = int.Parse(result.Data["Spirit"].Value);
-            PlayFabDataStore.playerBaseCriticalChance = float.Parse(result.Data["Critical Chance"].Value);
-            PlayFabDataStore.playerArmor = int.Parse(result.Data["Armor"].Value);
             //PlayFabDataStore.playerBaseWeaponDamage = int.Parse(result.Data["Weapon Damage"].Value);
             Debug.Log("Data successfully retrieved!");
 

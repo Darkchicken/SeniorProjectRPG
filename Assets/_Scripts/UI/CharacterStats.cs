@@ -13,7 +13,7 @@ public class CharacterStats : MonoBehaviour {
     public Text textSpirit;
     public Text textCrit;
     public Text textArmor;
-    public Text textWeaponDamage;
+    public Text textPhysicalDamage;
     public Text textSpellPower;
     public Text textAttackPower;
     public Text textCurrency;
@@ -50,7 +50,7 @@ public class CharacterStats : MonoBehaviour {
         textVitality.text = PlayFabDataStore.playerVitality.ToString();
         textSpirit.text = PlayFabDataStore.playerSpirit.ToString();
         textArmor.text = PlayFabDataStore.playerArmor.ToString();
-        textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
+        textPhysicalDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
         textSpellPower.text = PlayFabDataStore.playerSpellDamage.ToString();
         textAttackPower.text =  PlayFabDataStore.playerAttackPower.ToString();
         textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
@@ -63,6 +63,7 @@ public class CharacterStats : MonoBehaviour {
         {
             calculationTimer = 0;
             Debug.Log("Calculating the Stats...");
+            CalculateWeaponDamage();
             CalculateVitality();
             CalculateStrength();
             CalculateDexterity();
@@ -92,7 +93,7 @@ public class CharacterStats : MonoBehaviour {
             vitality += PlayFabDataStore.catalogItems[item.Value.itemId].vitality;
         }
 
-        PlayFabDataStore.playerVitality = PlayFabDataStore.playerBaseVitality + vitality;
+        PlayFabDataStore.playerVitality = PlayFabDataStore.playerBaseVitality + PlayFabDataStore.playerStatBuilderVitality + vitality;
         PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth + PlayFabDataStore.playerVitality * 10;
         textVitality.text = PlayFabDataStore.playerVitality.ToString();
         Debug.Log("Health Max: " + PlayFabDataStore.playerMaxHealth);
@@ -109,7 +110,7 @@ public class CharacterStats : MonoBehaviour {
             strength += PlayFabDataStore.catalogItems[item.Value.itemId].strength;
         }
 
-        PlayFabDataStore.playerStrength = PlayFabDataStore.playerBaseStrength + strength;
+        PlayFabDataStore.playerStrength = PlayFabDataStore.playerBaseStrength + PlayFabDataStore.playerStatBuilderStrength + strength;
         textStrength.text = PlayFabDataStore.playerStrength.ToString();
     }
     void CalculateDexterity()
@@ -120,7 +121,7 @@ public class CharacterStats : MonoBehaviour {
             dexterity += PlayFabDataStore.catalogItems[item.Value.itemId].dexterity;
         }
 
-        PlayFabDataStore.playerDexterity = PlayFabDataStore.playerBaseDexterity + dexterity;
+        PlayFabDataStore.playerDexterity = PlayFabDataStore.playerBaseDexterity + PlayFabDataStore.playerStatBuilderDexterity + dexterity;
         textDexterity.text = PlayFabDataStore.playerDexterity.ToString();
     }
     void CalculateIntellect()
@@ -131,7 +132,7 @@ public class CharacterStats : MonoBehaviour {
             intellect += PlayFabDataStore.catalogItems[item.Value.itemId].intellect;
         }
 
-        PlayFabDataStore.playerIntellect = PlayFabDataStore.playerBaseIntellect + intellect;
+        PlayFabDataStore.playerIntellect = PlayFabDataStore.playerBaseIntellect + PlayFabDataStore.playerStatBuilderIntellect + intellect;
         textIntellect.text = PlayFabDataStore.playerIntellect.ToString();
     }
     void CalculateSpirit()
@@ -142,7 +143,7 @@ public class CharacterStats : MonoBehaviour {
             spirit += PlayFabDataStore.catalogItems[item.Value.itemId].spirit;
         }
 
-        PlayFabDataStore.playerSpirit = PlayFabDataStore.playerBaseSpirit + spirit;
+        PlayFabDataStore.playerSpirit = PlayFabDataStore.playerBaseSpirit + PlayFabDataStore.playerStatBuilderSpirit + spirit;
         textSpirit.text = PlayFabDataStore.playerSpirit.ToString();
     }
     public void CalculateCriticalChance()
@@ -168,7 +169,7 @@ public class CharacterStats : MonoBehaviour {
             dexterity += PlayFabDataStore.catalogItems[item.Value.itemId].dexterity;
         }
 
-        PlayFabDataStore.playerArmor = armor + strength + dexterity;
+        PlayFabDataStore.playerArmor = PlayFabDataStore.playerBaseArmor + armor + strength + dexterity;
         textArmor.text = PlayFabDataStore.playerArmor.ToString();
     }
 
@@ -177,6 +178,7 @@ public class CharacterStats : MonoBehaviour {
         int damage = 0;
         foreach (var item in PlayFabDataStore.playerEquippedItems)
         {
+            Debug.Log("DAMAGEEE " + damage);
             damage += PlayFabDataStore.catalogItems[item.Value.itemId].damage;
         }
 
@@ -186,7 +188,7 @@ public class CharacterStats : MonoBehaviour {
     {
         PlayFabDataStore.playerPhysicalDamage = PlayFabDataStore.playerWeaponDamage + (PlayFabDataStore.playerWeaponDamage * PlayFabDataStore.playerStrength / 100);
 
-        textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
+        textPhysicalDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
     }
     void CalculateSpellPower()
     {

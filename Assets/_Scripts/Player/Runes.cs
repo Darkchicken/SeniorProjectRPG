@@ -36,7 +36,7 @@ public class Runes : MonoBehaviour
     private static bool updateCooldownImage5 = false;
     private static bool updateCooldownImage6 = false;
     private static float baseCriticalHitChance;
-    private static int tempWeaponDamage;
+    private static int tempAttackDamage;
     private static float tempCriticalChance;
     private static int tempResourceGeneration;
     private static int tempResourceUsage;
@@ -133,13 +133,13 @@ public class Runes : MonoBehaviour
 
     void ApplyDamage(GameObject enemy)
     {
-        enemy.GetComponent<Health>().TakeDamage(gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance, tempDamageType);
+        enemy.GetComponent<Health>().TakeDamage(gameObject, tempAttackDamage * PlayFabDataStore.catalogRunes[runeId].attackPercentage / 100, tempCriticalChance, tempDamageType);
     }
 
 
     
     /// <summary>
-    /// Hit an enemy for 320% weapon damage.
+    /// Hit an enemy for 320% physical damage.
     /// </summary>
     public void Rune_Slam()
     {
@@ -164,7 +164,7 @@ public class Runes : MonoBehaviour
                         SetPlayerResource(100);
                     }
                     transform.LookAt(targetEnemy.transform.position);
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -187,7 +187,7 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Swing your weapon and deal 200% weapon damage to all enemies in front of you who caught in the swing.
+    /// Swing your weapon and deal 200% physical damage to all enemies in front of you who caught in the swing.
     /// </summary>
     public void Rune_Carve()
     {
@@ -218,7 +218,7 @@ public class Runes : MonoBehaviour
                             {
                                 SetPlayerResource(100);
                             }
-                            tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                            tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                             tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                             tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                             tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -244,7 +244,7 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Hit an enemy for 250% weapon damage.
+    /// Hit an enemy for 250% physical damage.
     /// </summary>
     public void Rune_MagicBolt()
     {
@@ -270,7 +270,7 @@ public class Runes : MonoBehaviour
                         SetPlayerResource(100);
                     }
                     transform.LookAt(targetEnemy.transform.position);
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerSpellDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -294,7 +294,7 @@ public class Runes : MonoBehaviour
         }
     }
     /// <summary>
-    /// Smash enemies in front of you for 535% weapon damage. Riposte has a 1% increased Critical Hit Chance for every 5 Resource that you have.
+    /// Smash enemies in front of you for 535% physical damage. Riposte has a 1% increased Critical Hit Chance for every 5 Resource that you have.
     /// </summary>
     public void Rune_Riposte()
     {
@@ -317,7 +317,7 @@ public class Runes : MonoBehaviour
                     if (Vector3.Angle(transform.forward, hitEnemies[i].transform.position- transform.position) <= 90)
                     {
                         
-                        tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                        tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                         tempCriticalChance = PlayFabDataStore.playerCriticalChance + GetPlayerResource() % 5 * PlayFabDataStore.catalogRunes[runeId].increasedCrit;
                         tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                         tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -340,7 +340,7 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Attack all enemies within 10 yards to bleed for 1100% weapon damage over 5 seconds.
+    /// Attack all enemies within 10 yards to bleed for 1100% physical damage over 5 seconds.
     /// </summary>
     public void Rune_BloodyTouch()
     {
@@ -360,7 +360,7 @@ public class Runes : MonoBehaviour
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
                 {
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance; ;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -376,7 +376,7 @@ public class Runes : MonoBehaviour
                             loadingMethod.Invoke(this, arguments);
                         }
                     }
-                    targetEnemy.gameObject.GetComponent<PhotonView>().RPC("SetBleeding", PhotonTargets.AllViaServer, photonView.viewID, true, (int)PlayFabDataStore.catalogRunes["Rune_BloodyTouch"].effectTime, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_BloodyTouch"].attackPercentage / 100);
+                    targetEnemy.gameObject.GetComponent<PhotonView>().RPC("SetBleeding", PhotonTargets.AllViaServer, photonView.viewID, true, (int)PlayFabDataStore.catalogRunes["Rune_BloodyTouch"].effectTime, tempAttackDamage * PlayFabDataStore.catalogRunes["Rune_BloodyTouch"].attackPercentage / 100);
                 } 
             }
         }
@@ -384,7 +384,7 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Summon a lightning that spins around you, dealing 320% weapon damage to all enemies hit.
+    /// Summon a lightning that spins around you, dealing 320% spell damage to all enemies hit.
     /// </summary>
     public void Rune_LightWarp()
     {
@@ -401,7 +401,7 @@ public class Runes : MonoBehaviour
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
                 {
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerSpellDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance; ;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -451,7 +451,7 @@ public class Runes : MonoBehaviour
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
                 {
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance; ;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -518,16 +518,17 @@ public class Runes : MonoBehaviour
             {
                 SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
                 GetComponent<PhotonView>().RPC("SetDamageReduction", PhotonTargets.AllViaServer, photonView.viewID, true, PlayFabDataStore.catalogRunes["Rune_Reckless"].attackPercentage, PlayFabDataStore.catalogRunes["Rune_Reckless"].effectTime);
+                attackTimerSkillSlot1 = 0f;
+                HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
+                HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;
+                updateCooldownImage1 = true;
             }
-            attackTimerSkillSlot1 = 0f;
-            HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
-            HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;
-            updateCooldownImage1 = true;
+            
         }
     }
 
     /// <summary>
-    /// Deal 380% weapon damage to all enemies within 9 yards.
+    /// Deal 380% physical damage to all enemies within 9 yards.
     /// </summary>
     public void Rune_Obliterate()
     {
@@ -556,7 +557,7 @@ public class Runes : MonoBehaviour
                     {
                         SetPlayerResource(100);
                     }
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -581,7 +582,7 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Deal 380% weapon damage to all enemies within 9 yards.
+    /// Deal 380% spell damage to all enemies within 9 yards.
     /// </summary>
     public void Rune_HolyShock()
     {
@@ -622,7 +623,7 @@ public class Runes : MonoBehaviour
                 Debug.Log(hitEnemies[i].tag);
                 if (hitEnemies[i].CompareTag("Enemy"))
                 {
-                    tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempAttackDamage = PlayFabDataStore.playerSpellDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                     tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -646,7 +647,7 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Summon an immense Meteor that plummets from the sky, crashing into enemies for 740% weapon damage as Fire. The ground it hits is scorched with molten fire that deals 235% weapon damage as Fire over 3 seconds
+    /// Summon an immense Meteor that plummets from the sky, crashing into enemies for 740% spell damage as Fire. The ground it hits is scorched with molten fire that deals 235% spell damage as Fire over 3 seconds
     /// </summary>
     public void Rune_RainOfFire()
     {
@@ -697,7 +698,7 @@ public class Runes : MonoBehaviour
                         {
                             SetPlayerResource(100);
                         }
-                        tempWeaponDamage = PlayFabDataStore.playerWeaponDamage;
+                        tempAttackDamage = PlayFabDataStore.playerSpellDamage;
                         tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                         tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
                         tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
@@ -771,7 +772,7 @@ public class Runes : MonoBehaviour
                 if (hitEnemies[i].CompareTag("Enemy") && hitEnemies[i].gameObject != mainEnemy)
                 {
                     Debug.Log("Breach: " + hitEnemies[i].gameObject);
-                    hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(hitEnemies[i].gameObject, tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance, PlayFabDataStore.catalogRunes["Rune_Breach"].damageType);
+                    hitEnemies[i].gameObject.GetComponent<Health>().TakeDamage(hitEnemies[i].gameObject, tempAttackDamage * PlayFabDataStore.catalogRunes["Rune_Breach"].attackPercentage / 100, tempCriticalChance, PlayFabDataStore.catalogRunes["Rune_Breach"].damageType);
                 }
             }
         }
@@ -793,7 +794,7 @@ public class Runes : MonoBehaviour
     /// </summary>
     public void Rune_Bloodbath(GameObject enemy)
     {
-        tempWeaponDamage += tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedDamage / 100;
+        tempAttackDamage += tempAttackDamage * PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedDamage / 100;
         gameObject.GetComponent<Health>().isCriticalHit = true;
         gameObject.GetComponent<Health>().criticalHitValue = PlayFabDataStore.catalogRunes["Rune_Bloodbath"].increasedCrit;
     }
@@ -855,7 +856,7 @@ public class Runes : MonoBehaviour
     /// </summary>
     public void Rune_Spree(GameObject enemy)
     {
-        tempWeaponDamage += tempWeaponDamage * PlayFabDataStore.catalogRunes["Rune_Spree"].increasedDamage / 100;
+        tempAttackDamage += tempAttackDamage * PlayFabDataStore.catalogRunes["Rune_Spree"].increasedDamage / 100;
         tempDamageType = PlayFabDataStore.catalogRunes["Rune_Spree"].damageType;
     }
 

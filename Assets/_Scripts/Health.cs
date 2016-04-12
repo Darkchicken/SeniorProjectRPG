@@ -182,11 +182,19 @@ public class Health : MonoBehaviour {
 
     IEnumerator HealthRegeneration()
     {
-        if (PlayFabDataStore.playerCurrentHealth + PlayFabDataStore.playerSpirit / 5 <= PlayFabDataStore.playerMaxHealth)
+        if (PlayFabDataStore.playerCurrentHealth + Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5) <= PlayFabDataStore.playerMaxHealth)
         {
-            Debug.Log(PlayFabDataStore.playerSpirit / 5);
-            PlayFabDataStore.playerCurrentHealth += PlayFabDataStore.playerSpirit / 5;
-            health = PlayFabDataStore.playerCurrentHealth;
+            Debug.Log(Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5));
+            if(Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5) == 0)
+            {
+                PlayFabDataStore.playerCurrentHealth += 1;
+                health = PlayFabDataStore.playerCurrentHealth;
+            }
+            else
+            {
+                PlayFabDataStore.playerCurrentHealth += Mathf.CeilToInt(PlayFabDataStore.playerSpirit / 5);
+                health = PlayFabDataStore.playerCurrentHealth;
+            }
         }
         else
         {

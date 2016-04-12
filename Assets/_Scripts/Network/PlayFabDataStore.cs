@@ -37,28 +37,30 @@ public class PlayFabDataStore : MonoBehaviour
     public static List<string> playerCompletedQuests = new List<string>();
     public static List<string> playerQuestLog = new List<string>();
     public static List<string> playerInventory = new List<string>();
-    
+
 
     //Player
+    public const int playerBaseHealth = 40;
+    public const int playerBaseStrength = 8;
+    public const int playerBaseIntellect = 8;
+    public const int playerBaseDexterity = 8;
+    public const int playerBaseVitality = 9;
+    public const int playerBaseSpirit = 1;
+    public const float playerBaseCriticalChance = 0;
+    public const int playerBaseArmor = 200;
 
     public static int playerLevel;
     public static int playerExperience;
-    public static int playerBaseHealth;
+    
     public static int playerCurrentHealth;
-    public static int playerMaxHealth = 1;
+    public static int playerMaxHealth = 40;
     public static int playerCurrentResource;
-    public static int playerMaxResource = 1;
-    public static int playerBaseStrength;
+    public static int playerMaxResource = 100;
     public static int playerStrength;
-    public static int playerBaseIntellect;
     public static int playerIntellect;
-    public static int playerBaseDexterity;
     public static int playerDexterity;
-    public static int playerBaseVitality;
     public static int playerVitality;
-    public static int playerBaseSpirit;
     public static int playerSpirit;
-    public static float playerBaseCriticalChance;
     public static float playerCriticalChance;
     public static int playerArmor;
     //public static int playerBaseWeaponDamage;
@@ -66,21 +68,22 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerPhysicalDamage;
     public static int playerSpellDamage;
     public static int playerAttackPower;
+
+    public static int playerStatBuilderVitality;
+    public static int playerStatBuilderStrength;
+    public static int playerStatBuilderIntellect;
+    public static int playerStatBuilderDexterity;
+    public static int playerStatBuilderSpirit;
+    public static int playerStatBuilderCriticalChance;
+    public static int playerStatBuilderNatureResistance;
+    public static int playerStatBuilderFireResistance;
+    public static int playerStatBuilderFrostResistance;
+    public static int playerStatBuilderHolyResistance;
+
     public static Dictionary<string, string> playerInitialData = new Dictionary<string, string>()
     {
         {"Level", "1" },
         {"Experience", "0" },
-        {"Health", "40" },
-        {"MaxHealth", "40" },
-        {"Resource", "100" },
-        {"Strength", "8" },
-        {"Intellect", "8" },
-        {"Dexterity", "8" },
-        {"Vitality", "10" },
-        {"Spirit", "0" },
-        {"Armor", "200" },
-        {"Critical Chance", "0" },
-        {"Weapon Damage", "0" }
     };
 
     
