@@ -75,7 +75,7 @@ public class LoadingBar : MonoBehaviour
 
     protected void OnTweenFinished()
     {
-        Invoke("HideLoading", 1);
+        //Invoke("HideLoading", 1);
         //this.transform.parent.GetComponent<RaycastUI>().OnMouseExit();
     }
 

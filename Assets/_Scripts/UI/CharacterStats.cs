@@ -28,7 +28,7 @@ public class CharacterStats : MonoBehaviour {
 
     void Start()
     {
-        Invoke("CalculateStats", 3);
+        Invoke("CalculateStats", 2);
         
     }
 
@@ -93,7 +93,7 @@ public class CharacterStats : MonoBehaviour {
             vitality += PlayFabDataStore.catalogItems[item.Value.itemId].vitality;
         }
 
-        PlayFabDataStore.playerVitality = PlayFabDataStore.playerBaseVitality + PlayFabDataStore.playerStatBuilderVitality + vitality;
+        PlayFabDataStore.playerVitality = PlayFabDataStore.playerBaseVitality + PlayFabDataStore.statsBuilder["Vitality"] + vitality;
         PlayFabDataStore.playerMaxHealth = PlayFabDataStore.playerBaseHealth + PlayFabDataStore.playerVitality * 10;
         textVitality.text = PlayFabDataStore.playerVitality.ToString();
         Debug.Log("Health Max: " + PlayFabDataStore.playerMaxHealth);
@@ -110,7 +110,7 @@ public class CharacterStats : MonoBehaviour {
             strength += PlayFabDataStore.catalogItems[item.Value.itemId].strength;
         }
 
-        PlayFabDataStore.playerStrength = PlayFabDataStore.playerBaseStrength + PlayFabDataStore.playerStatBuilderStrength + strength;
+        PlayFabDataStore.playerStrength = PlayFabDataStore.playerBaseStrength + PlayFabDataStore.statsBuilder["Strength"] + strength;
         textStrength.text = PlayFabDataStore.playerStrength.ToString();
     }
     void CalculateDexterity()
@@ -121,7 +121,7 @@ public class CharacterStats : MonoBehaviour {
             dexterity += PlayFabDataStore.catalogItems[item.Value.itemId].dexterity;
         }
 
-        PlayFabDataStore.playerDexterity = PlayFabDataStore.playerBaseDexterity + PlayFabDataStore.playerStatBuilderDexterity + dexterity;
+        PlayFabDataStore.playerDexterity = PlayFabDataStore.playerBaseDexterity + PlayFabDataStore.statsBuilder["Dexterity"] + dexterity;
         textDexterity.text = PlayFabDataStore.playerDexterity.ToString();
     }
     void CalculateIntellect()
@@ -132,7 +132,7 @@ public class CharacterStats : MonoBehaviour {
             intellect += PlayFabDataStore.catalogItems[item.Value.itemId].intellect;
         }
 
-        PlayFabDataStore.playerIntellect = PlayFabDataStore.playerBaseIntellect + PlayFabDataStore.playerStatBuilderIntellect + intellect;
+        PlayFabDataStore.playerIntellect = PlayFabDataStore.playerBaseIntellect + PlayFabDataStore.statsBuilder["Intellect"] + intellect;
         textIntellect.text = PlayFabDataStore.playerIntellect.ToString();
     }
     void CalculateSpirit()
@@ -143,7 +143,7 @@ public class CharacterStats : MonoBehaviour {
             spirit += PlayFabDataStore.catalogItems[item.Value.itemId].spirit;
         }
 
-        PlayFabDataStore.playerSpirit = PlayFabDataStore.playerBaseSpirit + PlayFabDataStore.playerStatBuilderSpirit + spirit;
+        PlayFabDataStore.playerSpirit = PlayFabDataStore.playerBaseSpirit + PlayFabDataStore.statsBuilder["Spirit"] + spirit;
         textSpirit.text = PlayFabDataStore.playerSpirit.ToString();
     }
     public void CalculateCriticalChance()
@@ -154,7 +154,7 @@ public class CharacterStats : MonoBehaviour {
             crit += PlayFabDataStore.catalogItems[item.Value.itemId].crit;
         }
 
-        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + crit / 100;
+        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + PlayFabDataStore.statsBuilder["CriticalChance"] + crit / 100;
         textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
     }
     void CalculateArmor()
@@ -202,4 +202,6 @@ public class CharacterStats : MonoBehaviour {
 
         textAttackPower.text = PlayFabDataStore.playerAttackPower.ToString();
     }
+
+    
 }

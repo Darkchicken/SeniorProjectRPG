@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         PlayFabApiCalls.GetQuestLog();
         PlayFabApiCalls.GetUserVirtualCurrency();
 
-        //Invoke("CalculateStats", 1);
+        Invoke("SetStatsBuilder", 1);
         
         
         //Invoke("SetPlayerHealth", 2);
@@ -40,10 +40,9 @@ public class GameManager : MonoBehaviour
         Invoke("UpdatePlayerHealth", 5);
     }
 
-    void CalculateStats()
+    void SetStatsBuilder()
     {
-        //CharacterStats.characterStats.CalculateStats();
-        HUD_Manager.hudManager.GetComponent<CharacterStats>().CalculateStats();
+        StatsSelect.CalculateStatsBuilderPoints();
     }
 
     void SortRunes()
@@ -61,15 +60,17 @@ public class GameManager : MonoBehaviour
 
     void RefreshActionBar()
     {
+        
         ActionBar.RefreshActionBar();
         Debug.Log("RefreshedActionBar");
         RuneWindow.ToggleWindows();
-        runes.gameObject.SetActive(false);
+        runes.gameObject.SetActive(false);  
     }
 
     void UpdatePlayerHealth()
     {
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+        loading.gameObject.SetActive(false);
     }
 
     void OnLevelWasLoaded(int level)

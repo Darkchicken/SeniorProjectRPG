@@ -54,5 +54,9 @@ public class RuneWindow : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        StatsSelect.SendData();
+    }
 
 }

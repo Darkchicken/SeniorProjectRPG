@@ -37,6 +37,19 @@ public class PlayFabDataStore : MonoBehaviour
     public static List<string> playerCompletedQuests = new List<string>();
     public static List<string> playerQuestLog = new List<string>();
     public static List<string> playerInventory = new List<string>();
+    public static Dictionary<string, int> statsBuilder = new Dictionary<string, int>()
+    {
+        {"Vitality", 0 },
+        {"Strength", 0 },
+        {"Intellect", 0 },
+        {"Dexterity", 0 },
+        {"Spirit", 0 },
+        {"CriticalChance", 0 },
+        {"NatureResistance", 0 },
+        {"FireResistance", 0 },
+        {"FrostResistance", 0 },
+        {"HolyResistance", 0 }
+    };
 
 
     //Player
@@ -47,7 +60,7 @@ public class PlayFabDataStore : MonoBehaviour
     public const int playerBaseVitality = 9;
     public const int playerBaseSpirit = 5;
     public const int playerBaseWeaponDamage = 1;
-    public const float playerBaseCriticalChance = 0;
+    public const float playerBaseCriticalChance = 5;
     public const int playerBaseArmor = 200;
 
     public static int playerLevel;
@@ -81,10 +94,24 @@ public class PlayFabDataStore : MonoBehaviour
     public static int playerStatBuilderFrostResistance;
     public static int playerStatBuilderHolyResistance;
 
+    public static int playerStatBuilderUsedPoint;
+    public static int playerStatBuilderMaxPoint;
+
+
     public static Dictionary<string, string> playerInitialData = new Dictionary<string, string>()
     {
         {"Level", "1" },
         {"Experience", "0" },
+        {"StatBuilderVitality", "0" },
+        {"StatBuilderStrength", "0" },
+        {"StatBuilderIntellect", "0" },
+        {"StatBuilderDexterity", "0" },
+        {"StatBuilderSpirit", "0" },
+        {"StatBuilderCriticalChance", "0" },
+        {"StatBuilderNatureResistance", "0" },
+        {"StatBuilderFireResistance", "0" },
+        {"StatBuilderFrostResistance", "0" },
+        {"StatBuilderHolyResistance", "0" }
     };
 
     
