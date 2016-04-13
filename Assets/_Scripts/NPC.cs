@@ -81,7 +81,14 @@ public class NPC : MonoBehaviour {
     
     public void ClickedNPC()
     {
-
+        //rotate to face player
+        Vector3 position = transform.position;
+        position.y = 0;
+        Vector3 playerPosition = player.transform.position;
+        playerPosition.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(playerPosition-position);
+        transform.rotation = targetRotation;
+       
         //activate dialogue box
         dialogueManager.StartDialogue(npcName,dialogue, transform.position);
         dialogueCamera.transform.position = transform.position+faceLocation;
