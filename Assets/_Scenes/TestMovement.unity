@@ -1931,7 +1931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1001 &86124507
 Prefab:
   m_ObjectHideFlags: 0
@@ -3674,84 +3674,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 113204544}
   m_Mesh: {fileID: 4300000, guid: 9d3ee2bc719245c4f81361d255b982c6, type: 3}
---- !u!1 &115376445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 115376449}
-  - 20: {fileID: 115376448}
-  - 124: {fileID: 115376447}
-  - 92: {fileID: 115376446}
-  m_Layer: 0
-  m_Name: DialogueCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!92 &115376446
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115376445}
-  m_Enabled: 1
---- !u!124 &115376447
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115376445}
-  m_Enabled: 1
---- !u!20 &115376448
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115376445}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 35
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 1536
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 1af00b8020c79b946acb2404ac53c2d6, type: 2}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
---- !u!4 &115376449
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115376445}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &117681467
 GameObject:
   m_ObjectHideFlags: 0
@@ -5645,6 +5567,7 @@ MonoBehaviour:
   faceLocation: {x: 0, y: 2.7, z: 0}
   faceDistance: 0.85
   npcName: Chuck Test-a
+  portraitImage: {fileID: 2800000, guid: a4899635702e3024caafe0dedcc6e4fd, type: 3}
 --- !u!95 &129150063
 Animator:
   serializedVersion: 3
@@ -14051,7 +13974,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &513768853
 GameObject:
   m_ObjectHideFlags: 0
@@ -14486,6 +14409,7 @@ MonoBehaviour:
   faceLocation: {x: 0, y: 2.7, z: 0}
   faceDistance: 0.85
   npcName: Mayor
+  portraitImage: {fileID: 0}
 --- !u!95 &515016609
 Animator:
   serializedVersion: 3
@@ -19483,7 +19407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1 &642854744
 GameObject:
   m_ObjectHideFlags: 0
@@ -21405,7 +21329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!1001 &707988411
 Prefab:
   m_ObjectHideFlags: 0
@@ -21805,6 +21729,7 @@ MonoBehaviour:
   faceLocation: {x: 0, y: 2.7, z: 0}
   faceDistance: 0.85
   npcName: Karak
+  portraitImage: {fileID: 0}
 --- !u!1 &710450981
 GameObject:
   m_ObjectHideFlags: 0
@@ -26756,7 +26681,7 @@ Transform:
   - {fileID: 1521467155}
   - {fileID: 1698793869}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &775299885
 GameObject:
   m_ObjectHideFlags: 0
@@ -30535,7 +30460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.8823587, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &931081160
 GameObject:
   m_ObjectHideFlags: 0
@@ -30745,7 +30670,7 @@ Transform:
   m_PrefabParentObject: {fileID: 447572, guid: f81656c7f97e92347a7176db0e2ce909, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 976621195}
-  m_LocalRotation: {x: -0.6380103, y: -0.30486542, z: -0.30486533, w: 0.6380103}
+  m_LocalRotation: {x: -0.63801026, y: -0.3048654, z: -0.3048653, w: 0.63801026}
   m_LocalPosition: {x: -31.474422, y: -8.807799, z: 24.928892}
   m_LocalScale: {x: 1.3680482, y: 1.3619306, z: 1.2}
   m_Children: []
@@ -33666,6 +33591,7 @@ MonoBehaviour:
   faceLocation: {x: 0, y: 2.7, z: 0}
   faceDistance: 0.85
   npcName: Guard Captain
+  portraitImage: {fileID: 0}
 --- !u!95 &1061689744
 Animator:
   serializedVersion: 3
@@ -36062,7 +35988,7 @@ Transform:
   - {fileID: 2121124401}
   - {fileID: 209123639}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1239777166
 GameObject:
   m_ObjectHideFlags: 0
@@ -43686,7 +43612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!1 &1489119827
 GameObject:
   m_ObjectHideFlags: 0
@@ -48181,7 +48107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1708910074
 GameObject:
   m_ObjectHideFlags: 0
@@ -50529,7 +50455,7 @@ Transform:
   - {fileID: 1061689746}
   - {fileID: 129150064}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!1001 &1863592793
 Prefab:
   m_ObjectHideFlags: 0
@@ -50717,7 +50643,7 @@ Transform:
   m_Children:
   - {fileID: 712302297}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &1896342209
 GameObject:
   m_ObjectHideFlags: 0
@@ -53530,6 +53456,7 @@ MonoBehaviour:
   faceLocation: {x: 0, y: 2.7, z: 0}
   faceDistance: 0.85
   npcName: Delivery Guy
+  portraitImage: {fileID: 0}
 --- !u!95 &2051198925
 Animator:
   serializedVersion: 3
@@ -55398,7 +55325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.8823587, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &2090927746
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Dialogue : MonoBehaviour {
     GameObject dialogueBox;
     Text dialogueText;
     Text displayName;
+    RawImage dialogueImage;
     double textTimer = 0;
     double timeToSwitch = 5;
 
@@ -25,6 +26,7 @@ public class Dialogue : MonoBehaviour {
         dialogueBox = GameObject.Find("DialogueBox");
         dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
         displayName = GameObject.Find("DialogueName").GetComponent<Text>();
+        dialogueImage = GameObject.Find("FaceImage").GetComponent<RawImage>();
         dialogueBox.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -47,7 +49,7 @@ public class Dialogue : MonoBehaviour {
         
     }
 	
-    public void StartDialogue(string name,List<string> messages, Vector3 npcPos)
+    public void StartDialogue(string name,List<string> messages, Vector3 npcPos, Texture portraitImage)
     {
         
         npcPosition = npcPos;
@@ -55,6 +57,7 @@ public class Dialogue : MonoBehaviour {
         displayName.text = name;
         messageList = messages;
         dialogueBox.SetActive(true);
+        dialogueImage.texture = portraitImage;
         //set count to 0
         messageCount = 0;
         //get number of messages in dialogue

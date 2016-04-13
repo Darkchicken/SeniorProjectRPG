@@ -33,9 +33,11 @@ public class NPC : MonoBehaviour {
     private bool finishingQuest = false;
     private int endQuestId;
     private GameObject player;
-    private Camera dialogueCamera;
+    //private Camera dialogueCamera;
     private Dialogue dialogueManager;
     private GameObject gameManager;
+
+    public Texture portraitImage;
     //private Color questOutlineColor = new Color(255, 255, 0, 255);
 
 
@@ -45,7 +47,7 @@ public class NPC : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.Find("GameManager");
         dialogueManager = gameManager.GetComponent<Dialogue>();
-        dialogueCamera = GameObject.Find("DialogueCamera").GetComponent<Camera>();
+        //dialogueCamera = GameObject.Find("DialogueCamera").GetComponent<Camera>();
         questPanel = gameManager.GetComponent<GameManager>().quest;
         acceptButton = questPanel.gameObject.transform.Find("Button (Accept)").gameObject;
         declineButton = questPanel.gameObject.transform.Find("Button (Decline)").gameObject;
@@ -90,11 +92,13 @@ public class NPC : MonoBehaviour {
         transform.rotation = targetRotation;
        
         //activate dialogue box
-        dialogueManager.StartDialogue(npcName,dialogue, transform.position);
+        dialogueManager.StartDialogue(npcName,dialogue, transform.position, portraitImage);
+        /*
         dialogueCamera.transform.position = transform.position+faceLocation;
         dialogueCamera.transform.rotation = transform.rotation;
         dialogueCamera.transform.Rotate(0,180,0);
         dialogueCamera.transform.Translate(Vector3.back*faceDistance);
+        */
         //dialogueCamera.transform.Translate(Vector3.up * 5);
 
 
