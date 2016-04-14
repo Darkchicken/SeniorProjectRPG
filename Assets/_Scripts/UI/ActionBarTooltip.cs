@@ -5,6 +5,7 @@ using System.Collections;
 public class ActionBarTooltip : MonoBehaviour
 {
     private int actionBarId;
+    private Transform actionBarTransform;
 
     public void ShowTooltip(int id)
     {
