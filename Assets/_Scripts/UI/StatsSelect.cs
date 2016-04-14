@@ -7,6 +7,7 @@ public class StatsSelect : MonoBehaviour
 {
     public string statsId;
     public string playFabDataId;
+    public string description;
     public Text statsText;
     public Image statsDisabledImage;
     public Toggle statsToggle;
@@ -36,7 +37,7 @@ public class StatsSelect : MonoBehaviour
 
     public static void CalculateStatsBuilderPoints()
     {
-        PlayFabDataStore.playerStatBuilderMaxPoint = (PlayFabDataStore.playerLevel - 1) * 3;
+        PlayFabDataStore.playerStatBuilderMaxPoint = (PlayFabDataStore.playerLevel) * 15;
         PlayFabDataStore.playerStatBuilderUsedPoint = 0;
         foreach (var stats in PlayFabDataStore.statsBuilder)
         {
@@ -100,9 +101,35 @@ public class StatsSelect : MonoBehaviour
         {
             changesMade = false;
             PlayFabApiCalls.UpdateCharacterData(statsData);
+            CharacterStats.characterStats.SetStatsText();
             Debug.Log("Stats UPDATED to PlayFab!");
         }
         
     }
-	
+
+    public void ShowTooltip()
+    {
+        Invoke("SetTooltipData", 0.25f);
+    }
+
+    public void HideTooltip()
+    {
+        CancelInvoke("SetTooltipData");
+        UITooltip.Hide();
+    }
+
+    void SetTooltipData()
+    {
+        UITooltip.AddTitle(statsId);
+
+        UITooltip.AddDescription(description);
+
+        UITooltip.AnchorToRect(this.transform as RectTransform);
+        UITooltip.Show();
+    }
+
+    void OnApplicationQuit()
+    {
+        SendData();
+    }
 }

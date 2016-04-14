@@ -182,11 +182,11 @@ public class PlayFabApiCalls : MonoBehaviour
             PlayFabDataStore.statsBuilder["Intellect"] = int.Parse(result.Data["StatBuilderIntellect"].Value);
             PlayFabDataStore.statsBuilder["Dexterity"] = int.Parse(result.Data["StatBuilderDexterity"].Value);
             PlayFabDataStore.statsBuilder["Spirit"] = int.Parse(result.Data["StatBuilderSpirit"].Value);
-            PlayFabDataStore.statsBuilder["CriticalChance"] = int.Parse(result.Data["StatBuilderCriticalChance"].Value);
-            PlayFabDataStore.statsBuilder["NatureResistance"] = int.Parse(result.Data["StatBuilderNatureResistance"].Value);
-            PlayFabDataStore.statsBuilder["FireResistance"] = int.Parse(result.Data["StatBuilderFireResistance"].Value);
-            PlayFabDataStore.statsBuilder["FrostResistance"] = int.Parse(result.Data["StatBuilderFrostResistance"].Value);
-            PlayFabDataStore.statsBuilder["HolyResistance"] = int.Parse(result.Data["StatBuilderHolyResistance"].Value);
+            PlayFabDataStore.statsBuilder["Critical Chance"] = int.Parse(result.Data["StatBuilderCriticalChance"].Value);
+            PlayFabDataStore.statsBuilder["Nature Resistance"] = int.Parse(result.Data["StatBuilderNatureResistance"].Value);
+            PlayFabDataStore.statsBuilder["Fire Resistance"] = int.Parse(result.Data["StatBuilderFireResistance"].Value);
+            PlayFabDataStore.statsBuilder["Frost Resistance"] = int.Parse(result.Data["StatBuilderFrostResistance"].Value);
+            PlayFabDataStore.statsBuilder["Holy Resistance"] = int.Parse(result.Data["StatBuilderHolyResistance"].Value);
             Debug.Log("Data successfully retrieved!");
 
         }, (error) =>

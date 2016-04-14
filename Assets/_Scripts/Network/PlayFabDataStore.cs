@@ -44,11 +44,11 @@ public class PlayFabDataStore : MonoBehaviour
         {"Intellect", 0 },
         {"Dexterity", 0 },
         {"Spirit", 0 },
-        {"CriticalChance", 0 },
-        {"NatureResistance", 0 },
-        {"FireResistance", 0 },
-        {"FrostResistance", 0 },
-        {"HolyResistance", 0 }
+        {"Critical Chance", 0 },
+        {"Nature Resistance", 0 },
+        {"Fire Resistance", 0 },
+        {"Frost Resistance", 0 },
+        {"Holy Resistance", 0 }
     };
 
 

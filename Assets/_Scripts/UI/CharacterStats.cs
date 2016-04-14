@@ -13,10 +13,19 @@ public class CharacterStats : MonoBehaviour {
     public Text textSpirit;
     public Text textCrit;
     public Text textArmor;
+    public Text textWeaponDamage;
     public Text textPhysicalDamage;
     public Text textSpellPower;
     public Text textAttackPower;
+    public Text textNatureResistance;
+    public Text textFireResistance;
+    public Text textFrostResistance;
+    public Text textHolyResistance;
     public Text textCurrency;
+
+    public GameObject statsPage1;
+    public GameObject statsPage2;
+
 
     private float calculationTimer = 0f;
     private float calculationTimerMax = 1f;
@@ -50,10 +59,15 @@ public class CharacterStats : MonoBehaviour {
         textVitality.text = PlayFabDataStore.playerVitality.ToString();
         textSpirit.text = PlayFabDataStore.playerSpirit.ToString();
         textArmor.text = PlayFabDataStore.playerArmor.ToString();
+        textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
         textPhysicalDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
         textSpellPower.text = PlayFabDataStore.playerSpellDamage.ToString();
         textAttackPower.text =  PlayFabDataStore.playerAttackPower.ToString();
         textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
+        textNatureResistance.text = (PlayFabDataStore.statsBuilder["Nature Resistance"] * 0.5f).ToString() + "%";
+        textFireResistance.text = (PlayFabDataStore.statsBuilder["Fire Resistance"] * 0.5f).ToString() + "%";
+        textFrostResistance.text = (PlayFabDataStore.statsBuilder["Frost Resistance"] * 0.5f).ToString() + "%";
+        textHolyResistance.text = (PlayFabDataStore.statsBuilder["Holy Resistance"] * 0.5f).ToString() + "%";
         textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
     }
 
@@ -74,6 +88,10 @@ public class CharacterStats : MonoBehaviour {
             CalculatePhysicalDamage();
             CalculateSpellPower();
             CalculateAttackPower();
+            CalculateNatureResistance();
+            CalculateFireResistance();
+            CalculateFrostResistance();
+            CalculateHolyResistance();
             textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
             Invoke("UpdateHealth", 0);
         }
@@ -84,6 +102,24 @@ public class CharacterStats : MonoBehaviour {
     {
         GameManager.players[0].GetComponent<Health>().CharacterStatsUpdateHealth(PlayFabDataStore.playerMaxHealth);
     }
+
+    /*public void StatsRightButton()
+    {
+        if(!statsPage2.activeInHierarchy)
+        {
+            statsPage2.SetActive(true);
+            statsPage1.SetActive(false);
+        }
+    }
+
+    public void StatsLeftButton()
+    {
+        if (!statsPage1.activeInHierarchy)
+        {
+            statsPage1.SetActive(true);
+            statsPage2.SetActive(false);
+        }
+    }*/
 
     void CalculateVitality()
     {
@@ -154,8 +190,24 @@ public class CharacterStats : MonoBehaviour {
             crit += PlayFabDataStore.catalogItems[item.Value.itemId].crit;
         }
 
-        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + PlayFabDataStore.statsBuilder["CriticalChance"] + crit / 100;
+        PlayFabDataStore.playerCriticalChance = PlayFabDataStore.playerBaseCriticalChance + PlayFabDataStore.statsBuilder["Critical Chance"] + crit / 100;
         textCrit.text = PlayFabDataStore.playerCriticalChance.ToString() + "%";
+    }
+    public void CalculateNatureResistance()
+    {
+        textNatureResistance.text = (PlayFabDataStore.statsBuilder["Nature Resistance"] * 0.5f).ToString() + "%";
+    }
+    public void CalculateFireResistance()
+    {
+        textFireResistance.text = (PlayFabDataStore.statsBuilder["Fire Resistance"] * 0.5f).ToString() + "%";
+    }
+    public void CalculateFrostResistance()
+    {
+        textFrostResistance.text = (PlayFabDataStore.statsBuilder["Frost Resistance"] * 0.5f).ToString() + "%";
+    }
+    public void CalculateHolyResistance()
+    {
+        textHolyResistance.text = (PlayFabDataStore.statsBuilder["Holy Resistance"] * 0.5f).ToString() + "%";
     }
     void CalculateArmor()
     {
@@ -178,11 +230,11 @@ public class CharacterStats : MonoBehaviour {
         int damage = 0;
         foreach (var item in PlayFabDataStore.playerEquippedItems)
         {
-            Debug.Log("DAMAGEEE " + damage);
             damage += PlayFabDataStore.catalogItems[item.Value.itemId].damage;
         }
 
         PlayFabDataStore.playerWeaponDamage = PlayFabDataStore.playerBaseWeaponDamage + damage;
+        textWeaponDamage.text = PlayFabDataStore.playerWeaponDamage.ToString();
     }
     void CalculatePhysicalDamage()
     {
