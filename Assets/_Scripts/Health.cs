@@ -105,7 +105,11 @@ public class Health : MonoBehaviour {
 
     void StartHealthRegeneration()
     {
-        StartCoroutine(HealthRegeneration());
+        if(photonView.isMine)
+        {
+            StartCoroutine(HealthRegeneration());
+        }
+        
     }
 
     void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
