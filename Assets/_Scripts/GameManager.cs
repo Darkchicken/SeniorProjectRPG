@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         players.Clear();
         if(SceneManager.GetActiveScene().name == "Login")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

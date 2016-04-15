@@ -48,4 +48,6 @@ MonoBehaviour:
   - SendTrigger
   - SetBleeding
   - SetDamageReduction
+  - SetItemDetails
+  - LootTheItem
   DisableAutoOpenWizard: 1

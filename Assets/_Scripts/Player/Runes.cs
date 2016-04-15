@@ -47,11 +47,12 @@ public class Runes : MonoBehaviour
     void Start()
     {
         controller = GetComponent<NavMeshAgent>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
         GameManager.players.Add(gameObject);
         position = transform.position;
         playerAnimation = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
-        photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
+        
         playerSpeed = controller.speed;
     }
 
@@ -113,13 +114,7 @@ public class Runes : MonoBehaviour
         }
     }
 
-    [PunRPC]
-    void AddPlayer(int viewID)
-    {
-        GameObject player = PhotonView.Find(viewID).gameObject;
-        GameManager.players.Add(player);
-        Debug.Log("PlayerAdded for GameManager");
-    }
+    
 
     int GetPlayerResource()
     {
@@ -201,7 +196,7 @@ public class Runes : MonoBehaviour
             {
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
-                    Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+                    Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
 
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
 
@@ -259,7 +254,7 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
-                    GameObject bolt = Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity) as GameObject;
+                    GameObject bolt = Instantiate(Resources.Load("MagicBolt"), playerCombatManager.spellStartLocation.position, Quaternion.identity) as GameObject;
 
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
@@ -285,7 +280,7 @@ public class Runes : MonoBehaviour
                         }
                     }
                     
-                    bolt.GetComponent<HomingShots>().target = targetEnemy;
+                    bolt.GetComponent<HomingShots>().SetTarget(targetEnemy);
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
                     attackTimerSkillSlot5 = 0f;
@@ -295,11 +290,61 @@ public class Runes : MonoBehaviour
     }
 
     /// <summary>
-    /// Release bolts of ice in every direction dealing 180% spell damage as frost.
+    /// Call a thunderstrike for each enemy within 8 yards around you dealing 270% physical damage.
     /// </summary>
-    public void Rune_IcyBolts()
+    public void Rune_Thunderstrike()
     {
-        runeId = "Rune_IcyBolts";
+        runeId = "Rune_Thunderstrike";
+        if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
+        {
+            SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
+
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
+            photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
+
+            for (int i = 0; i < hitEnemies.Length; i++)
+            {
+                if (hitEnemies[i].CompareTag("Enemy"))
+                {
+                    GameObject thunderstrike = Instantiate(Resources.Load("ThunderStrike"), hitEnemies[i].transform.position, Quaternion.identity) as GameObject;
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                    {
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                    }
+                    else
+                    {
+                        SetPlayerResource(100);
+                    }
+                    tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                    targetEnemy = hitEnemies[i].gameObject;
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                        }
+                    }
+                    Debug.Log("Thunderstrike 5");
+                    ApplyDamage(targetEnemy);
+                    attackTimerSkillSlot5 = 0f;
+                }
+            }
+            mainEnemy = null;
+        }
+    }
+
+    /// <summary>
+    /// Hit an enemy for 290% spell damage as Arcane.
+    /// </summary>
+    public void Rune_SkullMissile()
+    {
+        runeId = "Rune_SkullMissile";
         mainEnemy = targetEnemy;
 
         if (targetEnemy != null)
@@ -310,7 +355,7 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
-                    GameObject bolt = Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity) as GameObject;
+                    GameObject missile = Instantiate(Resources.Load("SkullMissile"), playerCombatManager.spellStartLocation.position, Quaternion.identity) as GameObject;
 
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
@@ -336,7 +381,7 @@ public class Runes : MonoBehaviour
                         }
                     }
 
-                    bolt.GetComponent<HomingShots>().target = targetEnemy;
+                    missile.GetComponent<HomingShots>().SetTarget(targetEnemy);
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
                     attackTimerSkillSlot5 = 0f;
@@ -344,6 +389,8 @@ public class Runes : MonoBehaviour
             }
         }
     }
+
+
     /// <summary>
     /// Smash enemies in front of you for 535% physical damage. Riposte has a 1% increased Critical Hit Chance for every 5 Resource that you have.
     /// </summary>
@@ -599,15 +646,6 @@ public class Runes : MonoBehaviour
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
                 {
-
-                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
-                    {
-                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
-                    }
-                    else
-                    {
-                        SetPlayerResource(100);
-                    }
                     tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
                     tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
@@ -627,8 +665,6 @@ public class Runes : MonoBehaviour
                 }
             }
             mainEnemy = null;
-            
-
         }
     }
 

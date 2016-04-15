@@ -7,6 +7,12 @@ public class DropItem : MonoBehaviour
     public string dropItemId;
     public bool isItemReceived = false;
     private bool itemReceived = false;
+    private PhotonView photonView;
+
+    void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 	
     public void GetDropItemId()
     {
@@ -19,28 +25,27 @@ public class DropItem : MonoBehaviour
     //Checks until item information returns from the playFab
     IEnumerator DropItemToGround()
     {
-        Debug.Log("Dropitemid 1" + dropItemId);
+        Debug.Log("Dropitemid " + dropItemId);
         if(isItemReceived)
         {
-            if (dropItemId != "Item_Empty")
+            if (dropItemId != "Item_Gold")
             {
-                Debug.Log("Dropitemid 2" + dropItemId);
                 GameObject item = PhotonNetwork.Instantiate("DropItem", transform.position, transform.rotation, 0);
-                item.GetComponent<TextMesh>().text = PlayFabDataStore.catalogItems[dropItemId].displayName;
-                item.GetComponent<DroppedItem>().itemId = dropItemId;
+                photonView.RPC("SetItemDetails", PhotonTargets.AllBufferedViaServer, item.GetComponent<PhotonView>().viewID, PlayFabDataStore.catalogItems[dropItemId].displayName, dropItemId);
+                /*item.GetComponent<TextMesh>().text = PlayFabDataStore.catalogItems[dropItemId].displayName;
+                item.GetComponent<DroppedItem>().itemId = dropItemId;*/
                 Debug.Log("Item Dropped : " + dropItemId);
             }
             else
             {
-                Debug.Log("Dropitemid 3" + dropItemId);
                 GameObject item = PhotonNetwork.Instantiate("DropItem", transform.position, transform.rotation, 0);
-                item.GetComponent<TextMesh>().text = "Gold";
-                item.GetComponent<DroppedItem>().itemId = dropItemId;
+                photonView.RPC("SetItemDetails", PhotonTargets.AllBufferedViaServer, item.GetComponent<PhotonView>().viewID, "Gold", dropItemId);
+                /*item.GetComponent<TextMesh>().text = "Gold";
+                item.GetComponent<DroppedItem>().itemId = dropItemId;*/
                 Debug.Log("Item Dropped : " + dropItemId);
             }
             itemReceived = true; // this is to double check the condition, in case of isItemreceived becomes true after the if statement
         }
-        Debug.Log("Dropitemid 4" + dropItemId);
 
 
         yield return new WaitForSeconds(0.5f);
@@ -50,5 +55,13 @@ public class DropItem : MonoBehaviour
             StartCoroutine(DropItemToGround());
         }
         
+    }
+
+    [PunRPC]
+    void SetItemDetails(int sourceID, string name, string itemID)
+    {
+        GameObject source = PhotonView.Find(sourceID).gameObject;
+        source.GetComponent<TextMesh>().text = name;
+        source.GetComponent<DroppedItem>().itemId = itemID;
     }
 }

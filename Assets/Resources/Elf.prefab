@@ -1332,6 +1332,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &190326
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 421234}
+  m_Layer: 0
+  m_Name: SpellStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &191758
 GameObject:
   m_ObjectHideFlags: 1
@@ -1373,6 +1388,21 @@ GameObject:
   - 137: {fileID: 13796136}
   m_Layer: 0
   m_Name: elf_boot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &192100
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 447192}
+  m_Layer: 0
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1648,6 +1678,7 @@ Transform:
   - {fileID: 447046}
   - {fileID: 423632}
   - {fileID: 414858}
+  - {fileID: 421234}
   m_Father: {fileID: 499206}
   m_RootOrder: 0
 --- !u!4 &412774
@@ -1831,6 +1862,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 452510}
   m_RootOrder: 18
+--- !u!4 &421234
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 411462}
+  m_RootOrder: 4
 --- !u!4 &423632
 Transform:
   m_ObjectHideFlags: 1
@@ -2108,6 +2151,18 @@ Transform:
   m_Children:
   - {fileID: 432112}
   m_Father: {fileID: 411462}
+  m_RootOrder: 1
+--- !u!4 &447192
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 470932}
   m_RootOrder: 1
 --- !u!4 &447598
 Transform:
@@ -2463,6 +2518,7 @@ Transform:
   m_LocalScale: {x: 0.99999964, y: 1.0000002, z: 0.99999934}
   m_Children:
   - {fileID: 451734}
+  - {fileID: 447192}
   m_Father: {fileID: 479924}
   m_RootOrder: 0
 --- !u!4 &471394
@@ -3414,6 +3470,8 @@ MonoBehaviour:
   canMove: 1
   isInCombat: 0
   canAttack: 1
+  spellStartLocation: {fileID: 421234}
+  spellTargetLocation: {fileID: 447192}
 --- !u!114 &11447190
 MonoBehaviour:
   m_ObjectHideFlags: 1

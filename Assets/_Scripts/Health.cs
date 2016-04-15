@@ -79,17 +79,20 @@ public class Health : MonoBehaviour {
 
     void InitializeHealth()
     {
-        if(PhotonNetwork.player.isLocal)
+        Debug.Log(PhotonNetwork.player.isLocal);
+        Debug.Log(PhotonNetwork.player.isMasterClient);
+        if (PhotonNetwork.player.isLocal)
         {
             if (tag == "Player")
             {
                 maxHealth = PlayFabDataStore.playerMaxHealth;
                 health = maxHealth;
                 GetComponent<PlayerCombatManager>().canAttack = true;
+                UpdateHealth();
             }
             if (tag == "Enemy")
             {
-                if (GetComponent<PlayerCombatManager>() != null)
+                /*if (GetComponent<PlayerCombatManager>() != null)
                 {
                     maxHealth = PlayFabDataStore.playerMaxHealth;
                     health = maxHealth;
@@ -97,6 +100,17 @@ public class Health : MonoBehaviour {
                 else
                 {
                     maxHealth = health;
+                }*/
+            }
+        }
+        if(PhotonNetwork.player.isMasterClient)
+        {
+            if (tag == "Enemy")
+            {
+                if (GetComponent<EnemyCombatManager>() != null)
+                {
+                    maxHealth = health;
+                    UpdateHealth();
                 }
             }
         }
@@ -451,9 +465,13 @@ public class Health : MonoBehaviour {
             }
             else
             {
-                GetComponent<DropItem>().GetDropItemId();
                 GetComponent<EnemyMovement>().enabled = false;
                 GetComponent<EnemyCombatManager>().enabled = false;
+                if(PhotonNetwork.isMasterClient)
+                {
+                    GetComponent<DropItem>().GetDropItemId();
+                }
+                
             } 
         }
         

@@ -10,7 +10,10 @@ public class ActionBarTooltip : MonoBehaviour
     public void ShowTooltip(int id)
     {
         actionBarId = id;
-        Invoke("SetTooltipData", 0.25f);
+        if(PlayFabDataStore.playerActiveSkillRunes.ContainsKey(actionBarId))
+        {
+            Invoke("SetTooltipData", 0.25f);
+        }
     }
 
     public void HideTooltip()

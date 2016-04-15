@@ -9,11 +9,14 @@ public class PlayerCombatManager : Runes
     public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
     public bool canAttack = true;
-     //sets by PlayerAttack script
+    public Transform spellStartLocation;
+    public Transform spellTargetLocation;
+    //sets by PlayerAttack script
 
-    
+
     //private int skillAttackRange;
     private string actionBarSkillId;
+
 
     private float skill_1_Timer = 0f;
     private int resource = 0;
@@ -22,6 +25,11 @@ public class PlayerCombatManager : Runes
     private int skillSlot = 0;
     private bool autoAttack = false;
 
+
+    void Start()
+    {
+        photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
+    }
 
     void Update()
     {
@@ -81,6 +89,10 @@ public class PlayerCombatManager : Runes
         }
         if(Input.GetKeyDown("3") || actionBarSkillId == "3")
         {
+            foreach(var player in GameManager.players)
+            {
+                Debug.Log("Player : " + player.name);
+            }
             skillSlot = 3;
 
             if (PlayFabDataStore.playerActiveSkillRunes.ContainsKey(skillSlot))
@@ -155,5 +167,16 @@ public class PlayerCombatManager : Runes
         actionBarSkillId = id;
     }
 
+    [PunRPC]
+    void AddPlayer(int viewID)
+    {
+        if (photonView.isMine)
+        {
+            GameObject player = PhotonView.Find(viewID).gameObject;
+            GameManager.players.Add(player);
+            Debug.Log("PlayerAdded for GameManager");
+            Debug.Log(GameManager.players.Count);
+        }
+    }
 
 }

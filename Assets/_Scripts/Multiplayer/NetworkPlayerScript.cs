@@ -42,7 +42,7 @@ public class NetworkPlayerScript : MonoBehaviour {
             {
                 gameObject.tag = "Enemy";
                 //set player's layer to default so you can click on them
-                gameObject.layer = LayerMask.NameToLayer("Default");
+                gameObject.layer = LayerMask.NameToLayer("Enemy");
                 gameObject.name = "Network Enemy";
                 //gameObject.name = photonView.ownerId.ToString();
             }

@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Skull_Diffuse
   m_Shader: {fileID: 4800000, guid: bd7f2eb8e22b2f54491933fb67b69146, type: 3}
-  m_ShaderKeywords: []
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -31,13 +33,13 @@ Material:
       data:
         first:
           name: _RimPower
-        second: 2.73214293
+        second: 2.732143
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .588, g: .588, b: .588, a: 1}
+        second: {r: 0.588, g: 0.588, b: 0.588, a: 1}
       data:
         first:
           name: _RimColor
-        second: {r: 0, g: 1, b: .382352829, a: 0}
+        second: {r: 0.7379308, g: 0, b: 1, a: 0}

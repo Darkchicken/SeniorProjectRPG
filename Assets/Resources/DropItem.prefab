@@ -65,7 +65,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133664}
-  m_Text: ItemName
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5619590a3755a541b570af29c5b75a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: 
 --- !u!135 &13572474
 SphereCollider:
   m_ObjectHideFlags: 1

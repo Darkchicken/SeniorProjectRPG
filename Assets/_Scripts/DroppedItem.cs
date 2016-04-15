@@ -33,7 +33,13 @@ public class DroppedItem : MonoBehaviour
             PlayFabApiCalls.AddUserCurrency(Random.Range(5, 50));
         }
         Debug.Log(itemId + " Item Looted from the ground");
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
+
+    }
+
+    [PunRPC]
+    void LootTheItem()
+    {
         
     }
 

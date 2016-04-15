@@ -8,6 +8,8 @@ public class EnemyCombatManager : MonoBehaviour
     public int attackDamage;
     public float attackSpeed;
     public string damageType;
+    public Transform spellStartLocation;
+    public Transform spellTargetLocation;
     public List<GameObject> playerAttackList;
 
     private Animator enemyAnimation;
@@ -35,13 +37,11 @@ public class EnemyCombatManager : MonoBehaviour
                 attackTimer = 0f;
             }
 
-            if(playerAttackList[0].GetComponent<Health>().IsDead())
+            if (playerAttackList[0].GetComponent<Health>().IsDead())
             {
                 playerAttackList.RemoveAt(0);
             }
         }
-
-
         
     }
 

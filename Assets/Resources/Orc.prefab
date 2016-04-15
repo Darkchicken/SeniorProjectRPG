@@ -107,6 +107,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &113946
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 402374}
+  m_Layer: 11
+  m_Name: SpellStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &116464
 GameObject:
   m_ObjectHideFlags: 1
@@ -194,6 +209,21 @@ GameObject:
   - 4: {fileID: 428092}
   m_Layer: 11
   m_Name: OrcRDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &128274
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 446054}
+  m_Layer: 11
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,6 +641,18 @@ Transform:
   - {fileID: 493088}
   m_Father: {fileID: 451144}
   m_RootOrder: 0
+--- !u!4 &402374
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 449730}
+  m_RootOrder: 3
 --- !u!4 &403114
 Transform:
   m_ObjectHideFlags: 1
@@ -778,6 +820,18 @@ Transform:
   - {fileID: 473756}
   m_Father: {fileID: 403114}
   m_RootOrder: 0
+--- !u!4 &446054
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 451144}
+  m_RootOrder: 1
 --- !u!4 &447078
 Transform:
   m_ObjectHideFlags: 1
@@ -803,6 +857,7 @@ Transform:
   - {fileID: 454904}
   - {fileID: 416514}
   - {fileID: 491194}
+  - {fileID: 402374}
   m_Father: {fileID: 493712}
   m_RootOrder: 0
 --- !u!4 &450924
@@ -829,6 +884,7 @@ Transform:
   m_LocalScale: {x: 0.9999995, y: 0.99999994, z: 0.99999917}
   m_Children:
   - {fileID: 402070}
+  - {fileID: 446054}
   m_Father: {fileID: 493488}
   m_RootOrder: 0
 --- !u!4 &454186
@@ -1196,7 +1252,7 @@ MonoBehaviour:
   enemyHealthText: {fileID: 0}
   defaultShader: {fileID: 4800000, guid: 44b54c59129572f469a949a22bc08cd0, type: 3}
   outlineShader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
-  health: 500
+  health: 100
   maxHealth: 0
   isBleeding: 0
   maxBleedCount: 0
@@ -1231,6 +1287,8 @@ MonoBehaviour:
   attackDamage: 12
   attackSpeed: 2
   damageType: 
+  spellStartLocation: {fileID: 402374}
+  spellTargetLocation: {fileID: 446054}
   playerAttackList: []
 --- !u!114 &11483506
 MonoBehaviour:

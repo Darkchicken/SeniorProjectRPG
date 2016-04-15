@@ -39,12 +39,19 @@ namespace MagicalFX
 	
 		void OnTriggerEnter (Collider other)
 		{
-			Spawn ();
+            if(other.CompareTag("Enemy"))
+            {
+                Spawn();
+            }
+            
 		}
 	
 		void OnCollisionEnter (Collision collision)
 		{
-			Spawn ();
-		}
+            if (collision.transform.CompareTag("Enemy"))
+            {
+                Spawn();
+            }
+        }
 	}
 }
