@@ -6,15 +6,18 @@ using PlayFab.ClientModels;
 
 public class Runes : MonoBehaviour
 {
+    public Transform spellStartLocation;
+    public Transform spellTargetLocation;
+    public RaycastHit hit;
+    public float stopDistanceForAttack = 3f;
+
     public static NavMeshAgent controller;
     public static Animator playerAnimation;
     public static GameObject targetEnemy;
     public static GameObject mainEnemy;
     public static Vector3 position;
     public static PhotonView photonView;
-    public RaycastHit hit;
-    public float stopDistanceForAttack = 3f;
-
+    
     public static bool isFreezing = false;
     public static bool isStunning = false;
 
@@ -254,7 +257,7 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
-                    GameObject bolt = Instantiate(Resources.Load("MagicBolt"), playerCombatManager.spellStartLocation.position, Quaternion.identity) as GameObject;
+                    GameObject bolt = Instantiate(Resources.Load("MagicBolt"), spellStartLocation.position, Quaternion.identity) as GameObject;
 
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
@@ -355,7 +358,7 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
-                    GameObject missile = Instantiate(Resources.Load("SkullMissile"), playerCombatManager.spellStartLocation.position, Quaternion.identity) as GameObject;
+                    GameObject missile = Instantiate(Resources.Load("SkullMissile"), spellStartLocation.position, Quaternion.identity) as GameObject;
 
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {

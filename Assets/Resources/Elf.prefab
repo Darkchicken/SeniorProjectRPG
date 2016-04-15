@@ -3466,12 +3466,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e163e09b70f89c449278b57fd7e1a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellStartLocation: {fileID: 421234}
+  spellTargetLocation: {fileID: 447192}
   stopDistanceForAttack: 2
   canMove: 1
   isInCombat: 0
   canAttack: 1
-  spellStartLocation: {fileID: 421234}
-  spellTargetLocation: {fileID: 447192}
 --- !u!114 &11447190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3494,8 +3494,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 11494634}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &11464226
 MonoBehaviour:
@@ -3543,6 +3543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d170d8b50792447ac7111470a7f136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellStartLocation: {fileID: 421234}
+  spellTargetLocation: {fileID: 447192}
   stopDistanceForAttack: 2
 --- !u!114 &11494634
 MonoBehaviour:

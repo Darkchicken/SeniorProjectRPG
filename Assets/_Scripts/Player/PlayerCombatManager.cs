@@ -9,8 +9,7 @@ public class PlayerCombatManager : Runes
     public bool canMove = true; // UI clicks prevent player from moving
     public bool isInCombat = false;
     public bool canAttack = true;
-    public Transform spellStartLocation;
-    public Transform spellTargetLocation;
+    
     //sets by PlayerAttack script
 
 
@@ -28,7 +27,7 @@ public class PlayerCombatManager : Runes
 
     void Start()
     {
-        photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
+        //photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
     }
 
     void Update()

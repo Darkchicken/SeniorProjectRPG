@@ -55,8 +55,6 @@ public class NetworkManagerScript : MonoBehaviour {
     void OnPhotonPlayerConnected(PhotonPlayer connected)
     {
         Debug.Log("New Player Joined Room!");
-        //this doesnt work currently
-        //Debug.Log(connected.name);
     }
     void OnLevelWasLoaded(int level)
     {
