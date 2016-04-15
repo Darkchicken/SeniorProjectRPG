@@ -293,6 +293,57 @@ public class Runes : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Release bolts of ice in every direction dealing 180% spell damage as frost.
+    /// </summary>
+    public void Rune_IcyBolts()
+    {
+        runeId = "Rune_IcyBolts";
+        mainEnemy = targetEnemy;
+
+        if (targetEnemy != null)
+        {
+            stopDistanceForAttack = PlayFabDataStore.catalogRunes[runeId].attackRange;
+            if (Vector3.Distance(transform.position, targetEnemy.transform.position) <= stopDistanceForAttack)
+            {
+                if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
+                {
+                    photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
+                    GameObject bolt = Instantiate(Resources.Load("Darkness_Missile"), transform.position, Quaternion.identity) as GameObject;
+
+                    if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
+                    {
+                        SetPlayerResource(PlayFabDataStore.catalogRunes[runeId].resourceGeneration);
+                    }
+                    else
+                    {
+                        SetPlayerResource(100);
+                    }
+                    transform.LookAt(targetEnemy.transform.position);
+                    tempAttackDamage = PlayFabDataStore.playerSpellDamage;
+                    tempCriticalChance = PlayFabDataStore.playerCriticalChance;
+                    tempResourceGeneration = PlayFabDataStore.catalogRunes[runeId].resourceGeneration;
+                    tempDamageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+
+                    foreach (var modifier in PlayFabDataStore.playerActiveModifierRunes)
+                    {
+                        if (modifier.Value == 5)
+                        {
+                            var loadingMethod = GetType().GetMethod(modifier.Key);
+                            var arguments = new object[] { targetEnemy };
+                            loadingMethod.Invoke(this, arguments);
+                        }
+                    }
+
+                    bolt.GetComponent<HomingShots>().target = targetEnemy;
+                    ApplyDamage(targetEnemy);
+                    mainEnemy = null;
+                    attackTimerSkillSlot5 = 0f;
+                }
+            }
+        }
+    }
     /// <summary>
     /// Smash enemies in front of you for 535% physical damage. Riposte has a 1% increased Critical Hit Chance for every 5 Resource that you have.
     /// </summary>

@@ -21,6 +21,7 @@ public class CharacterStats : MonoBehaviour {
     public Text textFireResistance;
     public Text textFrostResistance;
     public Text textHolyResistance;
+    public Text textArcaneResistance;
     public Text textCurrency;
 
     public GameObject statsPage1;
@@ -68,6 +69,7 @@ public class CharacterStats : MonoBehaviour {
         textFireResistance.text = (PlayFabDataStore.statsBuilder["Fire Resistance"] * 0.5f).ToString() + "%";
         textFrostResistance.text = (PlayFabDataStore.statsBuilder["Frost Resistance"] * 0.5f).ToString() + "%";
         textHolyResistance.text = (PlayFabDataStore.statsBuilder["Holy Resistance"] * 0.5f).ToString() + "%";
+        textArcaneResistance.text = (PlayFabDataStore.statsBuilder["Arcane Resistance"] * 0.5f).ToString() + "%";
         textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
     }
 
@@ -92,6 +94,7 @@ public class CharacterStats : MonoBehaviour {
             CalculateFireResistance();
             CalculateFrostResistance();
             CalculateHolyResistance();
+            CalculateArcaneResistance();
             textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
             Invoke("UpdateHealth", 0);
         }
@@ -208,6 +211,10 @@ public class CharacterStats : MonoBehaviour {
     public void CalculateHolyResistance()
     {
         textHolyResistance.text = (PlayFabDataStore.statsBuilder["Holy Resistance"] * 0.5f).ToString() + "%";
+    }
+    public void CalculateArcaneResistance()
+    {
+        textArcaneResistance.text = (PlayFabDataStore.statsBuilder["Arcane Resistance"] * 0.5f).ToString() + "%";
     }
     void CalculateArmor()
     {

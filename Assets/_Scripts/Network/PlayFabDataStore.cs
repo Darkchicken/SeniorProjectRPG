@@ -48,7 +48,8 @@ public class PlayFabDataStore : MonoBehaviour
         {"Nature Resistance", 0 },
         {"Fire Resistance", 0 },
         {"Frost Resistance", 0 },
-        {"Holy Resistance", 0 }
+        {"Holy Resistance", 0 },
+        {"Arcane Resistance", 0 }
     };
 
 
@@ -111,7 +112,8 @@ public class PlayFabDataStore : MonoBehaviour
         {"StatBuilderNatureResistance", "0" },
         {"StatBuilderFireResistance", "0" },
         {"StatBuilderFrostResistance", "0" },
-        {"StatBuilderHolyResistance", "0" }
+        {"StatBuilderHolyResistance", "0" },
+        {"StatBuilderArcaneResistance", "0" }
     };
 
     

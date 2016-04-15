@@ -386,18 +386,17 @@ public class Health : MonoBehaviour {
     [PunRPC]
     void ApplyDamageTaken(int sourceId, int damageTaken)
     {
-        
         GameObject source = PhotonView.Find(sourceId).gameObject;
         if(photonView.viewID == sourceId)
         {
-            ChatManager.chatClient.PublishMessage("GeneralChat", tag);
+            //ChatManager.chatClient.PublishMessage("GeneralChat", tag);
             if (tag == "Enemy")
             {
                 if (health > damageTaken)
                 {
                     Debug.Log(gameObject + " takes " + damageTaken + " damage");
                     //anim.SetTrigger("TAKE DAMAGE");
-                    ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
+                    //ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                 }
                 else
