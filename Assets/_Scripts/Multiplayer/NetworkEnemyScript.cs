@@ -48,6 +48,35 @@ public class NetworkEnemyScript : MonoBehaviour
         }
     }
 
+    [PunRPC]
+    void InstantiateParticleEffects(int viewID, string particleName, Vector3 position, Quaternion rotation, int targetViewID, bool isChild)
+    {
+        if (photonView.viewID == viewID)
+        {
+            GameObject particle = Instantiate(Resources.Load(particleName), position, rotation) as GameObject;
+            if (particle.GetComponent<ParticleFollowTarget>() != null)
+            {
+                particle.GetComponent<ParticleFollowTarget>().SetTarget(PhotonView.Find(targetViewID).gameObject);
+            }
+            if (isChild)
+            {
+                particle.transform.SetParent(gameObject.transform);
+            }
+            if (particleName == "MeteorFireArea")
+            {
+                if (photonView.isMine)
+                {
+                    particle.GetComponent<FireArea>().weaponDamage = PlayFabDataStore.playerWeaponDamage;
+                    particle.GetComponent<FireArea>().photonView = photonView;
+                    particle.GetComponent<FireArea>().damageType = PlayFabDataStore.catalogRunes["Rune_RainOfFire"].damageType;
+                }
+
+            }
+
+        }
+
+    }
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)

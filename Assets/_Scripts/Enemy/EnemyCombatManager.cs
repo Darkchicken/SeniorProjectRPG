@@ -98,5 +98,6 @@ public class EnemyCombatManager : MonoBehaviour
     {
         photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK SPELL");
         targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune.ToString()].damageType);
+        photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "MagicBolt", spellStartLocation.position, Quaternion.identity, targetPlayer.GetComponent<PhotonView>().viewID, false);
     }
 }

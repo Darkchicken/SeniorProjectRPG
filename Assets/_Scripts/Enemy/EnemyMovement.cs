@@ -49,28 +49,24 @@ public class EnemyMovement :MonoBehaviour
 
     IEnumerator Movement()
     {
-        Invoke("IsPlayersInAggroRange", 1f);
+        Invoke("IsPlayersInAggroRange", 1f); //Checks if any player is in range, and add them to the attack list
 
         if (combatManager.playerAttackList.Count != 0)
         {
             if (isInCombat && !InAttackingRange())
             {
                 MoveToPosition(combatManager.playerAttackList[0].transform.position);
-                controller.stoppingDistance = chaseStopDistance;
+                controller.stoppingDistance = chaseStopDistance - Mathf.RoundToInt(chaseStopDistance * 0.25f);
             }
 
-            if (controller.velocity == Vector3.zero && !isInCombat)
-            {
-                //immuneToAggro = false;
-            }
             transform.LookAt(combatManager.playerAttackList[0].transform.position);
         }
 
         if ((combatManager.playerAttackList.Count == 0) && isInCombat)
         {
             MoveToPosition(initialPosition);
+            chaseStopDistance = 0;
             controller.stoppingDistance = 0;
-            //immuneToAggro = true;
             isInCombat = false;
         }
 
@@ -110,6 +106,7 @@ public class EnemyMovement :MonoBehaviour
         }
         if (combatManager.playerAttackList.Count > 0)
         {
+            chaseStopDistance = PlayFabDataStore.catalogRunes[GetComponent<EnemyCombatManager>().selectRune.ToString()].attackRange;
             isInCombat = true;
         }
     }
