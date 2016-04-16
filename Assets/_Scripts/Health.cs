@@ -53,7 +53,7 @@ public class Health : MonoBehaviour {
     private int bleedCount = 1;
     private int counter = 0;
 
-    
+    private float sinkSpeed = 0.5f;
 
     void Awake()
     {
@@ -470,11 +470,13 @@ public class Health : MonoBehaviour {
             }
             else
             {
+                Invoke("SinkEnemy", 5);
                 GetComponent<EnemyMovement>().enabled = false;
                 GetComponent<EnemyCombatManager>().enabled = false;
                 if(PhotonNetwork.isMasterClient)
                 {
                     GetComponent<DropItem>().GetDropItemId();
+                    Invoke("DestroyEnemy", 7);
                 }
                 
             } 
@@ -537,5 +539,23 @@ public class Health : MonoBehaviour {
         InitializeHealth();
         StartCoroutine("HealthRegeneration", 3);
         
+    }
+
+    void SinkEnemy()
+    {
+        StartCoroutine(Sink());
+    }
+    IEnumerator Sink()
+    {
+        transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+
+        yield return new WaitForSeconds(0);
+
+        StartCoroutine(Sink());
+    }
+
+    void DestroyEnemy()
+    {
+        PhotonNetwork.Destroy(gameObject);
     }
 }
