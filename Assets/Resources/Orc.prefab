@@ -260,6 +260,7 @@ GameObject:
   - 114: {fileID: 11451502}
   - 114: {fileID: 11486356}
   - 114: {fileID: 11444688}
+  - 114: {fileID: 11452098}
   m_Layer: 11
   m_Name: Orc
   m_TagString: Enemy
@@ -1272,6 +1273,17 @@ MonoBehaviour:
   reducedDamagePercentage: 0
   immuneToBeControlled: 0
   maxImmuneToControlTime: 0
+--- !u!114 &11452098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3948cafab0d98d48b95d6c064bc8092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11472078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1283,10 +1295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d68ad319fe064dbe25d39641a54c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 2
-  attackDamage: 12
+  selectRune: 0
+  weaponDamage: 1
   attackSpeed: 2
-  damageType: 
   spellStartLocation: {fileID: 402374}
   spellTargetLocation: {fileID: 446054}
   playerAttackList: []
@@ -1324,7 +1335,7 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 457820}
+  - {fileID: 11452098}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

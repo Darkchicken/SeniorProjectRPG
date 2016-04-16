@@ -4,37 +4,49 @@ using System.Collections.Generic;
 
 public class EnemyCombatManager : MonoBehaviour
 {
-    public int attackRange;
-    public int attackDamage;
-    public float attackSpeed;
-    public string damageType;
+    public enum runeList { Rune_Slam, Rune_MagicBolt, Rune_SkullMissile};
+    public runeList selectRune;
+    public int weaponDamage = 1;
+    public float attackSpeed = 2;
     public Transform spellStartLocation;
     public Transform spellTargetLocation;
+
     public List<GameObject> playerAttackList;
 
     private Animator enemyAnimation;
-    private float attackTimer;
-
-    PhotonView photonView;
+    private float criticalChance = 0;
+    private PhotonView photonView;
+    private GameObject targetPlayer;
 
     void Start()
     {
         enemyAnimation = GetComponent<Animator>();
         playerAttackList = new List<GameObject>();
         photonView = GetComponent<PhotonView>();
+
+        if (PhotonNetwork.isMasterClient)
+        {
+            StartCoroutine(EnemyAttack());
+        }
     }
 
-    void Update()
+    IPunCallbacks OnMasterClientSwitched()
     {
-        attackTimer += Time.deltaTime;
+        if (PhotonNetwork.isMasterClient)
+        {
+            OnMasterClientChanged();
+        }
+        return null;
+    }
+
+    IEnumerator EnemyAttack()
+    {
         if (playerAttackList.Count != 0)
         {
-            if (attackTimer >= attackSpeed && !playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange())
+            if (!playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange())
             {
-                //playerAttackList[0].GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBufferedViaServer, photonView.viewID, 5/*attackDamage*/, 5);
-                playerAttackList[0].GetComponent<Health>().TakeDamage(gameObject, 5/*attackDamage*/, 5, damageType);
-                enemyAnimation.SetTrigger("ATTACK 1");
-                attackTimer = 0f;
+                targetPlayer = playerAttackList[0];
+                Invoke(selectRune.ToString(), 0);
             }
 
             if (playerAttackList[0].GetComponent<Health>().IsDead())
@@ -42,12 +54,19 @@ public class EnemyCombatManager : MonoBehaviour
                 playerAttackList.RemoveAt(0);
             }
         }
+
+        yield return new WaitForSeconds(attackSpeed);
+
+        if (!GetComponent<Health>().IsDead())
+        {
+            StartCoroutine(EnemyAttack());
+        }
         
     }
 
     bool InAttackingRange()
     {
-        if (Vector3.Distance(transform.position, playerAttackList[0].transform.position) <= attackRange)
+        if (Vector3.Distance(transform.position, playerAttackList[0].transform.position) <= PlayFabDataStore.catalogRunes[selectRune.ToString()].attackRange)
         {
             return true;
         }
@@ -55,5 +74,20 @@ public class EnemyCombatManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    //Call this when you transfer ownership of the room, so enemies still function
+    void OnMasterClientChanged()
+    {
+        StartCoroutine(EnemyAttack());
+    }
+
+    /// <summary>
+    /// Hit an enemy for 320% physical damage.
+    /// </summary>
+    public void Rune_Slam()
+    {
+        photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK 1");
+        targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune.ToString()].damageType);
     }
 }

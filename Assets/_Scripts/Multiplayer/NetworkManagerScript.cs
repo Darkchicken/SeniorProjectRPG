@@ -69,7 +69,7 @@ public class NetworkManagerScript : MonoBehaviour {
         }
         if (PhotonNetwork.isMasterClient)
         {
-            PhotonNetwork.Instantiate("Orc", enemySpawnPoint.position, enemySpawnPoint.rotation, 0);
+            PhotonNetwork.InstantiateSceneObject("Orc", enemySpawnPoint.position, enemySpawnPoint.rotation, 0, null);
         }
         player = PhotonNetwork.Instantiate("Elf", spawnPoint.position, spawnPoint.rotation, 0);
         combatManager = player.GetComponent<PlayerCombatManager>();

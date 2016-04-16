@@ -27,7 +27,7 @@ public class PlayerCombatManager : Runes
 
     void Start()
     {
-        //photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
+        
     }
 
     void Update()

@@ -4,24 +4,22 @@ using System.Collections;
 
 public class NetworkPlayerScript : MonoBehaviour {
 
-    bool battleArena = true;
-    PhotonView photonView;
-    Animator anim;
+    public bool battleArena = true;
+    private PhotonView photonView;
+    private Animator anim;
 
-    Vector3 playerPos = Vector3.zero;
-    Quaternion playerRot = Quaternion.identity;
-    int playerHealth;
+    private Vector3 playerPosition = Vector3.zero;
+    private Quaternion playerRotation = Quaternion.identity;
+    //private int playerHealth;
 
 
     // Use this for initialization
     void Start ()
     {
-        //get the photon view of this character
         photonView = gameObject.GetComponent<PhotonView>();
-        //get player's health
-        playerHealth = GetComponent<Health>().health;
-        //get Players animator
+        //playerHealth = GetComponent<Health>().health;
         anim = GetComponent<Animator>();
+
         if (anim == null)
         {
             Debug.LogError("This has no animator attached to sync");
@@ -66,10 +64,10 @@ public class NetworkPlayerScript : MonoBehaviour {
         else
         {
             //prevent syncing on entrance to room
-            if (playerPos != Vector3.zero)
+            if (playerPosition != Vector3.zero)
             {
-                transform.position = Vector3.Lerp(transform.position, playerPos, 0.1f);
-                transform.rotation = Quaternion.Lerp(transform.rotation, playerRot, 0.1f);
+                transform.position = Vector3.Lerp(transform.position, playerPosition, 0.1f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, playerRotation, 0.1f);
             }
         }
 
@@ -94,21 +92,21 @@ public class NetworkPlayerScript : MonoBehaviour {
             if (anim != null)
             {
                 stream.SendNext(anim.GetFloat("MOVE"));
-                stream.SendNext(anim.GetBool("INCOMBAT"));
-                stream.SendNext(anim.GetBool("Attack"));
+                //stream.SendNext(anim.GetBool("INCOMBAT"));
+                //stream.SendNext(anim.GetBool("Attack"));
             }
         }
         else
         {
             //Network player, receive data
-            playerPos = (Vector3)stream.ReceiveNext();
-            playerRot = (Quaternion)stream.ReceiveNext();
+            playerPosition = (Vector3)stream.ReceiveNext();
+            playerRotation = (Quaternion)stream.ReceiveNext();
             //receive animator variables from other player
             if (anim != null)
             {
                 anim.SetFloat("MOVE", (float)stream.ReceiveNext());
-                anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
-                anim.SetBool("Attack", (bool)stream.ReceiveNext());
+                //anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
+                //anim.SetBool("Attack", (bool)stream.ReceiveNext());
             }
 
         }

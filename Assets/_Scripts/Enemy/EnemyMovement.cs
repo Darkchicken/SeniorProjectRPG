@@ -31,39 +31,61 @@ public class EnemyMovement :MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player");
         initialPosition = transform.position;
         controller.stoppingDistance = chaseStopDistance;
+
+        if(PhotonNetwork.isMasterClient)
+        {
+            StartCoroutine(Movement());
+        }
     }
 
-    void Update()
+    IPunCallbacks OnMasterClientSwitched()
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            OnMasterClientChanged();
+        }
+        return null;
+    }
+
+    IEnumerator Movement()
     {
         Invoke("IsPlayersInAggroRange", 1f);
 
         if (combatManager.playerAttackList.Count != 0)
         {
-            if (isInCombat && /*!immuneToAggro && InChasingRange() &&*/ !InAttackingRange())
+            if (isInCombat && !InAttackingRange())
             {
                 MoveToPosition(combatManager.playerAttackList[0].transform.position);
                 controller.stoppingDistance = chaseStopDistance;
             }
 
-            if(controller.velocity == Vector3.zero && !isInCombat)
+            if (controller.velocity == Vector3.zero && !isInCombat)
             {
-                immuneToAggro = false;
+                //immuneToAggro = false;
             }
+            transform.LookAt(combatManager.playerAttackList[0].transform.position);
         }
 
-        if ((/*!InChasingRange() || */combatManager.playerAttackList.Count == 0) && isInCombat)
+        if ((combatManager.playerAttackList.Count == 0) && isInCombat)
         {
             MoveToPosition(initialPosition);
             controller.stoppingDistance = 0;
-            immuneToAggro = true;
+            //immuneToAggro = true;
             isInCombat = false;
         }
 
         enemyAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
+        yield return new WaitForSeconds(0.1f);
+
+        if(!GetComponent<Health>().IsDead())
+        {
+            StartCoroutine(Movement());
+        }
+        
     }
 
-    void IsPlayersInAggroRange()
+    void IsPlayersInAggroRange()  
     {
         for (int i = 0; i < GameManager.players.Count; i++)
         {
@@ -91,18 +113,6 @@ public class EnemyMovement :MonoBehaviour
             isInCombat = true;
         }
     }
-    /*
-    bool InChasingRange() // returns true if enemy is not too far from its initial location
-    {
-        if (Vector3.Distance(initialPosition, transform.position) > chasingRange)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }*/
 
     bool InAttackingRange()
     {
@@ -126,10 +136,14 @@ public class EnemyMovement :MonoBehaviour
 
     void MoveToPosition(Vector3 position)
     {
-
         transform.LookAt(position);
         controller.SetDestination(position);
     }
 
+    //Call this when you transfer ownership of the room, so enemies still function
+    void OnMasterClientChanged()
+    {
+        StartCoroutine(Movement());
+    }
 
 }

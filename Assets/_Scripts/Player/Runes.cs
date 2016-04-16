@@ -25,7 +25,6 @@ public class Runes : MonoBehaviour
     private static bool isPlayerSpeeding = false;
     private static float maxSpeedingTime;
     private static float increasedSpeedTimer;
-    private PlayerCombatManager playerCombatManager;
     private static float attackTimerSkillSlot1 = 15f;
     private static float attackTimerSkillSlot2 = 15f;
     private static float attackTimerSkillSlot3 = 15f;
@@ -50,12 +49,11 @@ public class Runes : MonoBehaviour
     void Start()
     {
         controller = GetComponent<NavMeshAgent>();
-        playerCombatManager = GetComponent<PlayerCombatManager>();
         GameManager.players.Add(gameObject);
         position = transform.position;
         playerAnimation = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
-        
+        photonView.RPC("AddPlayer", PhotonTargets.AllBufferedViaServer, photonView.viewID);
         playerSpeed = controller.speed;
     }
 
