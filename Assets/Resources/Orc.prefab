@@ -1295,8 +1295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d68ad319fe064dbe25d39641a54c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectRune: 0
-  weaponDamage: 1
+  selectRune: 1
+  weaponDamage: 20
   attackSpeed: 2
   spellStartLocation: {fileID: 402374}
   spellTargetLocation: {fileID: 446054}
@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c61f24afd3873d4e858c42229f62e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroRange: 20
+  aggroRange: 15
   chasingRange: 20
   chaseStopDistance: 2
 --- !u!114 &11486356

@@ -3,7 +3,11 @@ using System.Collections;
 
 public class InitializerScript : MonoBehaviour {
 
-    GameObject gameManager;
+
+    public static InitializerScript initializer;
+    public Transform respawnPoint;
+
+    private GameObject gameManager;
 
     void Awake()
     {
@@ -13,7 +17,7 @@ public class InitializerScript : MonoBehaviour {
             //gameManager.name = "GameManager";
             //DontDestroyOnLoad(gameManager);
         }
-        //Instantiate(Resources.Load("GameHUD") as GameObject);
+        initializer = this;
         
     }
 	

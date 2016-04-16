@@ -87,6 +87,7 @@ public class Health : MonoBehaviour {
             {
                 maxHealth = PlayFabDataStore.playerMaxHealth;
                 health = maxHealth;
+                PlayFabDataStore.playerCurrentHealth = health;
                 GetComponent<PlayerCombatManager>().canAttack = true;
                 UpdateHealth();
             }
@@ -121,7 +122,7 @@ public class Health : MonoBehaviour {
     {
         if(photonView.isMine)
         {
-            StartCoroutine(HealthRegeneration());
+            StartCoroutine("HealthRegeneration");
         }
         
     }
@@ -216,8 +217,11 @@ public class Health : MonoBehaviour {
 
         yield return new WaitForSeconds(1);
         
-
-        StartCoroutine(HealthRegeneration());
+        if(!IsDead())
+        {
+            StartCoroutine(HealthRegeneration());
+        }
+        
 
     }
 
@@ -455,7 +459,8 @@ public class Health : MonoBehaviour {
         if(tag == "Player")
         {
             GetComponent<PlayerCombatManager>().enabled = false;
-            StopCoroutine(HealthRegeneration());
+            StopCoroutine("HealthRegeneration");
+            Invoke("RespawnPlayer", 3);
         }
         if(tag == "Enemy")
         {
@@ -474,7 +479,6 @@ public class Health : MonoBehaviour {
                 
             } 
         }
-        
         GetComponent<NavMeshAgent>().enabled = false; 
         GetComponent<Health>().enabled = false;       
         GetComponent<CapsuleCollider>().enabled = false;
@@ -512,5 +516,26 @@ public class Health : MonoBehaviour {
     public bool IsDead()
     {
         return dead;
+    }
+
+    void RespawnPlayer()
+    {
+        StartCoroutine(Respawn());
+    }
+    IEnumerator Respawn()
+    {
+        gameObject.transform.position = InitializerScript.initializer.respawnPoint.position;
+
+        yield return new WaitForSeconds(1);
+        dead = false;
+
+        GetComponent<NavMeshAgent>().enabled = true;
+        GetComponent<PlayerCombatManager>().enabled = true;
+        GetComponent<Health>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
+        anim.SetTrigger("RESPAWN");
+        InitializeHealth();
+        StartCoroutine("HealthRegeneration", 3);
+        
     }
 }

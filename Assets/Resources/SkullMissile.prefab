@@ -66,8 +66,6 @@ GameObject:
   - 114: {fileID: 11485800}
   - 54: {fileID: 5491392}
   - 114: {fileID: 11458000}
-  - 114: {fileID: 11477554}
-  - 114: {fileID: 11417360}
   m_Layer: 0
   m_Name: SkullMissile
   m_TagString: Untagged
@@ -237,31 +235,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11417360
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  prefixBackup: -1
-  observed: {fileID: 0}
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  isRuntimeInstantiated: 0
 --- !u!114 &11456284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,7 +250,7 @@ MonoBehaviour:
   DestoyOnHit: 1
   FixRotation: 0
   LifeTimeAfterHit: 0
-  LifeTime: 5
+  LifeTime: 3
 --- !u!114 &11458000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,17 +260,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c38bf5bdaf85b0348b6bfeaeb6bc3872, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11477554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188614}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e82ebfd621440e409abfa1e7da36765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11485800
@@ -324,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f7dd29227cf224eb83f39b0139033a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 15
   Noise: {x: 0, y: 0, z: 0}
   Damping: 0.1
 --- !u!135 &13504900

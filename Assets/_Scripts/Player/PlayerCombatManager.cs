@@ -25,9 +25,11 @@ public class PlayerCombatManager : Runes
     private bool autoAttack = false;
 
 
-    void Start()
+    void OnEnable()
     {
-        
+        targetEnemy = null;
+        //controller.Stop();
+        //controller.ResetPath();
     }
 
     void Update()
