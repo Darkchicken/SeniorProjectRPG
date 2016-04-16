@@ -50,4 +50,5 @@ MonoBehaviour:
   - SetDamageReduction
   - SetItemDetails
   - LootTheItem
+  - InstantiateParticleEffects
   DisableAutoOpenWizard: 1

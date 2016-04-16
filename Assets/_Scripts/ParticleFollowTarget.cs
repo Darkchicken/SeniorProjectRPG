@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HomingShots : MonoBehaviour {
+public class ParticleFollowTarget : MonoBehaviour {
 
     private GameObject target;
     Transform targetTrans;
@@ -15,6 +15,7 @@ public class HomingShots : MonoBehaviour {
 
     public void SetTarget(GameObject _target)
     {
+        target = _target;
         if(_target.GetComponent<EnemyCombatManager>() != null)
         {
             targetTrans = _target.GetComponent<EnemyCombatManager>().spellTargetLocation;
@@ -23,5 +24,10 @@ public class HomingShots : MonoBehaviour {
         {
             targetTrans = _target.GetComponent<PlayerCombatManager>().spellTargetLocation;
         }
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
     }
 }

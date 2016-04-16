@@ -12,10 +12,11 @@ namespace MagicalFX
 		public bool FixRotation = false;
 		public float LifeTimeAfterHit = 1;
 		public float LifeTime = 0;
+        private PhotonView photonview;
 	
 		void Start ()
 		{
-		
+            photonview = GetComponent<PhotonView>();
 		}
 	
 		void Spawn ()
@@ -26,11 +27,11 @@ namespace MagicalFX
 					rotate = FXSpawn.transform.rotation;
 				GameObject fx = (GameObject)GameObject.Instantiate (FXSpawn, this.transform.position, rotate);
 				if (LifeTime > 0)
-					GameObject.Destroy (fx.gameObject, LifeTime);
+					Destroy (fx.gameObject, LifeTime);
 			}
 			if (DestoyOnHit) {
-			
-				GameObject.Destroy (this.gameObject, LifeTimeAfterHit);
+
+				Destroy (this.gameObject, LifeTimeAfterHit);
 				if (this.gameObject.GetComponent<Collider>())
 					this.gameObject.GetComponent<Collider>().enabled = false;
 
@@ -39,19 +40,35 @@ namespace MagicalFX
 	
 		void OnTriggerEnter (Collider other)
 		{
-            if(other.CompareTag("Enemy"))
+            if(GetComponent<ParticleFollowTarget>() != null)
+            {
+                if (other.transform.gameObject == GetComponent<ParticleFollowTarget>().GetTarget())
+                {
+                    Spawn();
+                }
+            }
+            else
             {
                 Spawn();
             }
             
+
 		}
 	
 		void OnCollisionEnter (Collision collision)
 		{
-            if (collision.transform.CompareTag("Enemy"))
+            if(GetComponent<ParticleFollowTarget>() != null)
+            {
+                if (collision.transform.gameObject == GetComponent<ParticleFollowTarget>().GetTarget())
+                {
+                    Spawn();
+                }
+            }
+            else
             {
                 Spawn();
             }
+            
         }
 	}
 }

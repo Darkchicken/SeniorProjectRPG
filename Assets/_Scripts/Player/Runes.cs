@@ -133,7 +133,7 @@ public class Runes : MonoBehaviour
     }
 
 
-    
+
     /// <summary>
     /// Hit an enemy for 320% physical damage.
     /// </summary>
@@ -255,7 +255,8 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
-                    GameObject bolt = Instantiate(Resources.Load("MagicBolt"), spellStartLocation.position, Quaternion.identity) as GameObject;
+
+                    photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "MagicBolt", spellStartLocation.position, Quaternion.identity, targetEnemy.GetComponent<PhotonView>().viewID, false);
 
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
@@ -280,8 +281,6 @@ public class Runes : MonoBehaviour
                             loadingMethod.Invoke(this, arguments);
                         }
                     }
-                    
-                    bolt.GetComponent<HomingShots>().SetTarget(targetEnemy);
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
                     attackTimerSkillSlot5 = 0f;
@@ -307,6 +306,7 @@ public class Runes : MonoBehaviour
             {
                 if (hitEnemies[i].CompareTag("Enemy"))
                 {
+                    photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "ThunderStrike", hitEnemies[i].transform.position, Quaternion.identity, null, false);
                     GameObject thunderstrike = Instantiate(Resources.Load("ThunderStrike"), hitEnemies[i].transform.position, Quaternion.identity) as GameObject;
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
@@ -356,7 +356,9 @@ public class Runes : MonoBehaviour
                 if (attackTimerSkillSlot5 >= PlayFabDataStore.catalogRunes[runeId].cooldown)
                 {
                     photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK SPELL");
-                    GameObject missile = Instantiate(Resources.Load("SkullMissile"), spellStartLocation.position, Quaternion.identity) as GameObject;
+
+
+                    photonView.RPC("InstantiateParticleEffects" , PhotonTargets.All, photonView.viewID, "SkullMissile", spellStartLocation.position, Quaternion.identity, targetEnemy.GetComponent<PhotonView>().viewID, false);
 
                     if (GetPlayerResource() + PlayFabDataStore.catalogRunes[runeId].resourceGeneration <= PlayFabDataStore.playerMaxResource)
                     {
@@ -381,8 +383,6 @@ public class Runes : MonoBehaviour
                             loadingMethod.Invoke(this, arguments);
                         }
                     }
-
-                    missile.GetComponent<HomingShots>().SetTarget(targetEnemy);
                     ApplyDamage(targetEnemy);
                     mainEnemy = null;
                     attackTimerSkillSlot5 = 0f;
@@ -493,8 +493,9 @@ public class Runes : MonoBehaviour
         {
 
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
-
             photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "LIGHT WARP");
+            photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "LightWarp", transform.position, Quaternion.identity, null, true);
+            
 
             for (int i = 0; i < hitEnemies.Length; i++)
             {
@@ -519,8 +520,6 @@ public class Runes : MonoBehaviour
                     ApplyDamage(targetEnemy);
                 }
             }
-            GameObject vortex = Instantiate(Resources.Load("LightWarp"), transform.position, Quaternion.identity) as GameObject;
-            vortex.transform.SetParent(gameObject.transform);
             SetPlayerResource(-PlayFabDataStore.catalogRunes[runeId].resourceUsage);
             
         }
@@ -578,7 +577,7 @@ public class Runes : MonoBehaviour
             {
                 SetPlayerResource(100);
             }
-            GameObject groundClash = (GameObject)Instantiate(Resources.Load("GroundClash"), transform.position, Quaternion.identity);
+            photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "GroundClash", transform.position, Quaternion.identity, null, false);
             
         }
     }
@@ -692,8 +691,7 @@ public class Runes : MonoBehaviour
             HUD_Manager.hudManager.ActionBarCooldownImage2.fillAmount = 1;
             updateCooldownImage2 = true;
 
-            GameObject holyShockEffect = Instantiate(Resources.Load("HolyShock_Effect"), transform.position, Quaternion.identity) as GameObject;
-            holyShockEffect.transform.parent = transform;
+            photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "HolyShock_Effect", transform.position, Quaternion.identity, null, true);
 
             yield return new WaitForSeconds(PlayFabDataStore.catalogRunes[runeId].effectTime);
             runeId = "Rune_HolyShock";
@@ -702,7 +700,7 @@ public class Runes : MonoBehaviour
             Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
             Debug.Log("After Collider " + hitEnemies.Length);
 
-            GameObject holyShockDamage = Instantiate(Resources.Load("HolyShock_Damage"), transform.position, Quaternion.identity) as GameObject;
+            photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "HolyShock_Damage", transform.position, Quaternion.identity, null, false);
 
             //photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "ATTACK 2");
 
@@ -762,16 +760,13 @@ public class Runes : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000))
             {
                 Vector3 position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                GameObject meteor = Instantiate(Resources.Load("Meteor"), position, Quaternion.identity) as GameObject;
+                photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "Meteor", position, Quaternion.identity, null, false);
 
                 Collider[] hitEnemies = Physics.OverlapSphere(position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
 
                 yield return new WaitForSeconds(.9f);
 
-                GameObject meteorFireArea = Instantiate(Resources.Load("MeteorFireArea"), position , Quaternion.identity) as GameObject;
-                meteorFireArea.GetComponent<FireArea>().weaponDamage = PlayFabDataStore.playerWeaponDamage;
-                meteorFireArea.GetComponent<FireArea>().photonView = photonView;
-                meteorFireArea.GetComponent<FireArea>().damageType = PlayFabDataStore.catalogRunes[runeId].damageType;
+                photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "MeteorFireArea", position, Quaternion.identity, null, false);
 
                 for (int i = 0; i < hitEnemies.Length; i++)
                 {

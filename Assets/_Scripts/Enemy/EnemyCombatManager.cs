@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EnemyCombatManager : MonoBehaviour
 {
-    public enum runeList { Rune_Slam, Rune_MagicBolt, Rune_SkullMissile};
+    public enum runeList { Rune_Slam, Rune_MagicBolt, Rune_SkullMissile };
     public runeList selectRune;
     public int weaponDamage = 1;
     public float attackSpeed = 2;
@@ -88,6 +88,15 @@ public class EnemyCombatManager : MonoBehaviour
     public void Rune_Slam()
     {
         photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK 1");
+        targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune.ToString()].damageType);
+    }
+
+    /// <summary>
+    /// Hit an enemy for 250% physical damage.
+    /// </summary>
+    public void Rune_MagicBolt()
+    {
+        photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK SPELL");
         targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune.ToString()].damageType);
     }
 }
