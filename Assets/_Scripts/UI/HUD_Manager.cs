@@ -7,6 +7,8 @@ using PlayFab.ClientModels;
 
 public class HUD_Manager : MonoBehaviour {
 
+    public delegate void RespawnAction();
+    public static event RespawnAction OnRespawn;
     public static HUD_Manager hudManager;
 
     public Canvas characterWindow;
@@ -15,6 +17,7 @@ public class HUD_Manager : MonoBehaviour {
     public Canvas friendsWindow;
     public Canvas questWindow;
     public Canvas optionWindow;
+    public Canvas respawnWindow;
 
     public Image healthGlobe;
     public Image resourceGlobe;
@@ -170,132 +173,25 @@ public class HUD_Manager : MonoBehaviour {
         optionWindow.gameObject.SetActive(false);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*void Update ()
+    public void ToggleRespawnWindow()
     {
-        if (Input.GetKeyDown("1"))
-        {
-            cheatPanel.gameObject.SetActive(!cheatPanel.gameObject.activeInHierarchy);
-        }
+        GetComponent<RaycastUI>().OnMouseExit();
+        respawnWindow.gameObject.SetActive(!respawnWindow.gameObject.activeInHierarchy);
+    }
 
-        if (player == null)
+    public void RespawnWindowConfirm()
+    {
+        if(OnRespawn != null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-        else
-        {
-            playerHealth = player.GetComponent<Health>().GetHealth();
-            playerHealthSlider.value = playerHealth;
-            playerHealthText.text = playerHealth + "/100";
-            if(playerHealth == 0)
-            {
-                playerHealthSlider.gameObject.SetActive(false);
-            }
-            playerResourceSlider.value = PlayFabDataStore.playerResource;
-            playerResourceText.text = playerResourceSlider.value + "/100";
-
+            ToggleRespawnWindow();
+            OnRespawn();
         }
     }
 
-    public void ToggleRunePanel()
+    public void ClearOnRespawnEvent()
     {
-        runePanel.gameObject.SetActive(!runePanel.gameObject.activeInHierarchy);
-
-        if (!runeUpdate)
-        {
-            runeUpdate = true;
-            var request = new GetCharacterInventoryRequest()
-            {
-                CharacterId = PlayFabDataStore.characterId,
-                //CatalogVersion = "Runes"
-            };
-            PlayFabClientAPI.GetCharacterInventory(request, (result) =>
-            {
-                foreach (var item in result.Inventory)
-                {
-
-                    if (item.ItemClass == "Skill")
-                    {
-                        PlayFabDataStore.playerSkillRunes.Add(item.ItemId, Runes.runes[item.ItemId]);
-                    }
-                    if (item.ItemClass == "Modifier")
-                    {
-                        PlayFabDataStore.playerModifierRunes.Add(item.ItemId, Runes.runes[item.ItemId]);
-                    }
-                }
-            }, (error) =>
-            {
-                Debug.Log("Runes cannot retrieved!");
-                Debug.Log(error.ErrorMessage);
-                Debug.Log(error.ErrorDetails);
-            });
-        }
-        
+        OnRespawn = null;
     }
 
-    public void SelectSkillRunes(string runeName)
-    {
-        //Not working for more than 1 skill, will fix when rune UI is ready
-        runeSelect = !runeSelect;
-        Debug.Log(runeSelect);
-        if(runeSelect)
-        {
-            Debug.Log("SELECTED");
-            PlayFabDataStore.playerActiveSkillRunes.Add(PlayFabDataStore.playerSkillRunes[runeName], runeName);
-        }
-        else
-        {
-            Debug.Log("DESELECTED");
-            PlayFabDataStore.playerActiveSkillRunes.Remove(PlayFabDataStore.playerSkillRunes[runeName]);
-        }
-        
-    }*/
 
 }

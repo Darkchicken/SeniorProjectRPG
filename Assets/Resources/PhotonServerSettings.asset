@@ -51,4 +51,8 @@ MonoBehaviour:
   - SetItemDetails
   - LootTheItem
   - InstantiateParticleEffects
+  - RespawnOverNetwork
+  - SendMoveDestination
+  - SendPositionToNewPlayer
+  - SendPosition
   DisableAutoOpenWizard: 1

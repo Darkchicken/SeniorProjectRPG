@@ -77,17 +77,29 @@ public class NetworkEnemyScript : MonoBehaviour
 
     }
 
+    [PunRPC]
+    void SendMoveDestination(int viewID, Vector3 movePosition, float stopDistance)
+    {
+        if (photonView.viewID == viewID)
+        {
+            GameObject source = PhotonView.Find(viewID).gameObject;
+            source.transform.LookAt(movePosition);
+            source.GetComponent<NavMeshAgent>().SetDestination(movePosition);
+            source.GetComponent<NavMeshAgent>().stoppingDistance = stopDistance;
+        }
+    }
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             //We own this player: send the others our data
-            stream.SendNext(transform.position);
+            //stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             //send all animator variables
             if (anim != null)
             {
-                stream.SendNext(anim.GetFloat("MOVE"));
+                //stream.SendNext(anim.GetFloat("MOVE"));
                 //stream.SendNext(anim.GetBool("INCOMBAT"));
                 //stream.SendNext(anim.GetBool("Attack"));
             }
@@ -95,12 +107,12 @@ public class NetworkEnemyScript : MonoBehaviour
         else
         {
             //Network player, receive data
-            enemyPosition = (Vector3)stream.ReceiveNext();
+            //enemyPosition = (Vector3)stream.ReceiveNext();
             enemyRotation = (Quaternion)stream.ReceiveNext();
             //receive animator variables from other player
             if (anim != null)
             {
-                anim.SetFloat("MOVE", (float)stream.ReceiveNext());
+                //anim.SetFloat("MOVE", (float)stream.ReceiveNext());
                 //anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
                 //anim.SetBool("Attack", (bool)stream.ReceiveNext());
             }

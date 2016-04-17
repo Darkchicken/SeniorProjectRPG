@@ -3494,8 +3494,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 11494634}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!114 &11464226
 MonoBehaviour:
@@ -3557,6 +3557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434dc0a715e8b164690efbe75a8751b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleArena: 1
 --- !u!136 &13627246
 CapsuleCollider:
   m_ObjectHideFlags: 1

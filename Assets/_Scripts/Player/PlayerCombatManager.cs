@@ -28,8 +28,6 @@ public class PlayerCombatManager : Runes
     void OnEnable()
     {
         targetEnemy = null;
-        //controller.Stop();
-        //controller.ResetPath();
     }
 
     void Update()
@@ -114,7 +112,7 @@ public class PlayerCombatManager : Runes
             }
         }
 
-        playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
+        //playerAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
 
         if (targetEnemy != null && Vector3.Distance(targetEnemy.transform.position, transform.position) > stopDistanceForAttack)
         {
@@ -158,6 +156,7 @@ public class PlayerCombatManager : Runes
 
     void MoveToPosition()
     {
+        photonView.RPC("SendMoveDestination", PhotonTargets.Others, photonView.viewID, position, controller.stoppingDistance);
         transform.LookAt(position);
         controller.SetDestination(position);
     }

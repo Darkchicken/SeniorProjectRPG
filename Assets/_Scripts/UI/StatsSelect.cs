@@ -103,6 +103,7 @@ public class StatsSelect : MonoBehaviour
             PlayFabApiCalls.UpdateCharacterData(statsData);
             CharacterStats.characterStats.SetStatsText();
             Debug.Log("Stats UPDATED to PlayFab!");
+            CharacterStats.characterStats.CalculateStats();
         }
         
     }

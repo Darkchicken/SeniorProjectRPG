@@ -33799,7 +33799,7 @@ Prefab:
     - target: {fileID: 19965142, guid: 3c47a91c6f096c440b41ed0a611150d1, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 97cc29825c02fea4b8059d8875c4ebda, type: 2}
+      objectReference: {fileID: 2100000, guid: 2ea1db911423a244e925cdcc12c6c677, type: 2}
     - target: {fileID: 130978, guid: 3c47a91c6f096c440b41ed0a611150d1, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -33855,6 +33855,10 @@ Prefab:
     - target: {fileID: 130980, guid: 3c47a91c6f096c440b41ed0a611150d1, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 19965142, guid: 3c47a91c6f096c440b41ed0a611150d1, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11430972, guid: 3c47a91c6f096c440b41ed0a611150d1, type: 2}

@@ -68,7 +68,9 @@ public class Runes : MonoBehaviour
 
         increasedSpeedTimer += Time.deltaTime;
 
-        if(isPlayerSpeeding && increasedSpeedTimer > maxSpeedingTime)
+        
+
+        if (isPlayerSpeeding && increasedSpeedTimer > maxSpeedingTime)
         {
             isPlayerSpeeding = false;
             controller.speed = playerSpeed;
@@ -406,7 +408,7 @@ public class Runes : MonoBehaviour
             controller.Stop();
             controller.ResetPath();
 
-            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
 
             photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "JUMP ATTACK");
             for (int i = 0; i < hitEnemies.Length; i++)
@@ -452,7 +454,7 @@ public class Runes : MonoBehaviour
             controller.Stop();
             controller.ResetPath();
 
-            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
 
             photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "WHIRLWIND");
             for (int i = 0; i < hitEnemies.Length; i++)
@@ -492,7 +494,7 @@ public class Runes : MonoBehaviour
         if (GetPlayerResource() >= PlayFabDataStore.catalogRunes[runeId].resourceUsage)
         {
 
-            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
             photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "LIGHT WARP");
             photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "LightWarp", transform.position, Quaternion.identity, null, true);
             
@@ -537,7 +539,7 @@ public class Runes : MonoBehaviour
             controller.Stop();
             controller.ResetPath();
 
-            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius);
+            Collider[] hitEnemies = Physics.OverlapSphere(gameObject.transform.position, PlayFabDataStore.catalogRunes[runeId].attackRadius, LayerMask.GetMask("Enemy"));
             attackTimerSkillSlot1 = 0f;
             HUD_Manager.hudManager.ActionBarCooldownImage1.enabled = true;
             HUD_Manager.hudManager.ActionBarCooldownImage1.fillAmount = 1;

@@ -10,6 +10,7 @@ public class EnemyCombatManager : MonoBehaviour
     public float attackSpeed = 2;
     public Transform spellStartLocation;
     public Transform spellTargetLocation;
+    public bool canAttack = true;
 
     public List<GameObject> playerAttackList;
 
@@ -43,7 +44,7 @@ public class EnemyCombatManager : MonoBehaviour
     {
         if (playerAttackList.Count != 0)
         {
-            if (!playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange())
+            if (!playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange() && canAttack)
             {
                 targetPlayer = playerAttackList[0];
                 Invoke(selectRune.ToString(), 0);

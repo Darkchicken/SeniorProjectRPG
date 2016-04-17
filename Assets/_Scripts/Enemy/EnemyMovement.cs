@@ -7,12 +7,14 @@ public class EnemyMovement :MonoBehaviour
     public float aggroRange = 15f;
     public float chasingRange = 50f;
     public float chaseStopDistance = 2f;
+    public bool canMove = true;
 
     private NavMeshAgent controller;
     private Animator enemyAnimation;
     private GameObject player;
     private Vector3 initialPosition;
     private EnemyCombatManager combatManager;
+    private PhotonView photonView;
 
 
     private bool isChasing = false;
@@ -21,6 +23,8 @@ public class EnemyMovement :MonoBehaviour
     private bool isMoving_Animation = false;
     private bool isInCombat = false;
     private bool isTargetDead = false;
+    private bool isHealthRegenerating = false;
+    
 
 
     void Start()
@@ -28,6 +32,7 @@ public class EnemyMovement :MonoBehaviour
         controller = GetComponent<NavMeshAgent>();
         enemyAnimation = GetComponent<Animator>();
         combatManager = GetComponent<EnemyCombatManager>();
+        photonView = GetComponent<PhotonView>();
         //player = GameObject.FindGameObjectWithTag("Player");
         initialPosition = transform.position;
         controller.stoppingDistance = chaseStopDistance;
@@ -51,12 +56,12 @@ public class EnemyMovement :MonoBehaviour
     {
         Invoke("IsPlayersInAggroRange", 1f); //Checks if any player is in range, and add them to the attack list
 
-        if (combatManager.playerAttackList.Count != 0)
+        if (combatManager.playerAttackList.Count != 0 & canMove)
         {
             if (isInCombat && !InAttackingRange())
             {
-                MoveToPosition(combatManager.playerAttackList[0].transform.position);
                 controller.stoppingDistance = chaseStopDistance - Mathf.RoundToInt(chaseStopDistance * 0.25f);
+                MoveToPosition(combatManager.playerAttackList[0].transform.position);  
             }
 
             transform.LookAt(combatManager.playerAttackList[0].transform.position);
@@ -64,13 +69,18 @@ public class EnemyMovement :MonoBehaviour
 
         if ((combatManager.playerAttackList.Count == 0) && isInCombat)
         {
-            MoveToPosition(initialPosition);
             chaseStopDistance = 0;
             controller.stoppingDistance = 0;
             isInCombat = false;
+            isHealthRegenerating = true;
+            MoveToPosition(initialPosition);
         }
 
-        enemyAnimation.SetFloat("MOVE", controller.velocity.magnitude / controller.speed);
+        if(Vector3.Distance(transform.position, initialPosition) < 1 && isHealthRegenerating)
+        {
+            isHealthRegenerating = false;
+            GetComponent<Health>().InitializeHealth();
+        }
 
         yield return new WaitForSeconds(0.1f);
 
@@ -133,6 +143,7 @@ public class EnemyMovement :MonoBehaviour
 
     void MoveToPosition(Vector3 position)
     {
+        photonView.RPC("SendMoveDestination", PhotonTargets.Others, photonView.viewID, position, controller.stoppingDistance);
         transform.LookAt(position);
         controller.SetDestination(position);
     }

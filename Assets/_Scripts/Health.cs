@@ -14,7 +14,7 @@ public class Health : MonoBehaviour {
     public int maxHealth;
 
     private PhotonView photonView;
-    private Animator anim;
+    private Animator animation;
     private bool dead = false;
     private float navMeshSpeed;
 
@@ -54,44 +54,94 @@ public class Health : MonoBehaviour {
     private int counter = 0;
 
     private float sinkSpeed = 0.5f;
+    private bool isPlayerRespawned = false;
 
     void Awake()
     {
-        
-        anim = GetComponent<Animator>();
+
+        animation = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
         navMeshSpeed = GetComponent<NavMeshAgent>().speed;
+    }
+
+    void OnEnable()
+    {
+
+        if(photonView.isMine)
+        {
+            if (CompareTag("Player"))
+            {
+                Debug.Log("Subscribed to the event: " + gameObject.tag);
+                HUD_Manager.OnRespawn += RespawnPlayer;
+            }
+        }
+        
+        
+    }
+
+    void OnDestroy()
+    {
+        if (photonView.isMine)
+        {
+            if (CompareTag("Player"))
+            {
+                Debug.Log("UNSubscribed to the event on Destroy: " + gameObject.tag);
+                HUD_Manager.OnRespawn -= RespawnPlayer;
+            }
+        }
+    }
+
+    void OnDisable()
+    {
+        if (photonView.isMine)
+        {
+            if (CompareTag("Player"))
+            {
+                Debug.Log("UNSubscribed to the event on Destroy: " + gameObject.tag);
+                HUD_Manager.OnRespawn -= RespawnPlayer;
+            }
+        }
     }
 
     void Start()
     {
         enemyHealthFillImage = HUD_Manager.hudManager.enemyHealth;
         enemyHealthText = HUD_Manager.hudManager.enemyHealthText;
-        
+
 
         Invoke("InitializeHealth", 1);
-        if (tag == "Player")
+        StartCoroutine("HealthUpdate");
+        if (CompareTag("Player"))
         {
-            Invoke("StartHealthRegeneration", 10);
+            Invoke("StartHealthRegeneration", 5);
         }
-            
+
+        
+
     }
 
-    void InitializeHealth()
+    public void InitializeHealth()
     {
         Debug.Log(PhotonNetwork.player.isLocal);
         Debug.Log(PhotonNetwork.player.isMasterClient);
-        if (PhotonNetwork.player.isLocal)
+        if (photonView.isMine)
         {
-            if (tag == "Player")
+            if (CompareTag("Player"))
             {
                 maxHealth = PlayFabDataStore.playerMaxHealth;
-                health = maxHealth;
+                if(isPlayerRespawned)
+                {
+                    health = maxHealth / 2;
+                }
+                else
+                {
+                    health = maxHealth;
+                } 
                 PlayFabDataStore.playerCurrentHealth = health;
                 GetComponent<PlayerCombatManager>().canAttack = true;
                 UpdateHealth();
             }
-            if (tag == "Enemy")
+            if (CompareTag("Enemy"))
             {
                 /*if (GetComponent<PlayerCombatManager>() != null)
                 {
@@ -106,11 +156,11 @@ public class Health : MonoBehaviour {
         }
         if(PhotonNetwork.player.isMasterClient)
         {
-            if (tag == "Enemy")
+            if (CompareTag("Enemy"))
             {
                 if (GetComponent<EnemyCombatManager>() != null)
                 {
-                    maxHealth = health;
+                    health = maxHealth;
                     UpdateHealth();
                 }
             }
@@ -225,18 +275,11 @@ public class Health : MonoBehaviour {
 
     }
 
-    void Update()
+    IEnumerator HealthUpdate()
     {
-        chillTimer += Time.deltaTime;
-        criticalHitTimer += Time.deltaTime;
-        freezeTimer += Time.deltaTime;
-        stunTimer += Time.deltaTime;
-        bleedTimer += Time.deltaTime;
-        immuneToControlTimer += Time.deltaTime;
-
-        if(isDamageReduced)
+        if (isDamageReduced)
         {
-            if(immuneToControlTimer >= maxImmuneToControlTime)
+            if (immuneToControlTimer >= maxImmuneToControlTime)
             {
                 isDamageReduced = false;
             }
@@ -245,14 +288,14 @@ public class Health : MonoBehaviour {
 
         if (isBleeding)
         {
-            if(bleedTimer >= bleedCount)
+            if (bleedTimer >= bleedCount)
             {
                 Debug.Log("Bleed count: " + bleedCount);
                 Debug.Log("Bleed Damage: " + bleedDamage);
                 bleedCount++;
-                    
+
                 TakeDamage(gameObject, bleedDamage, 0, "Natural");
-                if(bleedCount > maxBleedCount)
+                if (bleedCount > maxBleedCount)
                 {
                     isBleeding = false;
                 }
@@ -261,12 +304,12 @@ public class Health : MonoBehaviour {
 
         if (isFrozen && !immuneToBeControlled)
         {
-            if(freezeActivate)
+            if (freezeActivate)
             {
                 freezeActivate = false;
                 freezeTimer = 0f;
-                GetComponent<NavMeshAgent>().speed = 0;     
-                anim.SetTrigger("FIGHT IDLE");
+                GetComponent<NavMeshAgent>().speed = 0;
+                animation.SetTrigger("FIGHT IDLE");
 
             }
             GetComponent<NavMeshAgent>().ResetPath();
@@ -279,26 +322,26 @@ public class Health : MonoBehaviour {
             }
 
         }
-        
+
         if (isStunned && !immuneToBeControlled)
         {
-            if(stunActivate)
+            if (stunActivate)
             {
                 stunActivate = false;
                 stunTimer = 0f;
                 GetComponent<NavMeshAgent>().speed = 0;
-                anim.SetTrigger("STUN");
+                animation.SetTrigger("STUN");
 
-                if (tag == "Player")
+                if (CompareTag("Player"))
                 {
                     if (!dead)
                     {
                         GetComponent<PlayerCombatManager>().canAttack = false;
                     }
                 }
-                if (tag == "Enemy")
+                if (CompareTag("Enemy"))
                 {
-                    if(!dead)
+                    if (!dead)
                     {
                         if (GetComponent<PlayerCombatManager>() != null)
                         {
@@ -306,16 +349,18 @@ public class Health : MonoBehaviour {
                         }
                         else
                         {
-                            GetComponent<EnemyCombatManager>().enabled = false;
-                            GetComponent<EnemyMovement>().enabled = false;
-                        }               
+                            GetComponent<EnemyCombatManager>().canAttack = false;
+                            GetComponent<EnemyMovement>().canMove = false;
+                            //GetComponent<EnemyCombatManager>().enabled = false;
+                            //GetComponent<EnemyMovement>().enabled = false;
+                        }
                     }
-                } 
+                }
             }
             GetComponent<NavMeshAgent>().ResetPath();
             if (stunTimer >= maxStunTime)
             {
-                if (tag == "Player")
+                if (CompareTag("Player"))
                 {
                     if (!dead)
                     {
@@ -323,46 +368,48 @@ public class Health : MonoBehaviour {
                     }
 
                 }
-                if (tag == "Enemy")
+                if (CompareTag("Enemy"))
                 {
-                    if(!dead)
+                    if (!dead)
                     {
-                        if(GetComponent<PlayerCombatManager>() != null)
+                        if (GetComponent<PlayerCombatManager>() != null)
                         {
                             GetComponent<PlayerCombatManager>().canAttack = true;
                         }
                         else
                         {
-                            GetComponent<EnemyCombatManager>().enabled = true;
-                            GetComponent<EnemyMovement>().enabled = true;
+                            GetComponent<EnemyCombatManager>().canAttack = true;
+                            GetComponent<EnemyMovement>().canMove = true;
+                            //GetComponent<EnemyCombatManager>().enabled = true;
+                            //GetComponent<EnemyMovement>().enabled = true;
                         }
-                        
+
                     }
-                } 
+                }
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
-                anim.SetTrigger("FIGHT IDLE");
+                animation.SetTrigger("FIGHT IDLE");
                 isStunned = false;
-                stunActivate = true;   
+                stunActivate = true;
             }
         }
 
-        
-        if(isChilled)
+
+        if (isChilled)
         {
-            if(chillActivate)
+            if (chillActivate)
             {
                 chillActivate = false;
                 chillTimer = 0f;
             }
             if (chillTimer >= maxChillTime)
             {
-                isChilled = false;     
+                isChilled = false;
             }
         }
 
-        if(isCriticalHit)
+        if (isCriticalHit)
         {
-            if(critActivate)
+            if (critActivate)
             {
                 critActivate = false;
                 criticalHitTimer = 0f;
@@ -371,10 +418,25 @@ public class Health : MonoBehaviour {
             {
                 isCriticalHit = false;
                 critActivate = true;
-                criticalHitValue = 0;             
+                criticalHitValue = 0;
             }
         }
 
+        yield return new WaitForSeconds(0.1f);
+
+        StartCoroutine("HealthUpdate");
+    }
+
+    void Update()
+    {
+        chillTimer += Time.deltaTime;
+        criticalHitTimer += Time.deltaTime;
+        freezeTimer += Time.deltaTime;
+        stunTimer += Time.deltaTime;
+        bleedTimer += Time.deltaTime;
+        immuneToControlTimer += Time.deltaTime;
+
+        animation.SetFloat("MOVE", GetComponent<NavMeshAgent>().velocity.magnitude / GetComponent<NavMeshAgent>().speed);
     }
 
     public void TakeDamage(GameObject source, int damageTaken, float criticalChance, string damageType)
@@ -407,14 +469,11 @@ public class Health : MonoBehaviour {
         GameObject source = PhotonView.Find(sourceId).gameObject;
         if(photonView.viewID == sourceId)
         {
-            //ChatManager.chatClient.PublishMessage("GeneralChat", tag);
-            if (tag == "Enemy")
+            if (CompareTag("Enemy"))
             {
                 if (health > damageTaken)
                 {
                     Debug.Log(gameObject + " takes " + damageTaken + " damage");
-                    //anim.SetTrigger("TAKE DAMAGE");
-                    //ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                 }
                 else
@@ -423,12 +482,10 @@ public class Health : MonoBehaviour {
                     Dead();
                 }
             }
-            if (tag == "Player")
+            if (CompareTag("Player"))
             {
                 if (PlayFabDataStore.playerCurrentHealth > damageTaken)
                 {
-                    //anim.SetTrigger("TAKE DAMAGE");
-                    //ChatManager.chatClient.PublishMessage("GeneralChat", this.gameObject + "takes " + damageTaken + " damage from " + source);
                     health -= damageTaken;
                     PlayFabDataStore.playerCurrentHealth -= damageTaken;
                 }
@@ -437,15 +494,6 @@ public class Health : MonoBehaviour {
                     health = 0;
                     PlayFabDataStore.playerCurrentHealth = 0;
                     Dead();
-                    /*if (source.GetComponent<EnemyCombatManager>() != null)
-                    {
-                        if (source.GetComponent<EnemyCombatManager>().playerAttackList.Contains(gameObject))
-                        {
-                            Debug.Log("Removed from enemy list");
-                            source.GetComponent<EnemyCombatManager>().playerAttackList.Remove(gameObject);
-                            Debug.Log(source.GetComponent<EnemyCombatManager>().playerAttackList.Count);
-                        }
-                    }*/
                 }
             }
         }
@@ -455,14 +503,17 @@ public class Health : MonoBehaviour {
     void Dead()
     {
         dead = true;
-        anim.SetTrigger("DIE");
-        if(tag == "Player")
+        animation.SetTrigger("DIE");
+        StopCoroutine("HealthUpdate");
+        if (CompareTag("Player"))
         {
             GetComponent<PlayerCombatManager>().enabled = false;
             StopCoroutine("HealthRegeneration");
-            Invoke("RespawnPlayer", 3);
+            Debug.Log("IM DEAAAADDDD");
+            HUD_Manager.hudManager.ToggleRespawnWindow();
+
         }
-        if(tag == "Enemy")
+        if(CompareTag("Enemy"))
         {
             if(GetComponent<PlayerCombatManager>() != null)
             {
@@ -482,12 +533,12 @@ public class Health : MonoBehaviour {
             } 
         }
         GetComponent<NavMeshAgent>().enabled = false; 
-        GetComponent<Health>().enabled = false;       
+        //GetComponent<Health>().enabled = false;       
         GetComponent<CapsuleCollider>().enabled = false;
     }
     void OnMouseOver()
     {
-        if (tag == "Enemy")
+        if (CompareTag("Enemy"))
         {
             if (!dead)
             {
@@ -503,7 +554,7 @@ public class Health : MonoBehaviour {
 
     void OnMouseExit()
     {
-        if (tag == "Enemy")
+        if (CompareTag("Enemy"))
         {
             enemyHealthFillImage.transform.parent.gameObject.SetActive(false);
             GetComponentInChildren<SkinnedMeshRenderer>().material.shader = defaultShader;
@@ -522,23 +573,43 @@ public class Health : MonoBehaviour {
 
     void RespawnPlayer()
     {
-        StartCoroutine(Respawn());
+        if(photonView.isMine)
+        {
+            StartCoroutine(Respawn());
+        }
+        
     }
+
     IEnumerator Respawn()
     {
+        isPlayerRespawned = true;
         gameObject.transform.position = InitializerScript.initializer.respawnPoint.position;
+        photonView.RPC("SendPosition", PhotonTargets.Others, photonView.viewID, gameObject.transform.position);
+        photonView.RPC("SendTrigger", PhotonTargets.AllViaServer, photonView.viewID, "RESPAWN");
+        InitializeHealth();
 
         yield return new WaitForSeconds(1);
-        dead = false;
 
-        GetComponent<NavMeshAgent>().enabled = true;
+        photonView.RPC("RespawnOverNetwork", PhotonTargets.All, photonView.viewID);
         GetComponent<PlayerCombatManager>().enabled = true;
-        GetComponent<Health>().enabled = true;
-        GetComponent<CapsuleCollider>().enabled = true;
-        anim.SetTrigger("RESPAWN");
-        InitializeHealth();
+        GetComponent<PlayerCombatManager>().canMove = true;
+        GetComponent<PlayerCombatManager>().canAttack = true;
+
         StartCoroutine("HealthRegeneration", 3);
-        
+
+    }
+    [PunRPC]
+    void RespawnOverNetwork(int viewID)
+    {
+        if(photonView.viewID == viewID)
+        {
+            dead = false;
+            GetComponent<CapsuleCollider>().enabled = true;
+            GetComponent<NavMeshAgent>().enabled = true;
+            StartCoroutine("HealthUpdate");
+            //GetComponent<Health>().enabled = true;
+        }
+
     }
 
     void SinkEnemy()

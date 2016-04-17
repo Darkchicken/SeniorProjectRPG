@@ -110,18 +110,46 @@ public class NetworkPlayerScript : MonoBehaviour {
         }
 
     }
+    void OnPhotonPlayerConnected(PhotonPlayer connected)
+    {
+        Debug.Log("OnPhotonPlayerConnected position rpc");
+        photonView.RPC("SendPosition", PhotonTargets.Others, photonView.viewID, gameObject.transform.position);
+    }
+
+    [PunRPC]
+    void SendPosition(int viewID, Vector3 position)
+    {
+        if(photonView.viewID == viewID)
+        {
+
+            gameObject.transform.position = position;
+        }
+        
+    }
+
+    [PunRPC]
+    void SendMoveDestination(int viewID, Vector3 movePosition, float stopDistance)
+    {
+        if(photonView.viewID == viewID)
+        {
+            GameObject source = PhotonView.Find(viewID).gameObject;
+            source.transform.LookAt(movePosition);
+            source.GetComponent<NavMeshAgent>().SetDestination(movePosition);
+            source.GetComponent<NavMeshAgent>().stoppingDistance = stopDistance;
+        }
+    }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             //We own this player: send the others our data
-            stream.SendNext(transform.position);
+            //stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             //send all animator variables
             if (anim != null)
             {
-                stream.SendNext(anim.GetFloat("MOVE"));
+                //stream.SendNext(anim.GetFloat("MOVE"));
                 //stream.SendNext(anim.GetBool("INCOMBAT"));
                 //stream.SendNext(anim.GetBool("Attack"));
             }
@@ -129,12 +157,12 @@ public class NetworkPlayerScript : MonoBehaviour {
         else
         {
             //Network player, receive data
-            playerPosition = (Vector3)stream.ReceiveNext();
+            //playerPosition = (Vector3)stream.ReceiveNext();
             playerRotation = (Quaternion)stream.ReceiveNext();
             //receive animator variables from other player
             if (anim != null)
             {
-                anim.SetFloat("MOVE", (float)stream.ReceiveNext());
+                //anim.SetFloat("MOVE", (float)stream.ReceiveNext());
                 //anim.SetBool("INCOMBAT", (bool)stream.ReceiveNext());
                 //anim.SetBool("Attack", (bool)stream.ReceiveNext());
             }
