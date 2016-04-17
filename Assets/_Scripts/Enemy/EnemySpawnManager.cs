@@ -6,7 +6,7 @@ public class EnemySpawnManager : MonoBehaviour
 {
 
     public enum enemyList { Orc };
-    public enum runeList { Rune_Slam, Rune_MagicBolt, Rune_SkullMissile };
+    public enum runeList { Rune_Slam, Rune_MagicBolt};
     public List<enemyList> enemies;
     public List<runeList> runes;
 
