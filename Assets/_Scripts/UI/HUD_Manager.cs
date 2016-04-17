@@ -188,10 +188,4 @@ public class HUD_Manager : MonoBehaviour {
         }
     }
 
-    public void ClearOnRespawnEvent()
-    {
-        OnRespawn = null;
-    }
-
-
 }

@@ -159,7 +159,7 @@ public class Runes : MonoBehaviour
                     }
                     else
                     {
-                        SetPlayerResource(100);
+                        PlayFabDataStore.playerCurrentResource = 100;
                     }
                     transform.LookAt(targetEnemy.transform.position);
                     tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
@@ -214,7 +214,7 @@ public class Runes : MonoBehaviour
                             }
                             else
                             {
-                                SetPlayerResource(100);
+                                PlayFabDataStore.playerCurrentResource = 100;
                             }
                             tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                             tempCriticalChance = PlayFabDataStore.playerCriticalChance;
@@ -266,7 +266,7 @@ public class Runes : MonoBehaviour
                     }
                     else
                     {
-                        SetPlayerResource(100);
+                        PlayFabDataStore.playerCurrentResource = 100;
                     }
                     transform.LookAt(targetEnemy.transform.position);
                     tempAttackDamage = PlayFabDataStore.playerSpellDamage;
@@ -316,7 +316,7 @@ public class Runes : MonoBehaviour
                     }
                     else
                     {
-                        SetPlayerResource(100);
+                        PlayFabDataStore.playerCurrentResource = 100;
                     }
                     tempAttackDamage = PlayFabDataStore.playerWeaponDamage;
                     tempCriticalChance = PlayFabDataStore.playerCriticalChance;
@@ -368,7 +368,7 @@ public class Runes : MonoBehaviour
                     }
                     else
                     {
-                        SetPlayerResource(100);
+                        PlayFabDataStore.playerCurrentResource = 100;
                     }
                     transform.LookAt(targetEnemy.transform.position);
                     tempAttackDamage = PlayFabDataStore.playerSpellDamage;
@@ -577,7 +577,7 @@ public class Runes : MonoBehaviour
             }
             else
             {
-                SetPlayerResource(100);
+                PlayFabDataStore.playerCurrentResource = 100;
             }
             photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "GroundClash", transform.position, Quaternion.identity, null, false);
             
@@ -781,7 +781,7 @@ public class Runes : MonoBehaviour
                         }
                         else
                         {
-                            SetPlayerResource(100);
+                            PlayFabDataStore.playerCurrentResource = 100;
                         }
                         tempAttackDamage = PlayFabDataStore.playerSpellDamage;
                         tempCriticalChance = PlayFabDataStore.playerCriticalChance;

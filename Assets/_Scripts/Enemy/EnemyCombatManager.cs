@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class EnemyCombatManager : MonoBehaviour
 {
-    public enum runeList { Rune_Slam, Rune_MagicBolt, Rune_SkullMissile };
-    public runeList selectRune;
+    public string selectRune;
     public int weaponDamage = 1;
     public float attackSpeed = 2;
     public Transform spellStartLocation;
@@ -47,7 +46,7 @@ public class EnemyCombatManager : MonoBehaviour
             if (!playerAttackList[0].GetComponent<Health>().IsDead() && InAttackingRange() && canAttack)
             {
                 targetPlayer = playerAttackList[0];
-                Invoke(selectRune.ToString(), 0);
+                Invoke(selectRune, 0);
             }
 
             if (playerAttackList[0].GetComponent<Health>().IsDead())
@@ -67,7 +66,7 @@ public class EnemyCombatManager : MonoBehaviour
 
     bool InAttackingRange()
     {
-        if (Vector3.Distance(transform.position, playerAttackList[0].transform.position) <= PlayFabDataStore.catalogRunes[selectRune.ToString()].attackRange)
+        if (Vector3.Distance(transform.position, playerAttackList[0].transform.position) <= PlayFabDataStore.catalogRunes[selectRune].attackRange)
         {
             return true;
         }
@@ -89,7 +88,7 @@ public class EnemyCombatManager : MonoBehaviour
     public void Rune_Slam()
     {
         photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK 1");
-        targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune.ToString()].damageType);
+        targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune].damageType);
     }
 
     /// <summary>
@@ -98,7 +97,7 @@ public class EnemyCombatManager : MonoBehaviour
     public void Rune_MagicBolt()
     {
         photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK SPELL");
-        targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune.ToString()].damageType);
+        targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune.ToString()].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune].damageType);
         photonView.RPC("InstantiateParticleEffects", PhotonTargets.All, photonView.viewID, "MagicBolt", spellStartLocation.position, Quaternion.identity, targetPlayer.GetComponent<PhotonView>().viewID, false);
     }
 }
