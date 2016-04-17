@@ -1296,10 +1296,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectRune: 1
-  weaponDamage: 20
+  weaponDamage: 3
   attackSpeed: 2
   spellStartLocation: {fileID: 402374}
   spellTargetLocation: {fileID: 446054}
+  canAttack: 1
   playerAttackList: []
 --- !u!114 &11483506
 MonoBehaviour:
@@ -1315,6 +1316,7 @@ MonoBehaviour:
   aggroRange: 15
   chasingRange: 20
   chaseStopDistance: 2
+  canMove: 1
 --- !u!114 &11486356
 MonoBehaviour:
   m_ObjectHideFlags: 1
