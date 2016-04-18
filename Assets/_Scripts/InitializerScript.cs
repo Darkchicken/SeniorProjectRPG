@@ -8,7 +8,9 @@ public class InitializerScript : MonoBehaviour {
     public Transform respawnPoint;
 
     private GameObject gameManager;
-
+    /// <summary>
+    /// hey testing!
+    /// </summary>
     void Awake()
     {
         if (GameObject.Find("GameManager") == null)
