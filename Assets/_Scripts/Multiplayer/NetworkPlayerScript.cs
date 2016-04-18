@@ -4,7 +4,7 @@ using System.Collections;
 
 public class NetworkPlayerScript : MonoBehaviour {
 
-    public bool battleArena = true;
+    public bool battleArena = false;
     private PhotonView photonView;
     private Animator anim;
 
