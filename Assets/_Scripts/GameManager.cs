@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     void UpdatePlayerHealth()
     {
         PlayFabDataStore.playerCurrentHealth = PlayFabDataStore.playerMaxHealth;
+        
         loading.gameObject.SetActive(false);
     }
 

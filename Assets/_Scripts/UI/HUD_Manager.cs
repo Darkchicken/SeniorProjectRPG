@@ -9,6 +9,8 @@ public class HUD_Manager : MonoBehaviour {
 
     public delegate void RespawnAction();
     public static event RespawnAction OnRespawn;
+    
+
     public static HUD_Manager hudManager;
 
     public Canvas characterWindow;
@@ -22,9 +24,12 @@ public class HUD_Manager : MonoBehaviour {
     public Image healthGlobe;
     public Image resourceGlobe;
     public Image enemyHealth;
+    public Image experienceImage;
     public Text enemyHealthText;
     public Text playerHealthText;
     public Text playerResourceText;
+    public Text experienceText;
+    public Text playerLevelText;
 
     public Image ActionBarCooldownImage1;
     public Image ActionBarCooldownImage2;
@@ -45,8 +50,11 @@ public class HUD_Manager : MonoBehaviour {
     {
         healthGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentHealth / (float)PlayFabDataStore.playerMaxHealth;
         resourceGlobe.fillAmount = (float)PlayFabDataStore.playerCurrentResource / (float)PlayFabDataStore.playerMaxResource;
+        experienceImage.fillAmount = (float)PlayFabDataStore.playerExperience / (float)PlayFabDataStore.maxExperienceToLevel;
         playerHealthText.text = PlayFabDataStore.playerCurrentHealth + "/" + PlayFabDataStore.playerMaxHealth;
         playerResourceText.text = PlayFabDataStore.playerCurrentResource + "/" + PlayFabDataStore.playerMaxResource;
+        experienceText.text = PlayFabDataStore.playerExperience + "/" + PlayFabDataStore.maxExperienceToLevel;
+
     }
 
     void Update()
@@ -183,7 +191,6 @@ public class HUD_Manager : MonoBehaviour {
     {
         if(OnRespawn != null)
         {
-            ToggleRespawnWindow();
             OnRespawn();
         }
     }

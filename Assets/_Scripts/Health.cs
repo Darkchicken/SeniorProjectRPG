@@ -14,7 +14,7 @@ public class Health : MonoBehaviour {
     public int maxHealth;
 
     private PhotonView photonView;
-    private Animator animation;
+    private Animator anim;
     private bool dead = false;
     private float navMeshSpeed;
 
@@ -59,7 +59,7 @@ public class Health : MonoBehaviour {
     void Awake()
     {
 
-        animation = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
         navMeshSpeed = GetComponent<NavMeshAgent>().speed;
     }
@@ -309,7 +309,7 @@ public class Health : MonoBehaviour {
                 freezeActivate = false;
                 freezeTimer = 0f;
                 GetComponent<NavMeshAgent>().speed = 0;
-                animation.SetTrigger("FIGHT IDLE");
+                anim.SetTrigger("FIGHT IDLE");
 
             }
             GetComponent<NavMeshAgent>().ResetPath();
@@ -330,7 +330,7 @@ public class Health : MonoBehaviour {
                 stunActivate = false;
                 stunTimer = 0f;
                 GetComponent<NavMeshAgent>().speed = 0;
-                animation.SetTrigger("STUN");
+                anim.SetTrigger("STUN");
 
                 if (CompareTag("Player"))
                 {
@@ -387,7 +387,7 @@ public class Health : MonoBehaviour {
                     }
                 }
                 GetComponent<NavMeshAgent>().speed = navMeshSpeed;
-                animation.SetTrigger("FIGHT IDLE");
+                anim.SetTrigger("FIGHT IDLE");
                 isStunned = false;
                 stunActivate = true;
             }
@@ -436,7 +436,7 @@ public class Health : MonoBehaviour {
         bleedTimer += Time.deltaTime;
         immuneToControlTimer += Time.deltaTime;
 
-        animation.SetFloat("MOVE", GetComponent<NavMeshAgent>().velocity.magnitude / GetComponent<NavMeshAgent>().speed);
+        anim.SetFloat("MOVE", GetComponent<NavMeshAgent>().velocity.magnitude / GetComponent<NavMeshAgent>().speed);
     }
 
     public void TakeDamage(GameObject source, int damageTaken, float criticalChance, string damageType)
@@ -466,44 +466,48 @@ public class Health : MonoBehaviour {
     [PunRPC]
     void ApplyDamageTaken(int sourceId, int damageTaken)
     {
-        GameObject source = PhotonView.Find(sourceId).gameObject;
-        if(photonView.viewID == sourceId)
+        if(!dead)
         {
-            if (CompareTag("Enemy"))
+            GameObject source = PhotonView.Find(sourceId).gameObject;
+            if (photonView.viewID == sourceId)
             {
-                if (health > damageTaken)
+                if (CompareTag("Enemy"))
                 {
-                    Debug.Log(gameObject + " takes " + damageTaken + " damage");
-                    health -= damageTaken;
+                    if (health > damageTaken)
+                    {
+                        Debug.Log(gameObject + " takes " + damageTaken + " damage");
+                        health -= damageTaken;
+                    }
+                    else
+                    {
+                        health = 0;
+                        Dead();
+                    }
                 }
-                else
+                if (CompareTag("Player"))
                 {
-                    health = 0;
-                    Dead();
-                }
-            }
-            if (CompareTag("Player"))
-            {
-                if (PlayFabDataStore.playerCurrentHealth > damageTaken)
-                {
-                    health -= damageTaken;
-                    PlayFabDataStore.playerCurrentHealth -= damageTaken;
-                }
-                else
-                {
-                    health = 0;
-                    PlayFabDataStore.playerCurrentHealth = 0;
-                    Dead();
+                    if (PlayFabDataStore.playerCurrentHealth > damageTaken)
+                    {
+                        health -= damageTaken;
+                        PlayFabDataStore.playerCurrentHealth -= damageTaken;
+                    }
+                    else
+                    {
+                        health = 0;
+                        PlayFabDataStore.playerCurrentHealth = 0;
+                        Dead();
+                    }
                 }
             }
         }
+        
         
     }
   
     void Dead()
     {
         dead = true;
-        animation.SetTrigger("DIE");
+        anim.SetTrigger("DIE");
         StopCoroutine("HealthUpdate");
         if (CompareTag("Player"))
         {
@@ -522,6 +526,7 @@ public class Health : MonoBehaviour {
             else
             {
                 Invoke("SinkEnemy", 5);
+                Leveling.GrantExperince();
                 GetComponent<EnemyMovement>().enabled = false;
                 GetComponent<EnemyCombatManager>().enabled = false;
                 if(PhotonNetwork.isMasterClient)
@@ -628,5 +633,19 @@ public class Health : MonoBehaviour {
     void DestroyEnemy()
     {
         PhotonNetwork.Destroy(gameObject);
+
     }
+
+    /*
+    [PunRPC]
+    void GrantExperience()
+    {
+       if(photonView.isMine)
+        {
+            if(CompareTag("Player"))
+            {
+                Leveling.GrantExperince();
+            }
+        }
+    }*/
 }

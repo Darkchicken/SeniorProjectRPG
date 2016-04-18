@@ -189,6 +189,7 @@ public class PlayFabApiCalls : MonoBehaviour
             PlayFabDataStore.statsBuilder["Holy Resistance"] = int.Parse(result.Data["StatBuilderHolyResistance"].Value);
             PlayFabDataStore.statsBuilder["Arcane Resistance"] = int.Parse(result.Data["StatBuilderArcaneResistance"].Value);
             Debug.Log("Data successfully retrieved!");
+            Debug.Log("LEVEL " + PlayFabDataStore.playerLevel);
 
         }, (error) =>
         {

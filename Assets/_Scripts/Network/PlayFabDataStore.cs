@@ -64,8 +64,9 @@ public class PlayFabDataStore : MonoBehaviour
     public const float playerBaseCriticalChance = 5;
     public const int playerBaseArmor = 200;
 
-    public static int playerLevel;
-    public static int playerExperience;
+    public static int playerLevel = 1;
+    public static int playerExperience = 0;
+    public static int maxExperienceToLevel;
     
     public static int playerCurrentHealth;
     public static int playerMaxHealth = 40;
@@ -115,6 +116,8 @@ public class PlayFabDataStore : MonoBehaviour
         {"StatBuilderHolyResistance", "0" },
         {"StatBuilderArcaneResistance", "0" }
     };
+
+    public static int gameMaxLevel = 40;
 
     
     

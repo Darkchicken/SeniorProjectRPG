@@ -87,6 +87,7 @@ public class EnemyCombatManager : MonoBehaviour
     /// </summary>
     public void Rune_Slam()
     {
+        
         photonView.RPC("SendTrigger", PhotonTargets.All, photonView.viewID, "ATTACK 1");
         targetPlayer.GetComponent<Health>().TakeDamage(gameObject, weaponDamage * PlayFabDataStore.catalogRunes[selectRune].attackPercentage / 100, criticalChance, PlayFabDataStore.catalogRunes[selectRune].damageType);
     }
