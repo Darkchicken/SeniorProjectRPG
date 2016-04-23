@@ -11,7 +11,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: SeniorProjectRPG
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: b798913b0cf5b57498b3f23baac931f4, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
   m_VirtualRealitySplashScreen: {fileID: 0}
@@ -19,7 +19,7 @@ PlayerSettings:
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_RenderingPath: 3
+  m_RenderingPath: 1
   m_MobileRenderingPath: 1
   m_ActiveColorSpace: 0
   m_MTRendering: 1

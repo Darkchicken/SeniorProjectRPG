@@ -158,7 +158,11 @@ public class PlayerCombatManager : Runes
     {
         photonView.RPC("SendMoveDestination", PhotonTargets.Others, photonView.viewID, position, controller.stoppingDistance);
         transform.LookAt(position);
-        controller.SetDestination(position);
+        if(controller.enabled == true)
+        {
+            controller.SetDestination(position);
+        }
+        
     }
 
 
