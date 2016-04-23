@@ -3,7 +3,41 @@ using System.Collections;
 
 public class AreaTeleport : MonoBehaviour {
 
-    public string levelToTeleport;
+    public Transform dungeonStartPoint;
+
+    private GameObject player;
+    private NavMeshAgent playerNavigation;
+
+    void Start()
+    {
+        Invoke("GetLocalPlayer", 3);
+    }
+
+    void GetLocalPlayer()
+    {
+        player = GameManager.players[0];
+        playerNavigation = player.GetComponent<NavMeshAgent>();
+    }
+
+    void OnMouseDown()
+    {
+        if(Vector3.Distance(player.transform.position, transform.position) <= 8)
+        {
+            Debug.Log("Moing to the Dungeon");
+            playerNavigation.ResetPath();
+            playerNavigation.enabled = false;
+            HUD_Manager.hudManager.ShowLoading(2);
+            player.transform.position = dungeonStartPoint.position;
+            Invoke("ActivatePlayerNavigation", 1);
+        }
+    }
+
+    void ActivatePlayerNavigation()
+    {
+        playerNavigation.enabled = true;
+    }
+
+    /*public string levelToTeleport;
     public string spawnPointName = "SpawnPoint";
 
     GameObject player;
@@ -30,7 +64,7 @@ public class AreaTeleport : MonoBehaviour {
             }
             PhotonNetwork.LoadLevel(levelToTeleport);
         }
-    }
+    }*/
 
    
 }

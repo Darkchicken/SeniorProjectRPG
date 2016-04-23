@@ -132,6 +132,7 @@ public class Health : MonoBehaviour {
                 if(isPlayerRespawned)
                 {
                     health = maxHealth / 2;
+                    PlayFabDataStore.playerCurrentResource = 0;
                 }
                 else
                 {
