@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 385.9182, y: 5.526, z: 50.543713}
+  m_LocalPosition: {x: 376.61823, y: -2.938067, z: 33.02314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 490732}
@@ -107,7 +107,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 11a43523168514941bda320cbf62e7e3, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278249208
+    rgba: 4278255615
 --- !u!114 &11417878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,7 +163,7 @@ SkinnedMeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163722}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:

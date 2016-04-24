@@ -147,7 +147,7 @@ public class PlayerCombatManager : Runes
             }
         }
 
-        if(targetEnemy == null)
+        if(targetEnemy == null || Vector3.Distance(targetEnemy.transform.position, transform.position) > PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[skillSlot]].attackRange)
         {
             MoveToPosition();
         }

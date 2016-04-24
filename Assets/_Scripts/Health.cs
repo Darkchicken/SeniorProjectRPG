@@ -122,8 +122,6 @@ public class Health : MonoBehaviour {
 
     public void InitializeHealth()
     {
-        Debug.Log(PhotonNetwork.player.isLocal);
-        Debug.Log(PhotonNetwork.player.isMasterClient);
         if (photonView.isMine)
         {
             if (CompareTag("Player"))
@@ -476,7 +474,11 @@ public class Health : MonoBehaviour {
                 {
                     if (health > damageTaken)
                     {
-                        Debug.Log(gameObject + " takes " + damageTaken + " damage");
+                        //Debug.Log(gameObject + " takes " + damageTaken + " damage");
+                        if(GetComponent<EnemyCombatManager>() != null)
+                        {
+                            //GetComponent<EnemyCombatManager>().playerAttackList.Add(PhotonView.Find(playerID).gameObject);
+                        }
                         health -= damageTaken;
                     }
                     else

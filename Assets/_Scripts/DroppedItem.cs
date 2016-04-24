@@ -41,23 +41,25 @@ public class DroppedItem : MonoBehaviour
         {
             if (PhotonNetwork.player.ID == playerID)
             {
-                if (PlayFabDataStore.playerInventory.Count < PlayFabDataStore.playerInventorySlotCount)
-                {
-                    string[] items = { itemId };
-                    if (PlayFabDataStore.catalogItems.ContainsKey(itemId))
-                    {
-                        PlayFabApiCalls.GrantItemsToCharacter(items, "IsEquipped", "Item");
 
-                    }
-                    else if (PlayFabDataStore.catalogRunes.ContainsKey(itemId))
-                    {
-                        PlayFabApiCalls.GrantItemsToCharacter(items, "Active", "Rune");
-                    }
+                string[] items = { itemId };
+                if (PlayFabDataStore.catalogItems.ContainsKey(itemId))
+                {
+                    PlayFabApiCalls.GrantItemsToCharacter(items, "IsEquipped", "Item");
+
                 }
+                else if (PlayFabDataStore.catalogRunes.ContainsKey(itemId))
+                {
+                    PlayFabApiCalls.GrantItemsToCharacter(items, "Active", PlayFabDataStore.catalogRunes[itemId].itemClass);
+                }
+
                 if (itemId == "Item_Gold")
                 {
                     Debug.Log("currency added");
-                    PlayFabApiCalls.AddUserCurrency(Random.Range(5, 50));
+                    int gold = Random.Range(5, 50);
+                    PlayFabDataStore.playerUnupdatedCurrency += gold;
+                    PlayFabDataStore.playerCurrency += gold;
+                    CharacterStats.characterStats.SetGoldText();
                 }
                 Debug.Log(itemId + " Item Looted from the ground");
             }

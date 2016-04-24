@@ -8,6 +8,9 @@ public class Leveling : MonoBehaviour
 
     private int experience;
     private int kill;
+    private static bool isUpdated = false;
+    private Dictionary<string, string> customData = new Dictionary<string, string>();
+
     void Start()
     {
         for(int i = 1; i <= PlayFabDataStore.gameMaxLevel; i++)
@@ -18,7 +21,7 @@ public class Leveling : MonoBehaviour
                 
                 experience = Mathf.RoundToInt(levelMaxExperienceList[i - 1] * (5 - Mathf.Log10(PlayFabDataStore.gameMaxLevel * Mathf.Pow(i, 2) * 5)) / 100) + 5;
                 kill = Mathf.RoundToInt(levelMaxExperienceList[i - 1] / experience);
-                Debug.Log("Level " + i + " XP Cap is " + Mathf.RoundToInt(40 * Mathf.Pow(i, 2) + 260 * i) + " need " + kill + " kills each " + experience + " XP");
+                //Debug.Log("Level " + i + " XP Cap is " + Mathf.RoundToInt(40 * Mathf.Pow(i, 2) + 260 * i) + " need " + kill + " kills each " + experience + " XP");
             }
             else
             if (i < 11)
@@ -27,7 +30,7 @@ public class Leveling : MonoBehaviour
                 
                 experience = Mathf.RoundToInt(levelMaxExperienceList[i - 1] * (5 - Mathf.Log10(PlayFabDataStore.gameMaxLevel * Mathf.Pow(i, 2) * 5)) / 100);
                 kill = Mathf.RoundToInt(levelMaxExperienceList[i - 1] / experience);
-                Debug.Log("Level " + i + " XP Cap is " + Mathf.RoundToInt(40 * Mathf.Pow(i, 2) + 360 * i) + " need " + kill + " kills each " + experience + " XP");
+                //Debug.Log("Level " + i + " XP Cap is " + Mathf.RoundToInt(40 * Mathf.Pow(i, 2) + 360 * i) + " need " + kill + " kills each " + experience + " XP");
                 
             }
             else
@@ -37,7 +40,7 @@ public class Leveling : MonoBehaviour
                 
                 experience = Mathf.RoundToInt(levelMaxExperienceList[i - 1] * ((5 + Mathf.Log10(PlayFabDataStore.gameMaxLevel * Mathf.Pow(i, 2))) / i / 100));
                 kill = Mathf.RoundToInt(levelMaxExperienceList[i - 1] / experience);
-                Debug.Log("Level " + i + " XP Cap is " + Mathf.RoundToInt(-0.4f * Mathf.Pow(i, 3) + 40.4f * Mathf.Pow(i, 2) + 396 * i) / 100 * 100 + " need " + kill + " kills each " + experience + " XP");
+                //Debug.Log("Level " + i + " XP Cap is " + Mathf.RoundToInt(-0.4f * Mathf.Pow(i, 3) + 40.4f * Mathf.Pow(i, 2) + 396 * i) / 100 * 100 + " need " + kill + " kills each " + experience + " XP");
                 
             }
             else
@@ -47,12 +50,13 @@ public class Leveling : MonoBehaviour
                 
                 experience = Mathf.RoundToInt(levelMaxExperienceList[i - 1] * ((5 + Mathf.Log10(PlayFabDataStore.gameMaxLevel * Mathf.Pow(i, 2))) / i / 100));
                 kill = Mathf.RoundToInt(levelMaxExperienceList[i - 1] / experience);
-                Debug.Log("Level " + i + " XP Cap is " + levelMaxExperienceList[i-1] + " need " + kill + " kills each " + experience + " XP");
+                //Debug.Log("Level " + i + " XP Cap is " + levelMaxExperienceList[i-1] + " need " + kill + " kills each " + experience + " XP");
                 
             }
         }
 
         Invoke("SetHUD", 3);
+        InvokeRepeating("SetPlayFabData", 60f, 60f);
 
     }
 
@@ -97,23 +101,35 @@ public class Leveling : MonoBehaviour
         else
         {
             PlayFabDataStore.playerExperience = experience - (levelMaxExperienceList[PlayFabDataStore.playerLevel - 1] - PlayFabDataStore.playerExperience);
-            Debug.Log("Before" + PlayFabDataStore.playerLevel);
+            //Debug.Log("Before" + PlayFabDataStore.playerLevel);
             PlayFabDataStore.playerLevel++;
             PlayFabDataStore.maxExperienceToLevel = levelMaxExperienceList[PlayFabDataStore.playerLevel - 1];
-            Debug.Log("After" + PlayFabDataStore.playerLevel);
+            //Debug.Log("After" + PlayFabDataStore.playerLevel);
         }
-
+        
         HUD_Manager.hudManager.SetHealthAndResource();
-        Dictionary<string, string> customData = new Dictionary<string, string>();
-        customData.Add("Experience", PlayFabDataStore.playerExperience.ToString());
+        isUpdated = true;
+    }
 
-        if (level != PlayFabDataStore.playerLevel)
+    void SetPlayFabData()
+    {
+        if(isUpdated)
         {
-            customData.Add("Level", PlayFabDataStore.playerLevel.ToString());
-            HUD_Manager.hudManager.playerLevelText.text = PlayFabDataStore.playerLevel.ToString();
-        }
+            isUpdated = false;
 
-        PlayFabApiCalls.UpdateCharacterData(customData);
+            customData.Add("Experience", PlayFabDataStore.playerExperience.ToString());
+            customData.Add("Level", PlayFabDataStore.playerLevel.ToString());
+            PlayFabApiCalls.AddUserCurrency(PlayFabDataStore.playerUnupdatedCurrency);
+
+            PlayFabApiCalls.UpdateCharacterData(customData);
+        }
+        
+    }
+
+    void OnApplicationQuit()
+    {
+        isUpdated = true;
+        SetPlayFabData();
     }
     
 

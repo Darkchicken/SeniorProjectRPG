@@ -73,6 +73,11 @@ public class CharacterStats : MonoBehaviour {
         textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
     }
 
+    public void SetGoldText()
+    {
+        textCurrency.text = PlayFabDataStore.playerCurrency.ToString();
+    }
+
     public void CalculateStats()
     {
         if(calculationTimer > calculationTimerMax)
