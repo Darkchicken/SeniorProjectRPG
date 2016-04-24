@@ -113,9 +113,11 @@ public class Leveling : MonoBehaviour
 
     void SetPlayFabData()
     {
+        
         if(isUpdated)
         {
             isUpdated = false;
+            customData.Clear();
 
             customData.Add("Experience", PlayFabDataStore.playerExperience.ToString());
             customData.Add("Level", PlayFabDataStore.playerLevel.ToString());

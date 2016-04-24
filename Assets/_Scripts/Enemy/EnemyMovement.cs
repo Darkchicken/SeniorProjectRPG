@@ -8,6 +8,7 @@ public class EnemyMovement :MonoBehaviour
     public float chasingRange = 50f;
     public float chaseStopDistance = 2f;
     public bool canMove = true;
+    public bool isInCombat = false;
 
     private NavMeshAgent controller;
     private Animator enemyAnimation;
@@ -21,7 +22,7 @@ public class EnemyMovement :MonoBehaviour
     private bool immuneToAggro = false;
     private float idleTimer = 0f;
     private bool isMoving_Animation = false;
-    private bool isInCombat = false;
+    
     private bool isTargetDead = false;
     private bool isHealthRegenerating = false;
     
@@ -105,7 +106,7 @@ public class EnemyMovement :MonoBehaviour
                         combatManager.playerAttackList.Add(GameManager.players[i]);
                     }
                 }
-                if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange)
+                if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange && !isInCombat)
                 {
                     if (combatManager.playerAttackList.Contains(GameManager.players[i]))
                     {
