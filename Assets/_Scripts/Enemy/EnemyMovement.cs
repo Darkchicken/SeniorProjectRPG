@@ -9,6 +9,7 @@ public class EnemyMovement :MonoBehaviour
     public float chaseStopDistance = 2f;
     public bool canMove = true;
     public bool isInCombat = false;
+    public bool isFirstAggro = true;
 
     private NavMeshAgent controller;
     private Animator enemyAnimation;
@@ -63,6 +64,11 @@ public class EnemyMovement :MonoBehaviour
             {
                 controller.stoppingDistance = chaseStopDistance - Mathf.RoundToInt(chaseStopDistance * 0.25f);
                 MoveToPosition(combatManager.playerAttackList[0].transform.position);  
+                if(isFirstAggro)
+                {
+                    isFirstAggro = false;
+                    AlertNearbyEnemies(combatManager.playerAttackList[0]);
+                }
             }
 
             transform.LookAt(combatManager.playerAttackList[0].transform.position);
@@ -73,6 +79,7 @@ public class EnemyMovement :MonoBehaviour
             chaseStopDistance = 0;
             controller.stoppingDistance = 0;
             isInCombat = false;
+            isFirstAggro = true;
             isHealthRegenerating = true;
             MoveToPosition(initialPosition);
         }
@@ -153,6 +160,21 @@ public class EnemyMovement :MonoBehaviour
     void OnMasterClientChanged()
     {
         StartCoroutine(Movement());
+    }
+
+    public void AlertNearbyEnemies(GameObject target)
+    {
+        Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, 5, LayerMask.GetMask("Enemy"));
+        foreach(var enemy in nearbyEnemies)
+        {
+            if (enemy.GetComponent<EnemyMovement>().isInCombat != true)
+            {
+                enemy.GetComponent<EnemyMovement>().isFirstAggro = false;
+                enemy.GetComponent<EnemyMovement>().isInCombat = true;
+                enemy.GetComponent<EnemyCombatManager>().playerAttackList.Add(target);
+            }
+            
+        }
     }
 
 }

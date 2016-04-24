@@ -467,7 +467,7 @@ public class Health : MonoBehaviour {
                         //Debug.Log(gameObject + " takes " + damageTaken + " damage");
                         if(GetComponent<EnemyCombatManager>() != null)
                         {
-                            if(isFirstHit && GetComponent<EnemyMovement>().isInCombat == false)
+                            if(isFirstHit && GetComponent<EnemyMovement>().isInCombat != true)
                             {
                                 isFirstHit = false;
                                 GameObject source = PhotonView.Find(playerID).gameObject;
@@ -476,6 +476,7 @@ public class Health : MonoBehaviour {
                                     Debug.Log("ApplyDamageTaken tag " + source.tag);
                                     GetComponent<EnemyMovement>().isInCombat = true;
                                     GetComponent<EnemyCombatManager>().playerAttackList.Add(source);
+                                    GetComponent<EnemyMovement>().AlertNearbyEnemies(source);
                                 }
                                 
                             }     
