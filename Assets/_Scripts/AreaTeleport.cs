@@ -3,7 +3,9 @@ using System.Collections;
 
 public class AreaTeleport : MonoBehaviour {
 
+    public GameObject dungeon;
     public Transform dungeonStartPoint;
+
 
     private GameObject player;
     private NavMeshAgent playerNavigation;
@@ -23,6 +25,7 @@ public class AreaTeleport : MonoBehaviour {
     {
         if(Vector3.Distance(player.transform.position, transform.position) <= 8)
         {
+            dungeon.SetActive(true);
             Debug.Log("Moing to the Dungeon");
             playerNavigation.ResetPath();
             playerNavigation.enabled = false;

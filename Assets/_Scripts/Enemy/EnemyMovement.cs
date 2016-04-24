@@ -70,8 +70,11 @@ public class EnemyMovement :MonoBehaviour
                     AlertNearbyEnemies(combatManager.playerAttackList[0]);
                 }
             }
-
-            transform.LookAt(combatManager.playerAttackList[0].transform.position);
+            if(Vector3.Distance(transform.position, combatManager.playerAttackList[0].transform.position) <= PlayFabDataStore.catalogRunes[combatManager.selectRune].attackRange)
+            {
+                transform.LookAt(combatManager.playerAttackList[0].transform.position);
+            }
+            
         }
 
         if ((combatManager.playerAttackList.Count == 0) && isInCombat)

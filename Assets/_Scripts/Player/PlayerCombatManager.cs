@@ -160,6 +160,7 @@ public class PlayerCombatManager : Runes
         transform.LookAt(position);
         if(controller.enabled == true)
         {
+            Debug.Log("MOVE TO POSITION");
             controller.SetDestination(position);
         }
         
