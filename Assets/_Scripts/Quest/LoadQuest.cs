@@ -14,6 +14,8 @@ public class LoadQuest : MonoBehaviour {
     public Transform requirementParentTransform;
     public Transform rewardParentTransform;
 
+    private bool isCompletable = false;
+
     void Start()
     {
         //Testing Purposes
@@ -91,7 +93,7 @@ public class LoadQuest : MonoBehaviour {
 
     public void CompleteQuest()
     {
-        if(PlayFabDataStore.playerQuestLog.Contains(questId))
+        if (PlayFabDataStore.playerQuestLog.Contains(questId))
         {
             PlayFabDataStore.playerQuestLog.Remove(questId);
 

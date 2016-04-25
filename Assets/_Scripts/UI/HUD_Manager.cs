@@ -20,6 +20,7 @@ public class HUD_Manager : MonoBehaviour {
     public Canvas questWindow;
     public Canvas optionWindow;
     public Canvas respawnWindow;
+    public Canvas loading;
 
     public Image healthGlobe;
     public Image resourceGlobe;
@@ -193,6 +194,13 @@ public class HUD_Manager : MonoBehaviour {
         {
             OnRespawn();
         }
+    }
+
+    public void ShowLoading(int time)
+    {
+        loading.GetComponentInChildren<LoadingBar>().Duration = time;
+        loading.GetComponentInChildren<LoadingBar>().enableTweenFinished = true;
+        loading.gameObject.SetActive(true);
     }
 
 }

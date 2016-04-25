@@ -14,6 +14,7 @@ public class LoadingBar : MonoBehaviour
     public Image imageComponent;
     public Text textComponent;
     public float Duration = 5f;
+    public bool enableTweenFinished = false;
     public OnChangeEvent onChange = new OnChangeEvent();
 
     // Tween controls
@@ -75,6 +76,11 @@ public class LoadingBar : MonoBehaviour
 
     protected void OnTweenFinished()
     {
+        if(enableTweenFinished)
+        {
+            HideLoading();
+            transform.parent.GetComponent<RaycastUI>().OnMouseExit();
+        }
         //Invoke("HideLoading", 1);
         //this.transform.parent.GetComponent<RaycastUI>().OnMouseExit();
     }

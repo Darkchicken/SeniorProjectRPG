@@ -6,6 +6,7 @@ public class DroppedItem : MonoBehaviour
 
     public string itemId;
     private PhotonView photonView;
+    private bool isLootable = false;
 
     void Awake ()
     {
@@ -22,10 +23,25 @@ public class DroppedItem : MonoBehaviour
     [PunRPC]
     void LootTheItem(int playerID)
     {
-        if(PhotonNetwork.player.ID == playerID)
+        if(PlayFabDataStore.catalogItems.ContainsKey(itemId))
         {
             if (PlayFabDataStore.playerInventory.Count < PlayFabDataStore.playerInventorySlotCount)
             {
+                isLootable = true;
+            }
+        }
+        else 
+        if(!PlayFabDataStore.playerAllRunes.ContainsKey(itemId))
+        {
+            isLootable = true;
+        }
+
+
+        if(isLootable)
+        {
+            if (PhotonNetwork.player.ID == playerID)
+            {
+
                 string[] items = { itemId };
                 if (PlayFabDataStore.catalogItems.ContainsKey(itemId))
                 {
@@ -34,20 +50,26 @@ public class DroppedItem : MonoBehaviour
                 }
                 else if (PlayFabDataStore.catalogRunes.ContainsKey(itemId))
                 {
-                    PlayFabApiCalls.GrantItemsToCharacter(items, "Active", "Rune");
+                    PlayFabApiCalls.GrantItemsToCharacter(items, "Active", PlayFabDataStore.catalogRunes[itemId].itemClass);
                 }
+
+                if (itemId == "Item_Gold")
+                {
+                    Debug.Log("currency added");
+                    int gold = Random.Range(5, 50);
+                    PlayFabDataStore.playerUnupdatedCurrency += gold;
+                    PlayFabDataStore.playerCurrency += gold;
+                    CharacterStats.characterStats.SetGoldText();
+                }
+                Debug.Log(itemId + " Item Looted from the ground");
             }
-            if (itemId == "Item_Gold")
+            if (photonView.isMine)
             {
-                Debug.Log("currency added");
-                PlayFabApiCalls.AddUserCurrency(Random.Range(5, 50));
+                PhotonNetwork.Destroy(gameObject);
             }
-            Debug.Log(itemId + " Item Looted from the ground");
         }
-        if(photonView.isMine)
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
+        
+        
         
     }
 

@@ -8,6 +8,8 @@ public class EnemyMovement :MonoBehaviour
     public float chasingRange = 50f;
     public float chaseStopDistance = 2f;
     public bool canMove = true;
+    public bool isInCombat = false;
+    public bool isFirstAggro = true;
 
     private NavMeshAgent controller;
     private Animator enemyAnimation;
@@ -21,7 +23,7 @@ public class EnemyMovement :MonoBehaviour
     private bool immuneToAggro = false;
     private float idleTimer = 0f;
     private bool isMoving_Animation = false;
-    private bool isInCombat = false;
+    
     private bool isTargetDead = false;
     private bool isHealthRegenerating = false;
     
@@ -62,9 +64,17 @@ public class EnemyMovement :MonoBehaviour
             {
                 controller.stoppingDistance = chaseStopDistance - Mathf.RoundToInt(chaseStopDistance * 0.25f);
                 MoveToPosition(combatManager.playerAttackList[0].transform.position);  
+                if(isFirstAggro)
+                {
+                    isFirstAggro = false;
+                    AlertNearbyEnemies(combatManager.playerAttackList[0]);
+                }
             }
-
-            transform.LookAt(combatManager.playerAttackList[0].transform.position);
+            if(Vector3.Distance(transform.position, combatManager.playerAttackList[0].transform.position) <= PlayFabDataStore.catalogRunes[combatManager.selectRune].attackRange)
+            {
+                transform.LookAt(combatManager.playerAttackList[0].transform.position);
+            }
+            
         }
 
         if ((combatManager.playerAttackList.Count == 0) && isInCombat)
@@ -72,6 +82,7 @@ public class EnemyMovement :MonoBehaviour
             chaseStopDistance = 0;
             controller.stoppingDistance = 0;
             isInCombat = false;
+            isFirstAggro = true;
             isHealthRegenerating = true;
             MoveToPosition(initialPosition);
         }
@@ -105,7 +116,7 @@ public class EnemyMovement :MonoBehaviour
                         combatManager.playerAttackList.Add(GameManager.players[i]);
                     }
                 }
-                if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange)
+                if (Vector3.Distance(transform.position, GameManager.players[i].transform.position) > aggroRange && !isInCombat)
                 {
                     if (combatManager.playerAttackList.Contains(GameManager.players[i]))
                     {
@@ -152,6 +163,21 @@ public class EnemyMovement :MonoBehaviour
     void OnMasterClientChanged()
     {
         StartCoroutine(Movement());
+    }
+
+    public void AlertNearbyEnemies(GameObject target)
+    {
+        Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, 5, LayerMask.GetMask("Enemy"));
+        foreach(var enemy in nearbyEnemies)
+        {
+            if (enemy.GetComponent<EnemyMovement>().isInCombat != true)
+            {
+                enemy.GetComponent<EnemyMovement>().isFirstAggro = false;
+                enemy.GetComponent<EnemyMovement>().isInCombat = true;
+                enemy.GetComponent<EnemyCombatManager>().playerAttackList.Add(target);
+            }
+            
+        }
     }
 
 }

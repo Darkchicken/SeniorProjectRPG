@@ -230,57 +230,12 @@ public class PlayFabApiCalls : MonoBehaviour
         };
         PlayFabClientAPI.RunCloudScript(request, (result) =>
         {
-            if(itemClass == "Rune")
-            {
-                
-                foreach(var item in items)
-                {
-                    string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
-                    SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
 
-                    if (!PlayFabDataStore.playerAllRunes.ContainsKey(item))
-                    {
-                        PlayFabDataStore.playerAllRunes.Add(item, new PlayerRune(item, splitResult[19], "Rune", PlayFabDataStore.catalogRunes[item].displayName, "0"));
-                    }
-                }
-                
-            }
-            if (itemClass == "Item")
-            {
-                List<PlayerItemInfo> itemInfoList = new List<PlayerItemInfo>();
+            string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
+            //Debug.Log("Split Result " + splitResult[59]); // 63th element is the itemId of the item granted from the drop table
+            //Debug.Log("Split Result " + splitResult[63]); // 63th element is the itemInstanceId of the item granted from the drop table
+            //Debug.Log("Split Result " + splitResult[67]); // 67st element is the item class 
 
-                foreach (var item in items)
-                {
-                    string[] splitResult = result.ResultsEncoded.Split('"'); //19th element is the itemInstanceId
-                    SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
-
-                    if (PlayFabDataStore.playerInventory.Count < PlayFabDataStore.playerInventorySlotCount)
-                    {
-                        Debug.Log("Item " + item);
-
-                        PlayFabDataStore.playerInventory.Add(item);
-                        PlayerItemInfo itemInfo = new PlayerItemInfo(item, splitResult[19], "0");
-
-                        if (PlayFabDataStore.playerInventoryInfo.ContainsKey(item))
-                        {
-                            PlayFabDataStore.playerInventoryInfo[item].Add(itemInfo);
-                        }
-                        else
-                        {
-                            PlayFabDataStore.playerInventoryInfo.Add(item, itemInfoList);
-                            PlayFabDataStore.playerInventoryInfo[item].Add(itemInfo);
-                        }
-                    }
-
-                    foreach (var slot in UIItemSlot_Assign.inventorySlots)
-                    {
-                        if (slot.assignItem == PlayFabDataStore.playerInventory.Count)
-                        {
-                            slot.SetItemToSlotInstant();
-                        }
-                    }
-                }
-            }
             if (itemClass == "Quest")
             {
                 foreach (var quest in items)
@@ -292,21 +247,86 @@ public class PlayFabApiCalls : MonoBehaviour
                             AddUserCurrency(int.Parse(currency.Value.ToString()));
                         }
                     }
-                    foreach (var reward in PlayFabDataStore.catalogQuests[quest].rewards)
+                }
+                if (splitResult[67] == "Skill" || splitResult[67] == "Modifier")
+                {
+                    if (!PlayFabDataStore.playerAllRunes.ContainsKey(splitResult[59]))
                     {
-                        if(PlayFabDataStore.catalogRunes.ContainsKey(reward))
+                        PlayFabDataStore.playerAllRunes.Add(splitResult[59], new PlayerRune(splitResult[59], splitResult[63], splitResult[67], PlayFabDataStore.catalogRunes[splitResult[59]].displayName, "0"));
+                        SetCustomDataOnItem("Active", "0", splitResult[63]);
+                        RuneWindow.SortAllRunes();
+                    }
+                }
+                else
+                if(splitResult[67] == "Item")
+                {
+                    List<PlayerItemInfo> itemInfoList = new List<PlayerItemInfo>();
+                    SetCustomDataOnItem("IsEquipped", "0", splitResult[63]);
+                    PlayFabDataStore.playerInventory.Add(splitResult[59]);
+                    PlayerItemInfo itemInfo = new PlayerItemInfo(splitResult[59], splitResult[63], "0");
+
+                    if (PlayFabDataStore.playerInventoryInfo.ContainsKey(splitResult[59]))
+                    {
+                        PlayFabDataStore.playerInventoryInfo[splitResult[59]].Add(itemInfo);
+                    }
+                    else
+                    {
+                        PlayFabDataStore.playerInventoryInfo.Add(splitResult[59], itemInfoList);
+                        PlayFabDataStore.playerInventoryInfo[splitResult[59]].Add(itemInfo);
+                    }
+                }
+
+            }
+
+            if (itemClass == "Skill" || itemClass == "Modifier")
+            {
+                SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+
+                foreach (var item in items)
+                {
+
+                    if (!PlayFabDataStore.playerAllRunes.ContainsKey(item))
+                    {
+                        PlayFabDataStore.playerAllRunes.Add(item, new PlayerRune(item, splitResult[19], itemClass, PlayFabDataStore.catalogRunes[item].displayName, "0"));
+                    }
+                }
+                RuneWindow.SortAllRunes();
+
+            }
+            if (itemClass == "Item")
+            {
+                List<PlayerItemInfo> itemInfoList = new List<PlayerItemInfo>();
+                SetCustomDataOnItem(customDataTitle, "0", splitResult[19]);
+                Debug.Log("Item 1");
+
+                foreach (var item in items)
+                {
+                    Debug.Log("Item 2");
+                    Debug.Log("Item " + item);
+
+                    PlayFabDataStore.playerInventory.Add(item);
+                    PlayerItemInfo itemInfo = new PlayerItemInfo(item, splitResult[19], "0");
+                    Debug.Log("Item 3");
+                    if (PlayFabDataStore.playerInventoryInfo.ContainsKey(item))
+                    {
+                        PlayFabDataStore.playerInventoryInfo[item].Add(itemInfo);
+                    }
+                    else
+                    {
+                        PlayFabDataStore.playerInventoryInfo.Add(item, itemInfoList);
+                        PlayFabDataStore.playerInventoryInfo[item].Add(itemInfo);
+                    }
+                    Debug.Log("Item 4");
+                    foreach (var slot in UIItemSlot_Assign.inventorySlots)
+                    {
+                        if (slot.assignItem == PlayFabDataStore.playerInventory.Count)
                         {
-                            GetAllCharacterRunes();
-                        }
-                        else 
-                        if(PlayFabDataStore.catalogItems.ContainsKey(reward))
-                        {
-                            GetAllCharacterItems();
+                            slot.SetItemToSlotInstant();
                         }
                     }
                 }
-                    
             }
+            
         },
         (error) =>
         {
@@ -792,8 +812,9 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.AddUserVirtualCurrency(request, (result) =>
         {
             PlayFabDataStore.playerCurrency = result.Balance;
-            CharacterStats.characterStats.SetStatsText();
-            Debug.Log(amount + " gold looted. Total is " + result.Balance);
+            CharacterStats.characterStats.SetGoldText();
+            PlayFabDataStore.playerUnupdatedCurrency = 0;
+            Debug.Log("Currency Updated");
         },
         (error) =>
         {

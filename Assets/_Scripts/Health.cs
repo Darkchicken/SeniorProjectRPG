@@ -12,6 +12,7 @@ public class Health : MonoBehaviour {
 
     public int health;
     public int maxHealth;
+    public bool isFirstHit = true;
 
     private PhotonView photonView;
     private Animator anim;
@@ -122,8 +123,6 @@ public class Health : MonoBehaviour {
 
     public void InitializeHealth()
     {
-        Debug.Log(PhotonNetwork.player.isLocal);
-        Debug.Log(PhotonNetwork.player.isMasterClient);
         if (photonView.isMine)
         {
             if (CompareTag("Player"))
@@ -132,6 +131,7 @@ public class Health : MonoBehaviour {
                 if(isPlayerRespawned)
                 {
                     health = maxHealth / 2;
+                    PlayFabDataStore.playerCurrentResource = 0;
                 }
                 else
                 {
@@ -141,18 +141,6 @@ public class Health : MonoBehaviour {
                 GetComponent<PlayerCombatManager>().canAttack = true;
                 UpdateHealth();
             }
-            if (CompareTag("Enemy"))
-            {
-                /*if (GetComponent<PlayerCombatManager>() != null)
-                {
-                    maxHealth = PlayFabDataStore.playerMaxHealth;
-                    health = maxHealth;
-                }
-                else
-                {
-                    maxHealth = health;
-                }*/
-            }
         }
         if(PhotonNetwork.player.isMasterClient)
         {
@@ -161,6 +149,7 @@ public class Health : MonoBehaviour {
                 if (GetComponent<EnemyCombatManager>() != null)
                 {
                     health = maxHealth;
+                    isFirstHit = true;
                     UpdateHealth();
                 }
             }
@@ -460,22 +449,38 @@ public class Health : MonoBehaviour {
                 damageTaken -= damageTaken * reducedDamagePercentage / 100;
             }
         }
-        photonView.RPC("ApplyDamageTaken", PhotonTargets.AllViaServer, photonView.viewID, damageTaken);
+
+        photonView.RPC("ApplyDamageTaken", PhotonTargets.AllViaServer, photonView.viewID, damageTaken, source.GetComponent<PhotonView>().viewID);
     }
 
     [PunRPC]
-    void ApplyDamageTaken(int sourceId, int damageTaken)
+    void ApplyDamageTaken(int sourceId, int damageTaken, int playerID)
     {
         if(!dead)
         {
-            GameObject source = PhotonView.Find(sourceId).gameObject;
             if (photonView.viewID == sourceId)
             {
                 if (CompareTag("Enemy"))
                 {
                     if (health > damageTaken)
                     {
-                        Debug.Log(gameObject + " takes " + damageTaken + " damage");
+                        //Debug.Log(gameObject + " takes " + damageTaken + " damage");
+                        if(GetComponent<EnemyCombatManager>() != null)
+                        {
+                            if(isFirstHit && GetComponent<EnemyMovement>().isInCombat != true)
+                            {
+                                isFirstHit = false;
+                                GameObject source = PhotonView.Find(playerID).gameObject;
+                                if(source.CompareTag("Player"))
+                                {
+                                    Debug.Log("ApplyDamageTaken tag " + source.tag);
+                                    GetComponent<EnemyMovement>().isInCombat = true;
+                                    GetComponent<EnemyCombatManager>().playerAttackList.Add(source);
+                                    GetComponent<EnemyMovement>().AlertNearbyEnemies(source);
+                                }
+                                
+                            }     
+                        }
                         health -= damageTaken;
                     }
                     else

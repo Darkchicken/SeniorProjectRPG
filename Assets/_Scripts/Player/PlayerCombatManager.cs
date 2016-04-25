@@ -147,7 +147,7 @@ public class PlayerCombatManager : Runes
             }
         }
 
-        if(targetEnemy == null)
+        if(targetEnemy == null || Vector3.Distance(targetEnemy.transform.position, transform.position) > PlayFabDataStore.catalogRunes[PlayFabDataStore.playerActiveSkillRunes[skillSlot]].attackRange)
         {
             MoveToPosition();
         }
@@ -158,7 +158,12 @@ public class PlayerCombatManager : Runes
     {
         photonView.RPC("SendMoveDestination", PhotonTargets.Others, photonView.viewID, position, controller.stoppingDistance);
         transform.LookAt(position);
-        controller.SetDestination(position);
+        if(controller.enabled == true)
+        {
+            Debug.Log("MOVE TO POSITION");
+            controller.SetDestination(position);
+        }
+        
     }
 
 

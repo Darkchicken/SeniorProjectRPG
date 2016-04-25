@@ -16,6 +16,7 @@ public class PlayFabDataStore : MonoBehaviour
     public static string currentRoomName;
     public static string friendsCurrentRoomName;
     public static int playerCurrency;
+    public static int playerUnupdatedCurrency = 0;
     public static int playerInventorySlotCount = 40;
 
     //Dictionaries
