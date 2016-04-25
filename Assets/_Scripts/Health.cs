@@ -346,7 +346,11 @@ public class Health : MonoBehaviour {
                     }
                 }
             }
-            GetComponent<NavMeshAgent>().ResetPath();
+            if(GetComponent<NavMeshAgent>().enabled)
+            {
+                GetComponent<NavMeshAgent>().ResetPath();
+            }
+            
             if (stunTimer >= maxStunTime)
             {
                 if (CompareTag("Player"))

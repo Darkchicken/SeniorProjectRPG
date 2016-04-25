@@ -27,7 +27,10 @@ public class AreaTeleport : MonoBehaviour {
         {
             dungeon.SetActive(true);
             Debug.Log("Moing to the Dungeon");
+            playerNavigation.Stop();
             playerNavigation.ResetPath();
+            //playerNavigation.Warp(dungeonStartPoint.position);
+            //playerNavigation.updatePosition = dungeonStartPoint;
             playerNavigation.enabled = false;
             HUD_Manager.hudManager.ShowLoading(2);
             player.transform.position = dungeonStartPoint.position;

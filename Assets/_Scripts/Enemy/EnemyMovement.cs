@@ -12,6 +12,7 @@ public class EnemyMovement :MonoBehaviour
     public bool isFirstAggro = true;
 
     private NavMeshAgent controller;
+    private NavMeshObstacle obstacle;
     private Animator enemyAnimation;
     private GameObject player;
     private Vector3 initialPosition;
@@ -35,6 +36,9 @@ public class EnemyMovement :MonoBehaviour
         enemyAnimation = GetComponent<Animator>();
         combatManager = GetComponent<EnemyCombatManager>();
         photonView = GetComponent<PhotonView>();
+        obstacle = GetComponent<NavMeshObstacle>();
+        controller.avoidancePriority = Random.Range(0, 99);
+        
         //player = GameObject.FindGameObjectWithTag("Player");
         initialPosition = transform.position;
         controller.stoppingDistance = chaseStopDistance;
@@ -73,12 +77,22 @@ public class EnemyMovement :MonoBehaviour
             if(Vector3.Distance(transform.position, combatManager.playerAttackList[0].transform.position) <= PlayFabDataStore.catalogRunes[combatManager.selectRune].attackRange)
             {
                 transform.LookAt(combatManager.playerAttackList[0].transform.position);
+                controller.enabled = false;
+                obstacle.enabled = true;
+            }
+            else
+            {
+                obstacle.enabled = false;
+                controller.enabled = true;
+                
             }
             
         }
 
         if ((combatManager.playerAttackList.Count == 0) && isInCombat)
         {
+            obstacle.enabled = false;
+            controller.enabled = true;
             chaseStopDistance = 0;
             controller.stoppingDistance = 0;
             isInCombat = false;
@@ -154,9 +168,13 @@ public class EnemyMovement :MonoBehaviour
 
     void MoveToPosition(Vector3 position)
     {
-        photonView.RPC("SendMoveDestination", PhotonTargets.Others, photonView.viewID, position, controller.stoppingDistance);
-        transform.LookAt(position);
-        controller.SetDestination(position);
+        if(controller.enabled)
+        {
+            photonView.RPC("SendMoveDestination", PhotonTargets.Others, photonView.viewID, position, controller.stoppingDistance);
+            //transform.LookAt(position);
+            controller.SetDestination(position);
+        }
+        
     }
 
     //Call this when you transfer ownership of the room, so enemies still function

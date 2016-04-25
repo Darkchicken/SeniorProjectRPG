@@ -442,6 +442,7 @@ GameObject:
   - 114: {fileID: 11421766}
   - 114: {fileID: 11451598}
   - 114: {fileID: 11433558}
+  - 208: {fileID: 20845016}
   m_Layer: 11
   m_Name: Goblin_Melee
   m_TagString: Enemy
@@ -1034,7 +1035,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186882}
   m_LocalRotation: {x: 0, y: 0.99720633, z: 0, w: 0.07469655}
-  m_LocalPosition: {x: 405.928, y: -3.4049144, z: 145.6453}
+  m_LocalPosition: {x: 433.1185, y: 1.921298, z: 130.80536}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 473032}
@@ -1211,6 +1212,7 @@ MonoBehaviour:
   outlineShader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
   health: 0
   maxHealth: 100
+  isFirstHit: 1
   isBleeding: 0
   maxBleedCount: 0
   bleedDamage: 0
@@ -1255,6 +1257,8 @@ MonoBehaviour:
   chasingRange: 20
   chaseStopDistance: 2
   canMove: 1
+  isInCombat: 0
+  isFirstAggro: 1
 --- !u!114 &11451598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1378,8 +1382,8 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186882}
   m_Enabled: 1
-  m_Radius: 0.05
-  m_Speed: 3
+  m_Radius: 0.5
+  m_Speed: 3.5
   m_Acceleration: 720
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -1391,6 +1395,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &20845016
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186882}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
