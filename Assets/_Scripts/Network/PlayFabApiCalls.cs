@@ -28,6 +28,28 @@ public class PlayFabApiCalls : MonoBehaviour
             PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);
         });
     }
+
+    //Create an account onPlayFab
+    public static void PlayFabRegister(string username, string password, string email)
+    {
+        var registerRequest = new RegisterPlayFabUserRequest()
+        {
+            TitleId = PlayFabSettings.TitleId,
+            Username = username,
+            Password = password,
+            Email = email
+        };
+
+        PlayFabClientAPI.RegisterPlayFabUser(registerRequest, (result) =>
+        {
+            PlayFabDataStore.playFabId = result.PlayFabId;
+            PlayFabDataStore.sessionTicket = result.SessionTicket;
+            GetPhotonToken();
+        }, (error) =>
+        {
+            PlayFabUserLogin.playfabUserLogin.Authentication(error.ErrorMessage.ToString().ToUpper(), 3);
+        });
+    }
     
     //Access the newest version of cloud script
     public static void PlayFabInitialize()
@@ -252,9 +274,13 @@ public class PlayFabApiCalls : MonoBehaviour
                 {
                     if (!PlayFabDataStore.playerAllRunes.ContainsKey(splitResult[59]))
                     {
+                        Debug.Log("Quest 1");
                         PlayFabDataStore.playerAllRunes.Add(splitResult[59], new PlayerRune(splitResult[59], splitResult[63], splitResult[67], PlayFabDataStore.catalogRunes[splitResult[59]].displayName, "0"));
+                        Debug.Log("Quest 2");
                         SetCustomDataOnItem("Active", "0", splitResult[63]);
+                        Debug.Log("Quest 3");
                         RuneWindow.SortAllRunes();
+                        Debug.Log("Quest 4");
                     }
                 }
                 else
@@ -457,6 +483,7 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.AddFriend(request, (result) =>
         {
             Debug.Log("Friend added");
+            GetFriendsList();
         },
         (error) =>
         {
@@ -478,6 +505,7 @@ public class PlayFabApiCalls : MonoBehaviour
             {
                 PlayFabDataStore.friendsList.Add(friend.Username, friend.FriendPlayFabId);
             }
+            FriendsList.friendsList.LoadFriendsList();
            
         },
         (error) =>
