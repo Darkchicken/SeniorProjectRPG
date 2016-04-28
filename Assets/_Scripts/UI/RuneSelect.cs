@@ -142,7 +142,15 @@ public class RuneSelect : MonoBehaviour
         {
             if (PlayFabDataStore.catalogRunes[runeId].resourceGeneration == 0)
             {
-                UITooltip.AddLineColumn("Cost: " + PlayFabDataStore.catalogRunes[runeId].resourceUsage + " Resource");
+                if(PlayFabDataStore.catalogRunes[runeId].cooldown == 0)
+                {
+                    UITooltip.AddLineColumn("Cost: " + PlayFabDataStore.catalogRunes[runeId].resourceUsage + " Resource");
+                }
+                else
+                {
+                    UITooltip.AddLineColumn("Cooldown: " + PlayFabDataStore.catalogRunes[runeId].cooldown + " seconds");
+                }
+                
             }
             else
             {

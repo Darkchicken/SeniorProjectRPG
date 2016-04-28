@@ -19,12 +19,12 @@ public class PlayFabMainMenu : MonoBehaviour
     void Awake()
     {
         playfabMainMenu = this;
-    }
-    void OnEnable()
-    {
 
         //Access the newest version of cloud script
         PlayFabApiCalls.PlayFabInitialize();
+    }
+    void OnEnable()
+    {
 
         //Receives all characters belong to the user
         PlayFabApiCalls.GetAllUsersCharacters(PlayFabDataStore.playFabId, "Player");
@@ -51,15 +51,22 @@ public class PlayFabMainMenu : MonoBehaviour
 
     void ToggleFirstCharacter()
     {
-        characterListToggle.gameObject.GetComponentInChildren<UICharacterSelect_Unit>().isOn = true;
-        PlayFabDataStore.characterName = GetComponentInChildren<CharacterSelect>().characterName.text;
-        PlayFabDataStore.characterId = PlayFabDataStore.characters[GetComponentInChildren<CharacterSelect>().characterName.text];
-        Debug.Log(PlayFabDataStore.characterId);
+        if(PlayFabDataStore.characters.Count != 0)
+        {
+            characterListToggle.gameObject.GetComponentInChildren<UICharacterSelect_Unit>().isOn = true;
+            PlayFabDataStore.characterName = GetComponentInChildren<CharacterSelect>().characterName.text;
+            PlayFabDataStore.characterId = PlayFabDataStore.characters[GetComponentInChildren<CharacterSelect>().characterName.text];
+            Debug.Log(PlayFabDataStore.characterId);
+        }
+        
     }
 
     public void Play()
     {
-        PhotonNetwork.LoadLevel("TestMovement");
+        if (PlayFabDataStore.characters.Count != 0)
+        {
+            PhotonNetwork.LoadLevel("TestMovement");
+        }
     }
 
     public void GetAllRunes()
@@ -73,10 +80,6 @@ public class PlayFabMainMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void RemoveCharacter()
-    {
-
-    }
 
 
 

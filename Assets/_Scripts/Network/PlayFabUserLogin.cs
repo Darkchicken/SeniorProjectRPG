@@ -10,12 +10,16 @@ public class PlayFabUserLogin : MonoBehaviour
 
     public InputField loginUsernameField;
     public InputField loginPasswordField;
+    public InputField registerUsernameField;
+    public InputField registerPasswordField;
+    public InputField registerEmailField;
     public Text authenticationText;
     public Button authenticationButton;
     public Texture2D cursorImage;
 
     public static PlayFabUserLogin playfabUserLogin;
     public Canvas mainMenu;
+    public GameObject registerFlag;
 
     void Awake()
     {
@@ -28,6 +32,18 @@ public class PlayFabUserLogin : MonoBehaviour
         PlayFabApiCalls.PlayFabLogin(loginUsernameField.text, loginPasswordField.text);
         authenticationText.text = "CONNECTING...";
         authenticationText.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void Register()
+    {
+        PlayFabApiCalls.PlayFabRegister(registerUsernameField.text, registerPasswordField.text, registerEmailField.text);
+        authenticationText.text = "REGISTERING...";
+        authenticationText.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void CreateAccount()
+    {
+        registerFlag.SetActive(true);
     }
 
     public void Authentication(string text, int code)
