@@ -483,6 +483,7 @@ public class PlayFabApiCalls : MonoBehaviour
         PlayFabClientAPI.AddFriend(request, (result) =>
         {
             Debug.Log("Friend added");
+            GetFriendsList();
         },
         (error) =>
         {
@@ -504,6 +505,7 @@ public class PlayFabApiCalls : MonoBehaviour
             {
                 PlayFabDataStore.friendsList.Add(friend.Username, friend.FriendPlayFabId);
             }
+            FriendsList.friendsList.LoadFriendsList();
            
         },
         (error) =>
